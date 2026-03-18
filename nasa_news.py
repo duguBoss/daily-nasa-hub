@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import time
 from pathlib import Path
 from typing import Any
@@ -19,8 +20,6 @@ NASA_NEWS_URLS = [
     "https://www.nasa.gov/news/recently-published/",
 ]
 
-DEFAULT_REPOSITORY = "duguBoss/daily-nasa-hub"
-DEFAULT_BRANCH = "main"
 MODEL_NAME = "gemini-3.1-flash-lite-preview"
 REQUEST_TIMEOUT = 30
 ASSET_ROOT = Path("assets") / "generated"
@@ -52,6 +51,10 @@ def normalize_whitespace(text: str) -> str:
 def slugify(value: str) -> str:
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", value).strip("-").lower()
     return slug[:60] or "news"
+
+
+def github_asset_url(asset_path: str, repo: str = "duguBoss/daily-nasa-hub", branch: str = "main") -> str:
+    return f"https://raw.githubusercontent.com/{repo}/{branch}/{asset_path}".replace("\\", "/")
 
 
 def fetch_page(url: str) -> str:
@@ -191,6 +194,33 @@ def download_image(image_url: str, file_path: Path) -> bool:
         return False
 
 
+def cleanup_old_files(target_date: datetime.date, keep_days: int = 7) -> None:
+    cutoff = target_date - datetime.timedelta(days=keep_days)
+
+    for pattern in ["Daily_NASA_*.json", "Daily_NASA_*.md"]:
+        for file_path in Path(".").glob(pattern):
+            try:
+                date_str = file_path.stem.replace("Daily_NASA_", "")
+                file_date = datetime.date.fromisoformat(date_str)
+                if file_date < cutoff:
+                    file_path.unlink()
+                    print(f"Deleted old file: {file_path}")
+            except (ValueError, IndexError):
+                continue
+
+    if ASSET_ROOT.exists():
+        for child in ASSET_ROOT.iterdir():
+            if not child.is_dir():
+                continue
+            try:
+                folder_date = datetime.date.fromisoformat(child.name)
+            except ValueError:
+                continue
+            if folder_date < cutoff:
+                shutil.rmtree(child, ignore_errors=True)
+                print(f"Deleted old folder: {child}")
+
+
 def load_existing_news_ids() -> set[str]:
     json_files = list(Path(".").glob("Daily_NASA_*.json"))
     existing_ids = set()
@@ -204,45 +234,6 @@ def load_existing_news_ids() -> set[str]:
         except Exception:
             continue
     return existing_ids
-
-
-def save_news(articles: list[dict[str, Any]], date_str: str) -> tuple[str, str]:
-    if not articles:
-        return "", ""
-
-    json_file_name = f"Daily_NASA_{date_str}.json"
-    markdown_file_name = f"Daily_NASA_{date_str}.md"
-
-    cover_images = [a["image_path"] for a in articles if a.get("image_path")]
-
-    json_data = {
-        "title": f"NASA 每日新闻：{date_str}",
-        "date": date_str,
-        "cover": cover_images[:6],
-        "articles": articles,
-    }
-
-    with open(json_file_name, "w", encoding="utf-8") as f:
-        json.dump(json_data, f, ensure_ascii=False, indent=2)
-
-    markdown_content = f"# NASA 每日新闻：{date_str}\n\n"
-    markdown_content += f"![Cover]({TOP_BANNER_URL})\n\n"
-
-    for i, article in enumerate(articles):
-        markdown_content += f"## {i+1}. {article['title']}\n\n"
-        if article.get("image_path"):
-            markdown_content += f"![Image]({article['image_path']})\n\n"
-        markdown_content += f"{article.get('summary', article.get('content', ''))}\n\n"
-        markdown_content += f"来源: {article.get('url', '')}\n\n"
-        markdown_content += "---\n\n"
-
-    markdown_content += f"\n![Bottom]({BOTTOM_BANNER_URL})\n"
-
-    with open(markdown_file_name, "w", encoding="utf-8") as f:
-        f.write(markdown_content)
-
-    print(f"Saved {len(articles)} articles to {json_file_name}")
-    return json_file_name, markdown_file_name
 
 
 def call_gemini(api_key: str, prompt: str) -> str:
@@ -276,38 +267,119 @@ def call_gemini(api_key: str, prompt: str) -> str:
     return parts[0]["text"]
 
 
-def translate_with_gemini(api_key: str, title: str, content: str) -> dict[str, str]:
-    prompt = f"""翻译以下NASA新闻为简体中文：
+def build_gemini_prompt(articles: list[dict[str, Any]], date_str: str) -> str:
+    articles_text = "\n\n".join([
+        f"文章 {i+1}: {a['title']}\n内容: {a.get('content', '')[:1500]}"
+        for i, a in enumerate(articles)
+    ])
 
-标题：{title}
+    return f"""你是一个科技新闻编辑，需要为NASA每日新闻生成微信格式的HTML内容。
 
-内容：{content[:2000]}
+日期：{date_str}
+
+文章列表：
+{articles_text}
 
 要求：
-1. 标题翻译简洁有力，适合SEO，20-35字
-2. 内容摘要100-200字
-3. 只返回JSON格式：
-{{"title_cn":"中文标题","summary_cn":"中文摘要"}}
+1. 生成一个JSON对象，包含以下字段：
+   - "title": 主标题，20-35字，简短有力
+   - "summary": 摘要，50-80字，概括当日NASA新闻要点
+   - "covers": 图片URL数组，最多6张
+   - "wxhtml": 微信HTML内容，使用section标签，包含所有文章的标题、摘要和配图
+
+微信HTML格式要求：
+- 顶部banner图片
+- 每个文章条目用卡片样式展示
+- 包含文章标题、图片、摘要
+- 底部banner图片
+- 使用内联样式，简洁美观
+
+只返回JSON格式：
+{{"title":"标题","summary":"摘要","covers":["url1","url2"],"wxhtml":"<section>...</section>"}}
 """
 
+
+def generate_wxhtml(api_key: str, articles: list[dict[str, Any]], date_str: str) -> dict[str, Any]:
+    prompt = build_gemini_prompt(articles, date_str)
     try:
         result = call_gemini(api_key, prompt)
         return json.loads(result)
     except Exception as e:
-        print(f"Translation failed: {e}")
+        print(f"Gemini API call failed: {e}")
         return {
-            "title_cn": title[:35],
-            "summary_cn": content[:150] + "..." if len(content) > 150 else content
+            "title": f"NASA 每日新闻：{date_str}",
+            "summary": "NASA最新太空探索、科技与应用动态。",
+            "covers": [],
+            "wxhtml": ""
         }
 
 
-def main() -> None:
-    existing_ids = load_existing_news_ids()
-    print(f"Found {len(existing_ids)} existing article IDs")
+def save_news(articles: list[dict[str, Any]], wxhtml_data: dict[str, Any], date_str: str) -> tuple[str, str]:
+    if not articles:
+        return "", ""
 
+    covers = wxhtml_data.get("covers", [])
+    cover_urls = []
+    for a in articles:
+        if a.get("image_path"):
+            cover_urls.append(github_asset_url(a["image_path"]))
+
+    json_data = {
+        "title": wxhtml_data.get("title", f"NASA 每日新闻：{date_str}"),
+        "summary": wxhtml_data.get("summary", ""),
+        "covers": cover_urls[:6],
+        "wxhtml": wxhtml_data.get("wxhtml", ""),
+        "articles": [
+            {
+                "id": a["id"],
+                "title": a["title"],
+                "original_title": a.get("original_title", ""),
+                "summary": a.get("summary", ""),
+                "url": a["url"],
+                "image_url": a.get("image_url", ""),
+                "image_path": a.get("image_path", ""),
+            }
+            for a in articles
+        ],
+    }
+
+    json_file_name = f"Daily_NASA_{date_str}.json"
+    markdown_file_name = f"Daily_NASA_{date_str}.md"
+
+    with open(json_file_name, "w", encoding="utf-8") as f:
+        json.dump(json_data, f, ensure_ascii=False, indent=2)
+
+    markdown_content = f"# NASA 每日新闻：{date_str}\n\n"
+    markdown_content += f"![Cover]({TOP_BANNER_URL})\n\n"
+    markdown_content += f"## {wxhtml_data.get('title', 'NASA News')}\n\n"
+    markdown_content += f"*{wxhtml_data.get('summary', '')}*\n\n"
+
+    for i, article in enumerate(articles):
+        markdown_content += f"### {i+1}. {article['title']}\n\n"
+        if article.get("image_path"):
+            markdown_content += f"![Image]({github_asset_url(article['image_path'])})\n\n"
+        markdown_content += f"{article.get('summary', article.get('content', ''))}\n\n"
+        markdown_content += f"[来源]({article['url']})\n\n"
+        markdown_content += "---\n\n"
+
+    markdown_content += f"\n![Bottom]({BOTTOM_BANNER_URL})\n"
+
+    with open(markdown_file_name, "w", encoding="utf-8") as f:
+        f.write(markdown_content)
+
+    print(f"Saved {len(articles)} articles to {json_file_name}")
+    return json_file_name, markdown_file_name
+
+
+def main() -> None:
     target_date = datetime.datetime.now(SHANGHAI_TZ).date()
     date_str = target_date.strftime("%Y-%m-%d")
     print(f"Fetching NASA news for {date_str}")
+
+    cleanup_old_files(target_date, keep_days=7)
+
+    existing_ids = load_existing_news_ids()
+    print(f"Found {len(existing_ids)} existing article IDs")
 
     all_articles = []
     seen_urls = set()
@@ -362,29 +434,13 @@ def main() -> None:
             else:
                 image_path = ""
 
-        api_key = ""
-        try:
-            api_key = require_api_key()
-        except ValueError:
-            pass
-
-        if api_key and content_data.get("content"):
-            try:
-                translated = translate_with_gemini(api_key, content_data["title"], content_data["content"])
-                title_cn = translated.get("title_cn", content_data["title"])
-                summary_cn = translated.get("summary_cn", content_data["content"][:150])
-            except Exception:
-                title_cn = content_data["title"]
-                summary_cn = content_data["content"][:150]
-        else:
-            title_cn = content_data["title"]
-            summary_cn = content_data["content"][:150] if content_data.get("content") else ""
+        summary = content_data["content"][:150] if content_data.get("content") else ""
 
         new_articles.append({
             "id": article_id,
-            "title": title_cn,
+            "title": content_data["title"],
             "original_title": content_data["title"],
-            "summary": summary_cn,
+            "summary": summary,
             "content": content_data["content"],
             "url": article_url,
             "image_url": content_data.get("image_url", ""),
@@ -394,11 +450,28 @@ def main() -> None:
 
         time.sleep(1)
 
-    if new_articles:
-        json_file, md_file = save_news(new_articles, date_str)
-        print(f"Successfully saved news to {json_file} and {md_file}")
-    else:
+    if not new_articles:
         print("No new articles to save today.")
+        return
+
+    api_key = ""
+    try:
+        api_key = require_api_key()
+    except ValueError:
+        print("GEMINI_API_KEY not set, skipping wxhtml generation")
+
+    wxhtml_data = {
+        "title": f"NASA 每日新闻：{date_str}",
+        "summary": f"NASA太空探索与科技最新动态 ({date_str})",
+        "covers": [],
+        "wxhtml": ""
+    }
+
+    if api_key:
+        wxhtml_data = generate_wxhtml(api_key, new_articles, date_str)
+
+    json_file, md_file = save_news(new_articles, wxhtml_data, date_str)
+    print(f"Successfully saved news to {json_file} and {md_file}")
 
 
 if __name__ == "__main__":
