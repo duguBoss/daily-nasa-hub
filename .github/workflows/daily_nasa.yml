@@ -35,4 +35,10 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add *.md *.json assets/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "auto-generate daily NASA news" && git push)
+          git status
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "auto-generate daily NASA news $(date +'%Y-%m-%d')"
+            git push
+          fi
