@@ -34,7 +34,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add *.md *.json assets/
+          git add *.md *.json assets/ state/
           git status
           if git diff --cached --quiet; then
             echo "No changes to commit"
