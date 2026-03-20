@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-20T13:53:27.907874+08:00",
+  "updated_at": "2026-03-20T13:59:45.530637+08:00",
   "date": "2026-03-20",
   "last_fetch_urls": [
     "https://www.nasa.gov/blogs/missions/2026/03/20/artemis-ii-moon-rocket-heads-back-to-launch-pad",
@@ -8,7 +8,9 @@
     "https://www.nasa.gov/image-article/american-bald-eagle-at-nasas-kennedy-space-center",
     "https://www.nasa.gov/centers-and-facilities/stennis/collecting-explosion-data-for-next-generation-rockets"
   ],
-  "last_new_urls": [],
+  "last_new_urls": [
+    "https://www.nasa.gov/image-article/american-bald-eagle-at-nasas-kennedy-space-center"
+  ],
   "seen_urls": [
     "https://www.nasa.gov/blogs/missions/2026/03/20/artemis-ii-moon-rocket-heads-back-to-launch-pad",
     "https://science.nasa.gov/earth/earth-observatory/restless-kilauea-launches-lava-and-ash",

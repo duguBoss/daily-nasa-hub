@@ -4,6 +4,7 @@ import datetime
 import hashlib
 import json
 import os
+import random
 import re
 import shutil
 import time
@@ -20,6 +21,7 @@ NASA_NEWS_URLS = [
     "https://www.nasa.gov/news/recently-published/",
     "https://www.nasa.gov/2026-news-releases/",
 ]
+IMAGE_OF_THE_DAY_URL = "https://www.nasa.gov/image-of-the-day/"
 
 MODEL_NAME = "gemini-3.1-flash-lite-preview"
 REQUEST_TIMEOUT = 30
@@ -223,6 +225,37 @@ def fetch_top_n_articles(top_n: int = LIST_TOP_N) -> list[dict[str, Any]]:
     return merged[:top_n]
 
 
+def fetch_image_of_the_day_candidate() -> dict[str, Any] | None:
+    try:
+        html = fetch_page(IMAGE_OF_THE_DAY_URL)
+    except Exception as exc:
+        print(f"Failed to fetch image-of-the-day page: {exc}")
+        return None
+
+    soup = BeautifulSoup(html, "html.parser")
+    seen: set[str] = set()
+
+    for link in soup.find_all("a", href=True):
+        url = canonicalize_url(link["href"])
+        if "/image-article/" not in url.lower():
+            continue
+        if not is_nasa_article_url(url):
+            continue
+        if url in seen:
+            continue
+        seen.add(url)
+
+        title = normalize_whitespace(link.get_text(" ", strip=True))
+        if not title:
+            title = normalize_whitespace(link.get("aria-label", ""))
+        if not title:
+            title = "NASA Image of the Day"
+        return {"title": title, "url": url, "source": IMAGE_OF_THE_DAY_URL}
+
+    print("No image-of-the-day article link found.")
+    return None
+
+
 def infer_channel_name(url: str) -> str:
     url_lower = url.lower()
     if "/news-release/" in url_lower:
@@ -304,6 +337,53 @@ def fetch_article_content(url: str) -> dict[str, Any]:
         "image_url": image_url,
         "publish_time": pick_publish_time(soup),
     }
+
+
+def build_processed_articles(candidates: list[dict[str, Any]], date_str: str) -> list[dict[str, Any]]:
+    processed_articles: list[dict[str, Any]] = []
+
+    for idx, candidate in enumerate(candidates, start=1):
+        url = candidate["url"]
+        print(f"Processing article {idx}/{len(candidates)}: {candidate['title']}")
+        try:
+            detail = fetch_article_content(url)
+        except Exception as exc:
+            print(f"Failed to fetch article detail: {exc}")
+            detail = {"title": candidate["title"], "summary": "", "content": "", "image_url": "", "publish_time": ""}
+
+        article_hash = hashlib.md5(url.encode("utf-8")).hexdigest()[:12]
+        article_id = f"nasa-{article_hash}"
+        image_path = ""
+        cover_url = detail.get("image_url", "")
+
+        image_url = detail.get("image_url", "")
+        if image_url:
+            slug = slugify(candidate["title"])[:40]
+            suffix_match = re.search(r"\.(jpg|jpeg|png|webp)(?:$|[?#])", image_url, re.I)
+            image_ext = "." + suffix_match.group(1).lower() if suffix_match else ".jpg"
+            file_name = f"{article_hash}-{slug}{image_ext}"
+            local_path = ASSET_ROOT / date_str / file_name
+            if download_image(image_url, local_path):
+                image_path = str(local_path).replace("\\", "/")
+                cover_url = github_asset_url(image_path)
+
+        processed_articles.append(
+            {
+                "id": article_id,
+                "title": detail.get("title") or candidate["title"],
+                "summary": detail.get("summary", ""),
+                "content": detail.get("content", ""),
+                "url": url,
+                "publish_time": detail.get("publish_time", ""),
+                "channel": infer_channel_name(url),
+                "image_url": image_url,
+                "image_path": image_path,
+                "cover_url": cover_url,
+            }
+        )
+        time.sleep(0.8)
+
+    return processed_articles
 
 
 def download_image(image_url: str, file_path: Path) -> bool:
@@ -518,9 +598,50 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
     )
 
 
+def pick_title_focus(articles: list[dict[str, Any]]) -> str:
+    text = " ".join([f"{a.get('title', '')} {a.get('summary', '')}" for a in articles]).lower()
+    rules = [
+        (("artemis", "moon", "launch"), "Artemis登月"),
+        (("spacestation", "spacewalk", "crew", "iss"), "空间站任务"),
+        (("asteroid", "mars", "moon"), "深空探索"),
+        (("earth", "climate", "volcano"), "地球观测"),
+        (("rocket", "engine", "propulsion"), "火箭工程"),
+        (("image", "gallery", "photo"), "航天影像"),
+    ]
+    for keywords, focus in rules:
+        if any(keyword in text for keyword in keywords):
+            return focus
+    return "太空前沿"
+
+
+def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]]) -> str:
+    count = len(articles)
+    focus = pick_title_focus(articles)
+    seed = int(hashlib.md5(date_str.encode("utf-8")).hexdigest()[:8], 16)
+    rng = random.Random(seed + count)
+    if count <= 1:
+        templates = [
+            "NASA今天放出关键画面：{focus}背后信息量太大",
+            "别错过NASA这条重磅更新：{focus}细节首次看清",
+            "今天NASA最值得看的内容：{focus}核心进展来了",
+            "NASA刚更新一条关键信号：{focus}正在发生变化",
+            "这张NASA新图刷屏了：{focus}到底透露了什么",
+        ]
+        return rng.choice(templates).format(focus=focus)
+
+    templates = [
+        "NASA今天连发{count}条重磅动态：{focus}出现关键变化",
+        "今天的NASA有点猛：{count}条{focus}新进展一次看完",
+        "别只看标题，NASA这{count}条更新正在改写{focus}节奏",
+        "NASA一天抛出{count}个信号：{focus}进入新阶段",
+        "今天NASA最有价值的{count}条：{focus}看点全梳理",
+    ]
+    return rng.choice(templates).format(count=count, focus=focus)
+
+
 def build_default_payload(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> dict[str, Any]:
     songs = [{"name": article["title"], "artist": article.get("channel", "NASA")} for article in articles]
-    title = f"NASA 今日速递：{len(articles)} 条太空前沿动态一次看懂"
+    title = build_wechat_fallback_title(date_str, articles)
     return {
         "date": date_str,
         "title": title,
@@ -530,7 +651,29 @@ def build_default_payload(date_str: str, articles: list[dict[str, Any]], cover_u
     }
 
 
-def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> str:
+def load_recent_titles(limit: int = 20) -> list[str]:
+    titles: list[str] = []
+    for json_file in sorted(Path(".").glob("Daily_NASA_*.json"), reverse=True)[:limit]:
+        try:
+            with open(json_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            continue
+        title = normalize_whitespace(str(data.get("title", "")))
+        if title:
+            titles.append(title)
+    # unique and keep order
+    ordered: list[str] = []
+    seen: set[str] = set()
+    for title in titles:
+        if title in seen:
+            continue
+        seen.add(title)
+        ordered.append(title)
+    return ordered
+
+
+def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str], recent_titles: list[str]) -> str:
     article_blocks = []
     for idx, article in enumerate(articles, start=1):
         block = (
@@ -554,10 +697,13 @@ def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_url
 封面图候选:
 {json.dumps(cover_urls, ensure_ascii=False)}
 
+最近已使用标题（请避免相似表达）:
+{json.dumps(recent_titles[:12], ensure_ascii=False)}
+
 输出必须是合法 JSON，且只能输出 JSON，不要加解释文字。结构必须是:
 {{
   "date": "{date_str}",
-  "title": "20-30字中文主标题，强调新鲜感和价值感",
+  "title": "14-24字中文主标题，强调新鲜感和价值感",
   "covers": ["最多5个图片URL"],
   "songs": [
     {{"name":"新闻标题","artist":"栏目名"}}
@@ -567,25 +713,41 @@ def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_url
 
 写作要求:
 1) 明显体现 NASA 风格: 科学、任务、探索、工程细节。
-2) 符合微信推荐逻辑: 首屏钩子、分段短句、关键信息卡片、互动问题。
+2) 按微信推荐算法优化: 强信息密度、明确受众收益、避免空话；首屏需有“今天发生了什么+为什么值得看”。
 3) weixin_html 用内联样式，结构完整，必须包含顶部和底部 banner 图。
 4) cards 中每条新闻要有标题、摘要、图片(有则展示)和原文链接。
 5) 不要杜撰事实，不要出现“可能/大概”等含糊措辞。
+6) title 禁止使用以下重复句式: “NASA今日速递：X条太空前沿动态一次看懂”。
+7) title 请尽量包含数字、任务关键词（如Artemis/空间站/火箭/深空）之一。
 """
 
 
-def generate_payload(api_key: str | None, date_str: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> dict[str, Any]:
+def generate_payload(
+    api_key: str | None,
+    date_str: str,
+    articles: list[dict[str, Any]],
+    cover_urls: list[str],
+) -> tuple[dict[str, Any], dict[str, Any]]:
     default_payload = build_default_payload(date_str, articles, cover_urls)
+    meta = {
+        "ai_enabled": bool(api_key),
+        "ai_success": False,
+        "model": MODEL_NAME,
+        "error": "",
+        "fallback_used": True,
+    }
     if not api_key:
-        return default_payload
+        meta["error"] = "GEMINI_API_KEY not set"
+        return default_payload, meta
 
     try:
-        prompt = build_gemini_prompt(date_str, articles, cover_urls)
+        recent_titles = load_recent_titles()
+        prompt = build_gemini_prompt(date_str, articles, cover_urls, recent_titles)
         raw = call_gemini(api_key, prompt)
         payload = parse_model_json(raw)
     except Exception as exc:
-        print(f"Gemini generation failed, fallback to template: {exc}")
-        return default_payload
+        meta["error"] = str(exc)
+        return default_payload, meta
 
     payload_date = str(payload.get("date", "")).strip()
     payload["date"] = payload_date if payload_date else date_str
@@ -610,18 +772,23 @@ def generate_payload(api_key: str | None, date_str: str, articles: list[dict[str
     payload["songs"] = fixed_songs or default_payload["songs"]
 
     title = normalize_whitespace(str(payload.get("title", "")))
-    payload["title"] = title or default_payload["title"]
+    if not title or title == "NASA 今日速递：3 条太空前沿动态一次看懂":
+        title = default_payload["title"]
+    payload["title"] = title
 
     weixin_html = str(payload.get("weixin_html", "")).strip()
     if not weixin_html.startswith("<section"):
         weixin_html = default_payload["weixin_html"]
     payload["weixin_html"] = weixin_html
-    return payload
+    meta["ai_success"] = True
+    meta["fallback_used"] = False
+    return payload, meta
 
 
 def save_news(
     articles: list[dict[str, Any]],
     payload: dict[str, Any],
+    generation_meta: dict[str, Any],
     date_str: str,
     source_top_urls: list[str],
     new_urls: list[str],
@@ -635,6 +802,7 @@ def save_news(
         "covers": payload["covers"],
         "songs": payload["songs"],
         "weixin_html": payload["weixin_html"],
+        "generation": generation_meta,
         "source_top_urls": source_top_urls,
         "new_urls": new_urls,
         "articles": [
@@ -693,81 +861,69 @@ def main() -> None:
     print(f"Loaded state: seen_urls={len(seen_urls)}")
 
     top_list = fetch_top_n_articles(LIST_TOP_N)
-    if not top_list:
-        print("No list items found, stop.")
-        return
-
     top_urls = [item["url"] for item in top_list]
-    print("Top list URLs:")
-    for idx, url in enumerate(top_urls, start=1):
-        print(f"  {idx}. {url}")
+    selected: list[dict[str, Any]] = []
 
-    new_candidates = [item for item in top_list if item["url"] not in seen_urls]
-    print(f"New candidates after dedupe check: {len(new_candidates)}")
-    for idx, item in enumerate(new_candidates, start=1):
-        print(f"  NEW {idx}. {item['title']}")
+    if top_list:
+        print("Top list URLs:")
+        for idx, url in enumerate(top_urls, start=1):
+            print(f"  {idx}. {url}")
 
-    if not new_candidates:
-        print("No new URL in latest top list. Only update state and exit.")
+        new_candidates = [item for item in top_list if item["url"] not in seen_urls]
+        print(f"New candidates after dedupe check: {len(new_candidates)}")
+        for idx, item in enumerate(new_candidates, start=1):
+            print(f"  NEW {idx}. {item['title']}")
+
+        if new_candidates:
+            selected = new_candidates[:MERGE_TOP_N]
+        else:
+            print("No new URL in top list, fallback to NASA Image of the Day.")
+            iotd_candidate = fetch_image_of_the_day_candidate()
+            if iotd_candidate:
+                selected = [iotd_candidate]
+                if iotd_candidate["url"] not in top_urls:
+                    top_urls = [iotd_candidate["url"]] + top_urls
+    else:
+        print("No list items found, fallback to NASA Image of the Day.")
+        iotd_candidate = fetch_image_of_the_day_candidate()
+        if iotd_candidate:
+            selected = [iotd_candidate]
+            top_urls = [iotd_candidate["url"]]
+
+    if not selected:
+        print("No available candidate after fallback, only update state and exit.")
         save_seen_state(state, latest_urls=top_urls, new_urls=[], date_str=date_str)
         return
 
-    selected = new_candidates[:MERGE_TOP_N]
-    processed_articles: list[dict[str, Any]] = []
-
-    for idx, candidate in enumerate(selected, start=1):
-        url = candidate["url"]
-        print(f"Processing article {idx}/{len(selected)}: {candidate['title']}")
-        try:
-            detail = fetch_article_content(url)
-        except Exception as exc:
-            print(f"Failed to fetch article detail: {exc}")
-            detail = {"title": candidate["title"], "summary": "", "content": "", "image_url": "", "publish_time": ""}
-
-        article_hash = hashlib.md5(url.encode("utf-8")).hexdigest()[:12]
-        article_id = f"nasa-{article_hash}"
-        image_path = ""
-        cover_url = detail.get("image_url", "")
-
-        image_url = detail.get("image_url", "")
-        if image_url:
-            slug = slugify(candidate["title"])[:40]
-            suffix_match = re.search(r"\.(jpg|jpeg|png|webp)(?:$|[?#])", image_url, re.I)
-            image_ext = "." + suffix_match.group(1).lower() if suffix_match else ".jpg"
-            file_name = f"{article_hash}-{slug}{image_ext}"
-            local_path = ASSET_ROOT / date_str / file_name
-            if download_image(image_url, local_path):
-                image_path = str(local_path).replace("\\", "/")
-                cover_url = github_asset_url(image_path)
-
-        processed_articles.append(
-            {
-                "id": article_id,
-                "title": detail.get("title") or candidate["title"],
-                "summary": detail.get("summary", ""),
-                "content": detail.get("content", ""),
-                "url": url,
-                "publish_time": detail.get("publish_time", ""),
-                "channel": infer_channel_name(url),
-                "image_url": image_url,
-                "image_path": image_path,
-                "cover_url": cover_url,
-            }
-        )
-        time.sleep(0.8)
+    processed_articles = build_processed_articles(selected, date_str)
+    if not processed_articles:
+        print("No processed article generated, only update state and exit.")
+        save_seen_state(state, latest_urls=top_urls, new_urls=[], date_str=date_str)
+        return
 
     cover_urls = [a.get("cover_url", "") for a in processed_articles if a.get("cover_url", "")]
     api_key = get_optional_api_key()
-    payload = generate_payload(api_key, date_str, processed_articles, cover_urls)
+    print(f"AI model: {MODEL_NAME}")
+    payload, generation_meta = generate_payload(api_key, date_str, processed_articles, cover_urls)
+    if generation_meta["ai_success"]:
+        print(f"AI generation succeeded with model {generation_meta['model']}.")
+    else:
+        print(
+            "AI generation fallback used. "
+            f"reason={generation_meta.get('error', 'unknown error')}"
+        )
+
+    selected_urls = [item["url"] for item in selected]
 
     save_news(
         processed_articles,
         payload,
+        generation_meta,
         date_str,
         source_top_urls=top_urls,
-        new_urls=[item["url"] for item in selected],
+        new_urls=selected_urls,
     )
-    save_seen_state(state, latest_urls=top_urls, new_urls=[item["url"] for item in selected], date_str=date_str)
+    save_seen_state(state, latest_urls=top_urls, new_urls=selected_urls, date_str=date_str)
     print("Daily NASA pipeline completed.")
 
 
