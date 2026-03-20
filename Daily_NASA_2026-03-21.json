@@ -1,0 +1,78 @@
+{
+  "date": "2026-03-21",
+  "title": "硅谷地标重生！NASA揭秘星际彗星数据与空间站宇航员日常",
+  "covers": [
+    "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-21/56c0dd8f7312-hangar-one-restoration-project.jpeg",
+    "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-21/e76cf5b071ea-how-open-nasa-data-on-comet-3i-atlas-wil.jpeg",
+    "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-21/a25f6a762d96-smiles-and-spacesuits.jpg"
+  ],
+  "songs": [
+    {
+      "name": "Hangar One Restoration Project",
+      "artist": "NASA Facility"
+    },
+    {
+      "name": "Interstellar Comet 3I/ATLAS Data",
+      "artist": "NASA Science"
+    },
+    {
+      "name": "Smiles and Spacesuits",
+      "artist": "NASA Gallery"
+    }
+  ],
+  "weixin_html": "<section style='margin:0;padding:0;'><img src='https://mmbiz.qpic.cn/mmbiz_gif/xm1dT1jCe8lIO3P2oFVtd1x040PKGCRPN033gUTrHQQz0Licdqug5X1QgUPQBRCicoTqdYMrpgk7etibXLkK9rwcg/0?wx_fmt=gif&from=appmsg' style='width:100%;display:block;'></section><section style='font-family: sans-serif; line-height: 1.6; color: #333;'> <header style='text-align: center; margin-bottom: 20px;'><img src='https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-21/56c0dd8f7312-hangar-one-restoration-project.jpeg' style='width: 100%; border-radius: 8px;'></header> <section><h2>今日核心动态：从历史地标到星际访客</h2><p>今天，NASA带你跨越时空：见证硅谷地标Hangar One的修复完成，解析星际彗星3I/ATLAS留下的宝贵科研遗产，并直击空间站宇航员的舱外服测试瞬间。这些发现不仅是历史的延续，更是未来深空探索的基石。</p></section> <section style='margin-top: 30px;'> <h3>1. 硅谷历史地标：Hangar One修复工程正式完工</h3><p>作为航空历史的丰碑，Hangar One的修复工作已圆满落幕。这座标志性建筑不仅见证了航空工业的变迁，如今更以崭新面貌继续支持NASA的科研任务。</p><a href='https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project'>阅读详细工程细节</a></section> <section style='margin-top: 30px;'> <h3>2. 科学遗产：星际彗星3I/ATLAS留下的数据宝库</h3><p>虽然3I/ATLAS正远离太阳系，但它留下的观测数据已成为全球科学家的公共财富。十余个NASA任务协同观测，为我们揭示了星际访客的秘密。</p><a href='https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data'>探索科学数据档案</a></section> <section style='margin-top: 30px;'> <h3>3. 空间站直击：宇航员的微笑与航天服测试</h3><p>在国际空间站的Quest气闸舱内，宇航员Chris Williams完成了航天服密封性验证。每一件航天服都是宇航员的生命线，确保其在真空环境下的安全。</p><a href='https://www.nasa.gov/image-article/smiles-and-spacesuits'>查看高清现场图集</a></section> <footer style='margin-top: 40px; text-align: center; color: #888;'> <p>NASA 每日新闻 | 2026-03-21</p> <img src='https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg' style='width: 50px; margin-top: 10px;'> </footer> </section>",
+  "generation": {
+    "ai_enabled": true,
+    "ai_success": true,
+    "model": "gemini-3.1-flash-lite-preview",
+    "error": "",
+    "fallback_used": false
+  },
+  "source_top_urls": [
+    "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
+    "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
+    "https://www.nasa.gov/image-article/smiles-and-spacesuits",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/20/week-wraps-with-health-research-and-spacewalk-closeout-procedures",
+    "https://www.nasa.gov/blogs/missions/2026/03/20/nasas-artemis-ii-rocket-arrives-at-launch-pad-39b"
+  ],
+  "new_urls": [
+    "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
+    "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
+    "https://www.nasa.gov/image-article/smiles-and-spacesuits"
+  ],
+  "articles": [
+    {
+      "id": "nasa-56c0dd8f7312",
+      "title": "Hangar One Restoration Project",
+      "channel": "NASA",
+      "summary": "Editor’s Note: This article was originally published on April 25, 2022 and has been updated to reflect changes including the completion of Hangar One’s restoration. Restoration has been completed on Hangar One, a histori",
+      "url": "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
+      "publish_time": "2026-03-20T16:53:29-04:00",
+      "image_url": "https://www.nasa.gov/wp-content/uploads/2022/04/25987_acd06-0074-020.jpeg",
+      "image_path": "assets/generated/2026-03-21/56c0dd8f7312-hangar-one-restoration-project.jpeg",
+      "cover_url": "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-21/56c0dd8f7312-hangar-one-restoration-project.jpeg"
+    },
+    {
+      "id": "nasa-e76cf5b071ea",
+      "title": "How Open NASA Data on Comet 3I/ATLAS Will Power Tomorrow’s Discoveries",
+      "channel": "NASA Science",
+      "summary": "The interstellar comet 3I/ATLAS will soon leave our solar system, never to return, but the observations of the comet will live on in NASA’s public data archives. More than a dozen NASA science missions turned their instr",
+      "url": "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
+      "publish_time": "2026-03-20T15:06:43-04:00",
+      "image_url": "https://assets.science.nasa.gov/content/dam/science/astro/universe/news-images/STSCI-H-atlas-B-f-3437x2598.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "image_path": "assets/generated/2026-03-21/e76cf5b071ea-how-open-nasa-data-on-comet-3i-atlas-wil.jpeg",
+      "cover_url": "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-21/e76cf5b071ea-how-open-nasa-data-on-comet-3i-atlas-wil.jpeg"
+    },
+    {
+      "id": "nasa-a25f6a762d96",
+      "title": "Smiles and Spacesuits",
+      "channel": "NASA Gallery",
+      "summary": "NASA astronaut Chris Williams smiles at the camera during a spacesuit fit verification on Jan. 2, 2026, inside the International Space Station’s Quest airlock. This procedure confirms that the spacesuit is airtight and p",
+      "url": "https://www.nasa.gov/image-article/smiles-and-spacesuits",
+      "publish_time": "",
+      "image_url": "https://www.nasa.gov/wp-content/uploads/2026/03/iss074e0009033orig.jpg",
+      "image_path": "assets/generated/2026-03-21/a25f6a762d96-smiles-and-spacesuits.jpg",
+      "cover_url": "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-21/a25f6a762d96-smiles-and-spacesuits.jpg"
+    }
+  ]
+}

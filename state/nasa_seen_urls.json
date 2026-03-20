@@ -1,17 +1,24 @@
 {
-  "updated_at": "2026-03-20T14:15:37.759728+08:00",
-  "date": "2026-03-20",
+  "updated_at": "2026-03-21T07:27:01.863011+08:00",
+  "date": "2026-03-21",
   "last_fetch_urls": [
-    "https://www.nasa.gov/blogs/missions/2026/03/20/artemis-ii-moon-rocket-heads-back-to-launch-pad",
-    "https://science.nasa.gov/earth/earth-observatory/restless-kilauea-launches-lava-and-ash",
-    "https://www.nasa.gov/blogs/spacestation/2026/03/19/crew-enjoys-light-duty-day-debriefs-spacewalk",
-    "https://www.nasa.gov/image-article/american-bald-eagle-at-nasas-kennedy-space-center",
-    "https://www.nasa.gov/centers-and-facilities/stennis/collecting-explosion-data-for-next-generation-rockets"
+    "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
+    "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
+    "https://www.nasa.gov/image-article/smiles-and-spacesuits",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/20/week-wraps-with-health-research-and-spacewalk-closeout-procedures",
+    "https://www.nasa.gov/blogs/missions/2026/03/20/nasas-artemis-ii-rocket-arrives-at-launch-pad-39b"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/american-bald-eagle-at-nasas-kennedy-space-center"
+    "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
+    "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
+    "https://www.nasa.gov/image-article/smiles-and-spacesuits"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
+    "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
+    "https://www.nasa.gov/image-article/smiles-and-spacesuits",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/20/week-wraps-with-health-research-and-spacewalk-closeout-procedures",
+    "https://www.nasa.gov/blogs/missions/2026/03/20/nasas-artemis-ii-rocket-arrives-at-launch-pad-39b",
     "https://www.nasa.gov/blogs/missions/2026/03/20/artemis-ii-moon-rocket-heads-back-to-launch-pad",
     "https://science.nasa.gov/earth/earth-observatory/restless-kilauea-launches-lava-and-ash",
     "https://www.nasa.gov/blogs/spacestation/2026/03/19/crew-enjoys-light-duty-day-debriefs-spacewalk",
