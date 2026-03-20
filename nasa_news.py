@@ -32,10 +32,13 @@ ASSET_ROOT = Path("assets") / "generated"
 STATE_FILE = Path("state") / "nasa_seen_urls.json"
 SHANGHAI_TZ = pytz.timezone("Asia/Shanghai")
 
-TOP_BANNER_URL = (
+FOLLOW_HEADER_GIF = (
     "https://mmbiz.qpic.cn/mmbiz_gif/"
-    "3hAJnwuyZuicicZkgJBUCCaricdibomDBrTzXgUR7FJnf11qGIo8nmKt6RxibXrb5s4RFb9UZ9UOHQy7fqQyI377Licw/"
-    "0?wx_fmt=gif"
+    "xm1dT1jCe8lIO3P2oFVtd1x040PKGCRPN033gUTrHQQz0Licdqug5X1QgUPQBRCicoTqdYMrpgk7etibXLkK9rwcg/0"
+    "?wx_fmt=gif&from=appmsg"
+)
+TOP_BANNER_URL = (
+    FOLLOW_HEADER_GIF
 )
 BOTTOM_BANNER_URL = (
     "https://mmbiz.qpic.cn/mmbiz_gif/"
@@ -46,6 +49,17 @@ BOTTOM_BANNER_URL = (
 
 def normalize_whitespace(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
+
+
+def ensure_follow_header(weixin_html: str) -> str:
+    if FOLLOW_HEADER_GIF in weixin_html:
+        return weixin_html
+    header = (
+        "<section style='margin:0;padding:0;'>"
+        f"<img src='{FOLLOW_HEADER_GIF}' style='width:100%;display:block;'>"
+        "</section>"
+    )
+    return header + weixin_html
 
 
 def slugify(value: str) -> str:
@@ -779,7 +793,7 @@ def generate_payload(
     weixin_html = str(payload.get("weixin_html", "")).strip()
     if not weixin_html.startswith("<section"):
         weixin_html = default_payload["weixin_html"]
-    payload["weixin_html"] = weixin_html
+    payload["weixin_html"] = ensure_follow_header(weixin_html)
     meta["ai_success"] = True
     meta["fallback_used"] = False
     return payload, meta
