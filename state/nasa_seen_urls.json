@@ -1,19 +1,18 @@
 {
-  "updated_at": "2026-03-21T07:27:01.863011+08:00",
-  "date": "2026-03-21",
+  "updated_at": "2026-03-22T07:22:30.653583+08:00",
+  "date": "2026-03-22",
   "last_fetch_urls": [
+    "https://www.nasa.gov/missions/quesst/nasas-x-59-experimental-supersonic-aircraft-makes-second-flight",
     "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
     "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
     "https://www.nasa.gov/image-article/smiles-and-spacesuits",
-    "https://www.nasa.gov/blogs/spacestation/2026/03/20/week-wraps-with-health-research-and-spacewalk-closeout-procedures",
-    "https://www.nasa.gov/blogs/missions/2026/03/20/nasas-artemis-ii-rocket-arrives-at-launch-pad-39b"
+    "https://www.nasa.gov/blogs/spacestation/2026/03/20/week-wraps-with-health-research-and-spacewalk-closeout-procedures"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
-    "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
-    "https://www.nasa.gov/image-article/smiles-and-spacesuits"
+    "https://www.nasa.gov/missions/quesst/nasas-x-59-experimental-supersonic-aircraft-makes-second-flight"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/quesst/nasas-x-59-experimental-supersonic-aircraft-makes-second-flight",
     "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
     "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
     "https://www.nasa.gov/image-article/smiles-and-spacesuits",
