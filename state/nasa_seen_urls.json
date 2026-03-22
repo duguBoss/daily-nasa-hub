@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-03-22T07:22:30.653583+08:00",
-  "date": "2026-03-22",
+  "updated_at": "2026-03-23T05:32:14.533705+08:00",
+  "date": "2026-03-23",
   "last_fetch_urls": [
+    "https://www.nasa.gov/feature/about-transformational-tools-technologies",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/22/progress-cargo-craft-launches-to-resupply-station-crew",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/22/progress-counts-down-to-launch-to-resupply-expedition-74",
     "https://www.nasa.gov/missions/quesst/nasas-x-59-experimental-supersonic-aircraft-makes-second-flight",
-    "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
-    "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
-    "https://www.nasa.gov/image-article/smiles-and-spacesuits",
-    "https://www.nasa.gov/blogs/spacestation/2026/03/20/week-wraps-with-health-research-and-spacewalk-closeout-procedures"
+    "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/missions/quesst/nasas-x-59-experimental-supersonic-aircraft-makes-second-flight"
+    "https://www.nasa.gov/feature/about-transformational-tools-technologies",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/22/progress-cargo-craft-launches-to-resupply-station-crew",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/22/progress-counts-down-to-launch-to-resupply-expedition-74"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/feature/about-transformational-tools-technologies",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/22/progress-cargo-craft-launches-to-resupply-station-crew",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/22/progress-counts-down-to-launch-to-resupply-expedition-74",
     "https://www.nasa.gov/missions/quesst/nasas-x-59-experimental-supersonic-aircraft-makes-second-flight",
     "https://www.nasa.gov/centers-and-facilities/ames/hangar-one-restoration-project",
     "https://science.nasa.gov/open-science/interstellar-comet-3i-atlas-data",
