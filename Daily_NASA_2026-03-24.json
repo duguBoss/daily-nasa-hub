@@ -1,0 +1,78 @@
+{
+  "date": "2026-03-24",
+  "title": "从太空影子揭秘宇宙到地球水文监测，NASA今日三大核心任务进展",
+  "covers": [
+    "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-24/d88048febd7c-science-through-shadows-how-astronomical.png",
+    "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-24/d5b8408d791b-swot-mission-unlocks-a-new-view-of-our-w.png",
+    "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-24/5137a1f4f0d9-cargo-headed-to-station-week-begins-with.jpg"
+  ],
+  "songs": [
+    {
+      "name": "Science Through Shadows: How Astronomical Alignments Reveal the Universe",
+      "artist": "NASA Science"
+    },
+    {
+      "name": "SWOT Mission Unlocks a New View of Our Waterways",
+      "artist": "NASA Science"
+    },
+    {
+      "name": "Cargo Headed to Station, Week Begins with Science Prep and Maintenance",
+      "artist": "ISS Blog"
+    }
+  ],
+  "weixin_html": "<section style='margin:0;padding:0;'><img src='https://mmbiz.qpic.cn/mmbiz_gif/xm1dT1jCe8lIO3P2oFVtd1x040PKGCRPN033gUTrHQQz0Licdqug5X1QgUPQBRCicoTqdYMrpgk7etibXLkK9rwcg/0?wx_fmt=gif&from=appmsg' style='width:100%;display:block;'></section><section style='font-family: sans-serif; line-height: 1.6; color: #333;'> <img src='https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-24/d88048febd7c-science-through-shadows-how-astronomical.png' style='width:100%;'/> <h2>今天发生了什么？</h2> <p>本期报道聚焦NASA三项关键进展：通过天体排列揭示宇宙奥秘的科学原理、SWOT任务对全球水文的精细观测，以及国际空间站Expedition 74任务组的最新补给与科研动态。这些任务不仅拓展了深空探测边界，更通过地球监测直接服务于人类生存环境。</p> <hr> <h3>1. 科学通过阴影揭示宇宙</h3> <p>当一个天体穿过另一个天体前方时，会产生日食、掩星或凌日现象。这些天体排列不仅是壮观的天文景观，更是科学家研究天体性质、大气成分及轨道参数的核心观测手段。</p> <p><a href='https://science.nasa.gov/learning-resources/science-activation/science-through-shadows-how-astronomical-alignments-reveal-the-universe'>阅读原文：探索天文对齐的科学力量</a></p> <hr> <h3>2. SWOT任务：重塑全球水文监测</h3> <p>借助SWOT（地表水与海洋地形）卫星数据，NASA与法国国家空间研究中心正以前所未有的精度监测河流流动与变化，为理解全球水资源动态提供关键数据支持。</p> <p><a href='https://science.nasa.gov/earth/swot-mission-unlocks-a-new-view-of-our-waterways'>阅读原文：深入了解SWOT任务</a></p> <hr> <h3>3. 国际空间站：补给抵达与科学备战</h3> <p>一艘货运飞船正在轨道上追赶国际空间站，预计将于明日对接，为Expedition 74机组提供关键补给。目前，空间站内的七名宇航员已全面开启本周的科学实验准备与设施维护工作。</p> <p><a href='https://www.nasa.gov/blogs/spacestation/2026/03/23/cargo-headed-to-station-week-begins-with-science-prep-and-maintenance'>阅读原文：追踪空间站最新动态</a></p> <hr> <img src='https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-24/5137a1f4f0d9-cargo-headed-to-station-week-begins-with.jpg' style='width:100%;'/> <p style='text-align:center; font-size: 0.8em; color: #888;'>NASA探索无止境，感谢您的关注。</p> </section>",
+  "generation": {
+    "ai_enabled": true,
+    "ai_success": true,
+    "model": "gemini-3.1-flash-lite-preview",
+    "error": "",
+    "fallback_used": false
+  },
+  "source_top_urls": [
+    "https://science.nasa.gov/learning-resources/science-activation/science-through-shadows-how-astronomical-alignments-reveal-the-universe",
+    "https://science.nasa.gov/earth/swot-mission-unlocks-a-new-view-of-our-waterways",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/23/cargo-headed-to-station-week-begins-with-science-prep-and-maintenance",
+    "https://www.nasa.gov/image-article/nasas-hubble-webb-telescopes-survey-pinwheel-galaxy",
+    "https://www.nasa.gov/news-release/nasa-to-provide-update-on-implementation-of-national-space-policy"
+  ],
+  "new_urls": [
+    "https://science.nasa.gov/learning-resources/science-activation/science-through-shadows-how-astronomical-alignments-reveal-the-universe",
+    "https://science.nasa.gov/earth/swot-mission-unlocks-a-new-view-of-our-waterways",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/23/cargo-headed-to-station-week-begins-with-science-prep-and-maintenance"
+  ],
+  "articles": [
+    {
+      "id": "nasa-d88048febd7c",
+      "title": "Science Through Shadows: How Astronomical Alignments Reveal the Universe",
+      "channel": "NASA Science",
+      "summary": "When one celestial object passes in front of another, it can cast a shadow that travels across space – and sometimes across Earth. These moments of alignment, known as eclipses, occultations, and transits, allow scientis",
+      "url": "https://science.nasa.gov/learning-resources/science-activation/science-through-shadows-how-astronomical-alignments-reveal-the-universe",
+      "publish_time": "2026-03-23T15:47:57-04:00",
+      "image_url": "https://assets.science.nasa.gov/content/dam/science/cds/learn/science-activation-stories/2026/science_shadows_highlight.png/jcr:content/renditions/cq5dam.web.1280.1280.png",
+      "image_path": "assets/generated/2026-03-24/d88048febd7c-science-through-shadows-how-astronomical.png",
+      "cover_url": "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-24/d88048febd7c-science-through-shadows-how-astronomical.png"
+    },
+    {
+      "id": "nasa-d5b8408d791b",
+      "title": "SWOT Mission Unlocks a New View of Our Waterways",
+      "channel": "NASA Science",
+      "summary": "Explore how rivers move, change, and sustain life across the planet. Using data from the SWOT (Surface Water and Ocean Topography) mission, jointly developed by the NASA/JPL and the Centre National d'Études Spatiales wit",
+      "url": "https://science.nasa.gov/earth/swot-mission-unlocks-a-new-view-of-our-waterways",
+      "publish_time": "2026-03-23T13:22:04-04:00",
+      "image_url": "https://assets.science.nasa.gov/content/dam/science/esd/articles/2025/SWOT%201.png/jcr:content/renditions/cq5dam.web.1280.1280.png",
+      "image_path": "assets/generated/2026-03-24/d5b8408d791b-swot-mission-unlocks-a-new-view-of-our-w.png",
+      "cover_url": "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-24/d5b8408d791b-swot-mission-unlocks-a-new-view-of-our-w.png"
+    },
+    {
+      "id": "nasa-5137a1f4f0d9",
+      "title": "Cargo Headed to Station, Week Begins with Science Prep and Maintenance",
+      "channel": "ISS Blog",
+      "summary": "A cargo spacecraft is in orbit catching up to the International Space Station for a docking tomorrow to deliver food and supplies to the Expedition 74 crew. Aboard the orbital lab, the seven residents kicked off the week",
+      "url": "https://www.nasa.gov/blogs/spacestation/2026/03/23/cargo-headed-to-station-week-begins-with-science-prep-and-maintenance",
+      "publish_time": "March 23, 2026 12:41PM",
+      "image_url": "https://images-assets.nasa.gov/image/iss074e0333993/iss074e0333993~large.jpg",
+      "image_path": "assets/generated/2026-03-24/5137a1f4f0d9-cargo-headed-to-station-week-begins-with.jpg",
+      "cover_url": "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-03-24/5137a1f4f0d9-cargo-headed-to-station-week-begins-with.jpg"
+    }
+  ]
+}
