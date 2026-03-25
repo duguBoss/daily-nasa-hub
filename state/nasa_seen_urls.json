@@ -1,19 +1,24 @@
 {
-  "updated_at": "2026-03-25T05:43:08.130750+08:00",
-  "date": "2026-03-25",
+  "updated_at": "2026-03-26T05:46:52.314369+08:00",
+  "date": "2026-03-26",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/reminders-of-where-weve-been-where-were-going",
-    "https://www.nasa.gov/image-article/nasa-x-ray-mission-gets-fresh-look-at-2000-year-old-supernova",
-    "https://www.nasa.gov/news-release/la-nasa-presenta-iniciativas-para-cumplir-con-la-politica-espacial-nacional-de-estados-unidos",
-    "https://www.nasa.gov/blogs/spacestation/2026/03/24/progress-cargo-craft-docks-to-station-resupplying-crew-2",
-    "https://www.nasa.gov/news-release/nasa-unveils-initiatives-to-achieve-americas-national-space-policy"
+    "https://www.nasa.gov/blogs/missions/2026/03/25/nasa-teams-continue-artemis-ii-preparations-at-launch-pad",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-names-jennifer-lyons-as-acting-launch-services-program-manager",
+    "https://science.nasa.gov/blogs/science-news/2026/03/25/nasa-supported-study-finds-irrigation-gaps-in-air-quality-forecasts",
+    "https://www.nasa.gov/image-article/webb-captures-saturn-in-infrared",
+    "https://science.nasa.gov/missions/webb/nasa-webb-hubble-share-most-comprehensive-view-of-saturn-to-date"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/reminders-of-where-weve-been-where-were-going",
-    "https://www.nasa.gov/image-article/nasa-x-ray-mission-gets-fresh-look-at-2000-year-old-supernova",
-    "https://www.nasa.gov/news-release/la-nasa-presenta-iniciativas-para-cumplir-con-la-politica-espacial-nacional-de-estados-unidos"
+    "https://www.nasa.gov/blogs/missions/2026/03/25/nasa-teams-continue-artemis-ii-preparations-at-launch-pad",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-names-jennifer-lyons-as-acting-launch-services-program-manager",
+    "https://science.nasa.gov/blogs/science-news/2026/03/25/nasa-supported-study-finds-irrigation-gaps-in-air-quality-forecasts"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/blogs/missions/2026/03/25/nasa-teams-continue-artemis-ii-preparations-at-launch-pad",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-names-jennifer-lyons-as-acting-launch-services-program-manager",
+    "https://science.nasa.gov/blogs/science-news/2026/03/25/nasa-supported-study-finds-irrigation-gaps-in-air-quality-forecasts",
+    "https://www.nasa.gov/image-article/webb-captures-saturn-in-infrared",
+    "https://science.nasa.gov/missions/webb/nasa-webb-hubble-share-most-comprehensive-view-of-saturn-to-date",
     "https://www.nasa.gov/image-article/reminders-of-where-weve-been-where-were-going",
     "https://www.nasa.gov/image-article/nasa-x-ray-mission-gets-fresh-look-at-2000-year-old-supernova",
     "https://www.nasa.gov/news-release/la-nasa-presenta-iniciativas-para-cumplir-con-la-politica-espacial-nacional-de-estados-unidos",
