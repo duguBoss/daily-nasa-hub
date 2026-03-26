@@ -1,19 +1,24 @@
 {
-  "updated_at": "2026-03-26T05:46:52.314369+08:00",
-  "date": "2026-03-26",
+  "updated_at": "2026-03-27T05:37:04.286225+08:00",
+  "date": "2026-03-27",
   "last_fetch_urls": [
-    "https://www.nasa.gov/blogs/missions/2026/03/25/nasa-teams-continue-artemis-ii-preparations-at-launch-pad",
-    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-names-jennifer-lyons-as-acting-launch-services-program-manager",
-    "https://science.nasa.gov/blogs/science-news/2026/03/25/nasa-supported-study-finds-irrigation-gaps-in-air-quality-forecasts",
-    "https://www.nasa.gov/image-article/webb-captures-saturn-in-infrared",
-    "https://science.nasa.gov/missions/webb/nasa-webb-hubble-share-most-comprehensive-view-of-saturn-to-date"
+    "https://science.nasa.gov/solar-system/whats-up-april-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/news-release/la-nasa-presentara-el-telescopio-roman-completo-y-ofrecera-una-conferencia-de-prensa",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/26/expedition-74-works-health-research-and-cargo-operations-on-thursday",
+    "https://www.nasa.gov/news-release/nasa-to-unveil-complete-roman-telescope-host-media-briefing",
+    "https://www.nasa.gov/centers-and-facilities/johnson/station-nation-aaron-rose-cold-stowage-mission-manager"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/blogs/missions/2026/03/25/nasa-teams-continue-artemis-ii-preparations-at-launch-pad",
-    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-names-jennifer-lyons-as-acting-launch-services-program-manager",
-    "https://science.nasa.gov/blogs/science-news/2026/03/25/nasa-supported-study-finds-irrigation-gaps-in-air-quality-forecasts"
+    "https://science.nasa.gov/solar-system/whats-up-april-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/news-release/la-nasa-presentara-el-telescopio-roman-completo-y-ofrecera-una-conferencia-de-prensa",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/26/expedition-74-works-health-research-and-cargo-operations-on-thursday"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/solar-system/whats-up-april-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/news-release/la-nasa-presentara-el-telescopio-roman-completo-y-ofrecera-una-conferencia-de-prensa",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/26/expedition-74-works-health-research-and-cargo-operations-on-thursday",
+    "https://www.nasa.gov/news-release/nasa-to-unveil-complete-roman-telescope-host-media-briefing",
+    "https://www.nasa.gov/centers-and-facilities/johnson/station-nation-aaron-rose-cold-stowage-mission-manager",
     "https://www.nasa.gov/blogs/missions/2026/03/25/nasa-teams-continue-artemis-ii-preparations-at-launch-pad",
     "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-names-jennifer-lyons-as-acting-launch-services-program-manager",
     "https://science.nasa.gov/blogs/science-news/2026/03/25/nasa-supported-study-finds-irrigation-gaps-in-air-quality-forecasts",
