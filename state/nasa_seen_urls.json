@@ -1,19 +1,24 @@
 {
-  "updated_at": "2026-03-27T05:37:04.286225+08:00",
-  "date": "2026-03-27",
+  "updated_at": "2026-03-28T05:41:37.716556+08:00",
+  "date": "2026-03-28",
   "last_fetch_urls": [
-    "https://science.nasa.gov/solar-system/whats-up-april-2026-skywatching-tips-from-nasa",
-    "https://www.nasa.gov/news-release/la-nasa-presentara-el-telescopio-roman-completo-y-ofrecera-una-conferencia-de-prensa",
-    "https://www.nasa.gov/blogs/spacestation/2026/03/26/expedition-74-works-health-research-and-cargo-operations-on-thursday",
-    "https://www.nasa.gov/news-release/nasa-to-unveil-complete-roman-telescope-host-media-briefing",
-    "https://www.nasa.gov/centers-and-facilities/johnson/station-nation-aaron-rose-cold-stowage-mission-manager"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-erik-richards",
+    "https://www.nasa.gov/missions/artemis/clps/nasa-selects-intuitive-machines-to-deliver-artemis-science-tech-to-moon",
+    "https://www.nasa.gov/blogs/general-blog/2026/03/27/artemis-ii-crew-arrives-at-launch-site-shares-moon-mascot",
+    "https://science.nasa.gov/photojournal/nisars-view-of-mount-rainier",
+    "https://science.nasa.gov/photojournal/nisar-views-mount-st-helens"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/solar-system/whats-up-april-2026-skywatching-tips-from-nasa",
-    "https://www.nasa.gov/news-release/la-nasa-presentara-el-telescopio-roman-completo-y-ofrecera-una-conferencia-de-prensa",
-    "https://www.nasa.gov/blogs/spacestation/2026/03/26/expedition-74-works-health-research-and-cargo-operations-on-thursday"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-erik-richards",
+    "https://www.nasa.gov/missions/artemis/clps/nasa-selects-intuitive-machines-to-deliver-artemis-science-tech-to-moon",
+    "https://www.nasa.gov/blogs/general-blog/2026/03/27/artemis-ii-crew-arrives-at-launch-site-shares-moon-mascot"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-erik-richards",
+    "https://www.nasa.gov/missions/artemis/clps/nasa-selects-intuitive-machines-to-deliver-artemis-science-tech-to-moon",
+    "https://www.nasa.gov/blogs/general-blog/2026/03/27/artemis-ii-crew-arrives-at-launch-site-shares-moon-mascot",
+    "https://science.nasa.gov/photojournal/nisars-view-of-mount-rainier",
+    "https://science.nasa.gov/photojournal/nisar-views-mount-st-helens",
     "https://science.nasa.gov/solar-system/whats-up-april-2026-skywatching-tips-from-nasa",
     "https://www.nasa.gov/news-release/la-nasa-presentara-el-telescopio-roman-completo-y-ofrecera-una-conferencia-de-prensa",
     "https://www.nasa.gov/blogs/spacestation/2026/03/26/expedition-74-works-health-research-and-cargo-operations-on-thursday",
