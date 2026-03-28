@@ -8,6 +8,7 @@ from daily_nasa.ai_writer import generate_payload
 from daily_nasa.config import (
     EXTRA_FALLBACK_MODEL_NAME,
     FALLBACK_MODEL_NAME,
+    GEMINI_ADDITIONAL_FALLBACK_MODELS,
     IMAGE_OF_THE_DAY_URL,
     LIST_TOP_N,
     MERGE_TOP_N,
@@ -93,9 +94,10 @@ def main() -> None:
     gemini_api_key = get_optional_api_key()
     minimax_api_key = get_optional_minimax_api_key()
     minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
+    gemini_fallbacks = [FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME, *list(GEMINI_ADDITIONAL_FALLBACK_MODELS)]
     print(
         "AI models: "
-        f"primary={PRIMARY_MODEL_NAME}, fallback={FALLBACK_MODEL_NAME}, extra_fallback={EXTRA_FALLBACK_MODEL_NAME}, "
+        f"primary={PRIMARY_MODEL_NAME}, gemini_fallbacks={gemini_fallbacks}, "
         f"minimax={minimax_model_name}"
     )
 

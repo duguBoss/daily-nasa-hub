@@ -22,6 +22,7 @@ from .config import (
     EXTRA_FALLBACK_MODEL_NAME,
     FALLBACK_MODEL_NAME,
     FORBIDDEN_TITLE_PATTERNS,
+    GEMINI_ADDITIONAL_FALLBACK_MODELS,
     MAX_MODEL_ATTEMPTS,
     MIN_QUALITY_SCORE,
     MINIMAX_MODEL_NAME,
@@ -555,7 +556,13 @@ def generate_payload(
 
     model_candidates: list[tuple[str, str, str, Callable[[str, str, str], str]]] = []
     if gemini_api_key:
-        for model_name in [PRIMARY_MODEL_NAME, FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME]:
+        gemini_models = [
+            PRIMARY_MODEL_NAME,
+            FALLBACK_MODEL_NAME,
+            EXTRA_FALLBACK_MODEL_NAME,
+            *list(GEMINI_ADDITIONAL_FALLBACK_MODELS),
+        ]
+        for model_name in gemini_models:
             if model_name:
                 model_candidates.append(("gemini", model_name, gemini_api_key, call_gemini))
     if minimax_api_key:

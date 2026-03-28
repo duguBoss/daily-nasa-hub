@@ -16,6 +16,11 @@ IMAGE_OF_THE_DAY_URL = "https://www.nasa.gov/image-of-the-day/"
 PRIMARY_MODEL_NAME = "gemini-3.1-pro-preview"
 FALLBACK_MODEL_NAME = "gemini-3-flash-preview"
 EXTRA_FALLBACK_MODEL_NAME = "gemini-3.1-flash-lite-preview"
+GEMINI_ADDITIONAL_FALLBACK_MODELS = (
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-2.5-pro",
+)
 MINIMAX_OPENAI_BASE_URL = "https://api.minimaxi.com/v1"
 MINIMAX_MODEL_NAME = "MiniMax-M2.7"
 
