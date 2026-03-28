@@ -155,6 +155,22 @@ def ensure_follow_header(weixin_html: str) -> str:
     return header + weixin_html
 
 
+def enforce_outer_side_margin(weixin_html: str, side_px: int = 2) -> str:
+    html = (weixin_html or "").strip()
+    if not html:
+        return html
+
+    if "data-side-margin='2'" in html or 'data-side-margin="2"' in html:
+        return html
+
+    return (
+        f"<section data-side-margin='{side_px}' "
+        f"style='margin:0 {side_px}px;padding:0 {side_px}px;box-sizing:border-box;'>"
+        f"{html}"
+        "</section>"
+    )
+
+
 def slugify(value: str) -> str:
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", value).strip("-").lower()
     return slug[:60] or "news"

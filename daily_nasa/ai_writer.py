@@ -11,35 +11,67 @@ from .common import (
     clean_english_artifacts,
     count_chinese_chars,
     ensure_follow_header,
+    enforce_outer_side_margin,
     is_html_chinese_friendly,
     is_title_repetitive,
     normalize_whitespace,
     text_language_stats,
 )
-from .config import MAX_MODEL_ATTEMPTS, MAX_REWRITE_ROUNDS, MIN_QUALITY_SCORE, MODEL_NAME, REQUEST_TIMEOUT, TITLE_KEYWORDS
-from .rendering import build_article_blocks, build_default_payload, build_fallback_html, build_wechat_fallback_title, fit_title_length
+from .config import (
+    FALLBACK_MODEL_NAME,
+    MAX_MODEL_ATTEMPTS,
+    MIN_QUALITY_SCORE,
+    PRIMARY_MODEL_NAME,
+    REQUEST_TIMEOUT,
+    REQUIRE_AI_GENERATION,
+    TITLE_KEYWORDS,
+)
+from .rendering import (
+    build_article_blocks,
+    build_default_payload,
+    build_fallback_html,
+    build_wechat_fallback_title,
+    fit_title_length,
+)
 from .state import load_recent_titles
 
 
-def call_gemini(api_key: str, prompt: str) -> str:
+READER_MARKER_1 = "关键信息"
+READER_MARKER_2 = "对你意味着什么"
+READER_MARKER_3 = "下一步关注点"
+MIN_CHINESE_CHARS = 500
+LOW_VALUE_PATTERNS = [
+    r"随着.{0,12}临近",
+    r"值得关注",
+    r"提供.{0,20}建议",
+    r"帮助.{0,20}了解",
+    r"内容详细梳理",
+]
+
+
+def call_gemini(api_key: str, prompt: str, model_name: str) -> str:
     url = (
         "https://generativelanguage.googleapis.com/v1beta/models/"
-        f"{MODEL_NAME}:generateContent?key={api_key}"
+        f"{model_name}:generateContent?key={api_key}"
     )
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.6, "topP": 0.9, "responseMimeType": "application/json"},
+        "generationConfig": {
+            "temperature": 0.55,
+            "topP": 0.9,
+            "responseMimeType": "application/json",
+        },
     }
     response = requests.post(url, headers={"Content-Type": "application/json"}, json=payload, timeout=REQUEST_TIMEOUT)
     if response.status_code != 200:
-        raise RuntimeError(f"Gemini request failed ({response.status_code}): {response.text}")
+        raise RuntimeError(f"{model_name} request failed ({response.status_code}): {response.text}")
 
     result_json = response.json()
     candidate = (result_json.get("candidates") or [{}])[0]
     content = candidate.get("content", {})
     parts = content.get("parts") or []
     if not parts:
-        raise RuntimeError("Gemini returned empty content.")
+        raise RuntimeError(f"{model_name} returned empty content.")
     return parts[0].get("text", "")
 
 
@@ -54,7 +86,7 @@ def parse_model_json(raw_text: str) -> dict[str, Any]:
 def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str], recent_titles: list[str]) -> str:
     return f"""
 You are a senior Chinese science editor for WeChat and an SEO strategist.
-Turn the NASA updates into one detailed Chinese article with high information density.
+Write a high-value Chinese NASA briefing for serious readers.
 
 Date: {date_str}
 News materials:
@@ -63,25 +95,26 @@ News materials:
 Cover candidates:
 {json.dumps(cover_urls, ensure_ascii=False)}
 
-Recent titles to avoid style duplication:
+Recent titles to avoid duplication:
 {json.dumps(recent_titles[:12], ensure_ascii=False)}
 
-Output rules (MUST follow):
-1) Output valid JSON only. No markdown fences, no explanations.
-2) All user-facing body text must be Simplified Chinese (Artemis/ISS can remain in English names).
-3) Title length: 14-28 Chinese chars, include number signal and one mission keyword.
-4) weixin_html must NOT contain external links, anchor tags, source-jump CTA.
-5) The article must be detailed: at least 500 Chinese characters in body text.
-6) For each news card, include three explicit sections:
-   - 关键信息
-   - 对读者意味着什么
-   - 下一步关注点
-7) First screen must answer:
-   - 今天发生了什么
-   - 为什么值得普通读者看
-   - 读者看完能得到什么
-8) Keep factual tone. No fabrication, no vague filler.
-9) Keep SEO keywords naturally: NASA, Artemis, 登月, 空间站, 深空探索.
+MANDATORY OUTPUT RULES:
+1) Output valid JSON only.
+2) All user-facing body text must be Simplified Chinese.
+3) Title length 14-28 Chinese chars, with a number signal and mission keyword.
+4) No external links, no anchor tags, no source-jump wording.
+5) Body must have >= {MIN_CHINESE_CHARS} Chinese characters.
+6) Every news card must include exactly these three labeled sections:
+   - {READER_MARKER_1}
+   - {READER_MARKER_2}
+   - {READER_MARKER_3}
+7) First screen must explain:
+   - what happened today
+   - why it matters to normal readers
+   - what reader can track next
+8) Prioritize factual density: include concrete mission names, stages, timelines, budgets, or technical targets when available.
+9) Avoid filler phrases and generic motivational language.
+10) Visual rule: outer container side margin and side padding must be exactly 2px, not more.
 
 JSON schema:
 {{
@@ -97,25 +130,17 @@ JSON schema:
 def build_gemini_rewrite_prompt(
     date_str: str,
     articles: list[dict[str, Any]],
-    cover_urls: list[str],
-    recent_titles: list[str],
     previous_payload: dict[str, Any],
     quality_report: dict[str, Any],
     attempt: int,
 ) -> str:
-    issues = quality_report.get("issues", [])[:10]
+    issues = quality_report.get("issues", [])[:12]
     return f"""
 Rewrite the JSON article to pass quality gate score >= {MIN_QUALITY_SCORE}.
-This is rewrite attempt #{attempt}.
+This is rewrite attempt #{attempt} (max {MAX_MODEL_ATTEMPTS} attempts total).
 
 News materials:
 {build_article_blocks(articles)}
-
-Cover candidates:
-{json.dumps(cover_urls, ensure_ascii=False)}
-
-Recent titles:
-{json.dumps(recent_titles[:12], ensure_ascii=False)}
 
 Current draft JSON:
 {json.dumps(previous_payload, ensure_ascii=False)}
@@ -123,18 +148,16 @@ Current draft JSON:
 Quality report:
 {json.dumps(quality_report, ensure_ascii=False)}
 
-Priority fixes:
+Fix these issues first:
 {json.dumps(issues, ensure_ascii=False)}
 
-Mandatory constraints:
-- Keep JSON-only output.
-- Keep all body text in Simplified Chinese.
-- No external links / anchor tags / source-jump wording.
-- Total body content >= 500 Chinese chars.
-- Every card must have: 关键信息 / 对读者意味着什么 / 下一步关注点.
-- Improve information density and keep factual precision.
-
-Return full JSON with keys: date, title, covers, songs, weixin_html.
+Hard constraints:
+- JSON-only output.
+- >= {MIN_CHINESE_CHARS} Chinese chars in body.
+- Keep labels: {READER_MARKER_1} / {READER_MARKER_2} / {READER_MARKER_3}
+- No links or source jumps.
+- Keep factual details and reader usefulness.
+- Outer container side margin/padding must be exactly 2px.
 """
 
 
@@ -145,6 +168,7 @@ def sanitize_payload(
     cover_urls: list[str],
     articles: list[dict[str, Any]],
     recent_titles: list[str],
+    allow_template_fallback: bool,
 ) -> dict[str, Any]:
     normalized: dict[str, Any] = payload if isinstance(payload, dict) else {}
     normalized = dict(normalized)
@@ -179,19 +203,21 @@ def sanitize_payload(
 
     weixin_html = str(normalized.get("weixin_html", "")).strip()
     if not weixin_html.startswith("<section"):
-        weixin_html = default_payload["weixin_html"]
-    if not is_html_chinese_friendly(weixin_html):
+        weixin_html = default_payload["weixin_html"] if allow_template_fallback else ""
+    if allow_template_fallback and not is_html_chinese_friendly(weixin_html):
         weixin_html = build_fallback_html(date_str, normalized["title"], articles, normalized["covers"])
-    normalized["weixin_html"] = ensure_follow_header(weixin_html)
+
+    weixin_html = ensure_follow_header(weixin_html)
+    weixin_html = enforce_outer_side_margin(weixin_html, side_px=2)
+    normalized["weixin_html"] = weixin_html
     return normalized
 
 
 def has_repeated_sentences(text: str) -> bool:
-    parts = [normalize_whitespace(p) for p in re.split(r"[\u3002\uff01\uff1f!?\n]", text) if normalize_whitespace(p)]
+    parts = [normalize_whitespace(p) for p in re.split(r"[。！？!?\n]", text) if normalize_whitespace(p)]
     long_parts = [p for p in parts if len(p) >= 18]
     if len(long_parts) <= 1:
         return False
-
     seen: dict[str, int] = {}
     for part in long_parts:
         seen[part] = seen.get(part, 0) + 1
@@ -223,37 +249,34 @@ def evaluate_payload_quality(
         title_score += 4
     else:
         issues.append("title_missing_number_signal")
-    if any(keyword.lower() in title.lower() for keyword in TITLE_KEYWORDS):
+    if any(keyword in title.lower() for keyword in TITLE_KEYWORDS):
         title_score += 7
     else:
         issues.append("title_missing_mission_keyword")
     if recent_titles and is_title_repetitive(title, recent_titles):
-        title_score = max(0, title_score - 6)
+        title_score = max(0, title_score - 8)
         issues.append("title_similar_to_recent")
     breakdown["title"] = title_score
 
     chinese_chars, english_words, ratio = text_language_stats(plain_text)
     long_english_phrase = bool(re.search(r"(?:\b[A-Za-z]{3,}\b\s+){5,}", plain_text))
     target_articles = max(1, len(articles))
-    min_chinese_chars = max(500, 320 + target_articles * 120)
+    min_chinese_chars = max(MIN_CHINESE_CHARS, 320 + target_articles * 120)
 
     language_score = 0
     if chinese_chars >= min_chinese_chars:
         language_score += 10
     else:
         issues.append("body_below_500_chinese_chars")
-    if ratio >= 0.84:
+    if ratio >= 0.85:
         language_score += 8
-    elif ratio >= 0.75:
+    elif ratio >= 0.76:
         language_score += 4
         issues.append("chinese_ratio_low")
     else:
         issues.append("chinese_ratio_too_low")
     if english_words <= 20:
         language_score += 4
-    elif english_words <= 35:
-        language_score += 2
-        issues.append("too_much_english")
     else:
         issues.append("too_much_english")
     if long_english_phrase:
@@ -262,6 +285,15 @@ def evaluate_payload_quality(
         issues.append("html_contains_browser_artifact")
     if not is_html_chinese_friendly(html):
         issues.append("html_not_chinese_friendly")
+    if "data-side-margin='2'" not in html and 'data-side-margin="2"' not in html:
+        issues.append("side_margin_not_2px")
+
+    low_value_hits = 0
+    for pattern in LOW_VALUE_PATTERNS:
+        if re.search(pattern, plain_text):
+            low_value_hits += 1
+    if low_value_hits >= 2:
+        issues.append("low_information_density_style")
     breakdown["language"] = max(0, language_score)
 
     structure_score = 0
@@ -277,13 +309,12 @@ def evaluate_payload_quality(
     else:
         issues.append("news_card_count_insufficient")
 
-    required_markers = ["关键信息", "对你意味着什么", "下一步关注点"]
+    required_markers = [READER_MARKER_1, READER_MARKER_2, READER_MARKER_3]
     marker_hits = sum(1 for marker in required_markers if marker in plain_text)
     if marker_hits >= 3:
         structure_score += 8
     else:
         issues.append("missing_reader_oriented_sections")
-
     if any(token in plain_text for token in ["互动", "留言", "你会选哪条", "你最关心"]):
         structure_score += 4
     else:
@@ -306,7 +337,7 @@ def evaluate_payload_quality(
     breakdown["compliance"] = compliance_score
 
     seo_score = 0
-    keyword_hits = sum(1 for keyword in TITLE_KEYWORDS if keyword.lower() in plain_text.lower())
+    keyword_hits = sum(1 for keyword in TITLE_KEYWORDS if keyword in plain_text.lower())
     if keyword_hits >= 4:
         seo_score += 8
     elif keyword_hits >= 3:
@@ -335,6 +366,8 @@ def evaluate_payload_quality(
         "title_similar_to_recent",
         "body_below_500_chinese_chars",
         "missing_reader_oriented_sections",
+        "low_information_density_style",
+        "side_margin_not_2px",
     }
     if any(issue in hard_fail_issues for issue in issues):
         total_score = min(total_score, MIN_QUALITY_SCORE - 1)
@@ -350,99 +383,111 @@ def generate_payload(
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     recent_titles = load_recent_titles()
     default_payload = build_default_payload(date_str, articles, cover_urls, recent_titles)
-    default_payload = sanitize_payload(default_payload, default_payload, date_str, cover_urls, articles, recent_titles)
+    default_payload = sanitize_payload(
+        default_payload,
+        default_payload,
+        date_str,
+        cover_urls,
+        articles,
+        recent_titles,
+        allow_template_fallback=True,
+    )
     default_quality = evaluate_payload_quality(default_payload, articles, recent_titles)
+
+    if REQUIRE_AI_GENERATION and not api_key:
+        raise RuntimeError("GEMINI_API_KEY not set. AI generation is required for publishing.")
 
     meta = {
         "ai_enabled": bool(api_key),
         "ai_success": False,
-        "model": MODEL_NAME,
+        "model": PRIMARY_MODEL_NAME,
         "error": "",
-        "fallback_used": True,
+        "fallback_used": False,
         "quality_score": default_quality["score"],
         "quality_breakdown": default_quality["breakdown"],
         "quality_issues": default_quality["issues"],
         "attempts": 0,
     }
-    if not api_key:
-        meta["error"] = "GEMINI_API_KEY not set"
-        return default_payload, meta
 
-    best_payload = default_payload
-    best_quality = default_quality
+    models = [PRIMARY_MODEL_NAME, FALLBACK_MODEL_NAME]
     latest_payload = default_payload
     latest_quality = default_quality
+    last_error = ""
 
     for attempt in range(1, MAX_MODEL_ATTEMPTS + 1):
-        if attempt > 1 and (attempt - 1) > MAX_REWRITE_ROUNDS:
-            break
-        try:
-            if attempt == 1:
-                prompt = build_gemini_prompt(date_str, articles, cover_urls, recent_titles)
-            else:
-                prompt = build_gemini_rewrite_prompt(
+        attempt_best_payload: dict[str, Any] | None = None
+        attempt_best_quality: dict[str, Any] | None = None
+        attempt_best_model = ""
+
+        for model_name in models:
+            try:
+                if attempt == 1:
+                    prompt = build_gemini_prompt(date_str, articles, cover_urls, recent_titles)
+                else:
+                    prompt = build_gemini_rewrite_prompt(
+                        date_str,
+                        articles,
+                        latest_payload,
+                        latest_quality,
+                        attempt,
+                    )
+
+                raw = call_gemini(api_key, prompt, model_name)
+                parsed = parse_model_json(raw)
+                candidate = sanitize_payload(
+                    parsed,
+                    default_payload,
                     date_str,
-                    articles,
                     cover_urls,
+                    articles,
                     recent_titles,
-                    latest_payload,
-                    latest_quality,
-                    attempt,
+                    allow_template_fallback=False,
+                )
+                quality = evaluate_payload_quality(candidate, articles, recent_titles)
+
+                print(
+                    f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_name}: "
+                    f"quality={quality['score']} issues={quality['issues'][:6]}"
                 )
 
-            raw = call_gemini(api_key, prompt)
-            parsed = parse_model_json(raw)
-            candidate = sanitize_payload(parsed, default_payload, date_str, cover_urls, articles, recent_titles)
-            quality = evaluate_payload_quality(candidate, articles, recent_titles)
+                if attempt_best_quality is None or quality["score"] > attempt_best_quality["score"]:
+                    attempt_best_payload = candidate
+                    attempt_best_quality = quality
+                    attempt_best_model = model_name
 
-            latest_payload = candidate
-            latest_quality = quality
-            print(
-                f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS}: quality={quality['score']} "
-                f"issues={quality['issues'][:5]}"
+                if quality["score"] >= MIN_QUALITY_SCORE:
+                    meta.update(
+                        {
+                            "ai_success": True,
+                            "fallback_used": model_name == FALLBACK_MODEL_NAME,
+                            "model": model_name,
+                            "quality_score": quality["score"],
+                            "quality_breakdown": quality["breakdown"],
+                            "quality_issues": quality["issues"],
+                            "attempts": attempt,
+                        }
+                    )
+                    return candidate, meta
+            except Exception as exc:
+                last_error = f"{model_name}: {exc}"
+                print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_name} failed: {exc}")
+
+        if attempt_best_payload is not None and attempt_best_quality is not None:
+            latest_payload = attempt_best_payload
+            latest_quality = attempt_best_quality
+            meta.update(
+                {
+                    "quality_score": attempt_best_quality["score"],
+                    "quality_breakdown": attempt_best_quality["breakdown"],
+                    "quality_issues": attempt_best_quality["issues"],
+                    "model": attempt_best_model or PRIMARY_MODEL_NAME,
+                    "attempts": attempt,
+                    "fallback_used": attempt_best_model == FALLBACK_MODEL_NAME,
+                }
             )
 
-            if quality["score"] > best_quality["score"]:
-                best_payload = candidate
-                best_quality = quality
-
-            if quality["score"] >= MIN_QUALITY_SCORE:
-                meta.update(
-                    {
-                        "ai_success": True,
-                        "fallback_used": False,
-                        "quality_score": quality["score"],
-                        "quality_breakdown": quality["breakdown"],
-                        "quality_issues": quality["issues"],
-                        "attempts": attempt,
-                    }
-                )
-                return candidate, meta
-        except Exception as exc:
-            meta["error"] = str(exc)
-            print(f"Model attempt {attempt} failed: {exc}")
-
-    chosen_payload = best_payload if best_quality["score"] >= default_quality["score"] else default_payload
-    chosen_quality = best_quality if chosen_payload is best_payload else default_quality
-    meta.update(
-        {
-            "quality_score": chosen_quality["score"],
-            "quality_breakdown": chosen_quality["breakdown"],
-            "quality_issues": chosen_quality["issues"],
-            "attempts": MAX_MODEL_ATTEMPTS,
-        }
+    raise RuntimeError(
+        f"Model output below quality threshold after {MAX_MODEL_ATTEMPTS} attempts. "
+        f"Best score={meta['quality_score']}, required={MIN_QUALITY_SCORE}, "
+        f"issues={meta['quality_issues'][:6]}, last_error={last_error}"
     )
-    if chosen_quality["score"] < MIN_QUALITY_SCORE:
-        meta["error"] = (
-            f"Quality score {chosen_quality['score']} below threshold {MIN_QUALITY_SCORE}. "
-            "Use deterministic fallback payload."
-        )
-        meta["quality_score"] = default_quality["score"]
-        meta["quality_breakdown"] = default_quality["breakdown"]
-        meta["quality_issues"] = default_quality["issues"]
-        return default_payload, meta
-
-    if chosen_payload is not default_payload:
-        meta["ai_success"] = True
-        meta["fallback_used"] = False
-    return chosen_payload, meta

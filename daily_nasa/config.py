@@ -11,14 +11,24 @@ NASA_NEWS_URLS = [
 ]
 IMAGE_OF_THE_DAY_URL = "https://www.nasa.gov/image-of-the-day/"
 
-MODEL_NAME = "gemini-3.1-flash-lite-preview"
-REQUEST_TIMEOUT = 30
+# Model policy requested by user:
+# primary model -> fallback model.
+PRIMARY_MODEL_NAME = "gemini-3.1-pro-preview"
+FALLBACK_MODEL_NAME = "gemini-3-flash-preview"
+
+REQUEST_TIMEOUT = 45
 LIST_TOP_N = 5
 MERGE_TOP_N = 3
 MAX_SEEN_URLS = 1200
-MIN_QUALITY_SCORE = 90
-MAX_MODEL_ATTEMPTS = 3
-MAX_REWRITE_ROUNDS = 2
+
+# Quality and retry policy:
+# - score threshold must pass
+# - retry count capped at 2 attempts total
+MIN_QUALITY_SCORE = 92
+MAX_MODEL_ATTEMPTS = 2
+
+# Strict mode: must use model output; no model means error.
+REQUIRE_AI_GENERATION = True
 
 ASSET_ROOT = Path("assets") / "generated"
 STATE_FILE = Path("state") / "nasa_seen_urls.json"
@@ -37,8 +47,8 @@ BOTTOM_BANNER_URL = (
 )
 
 TITLE_KEYWORDS = (
-    "NASA",
-    "Artemis",
+    "nasa",
+    "artemis",
     "阿尔忒弥斯",
     "登月",
     "空间站",
@@ -48,7 +58,7 @@ TITLE_KEYWORDS = (
     "探测",
 )
 FORBIDDEN_TITLE_PATTERNS = (
-    "NASA今日速递",
+    "nasa今日速递",
     "一次看懂",
     "原文",
 )

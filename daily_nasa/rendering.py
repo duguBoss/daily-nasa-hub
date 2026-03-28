@@ -100,6 +100,15 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
         "本期阅读建议：先看每条“关键信息”快速建立背景，再重点看“对你意味着什么”理解战略价值，"
         "最后按“下一步关注点”做后续追踪。这样你不会被碎片化消息带偏，能持续跟上NASA任务主线。"
     )
+    deep_dive = (
+        "延伸解读：很多读者会把NASA动态当作“今天又发了什么消息”，但真正有价值的是识别每条消息在任务链条里的位置。"
+        "例如合同类新闻通常对应资源配置和执行节奏变化，乘组与发射场消息对应任务进入实操阶段，技术验证消息则对应后续大节点是否按时推进。"
+        "当你用“阶段定位 + 影响判断 + 下一步追踪”三步阅读法时，同样一条新闻的信息价值会明显提升。"
+    )
+    deep_dive_2 = (
+        "建议把这份日报当成任务跟踪面板来用：先记住任务名称与当前阶段，再记录下一条需要验证的公开信号，"
+        "例如发射窗口、载荷清单、在轨验证结果或时间表变动。这样连续看一周后，你会形成完整认知，而不是只看到零散新闻标题。"
+    )
 
     return (
         "<section style='background:#f4f8fc;'>"
@@ -113,6 +122,10 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
         f"<p style='margin:12px 0 0 0;font-size:15px;line-height:1.9;color:#364a60;'>{intro}</p>"
         "<p style='margin:10px 0 0 0;font-size:14px;line-height:1.9;color:#455b73;'>"
         f"{reader_checklist}</p>"
+        "<p style='margin:10px 0 0 0;font-size:14px;line-height:1.9;color:#455b73;'>"
+        f"{deep_dive}</p>"
+        "<p style='margin:10px 0 0 0;font-size:14px;line-height:1.9;color:#455b73;'>"
+        f"{deep_dive_2}</p>"
         "<p style='margin:10px 0 0 0;font-size:13px;line-height:1.8;color:#5b7088;'>"
         "关键词：NASA、阿尔忒弥斯计划、登月任务、空间站、深空探索</p>"
         "</section>"
