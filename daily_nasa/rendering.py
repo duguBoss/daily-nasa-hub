@@ -92,13 +92,13 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
         cards_html += card
 
     intro = (
-        "这不是“简单转发新闻”的NASA快讯，而是面向普通读者的任务解读版。"
-        "你将看到每条动态在任务链条中的位置、为什么此刻值得关注、以及下一步应该盯哪些信号。"
-        "如果你关心登月进度、空间站运营和深空任务节奏，这份内容会帮你在最短时间抓住真正有价值的信息。"
+        "这不是“搬运快讯”，而是一份航天迷视角的 NASA 任务带读。"
+        "我会把今天最该追的一条先拎出来，再告诉你它在任务链条里处于哪一环、为什么这一刻值得盯。"
+        "如果你本来就爱看登月、空间站和深空任务，这份内容会更像同好之间的高密度情报交换。"
     )
     reader_checklist = (
-        "本期阅读建议：先看每条“关键信息”快速建立背景，再重点看“对你意味着什么”理解战略价值，"
-        "最后按“下一步关注点”做后续追踪。这样你不会被碎片化消息带偏，能持续跟上NASA任务主线。"
+        "航天爱好者阅读建议：先看“关键信息”锁定事实，再看“对你意味着什么”判断轻重，"
+        "最后按“下一步关注点”建立追踪清单。这样不会只看热闹，而是能持续跟踪任务主线。"
     )
     deep_dive = (
         "延伸解读：很多读者会把NASA动态当作“今天又发了什么消息”，但真正有价值的是识别每条消息在任务链条里的位置。"
@@ -113,7 +113,7 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
     return (
         "<section style='background:#f4f8fc;'>"
         f"<img src='{TOP_BANNER_URL}' style='width:100%;display:block;'>"
-        "<section style='padding:24px 0 8px 0;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,"
+        "<section style='padding:24px 12px 8px 12px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,"
         "Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;'>"
         "<section style='padding:18px 14px;border-radius:14px;background:linear-gradient(140deg,#f7fbff 0%,#eef5ff 100%);"
         "margin-bottom:22px;'>"
@@ -231,10 +231,10 @@ def build_wechat_fallback_title(
     if count <= 1:
         templates = [
             f"NASA焦点：{lead_subject}关键节点",
-            f"NASA通报：{lead_subject}进展",
+            f"NASA通报：{lead_subject}里程碑进展",
             f"NASA更新：{lead_subject}后续看点",
             f"NASA新动态：{lead_subject}时间线",
-            f"NASA任务追踪：{lead_subject}",
+            f"NASA任务追踪：{lead_subject}窗口变化",
         ]
     else:
         templates = [
@@ -242,7 +242,7 @@ def build_wechat_fallback_title(
             f"NASA更新{count}节点：{lead_subject}与{signal}",
             f"NASA最新{count}看点：{lead_subject}与{focus}",
             f"NASA速报{count}条：{lead_subject}关键变化",
-            f"NASA这{count}条要点：{lead_subject}后续观察",
+            f"NASA这{count}条要点：{lead_subject}倒计时信号",
         ]
 
     candidates = [fit_title_length(template) for template in templates]

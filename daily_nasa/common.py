@@ -240,4 +240,4 @@ def is_html_chinese_friendly(weixin_html: str) -> bool:
 
     if "your browser does not support the audio element" in plain_text.lower():
         return False
-    return chinese_chars >= 300 and ratio >= 0.80 and english_words <= 30 and not long_english_phrase
+    return chinese_chars >= 300 and ratio >= 0.75 and english_words <= 60 and not long_english_phrase

@@ -73,6 +73,27 @@ MISSION_HINT_TERMS = (
     "空间站",
     "肯尼迪",
 )
+TITLE_HOOK_TERMS = (
+    "倒计时",
+    "关键节点",
+    "关键变化",
+    "发射场",
+    "敲定",
+    "抵达",
+    "锁定",
+    "时间表",
+    "里程碑",
+    "窗口",
+    "合同",
+    "进展",
+)
+FAN_PERSPECTIVE_TERMS = (
+    "航天迷",
+    "太空爱好者",
+    "追任务",
+    "值得追踪",
+    "我们最该盯",
+)
 
 
 def build_story_terms(articles: list[dict[str, Any]]) -> list[str]:
@@ -207,8 +228,8 @@ def parse_model_json(raw_text: str) -> dict[str, Any]:
 
 def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str], recent_titles: list[str]) -> str:
     return f"""
-You are a senior Chinese science editor for WeChat and an SEO strategist.
-Write a high-value Chinese NASA briefing for serious readers.
+You are a NASA enthusiast and a senior Chinese science editor for WeChat.
+Write a high-value Chinese NASA briefing from an aerospace fan perspective, then share it to readers.
 
 Date: {date_str}
 News materials:
@@ -239,6 +260,10 @@ MANDATORY OUTPUT RULES:
 10) Visual rule: side margin/padding must be 0 (or omitted). Do not set custom left/right spacing.
 11) Title must be tied to source stories, using at least one concrete mission/entity from materials (e.g. Artemis II / CLPS / Intuitive Machines).
 12) Each news card should include at least 2 concrete facts from source (time, amount,机构,里程碑).
+13) Tone requirement: write as "航天爱好者带读" instead of neutral newswire.
+14) Engagement requirement: opening paragraph must answer "为什么今天必须看这条"，not generic summary.
+15) Title should include one action/hook word such as: 倒计时 / 关键节点 / 敲定 / 抵达 / 窗口 / 里程碑.
+16) Keep rich WeChat visual style: cards, contrast blocks, and clear hierarchy (h1/h3/strong).
 
 JSON schema:
 {{
@@ -283,6 +308,9 @@ Hard constraints:
 - Keep factual details and reader usefulness.
 - Side margin/padding must be 0 (or omitted).
 - Title must include at least one concrete mission/entity from source materials.
+- Write from NASA enthusiast perspective ("航天爱好者带读"), not plain agency bulletin style.
+- Title must include at least one hook/action word (倒计时/关键节点/抵达/窗口/里程碑 etc).
+- Keep strong visual hierarchy (h1 + card style + emphasized key lines).
 """
 
 
@@ -386,6 +414,10 @@ def evaluate_payload_quality(
         title_score += 8
     else:
         issues.append("title_not_specific_to_story")
+    if any(term in title for term in TITLE_HOOK_TERMS):
+        title_score += 5
+    else:
+        issues.append("title_missing_hook_word")
     if recent_titles and is_title_repetitive(title, recent_titles):
         title_score = max(0, title_score - 8)
         issues.append("title_similar_to_recent")
@@ -408,8 +440,11 @@ def evaluate_payload_quality(
         issues.append("chinese_ratio_low")
     else:
         issues.append("chinese_ratio_too_low")
-    if english_words <= 20:
+    if english_words <= 40:
         language_score += 4
+    elif english_words <= 70:
+        language_score += 2
+        issues.append("english_words_medium")
     else:
         issues.append("too_much_english")
     if long_english_phrase:
@@ -439,6 +474,10 @@ def evaluate_payload_quality(
         language_score += 3
     else:
         issues.append("mission_terms_insufficient")
+    if any(term in plain_text for term in FAN_PERSPECTIVE_TERMS):
+        language_score += 3
+    else:
+        issues.append("fan_perspective_missing")
 
     low_value_hits = 0
     for pattern in LOW_VALUE_PATTERNS:
@@ -460,6 +499,11 @@ def evaluate_payload_quality(
         structure_score += 8
     else:
         issues.append("news_card_count_insufficient")
+    style_attr_count = html.lower().count("style=")
+    if style_attr_count >= 8 and "<section" in html.lower():
+        structure_score += 4
+    else:
+        issues.append("layout_style_too_plain")
 
     required_markers = [READER_MARKER_1, READER_MARKER_2, READER_MARKER_3]
     marker_hits = sum(1 for marker in required_markers if marker in plain_text)
@@ -519,10 +563,13 @@ def evaluate_payload_quality(
         "title_contains_forbidden_pattern",
         "title_too_generic",
         "title_not_specific_to_story",
+        "title_missing_hook_word",
         "body_below_500_chinese_chars",
         "factual_density_low",
+        "fan_perspective_missing",
         "missing_reader_oriented_sections",
         "low_information_density_style",
+        "layout_style_too_plain",
         "side_spacing_not_zero",
     }
     if any(issue in hard_fail_issues for issue in issues):
