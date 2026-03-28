@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-28T14:29:07.549985+08:00",
+  "updated_at": "2026-03-28T15:00:22.434845+08:00",
   "date": "2026-03-28",
   "last_fetch_urls": [
     "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-erik-richards",
@@ -8,9 +8,7 @@
     "https://science.nasa.gov/photojournal/nisars-view-of-mount-rainier",
     "https://science.nasa.gov/photojournal/nisar-views-mount-st-helens"
   ],
-  "last_new_urls": [
-    "https://www.nasa.gov/blogs/missions/2026/03/27/artemis-ii-crew-arrives-at-launch-site-shares-moon-mascot"
-  ],
+  "last_new_urls": [],
   "seen_urls": [
     "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-erik-richards",
     "https://www.nasa.gov/missions/artemis/clps/nasa-selects-intuitive-machines-to-deliver-artemis-science-tech-to-moon",
