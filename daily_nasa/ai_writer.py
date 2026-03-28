@@ -20,6 +20,7 @@ from .common import (
 from .config import (
     EXTRA_FALLBACK_MODEL_NAME,
     FALLBACK_MODEL_NAME,
+    FORBIDDEN_TITLE_PATTERNS,
     MAX_MODEL_ATTEMPTS,
     MIN_QUALITY_SCORE,
     PRIMARY_MODEL_NAME,
@@ -48,6 +49,79 @@ LOW_VALUE_PATTERNS = [
     r"帮助.{0,20}了解",
     r"内容详细梳理",
 ]
+GENERIC_TITLE_PATTERNS = [
+    r"今天最值得看的一条",
+    r"关键信息梳理",
+    r"一次看完",
+    r"最新动态",
+]
+MISSION_HINT_TERMS = (
+    "artemis ii",
+    "artemis",
+    "clps",
+    "intuitive machines",
+    "iss",
+    "kennedy",
+    "阿尔忒弥斯",
+    "登月",
+    "月面",
+    "月球",
+    "空间站",
+    "肯尼迪",
+)
+
+
+def build_story_terms(articles: list[dict[str, Any]]) -> list[str]:
+    text = " ".join(
+        normalize_whitespace(
+            f"{article.get('title_en', '')} {article.get('title', '')} {article.get('summary', '')}"
+        )
+        for article in articles
+    ).lower()
+    terms: list[str] = []
+    if "artemis ii" in text:
+        terms.extend(["artemis ii", "阿尔忒弥斯ii", "阿尔忒弥斯2号", "阿尔忒弥斯2"])
+    if "intuitive machines" in text:
+        terms.extend(["intuitive machines", "月面投送", "商业月面"])
+    if "clps" in text:
+        terms.extend(["clps", "月面载荷服务"])
+    if "kennedy" in text:
+        terms.extend(["肯尼迪", "发射场"])
+    if "iss" in text or "space station" in text or "spacestation" in text:
+        terms.extend(["iss", "空间站"])
+    if "lunar" in text or "moon" in text:
+        terms.extend(["登月", "月球", "月面"])
+    if "artemis" in text:
+        terms.extend(["artemis", "阿尔忒弥斯"])
+
+    if not terms and articles:
+        lead_title = normalize_whitespace(str(articles[0].get("title", "")))
+        terms.extend([token.lower() for token in re.findall(r"[A-Za-z]{3,}(?:\s+[A-Za-z0-9]{2,})?", lead_title)[:3]])
+        for token in re.findall(r"[\u4e00-\u9fff]{2,6}", lead_title):
+            if token not in {"今日", "今天", "动态", "进展", "任务", "更新", "关键"}:
+                terms.append(token.lower())
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for term in terms:
+        clean_term = term.strip().lower()
+        if len(clean_term) < 2 or clean_term in seen:
+            continue
+        seen.add(clean_term)
+        deduped.append(clean_term)
+    return deduped[:8]
+
+
+def title_matches_story_terms(title: str, articles: list[dict[str, Any]]) -> bool:
+    story_terms = build_story_terms(articles)
+    if not story_terms:
+        return True
+    title_norm = title.lower().replace(" ", "")
+    for term in story_terms:
+        term_norm = term.replace(" ", "")
+        if term_norm and term_norm in title_norm:
+            return True
+    return False
 
 
 def is_quota_or_rate_limit_error(error_text: str) -> bool:
@@ -126,7 +200,9 @@ MANDATORY OUTPUT RULES:
    - what reader can track next
 8) Prioritize factual density: include concrete mission names, stages, timelines, budgets, or technical targets when available.
 9) Avoid filler phrases and generic motivational language.
-10) Visual rule: outer container side margin and side padding must be exactly 2px, not more.
+10) Visual rule: side margin/padding must be 0 (or omitted). Do not set custom left/right spacing.
+11) Title must be tied to source stories, using at least one concrete mission/entity from materials (e.g. Artemis II / CLPS / Intuitive Machines).
+12) Each news card should include at least 2 concrete facts from source (time, amount,机构,里程碑).
 
 JSON schema:
 {{
@@ -169,7 +245,8 @@ Hard constraints:
 - Keep labels: {READER_MARKER_1} / {READER_MARKER_2} / {READER_MARKER_3}
 - No links or source jumps.
 - Keep factual details and reader usefulness.
-- Outer container side margin/padding must be exactly 2px.
+- Side margin/padding must be 0 (or omitted).
+- Title must include at least one concrete mission/entity from source materials.
 """
 
 
@@ -220,7 +297,7 @@ def sanitize_payload(
         weixin_html = build_fallback_html(date_str, normalized["title"], articles, normalized["covers"])
 
     weixin_html = ensure_follow_header(weixin_html)
-    weixin_html = enforce_outer_side_margin(weixin_html, side_px=2)
+    weixin_html = enforce_outer_side_margin(weixin_html, side_px=0)
     normalized["weixin_html"] = weixin_html
     return normalized
 
@@ -265,6 +342,14 @@ def evaluate_payload_quality(
         title_score += 7
     else:
         issues.append("title_missing_mission_keyword")
+    if any(pattern in title.lower() for pattern in FORBIDDEN_TITLE_PATTERNS):
+        issues.append("title_contains_forbidden_pattern")
+    if any(re.search(pattern, title) for pattern in GENERIC_TITLE_PATTERNS):
+        issues.append("title_too_generic")
+    if title_matches_story_terms(title, articles):
+        title_score += 8
+    else:
+        issues.append("title_not_specific_to_story")
     if recent_titles and is_title_repetitive(title, recent_titles):
         title_score = max(0, title_score - 8)
         issues.append("title_similar_to_recent")
@@ -297,8 +382,27 @@ def evaluate_payload_quality(
         issues.append("html_contains_browser_artifact")
     if not is_html_chinese_friendly(html):
         issues.append("html_not_chinese_friendly")
-    if "data-side-margin='2'" not in html and 'data-side-margin="2"' not in html:
-        issues.append("side_margin_not_2px")
+    if "data-side-margin='0'" not in html and 'data-side-margin="0"' not in html:
+        issues.append("side_spacing_not_zero")
+
+    factual_signal_count = len(
+        re.findall(
+            r"\b(?:19|20)\d{2}\b|\d+(?:\.\d+)?\s*(?:million|billion|%|km|kg|亿美元|百万美元|月|日|天|小时|次)",
+            plain_text,
+            flags=re.I,
+        )
+    ) + len(re.findall(r"\d+月\d+日", plain_text))
+    required_facts = max(4, len(articles) * 2)
+    if factual_signal_count >= required_facts:
+        language_score += 6
+    else:
+        issues.append("factual_density_low")
+
+    mission_term_hits = sum(1 for term in MISSION_HINT_TERMS if term in plain_text.lower())
+    if mission_term_hits >= max(2, len(articles)):
+        language_score += 3
+    else:
+        issues.append("mission_terms_insufficient")
 
     low_value_hits = 0
     for pattern in LOW_VALUE_PATTERNS:
@@ -376,10 +480,14 @@ def evaluate_payload_quality(
         "html_contains_browser_artifact",
         "html_not_chinese_friendly",
         "title_similar_to_recent",
+        "title_contains_forbidden_pattern",
+        "title_too_generic",
+        "title_not_specific_to_story",
         "body_below_500_chinese_chars",
+        "factual_density_low",
         "missing_reader_oriented_sections",
         "low_information_density_style",
-        "side_margin_not_2px",
+        "side_spacing_not_zero",
     }
     if any(issue in hard_fail_issues for issue in issues):
         total_score = min(total_score, MIN_QUALITY_SCORE - 1)

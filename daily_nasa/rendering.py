@@ -113,7 +113,7 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
     return (
         "<section style='background:#f4f8fc;'>"
         f"<img src='{TOP_BANNER_URL}' style='width:100%;display:block;'>"
-        "<section style='padding:24px 16px 8px 16px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,"
+        "<section style='padding:24px 0 8px 0;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,"
         "Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;'>"
         "<section style='padding:18px 14px;border-radius:14px;background:linear-gradient(140deg,#f7fbff 0%,#eef5ff 100%);"
         "margin-bottom:22px;'>"
@@ -171,6 +171,17 @@ def infer_story_signal(articles: list[dict[str, Any]]) -> str:
     return pick_title_focus(articles)
 
 
+def extract_lead_subject(articles: list[dict[str, Any]]) -> str:
+    if not articles:
+        return "任务主线"
+    lead = normalize_whitespace(str(articles[0].get("title", "")))
+    lead = re.sub(r"^No\.\d+\s*", "", lead, flags=re.I)
+    lead = lead.replace("NASA", "").strip("：:，,。 ")
+    if len(lead) > 10:
+        lead = lead[:10]
+    return lead or "任务主线"
+
+
 def fit_title_length(title: str) -> str:
     text = normalize_whitespace(title).strip("：:，,。 ")
     if len(text) > 28:
@@ -182,7 +193,7 @@ def fit_title_length(title: str) -> str:
     return text
 
 
-def score_title_candidate(title: str, signal: str, recent_titles: list[str]) -> float:
+def score_title_candidate(title: str, signal: str, lead_subject: str, recent_titles: list[str]) -> float:
     score = 100.0
     if not re.search(r"[0-9一二三四五六七八九十]", title):
         score -= 12
@@ -192,6 +203,10 @@ def score_title_candidate(title: str, signal: str, recent_titles: list[str]) -> 
         score -= 8
     if signal and signal in title:
         score += 5
+    if lead_subject and lead_subject in title:
+        score += 7
+    else:
+        score -= 10
 
     similarity_penalty = 0.0
     for recent in recent_titles[:12]:
@@ -211,22 +226,23 @@ def build_wechat_fallback_title(
     count = len(articles)
     focus = pick_title_focus(articles)
     signal = infer_story_signal(articles)
+    lead_subject = extract_lead_subject(articles)
 
     if count <= 1:
         templates = [
-            f"NASA今日焦点：{signal}关键节点解读",
-            f"NASA最新通报：{signal}进展与影响",
-            f"NASA这条更新值得看：{signal}深度梳理",
-            f"NASA刚发布新变化：{signal}后续怎么看",
-            f"NASA一条重磅动态：{signal}时间点拆解",
+            f"NASA焦点：{lead_subject}关键节点",
+            f"NASA通报：{lead_subject}进展",
+            f"NASA更新：{lead_subject}后续看点",
+            f"NASA新动态：{lead_subject}时间线",
+            f"NASA任务追踪：{lead_subject}",
         ]
     else:
         templates = [
-            f"NASA今日{count}条动态：{signal}与{focus}新进展",
-            f"NASA更新{count}个任务节点：{signal}进度速览",
-            f"NASA最新{count}条看点：{focus}与{signal}进度",
-            f"NASA一天释放{count}个信号：{signal}关键变化",
-            f"NASA这{count}条最值得追踪：{signal}和{focus}",
+            f"NASA今日{count}条：{lead_subject}新进展",
+            f"NASA更新{count}节点：{lead_subject}与{signal}",
+            f"NASA最新{count}看点：{lead_subject}与{focus}",
+            f"NASA速报{count}条：{lead_subject}关键变化",
+            f"NASA这{count}条要点：{lead_subject}后续观察",
         ]
 
     candidates = [fit_title_length(template) for template in templates]
@@ -239,7 +255,7 @@ def build_wechat_fallback_title(
     rng = random.Random(seed)
     rng.shuffle(candidates)
 
-    best_title = max(candidates, key=lambda title: score_title_candidate(title, signal, recent_titles))
+    best_title = max(candidates, key=lambda title: score_title_candidate(title, signal, lead_subject, recent_titles))
     if is_title_repetitive(best_title, recent_titles):
         for candidate in candidates:
             if not is_title_repetitive(candidate, recent_titles):

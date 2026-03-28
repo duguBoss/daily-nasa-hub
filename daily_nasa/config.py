@@ -61,6 +61,8 @@ TITLE_KEYWORDS = (
 FORBIDDEN_TITLE_PATTERNS = (
     "nasa今日速递",
     "一次看懂",
+    "今天最值得看的一条",
+    "关键信息梳理",
     "原文",
 )
 GENERIC_TITLE_TOKENS = (

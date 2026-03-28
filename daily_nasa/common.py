@@ -155,17 +155,17 @@ def ensure_follow_header(weixin_html: str) -> str:
     return header + weixin_html
 
 
-def enforce_outer_side_margin(weixin_html: str, side_px: int = 2) -> str:
+def enforce_outer_side_margin(weixin_html: str, side_px: int = 0) -> str:
     html = (weixin_html or "").strip()
     if not html:
         return html
 
-    if "data-side-margin='2'" in html or 'data-side-margin="2"' in html:
+    if "data-side-margin='0'" in html or 'data-side-margin="0"' in html:
         return html
 
     return (
         f"<section data-side-margin='{side_px}' "
-        f"style='margin:0 {side_px}px;padding:0 {side_px}px;box-sizing:border-box;'>"
+        "style='margin:0;padding:0;box-sizing:border-box;'>"
         f"{html}"
         "</section>"
     )
