@@ -18,6 +18,7 @@ from .common import (
     text_language_stats,
 )
 from .config import (
+    EXTRA_FALLBACK_MODEL_NAME,
     FALLBACK_MODEL_NAME,
     MAX_MODEL_ATTEMPTS,
     MIN_QUALITY_SCORE,
@@ -47,6 +48,17 @@ LOW_VALUE_PATTERNS = [
     r"帮助.{0,20}了解",
     r"内容详细梳理",
 ]
+
+
+def is_quota_or_rate_limit_error(error_text: str) -> bool:
+    text = error_text.lower()
+    return (
+        "resource_exhausted" in text
+        or "quota exceeded" in text
+        or "rate limit" in text
+        or "(429)" in text
+        or " 429" in text
+    )
 
 
 def call_gemini(api_key: str, prompt: str, model_name: str) -> str:
@@ -409,7 +421,9 @@ def generate_payload(
         "attempts": 0,
     }
 
-    models = [PRIMARY_MODEL_NAME, FALLBACK_MODEL_NAME]
+    models = [PRIMARY_MODEL_NAME, FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME]
+    # Keep order stable while avoiding duplicates.
+    models = list(dict.fromkeys([model for model in models if model]))
     latest_payload = default_payload
     latest_quality = default_quality
     last_error = ""
@@ -421,6 +435,7 @@ def generate_payload(
 
         for model_name in models:
             try:
+                print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS}: trying {model_name}")
                 if attempt == 1:
                     prompt = build_gemini_prompt(date_str, articles, cover_urls, recent_titles)
                 else:
@@ -459,7 +474,7 @@ def generate_payload(
                     meta.update(
                         {
                             "ai_success": True,
-                            "fallback_used": model_name == FALLBACK_MODEL_NAME,
+                            "fallback_used": model_name != PRIMARY_MODEL_NAME,
                             "model": model_name,
                             "quality_score": quality["score"],
                             "quality_breakdown": quality["breakdown"],
@@ -470,6 +485,11 @@ def generate_payload(
                     return candidate, meta
             except Exception as exc:
                 last_error = f"{model_name}: {exc}"
+                if is_quota_or_rate_limit_error(str(exc)):
+                    print(
+                        f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_name} hit quota/rate limit; "
+                        "switching to next model."
+                    )
                 print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_name} failed: {exc}")
 
         if attempt_best_payload is not None and attempt_best_quality is not None:
@@ -482,7 +502,7 @@ def generate_payload(
                     "quality_issues": attempt_best_quality["issues"],
                     "model": attempt_best_model or PRIMARY_MODEL_NAME,
                     "attempts": attempt,
-                    "fallback_used": attempt_best_model == FALLBACK_MODEL_NAME,
+                    "fallback_used": (attempt_best_model or PRIMARY_MODEL_NAME) != PRIMARY_MODEL_NAME,
                 }
             )
 

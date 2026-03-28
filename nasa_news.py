@@ -5,6 +5,7 @@ from typing import Any
 
 from daily_nasa.ai_writer import generate_payload
 from daily_nasa.config import (
+    EXTRA_FALLBACK_MODEL_NAME,
     FALLBACK_MODEL_NAME,
     IMAGE_OF_THE_DAY_URL,
     LIST_TOP_N,
@@ -88,7 +89,10 @@ def main() -> None:
 
     cover_urls = [article.get("cover_url", "") for article in processed_articles if article.get("cover_url", "")]
     api_key = get_optional_api_key()
-    print(f"AI models: primary={PRIMARY_MODEL_NAME}, fallback={FALLBACK_MODEL_NAME}")
+    print(
+        "AI models: "
+        f"primary={PRIMARY_MODEL_NAME}, fallback={FALLBACK_MODEL_NAME}, extra_fallback={EXTRA_FALLBACK_MODEL_NAME}"
+    )
 
     payload, generation_meta = generate_payload(api_key, date_str, processed_articles, cover_urls)
     if reused_source_date:

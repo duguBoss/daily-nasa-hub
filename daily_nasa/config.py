@@ -12,9 +12,10 @@ NASA_NEWS_URLS = [
 IMAGE_OF_THE_DAY_URL = "https://www.nasa.gov/image-of-the-day/"
 
 # Model policy requested by user:
-# primary model -> fallback model.
+# primary model -> fallback model -> extra fallback model.
 PRIMARY_MODEL_NAME = "gemini-3.1-pro-preview"
 FALLBACK_MODEL_NAME = "gemini-3-flash-preview"
+EXTRA_FALLBACK_MODEL_NAME = "gemini-3.1-flash-lite-preview"
 
 REQUEST_TIMEOUT = 45
 LIST_TOP_N = 5
