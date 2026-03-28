@@ -28,6 +28,9 @@ REQUEST_TIMEOUT = 30
 LIST_TOP_N = 5
 MERGE_TOP_N = 3
 MAX_SEEN_URLS = 1200
+MIN_QUALITY_SCORE = 90
+MAX_MODEL_ATTEMPTS = 3
+MAX_REWRITE_ROUNDS = 2
 ASSET_ROOT = Path("assets") / "generated"
 STATE_FILE = Path("state") / "nasa_seen_urls.json"
 SHANGHAI_TZ = pytz.timezone("Asia/Shanghai")
@@ -46,9 +49,42 @@ BOTTOM_BANNER_URL = (
     "0?wx_fmt=gif"
 )
 
+TITLE_KEYWORDS = (
+    "NASA",
+    "Artemis",
+    "阿尔忒弥斯",
+    "登月",
+    "空间站",
+    "火箭",
+    "深空",
+    "月球",
+    "探测",
+)
+FORBIDDEN_TITLE_PATTERNS = (
+    "NASA今日速递",
+    "一次看懂",
+    "原文",
+)
+
 
 def normalize_whitespace(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
+
+
+def count_chinese_chars(text: str) -> int:
+    return len(re.findall(r"[\u4e00-\u9fff]", text))
+
+
+def normalize_cn_summary(summary: str, title: str) -> str:
+    text = normalize_whitespace(summary)
+    if count_chinese_chars(text) >= 18:
+        return text
+
+    clean_title = normalize_whitespace(title)
+    return (
+        f"NASA 最新动态聚焦“{clean_title}”。本文提炼任务目标、关键进展与后续节点，"
+        "帮助你用一分钟看懂这条消息为什么值得持续关注。"
+    )
 
 
 def ensure_follow_header(weixin_html: str) -> str:
@@ -563,6 +599,7 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
     for idx, article in enumerate(articles, start=1):
         image = article.get("cover_url", "") or article.get("image_url", "")
         meta = " · ".join(part for part in [article.get("channel", "NASA"), article.get("publish_time", "")] if part)
+        summary = normalize_cn_summary(article.get("summary", ""), article["title"])
         card = (
             "<section style='margin:0 0 18px 0;padding:16px;border:1px solid #e8eef5;border-radius:14px;"
             "background:#ffffff;box-shadow:0 6px 16px rgba(20,35,54,0.06);'>"
@@ -576,16 +613,16 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
             )
         card += (
             f"<p style='margin:0 0 10px 0;font-size:15px;line-height:1.92;color:#334155;'>"
-            f"<strong>看点速读：</strong>{article.get('summary', '')}</p>"
-            f"<p style='margin:0;font-size:14px;line-height:1.8;'><a href='{article['url']}' "
-            "style='color:#1565c0;text-decoration:none;'>查看 NASA 原文 ></a></p>"
+            f"<strong>看点速读：</strong>{summary}</p>"
+            "<p style='margin:0;font-size:14px;line-height:1.9;color:#475569;'><strong>价值判断：</strong>"
+            "这条更新关系到 NASA 后续任务节奏和技术验证进度，适合持续追踪下一次官方通报。</p>"
             "</section>"
         )
         cards_html += card
 
     intro = (
-        "今天的 NASA 动态集中在载人航天、深空任务和前沿技术验证。"
-        "为了提高微信分发和完读率，我们按“强标题+关键信息卡片+互动提问”的结构整理了重点。"
+        "今天这份 NASA 动态快报，聚焦阿尔忒弥斯计划、空间站任务与深空技术。"
+        "你将看到每条消息的核心进展、关键节点和影响判断，便于快速获取高价值航天信息。"
     )
 
     return (
@@ -598,19 +635,20 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
         f"<p style='margin:0 0 8px 0;font-size:13px;color:#61758a;line-height:1.7;'>NASA Daily · {date_str}</p>"
         f"<h1 style='margin:0;font-size:24px;line-height:1.38;color:#10243e;'>{title}</h1>"
         f"<p style='margin:12px 0 0 0;font-size:15px;line-height:1.9;color:#364a60;'>{intro}</p>"
+        "<p style='margin:10px 0 0 0;font-size:13px;line-height:1.8;color:#5b7088;'>"
+        "关键词：NASA、阿尔忒弥斯计划、登月任务、空间站、深空探索</p>"
         "</section>"
         f"{cards_html}"
         "<section style='margin:4px 0 20px 0;padding:16px;border-radius:12px;background:#fffaf0;border:1px solid #ffe4b8;'>"
         "<p style='margin:0;font-size:15px;color:#5f4b2f;line-height:1.9;'><strong>互动话题：</strong>"
-        "今天这几条 NASA 动态里，你最想追踪哪一个任务后续？</p>"
+        "今天这几条 NASA 动态里，你最想追踪哪个任务后续？为什么？</p>"
         "<p style='margin:8px 0 0 0;font-size:14px;color:#7b6543;line-height:1.9;'>"
-        "如果这篇合辑有帮助，欢迎点在看并转发给同样关注太空探索的朋友。</p>"
+        "欢迎在评论区留下你的观点，我们会优先跟进高关注任务。</p>"
         "</section>"
         "</section>"
         f"<img src='{BOTTOM_BANNER_URL}' style='width:100%;display:block;'>"
         "</section>"
     )
-
 
 def pick_title_focus(articles: list[dict[str, Any]]) -> str:
     text = " ".join([f"{a.get('title', '')} {a.get('summary', '')}" for a in articles]).lower()
@@ -633,25 +671,25 @@ def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]]) -
     focus = pick_title_focus(articles)
     seed = int(hashlib.md5(date_str.encode("utf-8")).hexdigest()[:8], 16)
     rng = random.Random(seed + count)
+
     if count <= 1:
         templates = [
-            "NASA今天放出关键画面：{focus}背后信息量太大",
-            "别错过NASA这条重磅更新：{focus}细节首次看清",
-            "今天NASA最值得看的内容：{focus}核心进展来了",
-            "NASA刚更新一条关键信号：{focus}正在发生变化",
-            "这张NASA新图刷屏了：{focus}到底透露了什么",
+            "NASA今日关键更新：{focus}最新进度与影响",
+            "NASA刚发布重要动态：{focus}有哪些新变化",
+            "NASA今天最值得看的一条：{focus}关键信息梳理",
+            "NASA释出最新信号：{focus}任务节奏正在变化",
+            "NASA最新通报来了：{focus}后续看点一文说清",
         ]
         return rng.choice(templates).format(focus=focus)
 
     templates = [
-        "NASA今天连发{count}条重磅动态：{focus}出现关键变化",
-        "今天的NASA有点猛：{count}条{focus}新进展一次看完",
-        "别只看标题，NASA这{count}条更新正在改写{focus}节奏",
-        "NASA一天抛出{count}个信号：{focus}进入新阶段",
-        "今天NASA最有价值的{count}条：{focus}看点全梳理",
+        "NASA今日{count}条关键进展：{focus}最新时间表和看点",
+        "NASA连发{count}条重要更新：{focus}进入新阶段",
+        "NASA今天这{count}条最具价值：{focus}、节点与影响",
+        "NASA一天释放{count}个任务信号：{focus}进度速读",
+        "NASA最新{count}条动态盘点：{focus}为什么值得关注",
     ]
     return rng.choice(templates).format(count=count, focus=focus)
-
 
 def build_default_payload(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> dict[str, Any]:
     songs = [{"name": article["title"], "artist": article.get("channel", "NASA")} for article in articles]
@@ -687,53 +725,294 @@ def load_recent_titles(limit: int = 20) -> list[str]:
     return ordered
 
 
-def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str], recent_titles: list[str]) -> str:
-    article_blocks = []
+def build_article_blocks(articles: list[dict[str, Any]]) -> str:
+    blocks: list[str] = []
     for idx, article in enumerate(articles, start=1):
-        block = (
-            f"新闻{idx}\n"
-            f"- 标题: {article['title']}\n"
-            f"- 频道: {article.get('channel', 'NASA')}\n"
-            f"- 时间: {article.get('publish_time', '')}\n"
-            f"- 摘要: {article.get('summary', '')}\n"
-            f"- 原文: {article['url']}\n"
-            f"- 配图: {article.get('cover_url', article.get('image_url', ''))}\n"
+        blocks.append(
+            "\n".join(
+                [
+                    f"Item {idx}",
+                    f"- title: {article['title']}",
+                    f"- channel: {article.get('channel', 'NASA')}",
+                    f"- published_at: {article.get('publish_time', '')}",
+                    f"- summary: {article.get('summary', '')}",
+                    f"- url: {article['url']}",
+                    f"- image: {article.get('cover_url', article.get('image_url', ''))}",
+                ]
+            )
         )
-        article_blocks.append(block)
+    return "\n\n".join(blocks)
 
+
+def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str], recent_titles: list[str]) -> str:
     return f"""
-你是“NASA内容主编 + 微信增长编辑”。请将以下新闻合并为一篇高点击、高完读率的中文微信文章。
+You are an editor-in-chief for a Chinese WeChat science account and an SEO strategist.
+Your task is to turn the NASA updates into one high-retention Chinese article.
 
-日期: {date_str}
-新闻素材:
-{chr(10).join(article_blocks)}
+Date: {date_str}
+News materials:
+{build_article_blocks(articles)}
 
-封面图候选:
+Cover candidates:
 {json.dumps(cover_urls, ensure_ascii=False)}
 
-最近已使用标题（请避免相似表达）:
+Recent titles to avoid repeating style:
 {json.dumps(recent_titles[:12], ensure_ascii=False)}
 
-输出必须是合法 JSON，且只能输出 JSON，不要加解释文字。结构必须是:
+Output rules (MUST follow):
+1) Output valid JSON only. No markdown fences, no explanations.
+2) All body content must be Simplified Chinese (mission names like Artemis/ISS can stay in English).
+3) Create a title with 14-28 Chinese characters, include number signals and one mission keyword.
+4) Do not include external links, anchor tags, or "view source" CTA in weixin_html.
+5) Build weixin_html as a complete section with inline styles and include top and bottom banner images.
+6) Structure: opening value paragraph, 3 content cards (title + summary + why it matters), interaction question.
+7) Make it WeChat-feed friendly: high information density, clear user value in first screen, avoid empty adjectives.
+8) Make it SEO-friendly: naturally include keywords like NASA, Artemis, lunar mission, space station, deep space.
+9) Avoid duplicated paragraphs or repeated full blocks.
+
+JSON schema:
 {{
   "date": "{date_str}",
-  "title": "14-24字中文主标题，强调新鲜感和价值感",
-  "covers": ["最多5个图片URL"],
+  "title": "...",
+  "covers": ["up to 5 image urls"],
   "songs": [
-    {{"name":"新闻标题","artist":"栏目名"}}
+    {{"name": "news title", "artist": "channel"}}
   ],
   "weixin_html": "<section>...</section>"
 }}
-
-写作要求:
-1) 明显体现 NASA 风格: 科学、任务、探索、工程细节。
-2) 按微信推荐算法优化: 强信息密度、明确受众收益、避免空话；首屏需有“今天发生了什么+为什么值得看”。
-3) weixin_html 用内联样式，结构完整，必须包含顶部和底部 banner 图。
-4) cards 中每条新闻要有标题、摘要、图片(有则展示)和原文链接。
-5) 不要杜撰事实，不要出现“可能/大概”等含糊措辞。
-6) title 禁止使用以下重复句式: “NASA今日速递：X条太空前沿动态一次看懂”。
-7) title 请尽量包含数字、任务关键词（如Artemis/空间站/火箭/深空）之一。
 """
+
+
+def build_gemini_rewrite_prompt(
+    date_str: str,
+    articles: list[dict[str, Any]],
+    cover_urls: list[str],
+    recent_titles: list[str],
+    previous_payload: dict[str, Any],
+    quality_report: dict[str, Any],
+    attempt: int,
+) -> str:
+    issues = quality_report.get("issues", [])[:8]
+    return f"""
+Rewrite the JSON article to pass the quality gate with score >= {MIN_QUALITY_SCORE}.
+This is rewrite attempt #{attempt}.
+
+News materials:
+{build_article_blocks(articles)}
+
+Cover candidates:
+{json.dumps(cover_urls, ensure_ascii=False)}
+
+Recent titles:
+{json.dumps(recent_titles[:12], ensure_ascii=False)}
+
+Current draft JSON:
+{json.dumps(previous_payload, ensure_ascii=False)}
+
+Quality score:
+{json.dumps(quality_report, ensure_ascii=False)}
+
+Priority fixes:
+{json.dumps(issues, ensure_ascii=False)}
+
+Mandatory constraints:
+- Keep output as valid JSON only.
+- Keep all user-facing text in Simplified Chinese.
+- No external links, no anchor tags, no source jump prompts.
+- Keep style engaging but factual and non-clickbait.
+- Remove duplication and improve readability for WeChat feed.
+- Maintain SEO keyword coverage naturally.
+
+Return the full JSON with keys: date, title, covers, songs, weixin_html.
+"""
+
+
+def sanitize_payload(
+    payload: Any,
+    default_payload: dict[str, Any],
+    date_str: str,
+    cover_urls: list[str],
+) -> dict[str, Any]:
+    normalized: dict[str, Any] = payload if isinstance(payload, dict) else {}
+    normalized = dict(normalized)
+
+    payload_date = str(normalized.get("date", "")).strip()
+    normalized["date"] = payload_date if payload_date else date_str
+
+    covers = normalized.get("covers", [])
+    if not isinstance(covers, list):
+        covers = []
+    clean_covers = [str(url).strip() for url in covers if isinstance(url, str) and url.strip()]
+    normalized["covers"] = (clean_covers or cover_urls or default_payload.get("covers", []))[:5]
+
+    songs = normalized.get("songs", [])
+    if not isinstance(songs, list) or not songs:
+        songs = default_payload.get("songs", [])
+    fixed_songs: list[dict[str, str]] = []
+    for song in songs[:5]:
+        if not isinstance(song, dict):
+            continue
+        name = normalize_whitespace(str(song.get("name", "")))
+        artist = normalize_whitespace(str(song.get("artist", ""))) or "NASA"
+        if name:
+            fixed_songs.append({"name": name, "artist": artist})
+    normalized["songs"] = fixed_songs or default_payload.get("songs", [])
+
+    title = normalize_whitespace(str(normalized.get("title", "")))
+    if not title:
+        title = default_payload["title"]
+    if len(title) > 32:
+        title = title[:32]
+    normalized["title"] = title
+
+    weixin_html = str(normalized.get("weixin_html", "")).strip()
+    if not weixin_html.startswith("<section"):
+        weixin_html = default_payload["weixin_html"]
+    normalized["weixin_html"] = ensure_follow_header(weixin_html)
+    return normalized
+
+
+def has_repeated_sentences(text: str) -> bool:
+    parts = [normalize_whitespace(p) for p in re.split(r"[\u3002\uff01\uff1f!?\n]", text) if normalize_whitespace(p)]
+    long_parts = [p for p in parts if len(p) >= 18]
+    if len(long_parts) <= 1:
+        return False
+
+    seen: dict[str, int] = {}
+    for part in long_parts:
+        seen[part] = seen.get(part, 0) + 1
+        if seen[part] >= 2:
+            return True
+    return False
+
+
+def evaluate_payload_quality(payload: dict[str, Any], articles: list[dict[str, Any]]) -> dict[str, Any]:
+    title = normalize_whitespace(str(payload.get("title", "")))
+    html = str(payload.get("weixin_html", ""))
+    soup = BeautifulSoup(html or "<section></section>", "html.parser")
+    plain_text = normalize_whitespace(soup.get_text(" ", strip=True))
+
+    issues: list[str] = []
+    breakdown: dict[str, int] = {}
+
+    title_score = 0
+    if 14 <= len(title) <= 28:
+        title_score += 8
+    else:
+        issues.append("title_length_not_14_28")
+
+    if re.search(r"[0-9一二三四五六七八九十]", title):
+        title_score += 4
+    else:
+        issues.append("title_missing_number_signal")
+
+    if any(keyword.lower() in title.lower() for keyword in TITLE_KEYWORDS):
+        title_score += 7
+    else:
+        issues.append("title_missing_mission_keyword")
+
+    if not any(bad in title for bad in FORBIDDEN_TITLE_PATTERNS):
+        title_score += 6
+    else:
+        issues.append("title_contains_forbidden_pattern")
+    breakdown["title"] = title_score
+
+    chinese_chars = count_chinese_chars(plain_text)
+    english_words = len(re.findall(r"[A-Za-z]{2,}", plain_text))
+    ratio = chinese_chars / max(chinese_chars + english_words * 2, 1)
+
+    target_articles = max(1, len(articles))
+    min_chinese_chars = 140 + target_articles * 40
+
+    language_score = 0
+    if chinese_chars >= min_chinese_chars:
+        language_score += 8
+    else:
+        issues.append("body_too_short_or_not_enough_chinese")
+
+    if ratio >= 0.70:
+        language_score += 8
+    elif ratio >= 0.55:
+        language_score += 4
+        issues.append("chinese_ratio_low")
+    else:
+        issues.append("chinese_ratio_too_low")
+
+    if english_words <= 50:
+        language_score += 4
+    else:
+        issues.append("too_much_english")
+    breakdown["language"] = language_score
+
+    structure_score = 0
+    if "<h1" in html.lower():
+        structure_score += 5
+    else:
+        issues.append("missing_h1")
+
+    card_count = len(re.findall(r"No\.\d+", html))
+    if card_count == 0:
+        card_count = len(re.findall(r"<h3", html.lower()))
+
+    if card_count >= max(1, len(articles)):
+        structure_score += 8
+    else:
+        issues.append("news_card_count_insufficient")
+
+    if any(token in plain_text for token in ["互动", "评论", "你最想", "为什么"]):
+        structure_score += 7
+    else:
+        issues.append("missing_interaction_prompt")
+    breakdown["structure"] = structure_score
+
+    compliance_score = 0
+    if "<a " not in html.lower():
+        compliance_score += 10
+    else:
+        issues.append("contains_external_link")
+
+    if "原文" not in plain_text and "source" not in plain_text.lower():
+        compliance_score += 5
+    else:
+        issues.append("contains_source_jump_copy")
+
+    if not has_repeated_sentences(plain_text):
+        compliance_score += 5
+    else:
+        issues.append("repeated_content_detected")
+    breakdown["compliance"] = compliance_score
+
+    seo_score = 0
+    keyword_hits = sum(1 for keyword in TITLE_KEYWORDS if keyword.lower() in plain_text.lower())
+    if keyword_hits >= 3:
+        seo_score += 8
+    elif keyword_hits >= 2:
+        seo_score += 5
+        issues.append("seo_keyword_coverage_medium")
+    else:
+        issues.append("seo_keyword_coverage_low")
+
+    if any(token in html.lower() for token in ["<h2", "<h3", "<strong"]):
+        seo_score += 4
+    else:
+        issues.append("seo_structure_tags_missing")
+
+    min_content_depth = 180 + target_articles * 70
+    if len(plain_text) >= min_content_depth:
+        seo_score += 3
+    else:
+        issues.append("content_depth_insufficient")
+    breakdown["seo"] = seo_score
+
+    total_score = title_score + language_score + structure_score + compliance_score + seo_score
+    if "contains_external_link" in issues or "contains_source_jump_copy" in issues:
+        total_score = min(total_score, MIN_QUALITY_SCORE - 1)
+
+    return {
+        "score": max(0, min(100, total_score)),
+        "breakdown": breakdown,
+        "issues": issues,
+    }
 
 
 def generate_payload(
@@ -743,60 +1022,110 @@ def generate_payload(
     cover_urls: list[str],
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     default_payload = build_default_payload(date_str, articles, cover_urls)
+    default_payload = sanitize_payload(default_payload, default_payload, date_str, cover_urls)
+    default_quality = evaluate_payload_quality(default_payload, articles)
+
     meta = {
         "ai_enabled": bool(api_key),
         "ai_success": False,
         "model": MODEL_NAME,
         "error": "",
         "fallback_used": True,
+        "quality_score": default_quality["score"],
+        "quality_breakdown": default_quality["breakdown"],
+        "quality_issues": default_quality["issues"],
+        "attempts": 0,
     }
+
     if not api_key:
         meta["error"] = "GEMINI_API_KEY not set"
         return default_payload, meta
 
-    try:
-        recent_titles = load_recent_titles()
-        prompt = build_gemini_prompt(date_str, articles, cover_urls, recent_titles)
-        raw = call_gemini(api_key, prompt)
-        payload = parse_model_json(raw)
-    except Exception as exc:
-        meta["error"] = str(exc)
+    recent_titles = load_recent_titles()
+    best_payload = default_payload
+    best_quality = default_quality
+    latest_payload = default_payload
+    latest_quality = default_quality
+
+    for attempt in range(1, MAX_MODEL_ATTEMPTS + 1):
+        if attempt > 1 and (attempt - 1) > MAX_REWRITE_ROUNDS:
+            break
+
+        try:
+            if attempt == 1:
+                prompt = build_gemini_prompt(date_str, articles, cover_urls, recent_titles)
+            else:
+                prompt = build_gemini_rewrite_prompt(
+                    date_str,
+                    articles,
+                    cover_urls,
+                    recent_titles,
+                    latest_payload,
+                    latest_quality,
+                    attempt,
+                )
+
+            raw = call_gemini(api_key, prompt)
+            parsed = parse_model_json(raw)
+            candidate = sanitize_payload(parsed, default_payload, date_str, cover_urls)
+            quality = evaluate_payload_quality(candidate, articles)
+
+            latest_payload = candidate
+            latest_quality = quality
+
+            print(
+                f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS}: quality={quality['score']} "
+                f"issues={quality['issues'][:3]}"
+            )
+
+            if quality["score"] > best_quality["score"]:
+                best_payload = candidate
+                best_quality = quality
+
+            if quality["score"] >= MIN_QUALITY_SCORE:
+                meta.update(
+                    {
+                        "ai_success": True,
+                        "fallback_used": False,
+                        "quality_score": quality["score"],
+                        "quality_breakdown": quality["breakdown"],
+                        "quality_issues": quality["issues"],
+                        "attempts": attempt,
+                    }
+                )
+                return candidate, meta
+
+        except Exception as exc:
+            meta["error"] = str(exc)
+            print(f"Model attempt {attempt} failed: {exc}")
+
+    chosen_payload = best_payload if best_quality["score"] >= default_quality["score"] else default_payload
+    chosen_quality = best_quality if chosen_payload is best_payload else default_quality
+
+    meta.update(
+        {
+            "quality_score": chosen_quality["score"],
+            "quality_breakdown": chosen_quality["breakdown"],
+            "quality_issues": chosen_quality["issues"],
+            "attempts": MAX_MODEL_ATTEMPTS,
+        }
+    )
+
+    if chosen_quality["score"] < MIN_QUALITY_SCORE:
+        meta["error"] = (
+            f"Quality score {chosen_quality['score']} below threshold {MIN_QUALITY_SCORE}. "
+            "Use deterministic fallback payload."
+        )
+        meta["quality_score"] = default_quality["score"]
+        meta["quality_breakdown"] = default_quality["breakdown"]
+        meta["quality_issues"] = default_quality["issues"]
         return default_payload, meta
 
-    payload_date = str(payload.get("date", "")).strip()
-    payload["date"] = payload_date if payload_date else date_str
+    if chosen_payload is not default_payload:
+        meta["ai_success"] = True
+        meta["fallback_used"] = False
 
-    covers = payload.get("covers", [])
-    if not isinstance(covers, list):
-        covers = []
-    covers = [str(url).strip() for url in covers if isinstance(url, str) and url.strip()]
-    payload["covers"] = (covers or cover_urls)[:5]
-
-    songs = payload.get("songs", [])
-    if not isinstance(songs, list) or not songs:
-        songs = default_payload["songs"]
-    fixed_songs: list[dict[str, str]] = []
-    for song in songs[:5]:
-        if not isinstance(song, dict):
-            continue
-        name = normalize_whitespace(str(song.get("name", "")))
-        artist = normalize_whitespace(str(song.get("artist", ""))) or "NASA"
-        if name:
-            fixed_songs.append({"name": name, "artist": artist})
-    payload["songs"] = fixed_songs or default_payload["songs"]
-
-    title = normalize_whitespace(str(payload.get("title", "")))
-    if not title or title == "NASA 今日速递：3 条太空前沿动态一次看懂":
-        title = default_payload["title"]
-    payload["title"] = title
-
-    weixin_html = str(payload.get("weixin_html", "")).strip()
-    if not weixin_html.startswith("<section"):
-        weixin_html = default_payload["weixin_html"]
-    payload["weixin_html"] = ensure_follow_header(weixin_html)
-    meta["ai_success"] = True
-    meta["fallback_used"] = False
-    return payload, meta
+    return chosen_payload, meta
 
 
 def save_news(
