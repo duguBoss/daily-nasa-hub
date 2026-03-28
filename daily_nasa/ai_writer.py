@@ -53,8 +53,8 @@ def parse_model_json(raw_text: str) -> dict[str, Any]:
 
 def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str], recent_titles: list[str]) -> str:
     return f"""
-You are an editor-in-chief for a Chinese WeChat science account and an SEO strategist.
-Your task is to turn the NASA updates into one high-retention Chinese article.
+You are a senior Chinese science editor for WeChat and an SEO strategist.
+Turn the NASA updates into one detailed Chinese article with high information density.
 
 Date: {date_str}
 News materials:
@@ -63,19 +63,25 @@ News materials:
 Cover candidates:
 {json.dumps(cover_urls, ensure_ascii=False)}
 
-Recent titles to avoid repeating style:
+Recent titles to avoid style duplication:
 {json.dumps(recent_titles[:12], ensure_ascii=False)}
 
 Output rules (MUST follow):
 1) Output valid JSON only. No markdown fences, no explanations.
-2) All body content must be Simplified Chinese (mission names like Artemis/ISS can stay in English).
-3) Create a title with 14-28 Chinese characters, include number signals and one mission keyword.
-4) Do not include external links, anchor tags, or "view source" CTA in weixin_html.
-5) Build weixin_html as a complete section with inline styles and include top and bottom banner images.
-6) Structure: opening value paragraph, content cards (title + summary + why it matters), interaction question.
-7) Make it WeChat-feed friendly: high information density, clear user value in first screen, avoid empty adjectives.
-8) Make it SEO-friendly: naturally include keywords like NASA, Artemis, lunar mission, space station, deep space.
-9) Avoid duplicated paragraphs or repeated full blocks.
+2) All user-facing body text must be Simplified Chinese (Artemis/ISS can remain in English names).
+3) Title length: 14-28 Chinese chars, include number signal and one mission keyword.
+4) weixin_html must NOT contain external links, anchor tags, source-jump CTA.
+5) The article must be detailed: at least 500 Chinese characters in body text.
+6) For each news card, include three explicit sections:
+   - 关键信息
+   - 对读者意味着什么
+   - 下一步关注点
+7) First screen must answer:
+   - 今天发生了什么
+   - 为什么值得普通读者看
+   - 读者看完能得到什么
+8) Keep factual tone. No fabrication, no vague filler.
+9) Keep SEO keywords naturally: NASA, Artemis, 登月, 空间站, 深空探索.
 
 JSON schema:
 {{
@@ -97,9 +103,9 @@ def build_gemini_rewrite_prompt(
     quality_report: dict[str, Any],
     attempt: int,
 ) -> str:
-    issues = quality_report.get("issues", [])[:8]
+    issues = quality_report.get("issues", [])[:10]
     return f"""
-Rewrite the JSON article to pass the quality gate with score >= {MIN_QUALITY_SCORE}.
+Rewrite the JSON article to pass quality gate score >= {MIN_QUALITY_SCORE}.
 This is rewrite attempt #{attempt}.
 
 News materials:
@@ -114,21 +120,21 @@ Recent titles:
 Current draft JSON:
 {json.dumps(previous_payload, ensure_ascii=False)}
 
-Quality score:
+Quality report:
 {json.dumps(quality_report, ensure_ascii=False)}
 
 Priority fixes:
 {json.dumps(issues, ensure_ascii=False)}
 
 Mandatory constraints:
-- Keep output as valid JSON only.
-- Keep all user-facing text in Simplified Chinese.
-- No external links, no anchor tags, no source jump prompts.
-- Keep style engaging but factual and non-clickbait.
-- Remove duplication and improve readability for WeChat feed.
-- Maintain SEO keyword coverage naturally.
+- Keep JSON-only output.
+- Keep all body text in Simplified Chinese.
+- No external links / anchor tags / source-jump wording.
+- Total body content >= 500 Chinese chars.
+- Every card must have: 关键信息 / 对读者意味着什么 / 下一步关注点.
+- Improve information density and keep factual precision.
 
-Return the full JSON with keys: date, title, covers, songs, weixin_html.
+Return full JSON with keys: date, title, covers, songs, weixin_html.
 """
 
 
@@ -229,23 +235,23 @@ def evaluate_payload_quality(
     chinese_chars, english_words, ratio = text_language_stats(plain_text)
     long_english_phrase = bool(re.search(r"(?:\b[A-Za-z]{3,}\b\s+){5,}", plain_text))
     target_articles = max(1, len(articles))
-    min_chinese_chars = 160 + target_articles * 45
+    min_chinese_chars = max(500, 320 + target_articles * 120)
 
     language_score = 0
     if chinese_chars >= min_chinese_chars:
-        language_score += 8
+        language_score += 10
     else:
-        issues.append("body_too_short_or_not_enough_chinese")
-    if ratio >= 0.82:
+        issues.append("body_below_500_chinese_chars")
+    if ratio >= 0.84:
         language_score += 8
-    elif ratio >= 0.72:
+    elif ratio >= 0.75:
         language_score += 4
         issues.append("chinese_ratio_low")
     else:
         issues.append("chinese_ratio_too_low")
-    if english_words <= 25:
+    if english_words <= 20:
         language_score += 4
-    elif english_words <= 40:
+    elif english_words <= 35:
         language_score += 2
         issues.append("too_much_english")
     else:
@@ -270,8 +276,16 @@ def evaluate_payload_quality(
         structure_score += 8
     else:
         issues.append("news_card_count_insufficient")
-    if any(token in plain_text for token in ["互动", "评论", "你最想", "为什么"]):
-        structure_score += 7
+
+    required_markers = ["关键信息", "对你意味着什么", "下一步关注点"]
+    marker_hits = sum(1 for marker in required_markers if marker in plain_text)
+    if marker_hits >= 3:
+        structure_score += 8
+    else:
+        issues.append("missing_reader_oriented_sections")
+
+    if any(token in plain_text for token in ["互动", "留言", "你会选哪条", "你最关心"]):
+        structure_score += 4
     else:
         issues.append("missing_interaction_prompt")
     breakdown["structure"] = structure_score
@@ -293,9 +307,9 @@ def evaluate_payload_quality(
 
     seo_score = 0
     keyword_hits = sum(1 for keyword in TITLE_KEYWORDS if keyword.lower() in plain_text.lower())
-    if keyword_hits >= 3:
+    if keyword_hits >= 4:
         seo_score += 8
-    elif keyword_hits >= 2:
+    elif keyword_hits >= 3:
         seo_score += 5
         issues.append("seo_keyword_coverage_medium")
     else:
@@ -304,8 +318,7 @@ def evaluate_payload_quality(
         seo_score += 4
     else:
         issues.append("seo_structure_tags_missing")
-    min_content_depth = 200 + target_articles * 70
-    if len(plain_text) >= min_content_depth:
+    if chinese_chars >= min_chinese_chars:
         seo_score += 3
     else:
         issues.append("content_depth_insufficient")
@@ -320,6 +333,8 @@ def evaluate_payload_quality(
         "html_contains_browser_artifact",
         "html_not_chinese_friendly",
         "title_similar_to_recent",
+        "body_below_500_chinese_chars",
+        "missing_reader_oriented_sections",
     }
     if any(issue in hard_fail_issues for issue in issues):
         total_score = min(total_score, MIN_QUALITY_SCORE - 1)
@@ -374,6 +389,7 @@ def generate_payload(
                     latest_quality,
                     attempt,
                 )
+
             raw = call_gemini(api_key, prompt)
             parsed = parse_model_json(raw)
             candidate = sanitize_payload(parsed, default_payload, date_str, cover_urls, articles, recent_titles)
@@ -383,7 +399,7 @@ def generate_payload(
             latest_quality = quality
             print(
                 f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS}: quality={quality['score']} "
-                f"issues={quality['issues'][:4]}"
+                f"issues={quality['issues'][:5]}"
             )
 
             if quality["score"] > best_quality["score"]:

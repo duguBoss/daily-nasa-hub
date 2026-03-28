@@ -46,9 +46,9 @@ def parse_en_date_to_cn(text: str) -> str:
     if not match:
         return ""
     month = month_map.get(match.group(1).lower())
-    day = int(match.group(2))
     if not month:
         return ""
+    day = int(match.group(2))
     return f"{month}月{day}日"
 
 
@@ -63,10 +63,10 @@ def extract_numeric_fact(text: str) -> str:
             num = None
 
         if unit == "million" and num is not None:
-            return f"合同金额约{num:g}百万美元"
+            return f"金额约{num:g}百万美元"
         if unit == "billion" and num is not None:
-            return f"合同金额约{num:g}十亿美元"
-        return f"合同金额约{amount.group(1)}美元"
+            return f"金额约{num:g}十亿美元"
+        return f"金额约{amount.group(1)}美元"
 
     date_cn = parse_en_date_to_cn(text)
     if date_cn:
@@ -89,24 +89,19 @@ def normalize_cn_title(title: str) -> str:
             "nasa selects intuitive machines to deliver artemis science, tech to moon",
             "NASA选定Intuitive Machines执行Artemis月面科学与技术投送",
         ),
+        ("i am artemis", "Artemis人物故事：一线岗位与任务协同"),
     ]
     for key, cn in exact_rules:
         if key in lower:
             return cn
 
-    if lower.startswith("i am artemis"):
-        name_match = re.search(r":\s*([A-Za-z][A-Za-z\s\.-]{2,40})", text)
-        if name_match:
-            return f"Artemis人物故事：{normalize_whitespace(name_match.group(1))}"
-        return "Artemis人物故事：一线团队访谈"
-
     keyword_rules = [
-        (("artemis ii", "crew", "launch"), "Artemis II发射前准备进入关键阶段"),
-        (("intuitive machines", "clps"), "CLPS月面投送任务新增商业合作"),
+        (("artemis", "launch"), "Artemis任务发布发射阶段进展"),
+        (("intuitive machines", "clps"), "CLPS月面投送新增商业合同"),
         (("spacestation", "spacewalk"), "空间站舱外任务窗口开启"),
-        (("moon", "lunar"), "NASA登月任务发布最新进展"),
-        (("rocket", "launch"), "NASA火箭任务发布最新节点"),
-        (("image", "gallery"), "NASA航天影像发布今日看点"),
+        (("moon", "lunar"), "NASA登月任务发布最新节点"),
+        (("rocket", "launch"), "NASA火箭任务发布关键里程碑"),
+        (("image", "gallery"), "NASA航天影像发布今日重点"),
     ]
     for keys, cn in keyword_rules:
         if any(key in lower for key in keys):
@@ -114,14 +109,14 @@ def normalize_cn_title(title: str) -> str:
 
     proper_nouns = re.findall(r"[A-Z][A-Za-z0-9-]{2,}", text)
     if proper_nouns:
-        return f"NASA任务更新：{proper_nouns[0]}相关进展发布"
+        return f"NASA任务更新：{proper_nouns[0]}相关进展"
     return "NASA任务更新：关键任务节点发布"
 
 
 def normalize_cn_summary(summary: str, title: str) -> str:
     text = clean_english_artifacts(summary)
-    if count_chinese_chars(text) >= 24:
-        return text[:220]
+    if count_chinese_chars(text) >= 28:
+        return text[:260]
 
     lower = (f"{title} {summary}").lower()
     mission = normalize_cn_title(title).replace("NASA任务更新：", "")
@@ -135,13 +130,13 @@ def normalize_cn_summary(summary: str, title: str) -> str:
     if "clps" in lower or "intuitive machines" in lower:
         facts.append("任务属于NASA商业月面载荷服务体系")
     if "moon" in lower or "lunar" in lower:
-        facts.append("核心目标围绕月面任务能力验证")
+        facts.append("核心目标围绕月面能力验证")
     if "spacewalk" in lower or "iss" in lower or "spacestation" in lower:
         facts.append("与空间站长期在轨运营相关")
 
     fact_text = "；".join(dict.fromkeys(facts))
     if fact_text:
-        return f"这条消息聚焦{mission}。{fact_text}。重点关注任务目标、执行节点与后续验证安排。"
+        return f"这条消息聚焦{mission}。{fact_text}。值得关注任务目标、执行节点与后续验证安排。"
 
     return (
         f"这条消息聚焦{mission}。本文提炼任务目标、关键进展与后续节点，"
@@ -229,4 +224,4 @@ def is_html_chinese_friendly(weixin_html: str) -> bool:
 
     if "your browser does not support the audio element" in plain_text.lower():
         return False
-    return chinese_chars >= 180 and ratio >= 0.78 and english_words <= 40 and not long_english_phrase
+    return chinese_chars >= 300 and ratio >= 0.80 and english_words <= 30 and not long_english_phrase
