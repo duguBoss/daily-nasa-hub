@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
 import re
-from typing import Any
+from typing import Any, Callable
 
 import requests
 from bs4 import BeautifulSoup
@@ -23,6 +24,8 @@ from .config import (
     FORBIDDEN_TITLE_PATTERNS,
     MAX_MODEL_ATTEMPTS,
     MIN_QUALITY_SCORE,
+    MINIMAX_MODEL_NAME,
+    MINIMAX_OPENAI_BASE_URL,
     PRIMARY_MODEL_NAME,
     REQUEST_TIMEOUT,
     REQUIRE_AI_GENERATION,
@@ -129,6 +132,7 @@ def is_quota_or_rate_limit_error(error_text: str) -> bool:
     return (
         "resource_exhausted" in text
         or "quota exceeded" in text
+        or "insufficient_quota" in text
         or "rate limit" in text
         or "(429)" in text
         or " 429" in text
@@ -161,8 +165,39 @@ def call_gemini(api_key: str, prompt: str, model_name: str) -> str:
     return parts[0].get("text", "")
 
 
+def call_minimax(api_key: str, prompt: str, model_name: str) -> str:
+    base_url = os.environ.get("MINIMAX_OPENAI_BASE_URL", "").strip() or MINIMAX_OPENAI_BASE_URL
+    endpoint = f"{base_url.rstrip('/')}/chat/completions"
+    payload = {
+        "model": model_name,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.7,
+        "stream": False,
+    }
+    response = requests.post(
+        endpoint,
+        headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"},
+        json=payload,
+        timeout=REQUEST_TIMEOUT,
+    )
+    if response.status_code != 200:
+        raise RuntimeError(f"{model_name} request failed ({response.status_code}): {response.text}")
+
+    result_json = response.json()
+    choices = result_json.get("choices") or []
+    if not choices:
+        raise RuntimeError(f"{model_name} returned empty choices.")
+    message = choices[0].get("message") or {}
+    content = message.get("content")
+    if not isinstance(content, str) or not content.strip():
+        raise RuntimeError(f"{model_name} returned empty content.")
+    return content
+
+
 def parse_model_json(raw_text: str) -> dict[str, Any]:
     text = raw_text.strip()
+    # MiniMax/OpenAI-compatible models may prepend reasoning blocks.
+    text = re.sub(r"(?is)<think>.*?</think>", "", text).strip()
     if text.startswith("```"):
         text = re.sub(r"^```(?:json)?\s*", "", text)
         text = re.sub(r"\s*```$", "", text)
@@ -496,7 +531,8 @@ def evaluate_payload_quality(
 
 
 def generate_payload(
-    api_key: str | None,
+    gemini_api_key: str | None,
+    minimax_api_key: str | None,
     date_str: str,
     articles: list[dict[str, Any]],
     cover_urls: list[str],
@@ -514,13 +550,30 @@ def generate_payload(
     )
     default_quality = evaluate_payload_quality(default_payload, articles, recent_titles)
 
-    if REQUIRE_AI_GENERATION and not api_key:
-        raise RuntimeError("GEMINI_API_KEY not set. AI generation is required for publishing.")
+    if REQUIRE_AI_GENERATION and not gemini_api_key and not minimax_api_key:
+        raise RuntimeError("Neither GEMINI_API_KEY nor MINIMAX_API_KEY is set. AI generation is required for publishing.")
+
+    model_candidates: list[tuple[str, str, str, Callable[[str, str, str], str]]] = []
+    if gemini_api_key:
+        for model_name in [PRIMARY_MODEL_NAME, FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME]:
+            if model_name:
+                model_candidates.append(("gemini", model_name, gemini_api_key, call_gemini))
+    if minimax_api_key:
+        minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
+        model_candidates.append(("minimax", minimax_model_name, minimax_api_key, call_minimax))
+
+    if REQUIRE_AI_GENERATION and not model_candidates:
+        raise RuntimeError("No usable model candidate found for AI generation.")
+
+    primary_provider, primary_model_name = ("gemini", PRIMARY_MODEL_NAME)
+    if model_candidates:
+        primary_provider, primary_model_name = model_candidates[0][0], model_candidates[0][1]
 
     meta = {
-        "ai_enabled": bool(api_key),
+        "ai_enabled": bool(gemini_api_key or minimax_api_key),
         "ai_success": False,
-        "model": PRIMARY_MODEL_NAME,
+        "provider": primary_provider,
+        "model": primary_model_name,
         "error": "",
         "fallback_used": False,
         "quality_score": default_quality["score"],
@@ -529,9 +582,6 @@ def generate_payload(
         "attempts": 0,
     }
 
-    models = [PRIMARY_MODEL_NAME, FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME]
-    # Keep order stable while avoiding duplicates.
-    models = list(dict.fromkeys([model for model in models if model]))
     latest_payload = default_payload
     latest_quality = default_quality
     last_error = ""
@@ -540,10 +590,12 @@ def generate_payload(
         attempt_best_payload: dict[str, Any] | None = None
         attempt_best_quality: dict[str, Any] | None = None
         attempt_best_model = ""
+        attempt_best_provider = ""
 
-        for model_name in models:
+        for provider, model_name, provider_api_key, caller in model_candidates:
+            model_label = f"{provider}:{model_name}"
             try:
-                print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS}: trying {model_name}")
+                print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS}: trying {model_label}")
                 if attempt == 1:
                     prompt = build_gemini_prompt(date_str, articles, cover_urls, recent_titles)
                 else:
@@ -555,7 +607,7 @@ def generate_payload(
                         attempt,
                     )
 
-                raw = call_gemini(api_key, prompt, model_name)
+                raw = caller(provider_api_key, prompt, model_name)
                 parsed = parse_model_json(raw)
                 candidate = sanitize_payload(
                     parsed,
@@ -569,7 +621,7 @@ def generate_payload(
                 quality = evaluate_payload_quality(candidate, articles, recent_titles)
 
                 print(
-                    f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_name}: "
+                    f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_label}: "
                     f"quality={quality['score']} issues={quality['issues'][:6]}"
                 )
 
@@ -577,12 +629,16 @@ def generate_payload(
                     attempt_best_payload = candidate
                     attempt_best_quality = quality
                     attempt_best_model = model_name
+                    attempt_best_provider = provider
 
                 if quality["score"] >= MIN_QUALITY_SCORE:
                     meta.update(
                         {
                             "ai_success": True,
-                            "fallback_used": model_name != PRIMARY_MODEL_NAME,
+                            "provider": provider,
+                            "fallback_used": not (
+                                provider == primary_provider and model_name == primary_model_name
+                            ),
                             "model": model_name,
                             "quality_score": quality["score"],
                             "quality_breakdown": quality["breakdown"],
@@ -592,13 +648,13 @@ def generate_payload(
                     )
                     return candidate, meta
             except Exception as exc:
-                last_error = f"{model_name}: {exc}"
+                last_error = f"{model_label}: {exc}"
                 if is_quota_or_rate_limit_error(str(exc)):
                     print(
-                        f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_name} hit quota/rate limit; "
+                        f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_label} hit quota/rate limit; "
                         "switching to next model."
                     )
-                print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_name} failed: {exc}")
+                print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_label} failed: {exc}")
 
         if attempt_best_payload is not None and attempt_best_quality is not None:
             latest_payload = attempt_best_payload
@@ -608,9 +664,13 @@ def generate_payload(
                     "quality_score": attempt_best_quality["score"],
                     "quality_breakdown": attempt_best_quality["breakdown"],
                     "quality_issues": attempt_best_quality["issues"],
-                    "model": attempt_best_model or PRIMARY_MODEL_NAME,
+                    "provider": attempt_best_provider or primary_provider,
+                    "model": attempt_best_model or primary_model_name,
                     "attempts": attempt,
-                    "fallback_used": (attempt_best_model or PRIMARY_MODEL_NAME) != PRIMARY_MODEL_NAME,
+                    "fallback_used": not (
+                        (attempt_best_provider or primary_provider) == primary_provider
+                        and (attempt_best_model or primary_model_name) == primary_model_name
+                    ),
                 }
             )
 

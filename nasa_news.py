@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime
+import os
 from typing import Any
 
 from daily_nasa.ai_writer import generate_payload
@@ -10,11 +11,12 @@ from daily_nasa.config import (
     IMAGE_OF_THE_DAY_URL,
     LIST_TOP_N,
     MERGE_TOP_N,
+    MINIMAX_MODEL_NAME,
     PRIMARY_MODEL_NAME,
     SHANGHAI_TZ,
 )
 from daily_nasa.fetching import build_processed_articles, fetch_image_of_the_day_candidate, fetch_top_n_articles
-from daily_nasa.persistence import get_optional_api_key, save_news
+from daily_nasa.persistence import get_optional_api_key, get_optional_minimax_api_key, save_news
 from daily_nasa.state import cleanup_old_files, load_previous_day_candidates, load_seen_state, save_seen_state
 
 
@@ -88,13 +90,16 @@ def main() -> None:
         return
 
     cover_urls = [article.get("cover_url", "") for article in processed_articles if article.get("cover_url", "")]
-    api_key = get_optional_api_key()
+    gemini_api_key = get_optional_api_key()
+    minimax_api_key = get_optional_minimax_api_key()
+    minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
     print(
         "AI models: "
-        f"primary={PRIMARY_MODEL_NAME}, fallback={FALLBACK_MODEL_NAME}, extra_fallback={EXTRA_FALLBACK_MODEL_NAME}"
+        f"primary={PRIMARY_MODEL_NAME}, fallback={FALLBACK_MODEL_NAME}, extra_fallback={EXTRA_FALLBACK_MODEL_NAME}, "
+        f"minimax={minimax_model_name}"
     )
 
-    payload, generation_meta = generate_payload(api_key, date_str, processed_articles, cover_urls)
+    payload, generation_meta = generate_payload(gemini_api_key, minimax_api_key, date_str, processed_articles, cover_urls)
     if reused_source_date:
         generation_meta["reused_previous_day"] = True
         generation_meta["reused_source_date"] = reused_source_date
