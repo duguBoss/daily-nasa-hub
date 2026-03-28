@@ -86,6 +86,7 @@ TITLE_HOOK_TERMS = (
     "窗口",
     "合同",
     "进展",
+    "看点",
 )
 FAN_PERSPECTIVE_TERMS = (
     "航天迷",
@@ -264,6 +265,7 @@ MANDATORY OUTPUT RULES:
 14) Engagement requirement: opening paragraph must answer "为什么今天必须看这条"，not generic summary.
 15) Title should include one action/hook word such as: 倒计时 / 关键节点 / 敲定 / 抵达 / 窗口 / 里程碑.
 16) Keep rich WeChat visual style: cards, contrast blocks, and clear hierarchy (h1/h3/strong).
+17) Title style choose one (A/B rotation): 倒计时 / 里程碑 / 看点清单 / 变化判断 / 追踪提醒.
 
 JSON schema:
 {{
@@ -311,6 +313,7 @@ Hard constraints:
 - Write from NASA enthusiast perspective ("航天爱好者带读"), not plain agency bulletin style.
 - Title must include at least one hook/action word (倒计时/关键节点/抵达/窗口/里程碑 etc).
 - Keep strong visual hierarchy (h1 + card style + emphasized key lines).
+- Title style choose one (A/B rotation): 倒计时 / 里程碑 / 看点清单 / 变化判断 / 追踪提醒.
 """
 
 

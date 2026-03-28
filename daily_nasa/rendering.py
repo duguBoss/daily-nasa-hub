@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import hashlib
-import random
 import re
 from typing import Any
 
@@ -193,7 +192,14 @@ def fit_title_length(title: str) -> str:
     return text
 
 
-def score_title_candidate(title: str, signal: str, lead_subject: str, recent_titles: list[str]) -> float:
+def score_title_candidate(
+    title: str,
+    signal: str,
+    lead_subject: str,
+    recent_titles: list[str],
+    preferred_style: str,
+    style_tag: str,
+) -> float:
     score = 100.0
     if not re.search(r"[0-9一二三四五六七八九十]", title):
         score -= 12
@@ -207,6 +213,8 @@ def score_title_candidate(title: str, signal: str, lead_subject: str, recent_tit
         score += 7
     else:
         score -= 10
+    if preferred_style and style_tag == preferred_style:
+        score += 4
 
     similarity_penalty = 0.0
     for recent in recent_titles[:12]:
@@ -224,40 +232,106 @@ def build_wechat_fallback_title(
 ) -> str:
     recent_titles = recent_titles or []
     count = len(articles)
+    title_count = max(1, count)
     focus = pick_title_focus(articles)
     signal = infer_story_signal(articles)
     lead_subject = extract_lead_subject(articles)
 
-    if count <= 1:
-        templates = [
-            f"NASA焦点：{lead_subject}关键节点",
-            f"NASA通报：{lead_subject}里程碑进展",
-            f"NASA更新：{lead_subject}后续看点",
-            f"NASA新动态：{lead_subject}时间线",
-            f"NASA任务追踪：{lead_subject}窗口变化",
-        ]
-    else:
-        templates = [
-            f"NASA今日{count}条：{lead_subject}新进展",
-            f"NASA更新{count}节点：{lead_subject}与{signal}",
-            f"NASA最新{count}看点：{lead_subject}与{focus}",
-            f"NASA速报{count}条：{lead_subject}关键变化",
-            f"NASA这{count}条要点：{lead_subject}倒计时信号",
-        ]
+    style_packs = [
+        (
+            "倒计时",
+            [
+                f"NASA焦点1条：{lead_subject}进入倒计时",
+                f"NASA通报1条：{lead_subject}窗口临近",
+            ],
+            [
+                f"NASA今日{title_count}条：{lead_subject}倒计时信号",
+                f"NASA速报{title_count}条：{lead_subject}窗口变化",
+            ],
+        ),
+        (
+            "里程碑",
+            [
+                f"NASA焦点1条：{lead_subject}里程碑节点",
+                f"NASA更新1条：{lead_subject}关键里程碑",
+            ],
+            [
+                f"NASA今日{title_count}条：{lead_subject}里程碑进展",
+                f"NASA更新{title_count}节点：{lead_subject}与{signal}",
+            ],
+        ),
+        (
+            "看点清单",
+            [
+                f"NASA看点1条：{lead_subject}三件事",
+                f"NASA任务追踪1条：{lead_subject}重点清单",
+            ],
+            [
+                f"NASA最新{title_count}看点：{lead_subject}与{focus}",
+                f"NASA这{title_count}条要点：{lead_subject}重点清单",
+            ],
+        ),
+        (
+            "变化判断",
+            [
+                f"NASA新动态1条：{lead_subject}关键变化",
+                f"NASA通报1条：{lead_subject}进度变化",
+            ],
+            [
+                f"NASA今日{title_count}条：{lead_subject}关键变化",
+                f"NASA速报{title_count}条：{lead_subject}变化判断",
+            ],
+        ),
+        (
+            "追踪提醒",
+            [
+                f"NASA焦点1条：{lead_subject}下一步怎么盯",
+                f"NASA更新1条：{lead_subject}后续看点",
+            ],
+            [
+                f"NASA今日{title_count}条：{lead_subject}后续怎么盯",
+                f"NASA这{title_count}条要点：{lead_subject}追踪提醒",
+            ],
+        ),
+    ]
 
-    candidates = [fit_title_length(template) for template in templates]
-    candidates = list(dict.fromkeys(candidates))
-    if not candidates:
-        candidates = [fit_title_length(f"NASA今日{max(1, count)}条关键进展：{focus}速读")]
-
-    seed_source = f"{date_str}|{count}|{signal}|{focus}"
+    seed_source = f"{date_str}|{count}|{signal}|{focus}|{lead_subject}"
     seed = int(hashlib.md5(seed_source.encode("utf-8")).hexdigest()[:8], 16)
-    rng = random.Random(seed)
-    rng.shuffle(candidates)
+    preferred_idx = seed % len(style_packs)
 
-    best_title = max(candidates, key=lambda title: score_title_candidate(title, signal, lead_subject, recent_titles))
+    candidates_with_style: list[tuple[str, str]] = []
+    for offset in range(len(style_packs)):
+        idx = (preferred_idx + offset) % len(style_packs)
+        style_tag, single_templates, multi_templates = style_packs[idx]
+        templates = single_templates if count <= 1 else multi_templates
+        for template in templates:
+            candidates_with_style.append((fit_title_length(template), style_tag))
+
+    deduped_candidates: list[tuple[str, str]] = []
+    seen_titles: set[str] = set()
+    for title, style_tag in candidates_with_style:
+        if title in seen_titles:
+            continue
+        seen_titles.add(title)
+        deduped_candidates.append((title, style_tag))
+
+    if not deduped_candidates:
+        deduped_candidates = [(fit_title_length(f"NASA今日{max(1, count)}条关键进展：{focus}速读"), "默认")]
+
+    preferred_style = style_packs[preferred_idx][0]
+    best_title, _ = max(
+        deduped_candidates,
+        key=lambda item: score_title_candidate(
+            item[0],
+            signal,
+            lead_subject,
+            recent_titles,
+            preferred_style,
+            item[1],
+        ),
+    )
     if is_title_repetitive(best_title, recent_titles):
-        for candidate in candidates:
+        for candidate, _ in deduped_candidates:
             if not is_title_repetitive(candidate, recent_titles):
                 best_title = candidate
                 break
