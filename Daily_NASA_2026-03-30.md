@@ -1,10 +1,17 @@
-# 1个关键节点！NASA登月任务4月1日敲定
+# 2大宇宙奇观！NASA带你探索仙王座幽灵与四月星空
 
 - 日期: 2026-03-30
 
-## 1. NASA登月任务发布最新节点
+## 1. NASA任务更新：Haunting相关进展
 
-- 频道: NASA
-- 链接: https://www.nasa.gov/blogs/missions/2026/03/29/final-preparations-underway-for-nasas-moon-mission
+- 频道: NASA APOD
+- 链接: https://apod.nasa.gov/apod/astropix.html
 
-这条消息聚焦NASA登月任务发布最新节点。关键时间点在4月1日；核心目标围绕月面能力验证；与空间站长期在轨运营相关。值得关注任务目标、执行节点与后续验证安排。
+这条消息聚焦Haunting相关进展。本文提炼任务目标、关键进展与后续节点，帮助你快速理解这条NASA动态为什么值得持续关注。
+
+## 2. NASA任务更新：What相关进展
+
+- 频道: NASA Science
+- 链接: https://science.nasa.gov/solar-system/whats-up-april-2026-skywatching-tips-from-nasa
+
+这条消息聚焦What相关进展。本文提炼任务目标、关键进展与后续节点，帮助你快速理解这条NASA动态为什么值得持续关注。
