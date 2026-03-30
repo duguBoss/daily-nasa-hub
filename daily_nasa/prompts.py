@@ -8,37 +8,46 @@ from .common import normalize_whitespace
 from .rendering import build_article_blocks
 
 
-READER_MARKER_1 = "关键信息"
-READER_MARKER_2 = "对你意味着什么"
-READER_MARKER_3 = "下一步关注点"
 MIN_CHINESE_CHARS = 500
 MISSION_HINT_TERMS = (
-    "artemis ii",
     "artemis",
+    "artemis ii",
     "clps",
     "intuitive machines",
     "iss",
+    "space station",
     "kennedy",
-    "阿尔忒弥斯",
-    "登月",
-    "月面",
+    "roman",
+    "webb",
+    "hubble",
+    "nisar",
+    "moon",
+    "lunar",
+    "launch",
     "月球",
+    "月面",
+    "登月",
     "空间站",
-    "肯尼迪",
+    "深空",
+    "火箭",
+    "发射",
+    "望远镜",
+    "彗星",
 )
 FAN_PERSPECTIVE_TERMS = (
     "航天迷",
-    "太空爱好者",
-    "追任务",
-    "值得追踪",
-    "我们最该盯",
+    "航天爱好者",
+    "太空迷",
+    "如果你也在追",
+    "抬头看天",
+    "我最想先讲",
 )
 
 
 def build_gemini_prompt(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str], recent_titles: list[str]) -> str:
     return f"""
 You are a NASA enthusiast and a senior Chinese science editor for WeChat.
-Write a high-value Chinese NASA briefing from an aerospace fan perspective.
+Write a polished Chinese NASA daily briefing that is vivid, accurate, and obviously grounded in the source materials.
 
 Date: {date_str}
 News materials:
@@ -53,19 +62,23 @@ Recent titles to avoid duplication:
 MANDATORY OUTPUT RULES:
 1) Output valid JSON only.
 2) All user-facing body text must be Simplified Chinese.
-3) Title length 14-28 Chinese chars, with a number signal and mission keyword.
-4) No external links, no anchor tags, no source-jump wording.
+3) Title length 14-28 Chinese chars, and it must include a number signal plus at least one concrete mission/entity from the materials.
+4) No external links, no anchor tags, no source-jump wording, no "原文如下" style copy.
 5) Body must have >= 500 Chinese characters.
-6) Write news cards in a natural, direct style. No section labels like "关键信息"、"对你意味着什么"、"下一步关注点". Just write the content as flowing paragraphs or use visual hierarchy (bold/headings) to organize.
-7) Prioritize factual density: include concrete mission names, stages, timelines, budgets, or technical targets.
-8) Write like you're explaining to a friend who knows a bit about space. Be direct, skip the template phrases like "随着...临近"、"值得关注"、"帮助你了解"、"内容详细梳理"、"对你意味着什么"、"下一步关注点".
-9) HTML rule: no leading whitespace after opening tags. Content must directly follow tags like <p>content</p> not <p> content</p>.
-10) Visual rule: side margin/padding must be 0 (or omitted). Do not set custom left/right spacing.
-11) Title must be tied to source stories, using at least one concrete mission/entity from materials (e.g. Artemis II / CLPS / Intuitive Machines). Title should be creative and content-driven, not templated. Never use: 倒计时 / 里程碑 / 看点清单 / 变化判断 / 追踪提醒.
-12) Each news card should include at least 2 concrete facts from source (time, amount,机构,里程碑).
-13) Tone: write as "航天爱好者带读" instead of neutral newswire. No templated section headers.
-14) Keep rich WeChat visual style: cards, contrast blocks, and clear hierarchy (h1/h3/strong).
-15) Each news card must include its cover image at the top using: <img src='IMAGE_URL' style='width:100%;display:block;border-radius:12px;margin:0 0 12px 0;object-fit:cover;'> where IMAGE_URL is from the article's Image field in the materials.
+6) The article structure must contain exactly 3 content cards when 3 materials are provided:
+   - Card 1: fixed as "NASA每日科普". It should read like a science explainer based on the first material, usually APOD/image/science content.
+   - Card 2 and Card 3: fixed as news cards. They must be based on the second and third source materials respectively.
+7) Never merge facts across cards. Each card may only use details from its corresponding source block.
+8) Each card must contain at least 2 concrete source facts: mission name, agency/company, date, location, payload, quantity, milestone, or technical target.
+9) Card 1 should explain what the reader is seeing/understanding, then why it matters scientifically. It should feel like a daily NASA science read, not a news brief.
+10) Card 2 and Card 3 should each use 2-3 natural paragraphs: first explain what happened, then explain why this development matters. Keep the interpretation tightly inferable from the source.
+11) Avoid templated phrases and newsroom cliches, especially: "这条消息聚焦", "帮助你快速理解", "值得关注", "内容详细梳理", "对你意味着什么", "下一步关注点", "今天的NASA速报就到这里".
+12) Write like a knowledgeable aerospace fan explaining the day to other readers. Natural, direct, lively, but never exaggerated.
+13) Keep strong WeChat visual hierarchy. Use one H1 title, styled content cards, and a clear divider between Card 1 and Card 2 with the label "今日NASA新闻".
+14) Each card must include its image at the top. Use the article Image field from the materials.
+15) Preserve important English mission/entity names on first mention when needed, and explain them naturally in Chinese instead of forcing awkward translation.
+16) HTML rule: no leading whitespace right after opening tags.
+17) Side margin/padding must be 0 (or omitted) on the outer wrapper.
 
 JSON schema:
 {{
@@ -105,53 +118,62 @@ Fix these issues first:
 Hard constraints:
 - JSON-only output.
 - >= 500 Chinese chars in body.
-- No section labels like "关键信息"、"对你意味着什么"、"下一步关注点". Write flowing paragraphs or use visual hierarchy.
+- Keep exactly one H1 and 3 clearly separated cards when 3 materials are provided.
+- Card 1 must be labeled "NASA每日科普"; Card 2 and Card 3 must be news cards.
+- Add a visible divider labeled "今日NASA新闻" between Card 1 and Card 2.
+- Each card must stay faithful to its own source. Do not borrow facts, names, dates, or conclusions from another card.
 - No links or source jumps.
-- Keep factual details and reader usefulness.
+- No templated phrases such as "这条消息聚焦" / "帮助你快速理解" / "对你意味着什么" / "下一步关注点".
+- Every card needs concrete source facts, not generic filler.
+- Title must include at least one concrete mission/entity from source materials and must not use forbidden generic title patterns.
+- Write from a NASA enthusiast perspective, but keep the tone grounded and readable.
 - HTML must have no leading whitespace after opening tags.
 - Side margin/padding must be 0 (or omitted).
-- Title must include at least one concrete mission/entity from source materials. Title should be creative and content-driven, not templated. Never use: 倒计时 / 里程碑 / 看点清单 / 变化判断 / 追踪提醒.
-- Write from NASA enthusiast perspective ("航天爱好者带读"), not plain agency bulletin style.
-- Keep strong visual hierarchy (h1 + card style + emphasized key lines).
 """
 
 
 def build_story_terms(articles: list[dict[str, Any]]) -> list[str]:
     text = " ".join(
         normalize_whitespace(
-            f"{article.get('title_en', '')} {article.get('title', '')} {article.get('summary', '')}"
+            f"{article.get('title_en', '')} {article.get('title', '')} {article.get('summary', '')} {article.get('content', '')}"
         )
         for article in articles
-    ).lower()
+    )
+    text_lower = text.lower()
     terms: list[str] = []
-    if "artemis ii" in text:
-        terms.extend(["artemis ii", "阿尔忒弥斯ii", "阿尔忒弥斯2号", "阿尔忒弥斯2"])
-    if "intuitive machines" in text:
-        terms.extend(["intuitive machines", "月面投送", "商业月面"])
-    if "clps" in text:
-        terms.extend(["clps", "月面载荷服务"])
-    if "kennedy" in text:
-        terms.extend(["肯尼迪", "发射场"])
-    if "iss" in text or "space station" in text or "spacestation" in text:
-        terms.extend(["iss", "空间站"])
-    if "lunar" in text or "moon" in text:
-        terms.extend(["登月", "月球", "月面"])
-    if "artemis" in text:
-        terms.extend(["artemis", "阿尔忒弥斯"])
 
-    if not terms and articles:
-        lead_title = normalize_whitespace(str(articles[0].get("title", "")))
-        terms.extend([token.lower() for token in re.findall(r"[A-Za-z]{3,}(?:\s+[A-Za-z0-9]{2,})?", lead_title)[:3]])
-        for token in re.findall(r"[\u4e00-\u9fff]{2,6}", lead_title):
-            if token not in {"今日", "今天", "动态", "进展", "任务", "更新", "关键"}:
-                terms.append(token.lower())
+    canonical_terms = [
+        "Artemis II",
+        "Artemis",
+        "CLPS",
+        "Intuitive Machines",
+        "ISS",
+        "Kennedy",
+        "Roman",
+        "Webb",
+        "Hubble",
+        "NISAR",
+        "Moon",
+        "Lunar",
+    ]
+    for term in canonical_terms:
+        if term.lower() in text_lower:
+            terms.append(term.lower())
+
+    terms.extend(token.lower() for token in re.findall(r"\b[A-Z]{2,}(?:-[0-9]+)?\b", text))
+    terms.extend(token.lower() for token in re.findall(r"\b[A-Z][A-Za-z0-9-]{2,}(?:\s+[A-Z][A-Za-z0-9-]{2,}){0,2}\b", text))
+
+    lead_title = normalize_whitespace(str(articles[0].get("title", ""))) if articles else ""
+    for token in re.findall(r"[\u4e00-\u9fff]{2,8}", lead_title):
+        if token not in {"今日", "动态", "进展", "任务", "更新", "焦点", "科普", "新闻"}:
+            terms.append(token.lower())
 
     deduped: list[str] = []
     seen: set[str] = set()
     for term in terms:
-        clean_term = term.strip().lower()
+        clean_term = normalize_whitespace(term).strip().lower()
         if len(clean_term) < 2 or clean_term in seen:
             continue
         seen.add(clean_term)
         deduped.append(clean_term)
-    return deduped[:8]
+    return deduped[:12]

@@ -63,32 +63,28 @@ def extract_numeric_fact(text: str) -> str:
             num = None
 
         if unit == "million" and num is not None:
-            return f"金额约{num:g}百万美元"
+            return f"金额约 {num:g} 百万美元"
         if unit == "billion" and num is not None:
-            return f"金额约{num:g}十亿美元"
-        return f"金额约{amount.group(1)}美元"
+            return f"金额约 {num:g} 十亿美元"
+        return f"金额约 {amount.group(1)} 美元"
 
     date_cn = parse_en_date_to_cn(text)
     if date_cn:
-        return f"关键时间点在{date_cn}"
+        return f"关键时间点在 {date_cn}"
     return ""
 
 
 def normalize_cn_title(title: str) -> str:
     text = normalize_whitespace(title)
-    # If already has Chinese, return as-is
     if count_chinese_chars(text) >= 4:
         return text
-    # Otherwise return original English title for AI to translate
     return text
 
 
 def normalize_cn_summary(summary: str, title: str) -> str:
     text = clean_english_artifacts(summary)
-    # If already has sufficient Chinese, return as-is
     if count_chinese_chars(text) >= 28:
         return text[:260]
-    # Otherwise return original for AI to process
     return text[:260]
 
 
@@ -141,7 +137,7 @@ def canonicalize_url(raw_url: str, base_url: str = "https://www.nasa.gov") -> st
 
 def title_skeleton(title: str) -> str:
     text = normalize_whitespace(title).lower()
-    text = re.sub(r"[0-9一二三四五六七八九十条个篇：:，,。.!！?？·\-\s]", "", text)
+    text = re.sub(r"[0-9一二三四五六七八九十条个篇：:，,。.!！？?、\-\s]", "", text)
     for token in GENERIC_TITLE_TOKENS:
         text = text.replace(token, "")
     return text

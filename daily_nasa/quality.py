@@ -16,25 +16,42 @@ from .common import (
     strip_html_leading_whitespace,
     text_language_stats,
 )
-from .config import (
-    FORBIDDEN_TITLE_PATTERNS,
-    MIN_QUALITY_SCORE,
-    TITLE_KEYWORDS,
+from .config import FORBIDDEN_TITLE_PATTERNS, MIN_QUALITY_SCORE, TITLE_KEYWORDS
+from .rendering import build_fallback_html, build_wechat_fallback_title, fit_title_length
+from .prompts import FAN_PERSPECTIVE_TERMS, MIN_CHINESE_CHARS, MISSION_HINT_TERMS, build_story_terms
+
+
+TEMPLATE_PHRASES = (
+    "这条消息聚焦",
+    "帮助你快速理解",
+    "内容详细梳理",
+    "对你意味着什么",
+    "下一步关注点",
+    "今天的NASA速报就到这里",
+    "准备好了吗",
+    "让我们一起深入",
 )
-from .rendering import (
-    build_fallback_html,
-    build_wechat_fallback_title,
-    fit_title_length,
-)
-from .prompts import (
-    FAN_PERSPECTIVE_TERMS,
-    MIN_CHINESE_CHARS,
-    MISSION_HINT_TERMS,
-    READER_MARKER_1,
-    READER_MARKER_2,
-    READER_MARKER_3,
-    build_story_terms,
-)
+ARTICLE_STOPWORDS = {
+    "nasa",
+    "news",
+    "daily",
+    "today",
+    "mission",
+    "missions",
+    "article",
+    "story",
+    "science",
+    "image",
+    "photo",
+    "launch",
+    "final",
+    "preparations",
+    "underway",
+    "what",
+    "read",
+    "more",
+    "from",
+}
 
 
 def sanitize_payload(
@@ -115,6 +132,47 @@ def title_matches_story_terms(title: str, articles: list[dict[str, Any]]) -> boo
     return False
 
 
+def _template_phrase_hits(text: str) -> list[str]:
+    return [phrase for phrase in TEMPLATE_PHRASES if phrase in text]
+
+
+def _article_terms(article: dict[str, Any]) -> list[str]:
+    source = normalize_whitespace(
+        f"{article.get('title_en', '')} {article.get('title', '')} {article.get('summary', '')} {article.get('content', '')}"
+    )
+    terms: list[str] = []
+    terms.extend(re.findall(r"\b[A-Z]{2,}(?:-[0-9]+)?\b", source))
+    terms.extend(re.findall(r"\b[A-Z][A-Za-z0-9-]{2,}(?:\s+[A-Z][A-Za-z0-9-]{2,}){0,2}\b", source))
+    terms.extend(re.findall(r"[\u4e00-\u9fff]{2,8}", source))
+    terms.extend(re.findall(r"\b(?:19|20)\d{2}\b", source))
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for term in terms:
+        clean = normalize_whitespace(term).strip()
+        key = clean.lower()
+        if len(clean) < 2 or key in seen:
+            continue
+        if key in ARTICLE_STOPWORDS or clean in {"今日", "动态", "进展", "新闻", "任务", "科普"}:
+            continue
+        seen.add(key)
+        deduped.append(clean)
+    return deduped[:12]
+
+
+def _grounded_article_count(plain_text: str, articles: list[dict[str, Any]]) -> int:
+    normalized_plain = plain_text.lower().replace(" ", "")
+    grounded = 0
+    for article in articles:
+        terms = _article_terms(article)
+        if not terms:
+            grounded += 1
+            continue
+        if any(term.lower().replace(" ", "") in normalized_plain for term in terms[:8]):
+            grounded += 1
+    return grounded
+
+
 def evaluate_payload_quality(
     payload: dict[str, Any],
     articles: list[dict[str, Any]],
@@ -134,7 +192,7 @@ def evaluate_payload_quality(
         title_score += 8
     else:
         issues.append("title_length_not_14_28")
-    if re.search(r"[0-9一二三四五六七八九十]", title):
+    if re.search(r"[0-9一二三四五六七八九十两3]", title):
         title_score += 4
     else:
         issues.append("title_missing_number_signal")
@@ -188,7 +246,7 @@ def evaluate_payload_quality(
 
     factual_signal_count = len(
         re.findall(
-            r"\b(?:19|20)\d{2}\b|\d+(?:\.\d+)?\s*(?:million|billion|%|km|kg|亿美元|百万美元|月|日|天|小时|次)",
+            r"\b(?:19|20)\d{2}\b|\d+(?:\.\d+)?\s*(?:million|billion|%|km|kg|hours?|days?|payloads?|missions?)",
             plain_text,
             flags=re.I,
         )
@@ -199,16 +257,22 @@ def evaluate_payload_quality(
     else:
         issues.append("factual_density_low")
 
+    grounded_articles = _grounded_article_count(plain_text, articles)
+    if grounded_articles >= len(articles):
+        language_score += 6
+    elif grounded_articles >= max(1, len(articles) - 1):
+        language_score += 3
+        issues.append("article_grounding_partial")
+    else:
+        issues.append("article_grounding_missing")
+
     mission_term_hits = sum(1 for term in MISSION_HINT_TERMS if term in plain_text.lower())
     if mission_term_hits >= max(2, len(articles)):
         language_score += 3
     else:
         issues.append("mission_terms_insufficient")
     if any(term in plain_text for term in FAN_PERSPECTIVE_TERMS):
-        language_score += 3
-    else:
-        issues.append("fan_perspective_missing")
-
+        language_score += 2
     breakdown["language"] = max(0, language_score)
 
     structure_score = 0
@@ -216,29 +280,26 @@ def evaluate_payload_quality(
         structure_score += 5
     else:
         issues.append("missing_h1")
-    card_count = len(re.findall(r"No\.\d+", html))
-    if card_count == 0:
-        card_count = len(re.findall(r"<h3", html.lower()))
+    card_count = len(re.findall(r"NASA新闻\s*\d{2}", plain_text))
+    if "NASA每日科普" in plain_text:
+        card_count += 1
     if card_count >= max(1, len(articles)):
-        structure_score += 8
+        structure_score += 10
     else:
         issues.append("news_card_count_insufficient")
     style_attr_count = html.lower().count("style=")
-    if style_attr_count >= 8 and "<section" in html.lower():
+    if style_attr_count >= 10 and "<section" in html.lower():
         structure_score += 4
     else:
         issues.append("layout_style_too_plain")
-
-    required_markers = [READER_MARKER_1, READER_MARKER_2, READER_MARKER_3]
-    marker_hits = sum(1 for marker in required_markers if marker in plain_text)
-    if marker_hits >= 3:
-        structure_score += 8
-    else:
-        issues.append("missing_reader_oriented_sections")
-    if any(token in plain_text for token in ["互动", "留言", "你会选哪条", "你最关心"]):
+    if "NASA每日科普" in plain_text:
         structure_score += 4
     else:
-        issues.append("missing_interaction_prompt")
+        issues.append("missing_science_card_label")
+    if "今日NASA新闻" in plain_text:
+        structure_score += 4
+    else:
+        issues.append("missing_news_divider")
     breakdown["structure"] = structure_score
 
     compliance_score = 0
@@ -254,6 +315,11 @@ def evaluate_payload_quality(
         compliance_score += 5
     else:
         issues.append("repeated_content_detected")
+    template_hits = _template_phrase_hits(plain_text)
+    if not template_hits:
+        compliance_score += 5
+    else:
+        issues.append("templated_phrases_detected")
     breakdown["compliance"] = compliance_score
 
     seo_score = 0
@@ -288,9 +354,12 @@ def evaluate_payload_quality(
         "title_not_specific_to_story",
         "body_below_500_chinese_chars",
         "factual_density_low",
-        "fan_perspective_missing",
+        "article_grounding_missing",
         "layout_style_too_plain",
         "side_spacing_not_zero",
+        "templated_phrases_detected",
+        "missing_science_card_label",
+        "missing_news_divider",
     }
     if any(issue in hard_fail_issues for issue in issues):
         total_score = min(total_score, MIN_QUALITY_SCORE - 1)

@@ -48,32 +48,60 @@ def main() -> None:
         print(f"  NEW {idx}. {item['title']}")
 
     selected: list[dict[str, Any]] = []
+    selected_url_set: set[str] = set()
     reused_source_date = ""
 
-    # 1. APOD (always first)
+    # 1. APOD / image science card (always first when available)
     if todays_apod:
         selected.append(todays_apod[0])
         print(f"Selected APOD: {todays_apod[0]['title']}")
 
     # 2. NASA news (prefer new, fallback to top list if all seen)
-    if new_candidates:
-        selected.append(new_candidates[0])
-        print(f"Selected NASA news: {new_candidates[0]['title']}")
-    elif top_list:
-        selected.append(top_list[0])
-        print(f"No new NASA news, using top: {top_list[0]['title']}")
+    primary_news_pool = new_candidates or top_list
+    if primary_news_pool:
+        primary_news = primary_news_pool[0]
+        selected.append(primary_news)
+        if primary_news.get("url"):
+            selected_url_set.add(primary_news["url"])
+        if new_candidates:
+            print(f"Selected NASA news: {primary_news['title']}")
+        else:
+            print(f"No new NASA news, using top: {primary_news['title']}")
 
-    # 3. SFN news (always add if available)
+    # 3. Prefer an external news perspective for the final slot.
     if sfn_news and len(selected) < 3:
         selected.append(sfn_news[0])
         print(f"Added SpaceFlight news: {sfn_news[0]['title']}")
 
-    if len(selected) < 2:
-        history_candidates, history_date = load_previous_day_candidates(target_date, 1)
-        if history_candidates:
-            selected.append(history_candidates[0])
+    # 4. If the third slot is still empty, fill it with another NASA article.
+    if len(selected) < 3:
+        backup_news_pool = new_candidates[1:] if len(new_candidates) > 1 else []
+        if not backup_news_pool:
+            backup_news_pool = [item for item in top_list if item.get("url") not in selected_url_set]
+        for candidate in backup_news_pool:
+            url = candidate.get("url", "")
+            if url and url in selected_url_set:
+                continue
+            selected.append(candidate)
+            if url:
+                selected_url_set.add(url)
+            print(f"Filled missing slot with NASA news: {candidate['title']}")
+            if len(selected) >= 3:
+                break
+
+    if len(selected) < 3:
+        history_candidates, history_date = load_previous_day_candidates(target_date, max(1, 3 - len(selected)))
+        for candidate in history_candidates:
+            url = candidate.get("url", "")
+            if url and url in selected_url_set:
+                continue
+            selected.append(candidate)
+            if url:
+                selected_url_set.add(url)
             reused_source_date = history_date
-            print(f"Fallback to historical from {history_date}")
+            print(f"Fallback to historical from {history_date}: {candidate['title']}")
+            if len(selected) >= 3:
+                break
 
     if top_list:
         print("Top list URLs:")
@@ -117,7 +145,8 @@ def main() -> None:
         selected_urls = []
     else:
         selected_urls = [
-            item["url"] for item in selected
+            item["url"]
+            for item in selected
             if item.get("url") and not item.get("is_apod") and not item.get("is_sfn")
         ]
 
