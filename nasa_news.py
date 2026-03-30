@@ -50,31 +50,30 @@ def main() -> None:
     selected: list[dict[str, Any]] = []
     reused_source_date = ""
 
+    # 1. APOD (always first)
     if todays_apod:
         selected.append(todays_apod[0])
+        print(f"Selected APOD: {todays_apod[0]['title']}")
 
+    # 2. NASA news (prefer new, fallback to top list if all seen)
     if new_candidates:
         selected.append(new_candidates[0])
         print(f"Selected NASA news: {new_candidates[0]['title']}")
-        if sfn_news and len(selected) < 3:
-            selected.append(sfn_news[0])
-            print(f"Added SpaceFlight news as 3rd: {sfn_news[0]['title']}")
-    elif sfn_news:
+    elif top_list:
+        selected.append(top_list[0])
+        print(f"No new NASA news, using top: {top_list[0]['title']}")
+
+    # 3. SFN news (always add if available)
+    if sfn_news and len(selected) < 3:
         selected.append(sfn_news[0])
-        print(f"No new NASA news, using SpaceFlight news: {sfn_news[0]['title']}")
-        if todays_apod and len(selected) < 2:
-            pass
-    else:
+        print(f"Added SpaceFlight news: {sfn_news[0]['title']}")
+
+    if len(selected) < 2:
         history_candidates, history_date = load_previous_day_candidates(target_date, 1)
         if history_candidates:
             selected.append(history_candidates[0])
             reused_source_date = history_date
-            print(f"No new content, reuse historical from {history_date}")
-        else:
-            iotd_candidate = fetch_image_of_the_day_candidate(IMAGE_OF_THE_DAY_URL)
-            if iotd_candidate:
-                selected.append(iotd_candidate)
-                print("Fallback to NASA Image of the Day.")
+            print(f"Fallback to historical from {history_date}")
 
     if top_list:
         print("Top list URLs:")
