@@ -120,6 +120,7 @@ def main() -> None:
         payload,
         generation_meta,
         date_str,
+        top_urls,
         selected_urls,
     )
 
