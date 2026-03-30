@@ -74,3 +74,8 @@ def get_optional_minimax_api_key() -> str | None:
     # Prefer dedicated key; fallback to OPENAI_API_KEY for OpenAI-compatible clients.
     api_key = os.environ.get("MINIMAX_API_KEY", "").strip() or os.environ.get("OPENAI_API_KEY", "").strip()
     return api_key or None
+
+
+def get_optional_nvidia_api_key() -> str | None:
+    api_key = os.environ.get("NVIDIA_API_KEY", "").strip()
+    return api_key or None

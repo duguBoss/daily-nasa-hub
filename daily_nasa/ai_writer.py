@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+from typing import Any
+
 from .models import (
     build_model_candidates,
     call_gemini,
     call_minimax,
+    call_nvidia,
     is_quota_or_rate_limit_error,
     parse_model_json,
 )
@@ -35,12 +38,13 @@ from .config import (
     MIN_QUALITY_SCORE,
     MINIMAX_MODEL_NAME,
     MINIMAX_OPENAI_BASE_URL,
+    NVIDIA_MODEL_SERIES,
+    NVIDIA_OPENAI_BASE_URL,
     PRIMARY_MODEL_NAME,
     REQUEST_TIMEOUT,
     REQUIRE_AI_GENERATION,
     TITLE_KEYWORDS,
 )
-from typing import Any
 
 
 __all__ = [
@@ -51,6 +55,7 @@ __all__ = [
     "build_gemini_rewrite_prompt",
     "call_gemini",
     "call_minimax",
+    "call_nvidia",
     "parse_model_json",
     "build_model_candidates",
     "is_quota_or_rate_limit_error",
@@ -62,6 +67,7 @@ __all__ = [
 def generate_payload(
     gemini_api_key: str | None,
     minimax_api_key: str | None,
+    nvidia_api_key: str | None,
     date_str: str,
     articles: list[dict[str, Any]],
     cover_urls: list[str],
@@ -79,10 +85,12 @@ def generate_payload(
     )
     default_quality = evaluate_payload_quality(default_payload, articles, recent_titles)
 
-    if REQUIRE_AI_GENERATION and not gemini_api_key and not minimax_api_key:
-        raise RuntimeError("Neither GEMINI_API_KEY nor MINIMAX_API_KEY is set. AI generation is required for publishing.")
+    if REQUIRE_AI_GENERATION and not gemini_api_key and not minimax_api_key and not nvidia_api_key:
+        raise RuntimeError(
+            "None of GEMINI_API_KEY, NVIDIA_API_KEY, or MINIMAX_API_KEY is set. AI generation is required for publishing."
+        )
 
-    model_candidates = build_model_candidates(gemini_api_key, minimax_api_key)
+    model_candidates = build_model_candidates(gemini_api_key, minimax_api_key, nvidia_api_key)
 
     if REQUIRE_AI_GENERATION and not model_candidates:
         raise RuntimeError("No usable model candidate found for AI generation.")
@@ -92,7 +100,7 @@ def generate_payload(
         primary_provider, primary_model_name = model_candidates[0][0], model_candidates[0][1]
 
     meta: dict[str, Any] = {
-        "ai_enabled": bool(gemini_api_key or minimax_api_key),
+        "ai_enabled": bool(gemini_api_key or minimax_api_key or nvidia_api_key),
         "ai_success": False,
         "provider": primary_provider,
         "model": primary_model_name,

@@ -25,6 +25,13 @@ GEMINI_ADDITIONAL_FALLBACK_MODELS = (
     "gemini-2.5-flash-lite",
     "gemini-2.5-pro",
 )
+NVIDIA_OPENAI_BASE_URL = "https://integrate.api.nvidia.com/v1"
+NVIDIA_MODEL_SERIES = (
+    "moonshotai/kimi-k2.5",
+    "nvidia/nemotron-3-super-120b-a12b",
+    "minimaxai/minimax-m2.5",
+    "z-ai/glm5",
+)
 MINIMAX_OPENAI_BASE_URL = "https://api.minimaxi.com/v1"
 MINIMAX_MODEL_NAME = "MiniMax-M2.7"
 

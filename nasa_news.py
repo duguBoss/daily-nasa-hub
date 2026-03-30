@@ -13,11 +13,12 @@ from daily_nasa.config import (
     LIST_TOP_N,
     MERGE_TOP_N,
     MINIMAX_MODEL_NAME,
+    NVIDIA_MODEL_SERIES,
     PRIMARY_MODEL_NAME,
     SHANGHAI_TZ,
 )
 from daily_nasa.fetching import build_processed_articles, fetch_apod_candidates, fetch_image_of_the_day_candidate, fetch_spaceflight_news_today, fetch_top_n_articles
-from daily_nasa.persistence import get_optional_api_key, get_optional_minimax_api_key, save_news
+from daily_nasa.persistence import get_optional_api_key, get_optional_minimax_api_key, get_optional_nvidia_api_key, save_news
 from daily_nasa.state import cleanup_old_files, load_previous_day_candidates, load_seen_state, save_seen_state
 
 
@@ -122,15 +123,24 @@ def main() -> None:
     cover_urls = [article.get("cover_url", "") for article in processed_articles if article.get("cover_url", "")]
     gemini_api_key = get_optional_api_key()
     minimax_api_key = get_optional_minimax_api_key()
+    nvidia_api_key = get_optional_nvidia_api_key()
     minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
+    nvidia_models = [model_name for model_name in NVIDIA_MODEL_SERIES if model_name]
     gemini_fallbacks = [FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME, *list(GEMINI_ADDITIONAL_FALLBACK_MODELS)]
     print(
         "AI models: "
         f"primary={PRIMARY_MODEL_NAME}, gemini_fallbacks={gemini_fallbacks}, "
-        f"minimax={minimax_model_name}"
+        f"nvidia_series={nvidia_models}, minimax={minimax_model_name}"
     )
 
-    payload, generation_meta = generate_payload(gemini_api_key, minimax_api_key, date_str, processed_articles, cover_urls)
+    payload, generation_meta = generate_payload(
+        gemini_api_key,
+        minimax_api_key,
+        nvidia_api_key,
+        date_str,
+        processed_articles,
+        cover_urls,
+    )
     if reused_source_date:
         generation_meta["reused_previous_day"] = True
         generation_meta["reused_source_date"] = reused_source_date
