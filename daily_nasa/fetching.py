@@ -357,15 +357,21 @@ def fetch_article_content(url: str) -> dict[str, Any]:
 def download_image(image_url: str, file_path: Path) -> bool:
     if not image_url:
         return False
+    # Clean URL - remove surrounding whitespace/quotes
+    image_url = image_url.strip().strip("'\"")
+    if not image_url:
+        return False
     try:
         file_path.parent.mkdir(parents=True, exist_ok=True)
+        print(f"Downloading image: {image_url[:80]}...")
         response = requests.get(image_url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": "Mozilla/5.0"})
         response.raise_for_status()
         with open(file_path, "wb") as file:
             file.write(response.content)
+        print(f"Image saved: {file_path}")
         return True
     except Exception as exc:
-        print(f"Failed to download image {image_url}: {exc}")
+        print(f"Failed to download image {image_url[:80]}: {exc}")
         return False
 
 
@@ -400,7 +406,8 @@ def build_processed_articles(candidates: list[dict[str, Any]], date_str: str) ->
                 print(f"Failed to fetch article detail: {exc}")
                 detail = {"title": candidate["title"], "summary": "", "content": "", "image_url": "", "publish_time": ""}
 
-        article_hash = hashlib.md5(url.encode("utf-8")).hexdigest()[:12]
+        hash_input = url if url else candidate.get("title", "") + candidate.get("apod_date", "")
+        article_hash = hashlib.md5(hash_input.encode("utf-8")).hexdigest()[:12]
         article_id = f"nasa-{article_hash}"
         image_path = ""
         cover_url = detail.get("image_url", "")
