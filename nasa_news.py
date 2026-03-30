@@ -37,59 +37,43 @@ def main() -> None:
     selected: list[dict[str, Any]] = []
     reused_source_date = ""
 
-    if top_list:
-        print("Top list URLs:")
-        for idx, url in enumerate(top_urls, start=1):
-            print(f"  {idx}. {url}")
+    new_candidates = [item for item in top_list if item["url"] not in seen_urls]
+    print(f"New candidates after dedupe check: {len(new_candidates)}")
+    for idx, item in enumerate(new_candidates, start=1):
+        print(f"  NEW {idx}. {item['title']}")
 
-        new_candidates = [item for item in top_list if item["url"] not in seen_urls]
-        print(f"New candidates after dedupe check: {len(new_candidates)}")
-        for idx, item in enumerate(new_candidates, start=1):
-            print(f"  NEW {idx}. {item['title']}")
+    todays_apod = fetch_apod_candidates(1)
+    if todays_apod:
+        print(f"Today's APOD: {todays_apod[0]['title']}")
 
-        if new_candidates:
-            selected = new_candidates[:MERGE_TOP_N]
+    if new_candidates:
+        selected = [new_candidates[0]]
+        print(f"Selected latest news: {selected[0]['title']}")
+        if todays_apod:
+            selected = [todays_apod[0]] + selected
+            print(f"Combined APOD + latest news, total={len(selected)}")
+    else:
+        if todays_apod:
+            selected = todays_apod
+            print("No new news today, using APOD only.")
         else:
-            print("No new URL today, fallback to latest historical daily content.")
-            history_candidates, history_date = load_previous_day_candidates(target_date, MERGE_TOP_N)
+            print("No APOD today, fallback to historical content.")
+            history_candidates, history_date = load_previous_day_candidates(target_date, 1)
             if history_candidates:
                 selected = history_candidates
                 reused_source_date = history_date
-                print(f"Reuse historical content from {history_date}, candidates={len(history_candidates)}")
+                print(f"Reuse historical content from {history_date}")
             else:
-                print("No historical content found, fallback to NASA Image of the Day.")
                 iotd_candidate = fetch_image_of_the_day_candidate(IMAGE_OF_THE_DAY_URL)
                 if iotd_candidate:
                     selected = [iotd_candidate]
                     if iotd_candidate["url"] not in top_urls:
                         top_urls = [iotd_candidate["url"]] + top_urls
-                else:
-                    print("No IOTD found, fallback to NASA APOD.")
-                    apod_candidates = fetch_apod_candidates(MERGE_TOP_N)
-                    if apod_candidates:
-                        selected = apod_candidates
-                        print(f"Selected {len(apod_candidates)} APOD candidates.")
-    else:
-        print("No list items found, fallback to latest historical daily content.")
-        history_candidates, history_date = load_previous_day_candidates(target_date, MERGE_TOP_N)
-        if history_candidates:
-            selected = history_candidates
-            reused_source_date = history_date
-            print(f"Reuse historical content from {history_date}, candidates={len(history_candidates)}")
-            if not top_urls:
-                top_urls = [item["url"] for item in history_candidates]
-        else:
-            print("No historical content found, fallback to NASA Image of the Day.")
-            iotd_candidate = fetch_image_of_the_day_candidate(IMAGE_OF_THE_DAY_URL)
-            if iotd_candidate:
-                selected = [iotd_candidate]
-                top_urls = [iotd_candidate["url"]]
-            else:
-                print("No IOTD found, fallback to NASA APOD.")
-                apod_candidates = fetch_apod_candidates(MERGE_TOP_N)
-                if apod_candidates:
-                    selected = apod_candidates
-                    print(f"Selected {len(apod_candidates)} APOD candidates.")
+
+    if top_list:
+        print("Top list URLs:")
+        for idx, url in enumerate(top_urls, start=1):
+            print(f"  {idx}. {url}")
 
     if not selected:
         print("No available candidate after fallback, only update state and exit.")
@@ -130,11 +114,17 @@ def main() -> None:
         payload,
         generation_meta,
         date_str,
-        source_top_urls=top_urls,
-        new_urls=selected_urls,
+        selected_urls,
     )
-    save_seen_state(state, latest_urls=top_urls, new_urls=selected_urls, date_str=date_str)
-    print("Daily NASA pipeline completed.")
+
+    save_seen_state(
+        state,
+        latest_urls=top_urls,
+        new_urls=selected_urls,
+        date_str=date_str,
+    )
+
+    print("Pipeline finished.")
 
 
 if __name__ == "__main__":
