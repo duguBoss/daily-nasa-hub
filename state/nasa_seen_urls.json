@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-30T15:20:53.529154+08:00",
+  "updated_at": "2026-03-30T15:47:44.992320+08:00",
   "date": "2026-03-30",
   "last_fetch_urls": [
     "https://www.nasa.gov/blogs/missions/2026/03/29/final-preparations-underway-for-nasas-moon-mission",
@@ -8,7 +8,9 @@
     "https://www.nasa.gov/blogs/missions/2026/03/27/artemis-ii-crew-arrives-at-launch-site-shares-moon-mascot",
     "https://science.nasa.gov/photojournal/nisars-view-of-mount-rainier"
   ],
-  "last_new_urls": [],
+  "last_new_urls": [
+    "https://spaceflightnow.com/2026/03/30/live-coverage-spacex-to-launch-119-payloads-on-smallsat-rideshare-mission-from-california"
+  ],
   "seen_urls": [
     "https://www.nasa.gov/blogs/missions/2026/03/29/final-preparations-underway-for-nasas-moon-mission",
     "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-erik-richards",
