@@ -28,7 +28,9 @@ jobs:
       - name: Run NASA news generator
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          NVIDIA_MODEL_NAME: ${{ vars.NVIDIA_MODEL_NAME }}
           MINIMAX_MODEL_NAME: ${{ vars.MINIMAX_MODEL_NAME }}
           MINIMAX_OPENAI_BASE_URL: ${{ vars.MINIMAX_OPENAI_BASE_URL }}
         run: python nasa_news.py
