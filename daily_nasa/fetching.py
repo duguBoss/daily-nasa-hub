@@ -221,7 +221,7 @@ def fetch_apod_candidates(count: int = 3) -> list[dict[str, Any]]:
         candidates.append(
             {
                 "title": title,
-                "url": f"https://apod.nasa.gov/apod/astropix.html?date={date}",
+                "url": "",
                 "source": "NASA APOD",
                 "summary": explanation[:300],
                 "cover_url": hdurl or image_url,
