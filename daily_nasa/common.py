@@ -241,3 +241,10 @@ def is_html_chinese_friendly(weixin_html: str) -> bool:
     if "your browser does not support the audio element" in plain_text.lower():
         return False
     return chinese_chars >= 300 and ratio >= 0.75 and english_words <= 60 and not long_english_phrase
+
+
+def strip_html_leading_whitespace(weixin_html: str) -> str:
+    if not weixin_html:
+        return weixin_html
+    weixin_html = re.sub(r"<(p|span|h[1-6]|strong|em|a|li|td|th|div|section|article)([^>]*)>\s+", r"<\1\2>", weixin_html)
+    return weixin_html
