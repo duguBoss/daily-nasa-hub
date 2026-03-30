@@ -112,7 +112,14 @@ def main() -> None:
     else:
         print("AI generation fallback used. " f"reason={generation_meta.get('error', 'unknown error')}")
 
-    selected_urls = [] if reused_source_date else [item["url"] for item in selected]
+    # Only NASA news URLs go to seen_urls (APOD and SFN bypass dedupe)
+    if reused_source_date:
+        selected_urls = []
+    else:
+        selected_urls = [
+            item["url"] for item in selected
+            if item.get("url") and not item.get("is_apod") and not item.get("is_sfn")
+        ]
 
     save_news(
         processed_articles,
