@@ -235,15 +235,13 @@ def fetch_apod_candidates(count: int = 3) -> list[dict[str, Any]]:
 
 
 def fetch_spaceflight_news_today() -> list[dict[str, Any]]:
-    if not SFN_API_KEY:
-        print("SFN_API_KEY not set, skipping SpaceFlight News API.")
-        return []
     try:
         url = f"{SFN_API_BASE}/articles/?limit=10&ordering=-published_at&format=json"
         headers = {"Authorization": f"Token {SFN_API_KEY}"} if SFN_API_KEY else {}
         response = requests.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
         response.raise_for_status()
         data = response.json()
+        print(f"SpaceFlight News API: fetched {len(data.get('results', []))} articles")
     except Exception as exc:
         print(f"Failed to fetch SpaceFlight News: {exc}")
         return []
