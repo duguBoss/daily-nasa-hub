@@ -55,34 +55,80 @@ def _build_next_watch(article: dict[str, Any]) -> str:
     return " ".join(watch[:2])
 
 
-def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> str:
-    cards_html = ""
-    for idx, article in enumerate(articles, start=1):
-        image = article.get("cover_url", "") or article.get("image_url", "")
-        meta = " · ".join(part for part in [article.get("channel", "NASA"), article.get("publish_time", "")] if part)
-        card_title = normalize_cn_title(article.get("title", ""))
-        summary = normalize_cn_summary(article.get("summary", ""), card_title)
-        takeaway = _build_reader_takeaway(article)
-        watch = _build_next_watch(article)
+def _build_news_card(article: dict[str, Any], idx: int) -> str:
+    image = article.get("cover_url", "") or article.get("image_url", "")
+    meta = " · ".join(part for part in [article.get("channel", "NASA"), article.get("publish_time", "")] if part)
+    card_title = normalize_cn_title(article.get("title", ""))
+    summary = normalize_cn_summary(article.get("summary", ""), card_title)
+    takeaway = _build_reader_takeaway(article)
+    watch = _build_next_watch(article)
 
-        card = (
-            "<section style='margin:0 0 18px 0;padding:16px;border:1px solid #e8eef5;border-radius:14px;"
-            "background:#ffffff;box-shadow:0 6px 16px rgba(20,35,54,0.06);'>"
-            f"<h3 style='margin:0 0 8px 0;font-size:19px;line-height:1.45;color:#1b2c45;'>No.{idx} {card_title}</h3>"
-            f"<p style='margin:0 0 12px 0;font-size:13px;color:#64748b;line-height:1.7;'>{meta}</p>"
-        )
-        if image:
-            card += (
-                f"<img src='{image}' style='width:100%;display:block;border-radius:12px;margin:0 0 12px 0;"
-                "object-fit:cover;'>"
-            )
+    card = (
+        "<section style='margin:0 0 18px 0;padding:16px;border:1px solid #e8eef5;border-radius:14px;"
+        "background:#ffffff;box-shadow:0 6px 16px rgba(20,35,54,0.06);'>"
+        f"<h3 style='margin:0 0 8px 0;font-size:19px;line-height:1.45;color:#1b2c45;'>No.{idx} {card_title}</h3>"
+        f"<p style='margin:0 0 12px 0;font-size:13px;color:#64748b;line-height:1.7;'>{meta}</p>"
+    )
+    if image:
         card += (
-            f"<p style='margin:0 0 10px 0;font-size:15px;line-height:1.92;color:#334155;'>{summary}</p>"
-            f"<p style='margin:0 0 10px 0;font-size:15px;line-height:1.92;color:#334155;'>{takeaway}</p>"
-            f"<p style='margin:0;font-size:15px;line-height:1.92;color:#334155;'>{watch}</p>"
+            f"<img src='{image}' style='width:100%;display:block;border-radius:12px;margin:0 0 12px 0;"
+            "object-fit:cover;'>"
+        )
+    card += (
+        f"<p style='margin:0 0 10px 0;font-size:15px;line-height:1.92;color:#334155;'>{summary}</p>"
+        f"<p style='margin:0 0 10px 0;font-size:15px;line-height:1.92;color:#334155;'>{takeaway}</p>"
+        f"<p style='margin:0;font-size:15px;line-height:1.92;color:#334155;'>{watch}</p>"
+        "</section>"
+    )
+    return card
+
+
+def _build_apod_card(article: dict[str, Any]) -> str:
+    image = article.get("cover_url", "") or article.get("image_url", "")
+    card_title = normalize_cn_title(article.get("title", ""))
+    summary = normalize_cn_summary(article.get("summary", ""), card_title)
+
+    card = (
+        "<section style='margin:0 0 20px 0;padding:0;background:#f4f8fc;'>"
+        f"<img src='{image}' style='width:100%;display:block;border-radius:12px;margin:0 0 12px 0;"
+        "object-fit:cover;'>"
+        "<section style='padding:16px;border:1px solid #e0e8f5;border-radius:14px;"
+        "background:#ffffff;box-shadow:0 6px 16px rgba(20,35,54,0.06);'>"
+        f"<h3 style='margin:0 0 10px 0;font-size:21px;line-height:1.4;color:#1b2c45;'>{card_title}</h3>"
+        f"<p style='margin:0;font-size:14px;line-height:1.95;color:#364a60;'>{summary}</p>"
+        "</section>"
+        "</section>"
+    )
+    return card
+
+
+def _build_divider(label: str = "") -> str:
+    if label:
+        return (
+            "<section style='display:flex;align-items:center;margin:24px 0;'>"
+            "<section style='flex:1;height:1px;background:linear-gradient(to right,#d0dce8,#e8eef5);'></section>"
+            f"<span style='padding:0 14px;font-size:13px;color:#8899aa;'>{label}</span>"
+            "<section style='flex:1;height:1px;background:linear-gradient(to left,#d0dce8,#e8eef5);'></section>"
             "</section>"
         )
-        cards_html += card
+    return (
+        "<section style='height:24px;background:#f4f8fc;'></section>"
+    )
+
+
+def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> str:
+    apod_articles = [a for a in articles if a.get("channel", "").startswith("NASA APOD")]
+    news_articles = [a for a in articles if not a.get("channel", "").startswith("NASA APOD")]
+
+    cards_html = ""
+    if apod_articles:
+        for article in apod_articles:
+            cards_html += _build_apod_card(article)
+
+    if news_articles:
+        cards_html += _build_divider("NASA 资讯")
+        for idx, article in enumerate(news_articles, start=1):
+            cards_html += _build_news_card(article, idx)
 
     intro = (
         "航天迷视角的NASA日报。不做简单搬运，只挑今天最值得追的那条，"
