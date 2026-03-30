@@ -13,12 +13,12 @@ from daily_nasa.config import (
     LIST_TOP_N,
     MERGE_TOP_N,
     MINIMAX_MODEL_NAME,
-    NVIDIA_MODEL_SERIES,
+    OPENROUTER_MODEL_SERIES,
     PRIMARY_MODEL_NAME,
     SHANGHAI_TZ,
 )
 from daily_nasa.fetching import build_processed_articles, fetch_apod_candidates, fetch_image_of_the_day_candidate, fetch_spaceflight_news_today, fetch_top_n_articles
-from daily_nasa.persistence import get_optional_api_key, get_optional_minimax_api_key, get_optional_nvidia_api_key, save_news
+from daily_nasa.persistence import get_optional_api_key, get_optional_minimax_api_key, get_optional_openrouter_api_key, save_news
 from daily_nasa.state import cleanup_old_files, load_previous_day_candidates, load_seen_state, save_seen_state
 
 
@@ -52,12 +52,10 @@ def main() -> None:
     selected_url_set: set[str] = set()
     reused_source_date = ""
 
-    # 1. APOD / image science card (always first when available)
     if todays_apod:
         selected.append(todays_apod[0])
         print(f"Selected APOD: {todays_apod[0]['title']}")
 
-    # 2. NASA news (prefer new, fallback to top list if all seen)
     primary_news_pool = new_candidates or top_list
     if primary_news_pool:
         primary_news = primary_news_pool[0]
@@ -69,12 +67,10 @@ def main() -> None:
         else:
             print(f"No new NASA news, using top: {primary_news['title']}")
 
-    # 3. Prefer an external news perspective for the final slot.
     if sfn_news and len(selected) < 3:
         selected.append(sfn_news[0])
         print(f"Added SpaceFlight news: {sfn_news[0]['title']}")
 
-    # 4. If the third slot is still empty, fill it with another NASA article.
     if len(selected) < 3:
         backup_news_pool = new_candidates[1:] if len(new_candidates) > 1 else []
         if not backup_news_pool:
@@ -123,20 +119,20 @@ def main() -> None:
     cover_urls = [article.get("cover_url", "") for article in processed_articles if article.get("cover_url", "")]
     gemini_api_key = get_optional_api_key()
     minimax_api_key = get_optional_minimax_api_key()
-    nvidia_api_key = get_optional_nvidia_api_key()
+    openrouter_api_key = get_optional_openrouter_api_key()
     minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
-    nvidia_models = [model_name for model_name in NVIDIA_MODEL_SERIES if model_name]
+    openrouter_models = [model_name for model_name in OPENROUTER_MODEL_SERIES if model_name]
     gemini_fallbacks = [FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME, *list(GEMINI_ADDITIONAL_FALLBACK_MODELS)]
     print(
         "AI models: "
         f"primary={PRIMARY_MODEL_NAME}, gemini_fallbacks={gemini_fallbacks}, "
-        f"nvidia_series={nvidia_models}, minimax={minimax_model_name}"
+        f"openrouter_series={openrouter_models}, minimax={minimax_model_name}"
     )
 
     payload, generation_meta = generate_payload(
         gemini_api_key,
         minimax_api_key,
-        nvidia_api_key,
+        openrouter_api_key,
         date_str,
         processed_articles,
         cover_urls,
@@ -150,7 +146,6 @@ def main() -> None:
     else:
         print("AI generation fallback used. " f"reason={generation_meta.get('error', 'unknown error')}")
 
-    # Only NASA news URLs go to seen_urls (APOD and SFN bypass dedupe)
     if reused_source_date:
         selected_urls = []
     else:

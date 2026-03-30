@@ -6,6 +6,23 @@ from pathlib import Path
 import pytz
 
 
+def _env_int(name: str, default: int) -> int:
+    value = os.environ.get(name, "").strip()
+    if not value:
+        return default
+    try:
+        return int(value)
+    except ValueError:
+        return default
+
+
+def _env_flag(name: str, default: bool) -> bool:
+    value = os.environ.get(name, "").strip().lower()
+    if not value:
+        return default
+    return value in {"1", "true", "yes", "on"}
+
+
 NASA_NEWS_URLS = [
     "https://www.nasa.gov/news/recently-published/",
     "https://www.nasa.gov/2026-news-releases/",
@@ -25,17 +42,22 @@ GEMINI_ADDITIONAL_FALLBACK_MODELS = (
     "gemini-2.5-flash-lite",
     "gemini-2.5-pro",
 )
-NVIDIA_OPENAI_BASE_URL = "https://integrate.api.nvidia.com/v1"
-NVIDIA_MODEL_SERIES = (
-    "moonshotai/kimi-k2.5",
-    "nvidia/nemotron-3-super-120b-a12b",
-    "minimaxai/minimax-m2.5",
-    "z-ai/glm5",
+OPENROUTER_OPENAI_BASE_URL = "https://openrouter.ai/api/v1"
+OPENROUTER_MODEL_SERIES = (
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "minimax/minimax-m2.5:free",
+    "stepfun/step-3.5-flash:free",
+    "nvidia/nemotron-3-nano-30b-a3b:free",
 )
 MINIMAX_OPENAI_BASE_URL = "https://api.minimaxi.com/v1"
 MINIMAX_MODEL_NAME = "MiniMax-M2.7"
 
-REQUEST_TIMEOUT = 45
+REQUEST_TIMEOUT = _env_int("REQUEST_TIMEOUT", 45)
+GEMINI_REQUEST_TIMEOUT = _env_int("GEMINI_REQUEST_TIMEOUT", REQUEST_TIMEOUT)
+OPENROUTER_REQUEST_TIMEOUT = _env_int("OPENROUTER_REQUEST_TIMEOUT", max(REQUEST_TIMEOUT, 180))
+MINIMAX_REQUEST_TIMEOUT = _env_int("MINIMAX_REQUEST_TIMEOUT", max(REQUEST_TIMEOUT, 120))
+OPENROUTER_MAX_TOKENS = _env_int("OPENROUTER_MAX_TOKENS", 8192)
+OPENROUTER_STREAM = _env_flag("OPENROUTER_STREAM", True)
 LIST_TOP_N = 5
 MERGE_TOP_N = 3
 MAX_SEEN_URLS = 1200
@@ -74,39 +96,39 @@ TITLE_KEYWORDS = (
     "lunar",
     "iss",
     "space station",
-    "登月",
-    "月球",
-    "月面",
-    "空间站",
-    "深空",
-    "火箭",
-    "发射",
-    "望远镜",
+    "??",
+    "??",
+    "??",
+    "???",
+    "??",
+    "??",
+    "??",
+    "???",
 )
 FORBIDDEN_TITLE_PATTERNS = (
-    "nasa今日速递",
-    "一次看懂",
-    "今天最值得看的",
-    "关键信息梳理",
-    "原文直译",
-    "看点清单",
-    "倒计时",
-    "里程碑",
-    "追踪提醒",
+    "nasa????",
+    "????",
+    "???????",
+    "??????",
+    "????",
+    "????",
+    "???",
+    "???",
+    "????",
 )
 GENERIC_TITLE_TOKENS = (
     "nasa",
-    "今日",
-    "今天",
-    "最新",
-    "动态",
-    "盘点",
-    "看点",
-    "关键",
-    "进展",
-    "速读",
-    "解读",
-    "发布",
-    "更新",
-    "任务",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
+    "??",
 )

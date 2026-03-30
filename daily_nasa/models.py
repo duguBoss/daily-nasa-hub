@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import re
-from typing import Any, Callable
+from typing import Any, Callable, Iterable
 
 import requests
 
@@ -11,12 +11,16 @@ from .config import (
     EXTRA_FALLBACK_MODEL_NAME,
     FALLBACK_MODEL_NAME,
     GEMINI_ADDITIONAL_FALLBACK_MODELS,
+    GEMINI_REQUEST_TIMEOUT,
     MINIMAX_MODEL_NAME,
     MINIMAX_OPENAI_BASE_URL,
-    NVIDIA_MODEL_SERIES,
-    NVIDIA_OPENAI_BASE_URL,
+    MINIMAX_REQUEST_TIMEOUT,
+    OPENROUTER_MAX_TOKENS,
+    OPENROUTER_MODEL_SERIES,
+    OPENROUTER_OPENAI_BASE_URL,
+    OPENROUTER_REQUEST_TIMEOUT,
+    OPENROUTER_STREAM,
     PRIMARY_MODEL_NAME,
-    REQUEST_TIMEOUT,
 )
 
 
@@ -33,6 +37,30 @@ def is_quota_or_rate_limit_error(error_text: str) -> bool:
     )
 
 
+def _request_timeout(read_timeout: int) -> tuple[int, int]:
+    return (20, read_timeout)
+
+
+def _response_excerpt(response: requests.Response, limit: int = 400) -> str:
+    try:
+        body = response.text
+    except Exception:
+        body = ""
+    return normalize_whitespace(body)[:limit]
+
+
+def _parse_json_response(response: requests.Response, provider_label: str) -> dict[str, Any]:
+    try:
+        return response.json()
+    except ValueError as exc:
+        excerpt = _response_excerpt(response)
+        if excerpt:
+            raise RuntimeError(
+                f"{provider_label} returned non-JSON body ({response.status_code}): {excerpt}"
+            ) from exc
+        raise RuntimeError(f"{provider_label} returned empty response body ({response.status_code}).") from exc
+
+
 def call_gemini(api_key: str, prompt: str, model_name: str) -> str:
     url = (
         "https://generativelanguage.googleapis.com/v1beta/models/"
@@ -46,11 +74,16 @@ def call_gemini(api_key: str, prompt: str, model_name: str) -> str:
             "responseMimeType": "application/json",
         },
     }
-    response = requests.post(url, headers={"Content-Type": "application/json"}, json=payload, timeout=REQUEST_TIMEOUT)
+    response = requests.post(
+        url,
+        headers={"Content-Type": "application/json"},
+        json=payload,
+        timeout=_request_timeout(GEMINI_REQUEST_TIMEOUT),
+    )
     if response.status_code != 200:
-        raise RuntimeError(f"{model_name} request failed ({response.status_code}): {response.text}")
+        raise RuntimeError(f"{model_name} request failed ({response.status_code}): {_response_excerpt(response)}")
 
-    result_json = response.json()
+    result_json = _parse_json_response(response, model_name)
     candidate = (result_json.get("candidates") or [{}])[0]
     content = candidate.get("content", {})
     parts = content.get("parts") or []
@@ -72,45 +105,86 @@ def call_minimax(api_key: str, prompt: str, model_name: str) -> str:
         endpoint,
         headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
         json=payload,
-        timeout=REQUEST_TIMEOUT,
+        timeout=_request_timeout(MINIMAX_REQUEST_TIMEOUT),
     )
     if response.status_code != 200:
-        raise RuntimeError(f"MINIMAX request failed ({response.status_code}): {response.text}")
-    result_json = response.json()
+        raise RuntimeError(f"MINIMAX request failed ({response.status_code}): {_response_excerpt(response)}")
+    result_json = _parse_json_response(response, "MINIMAX")
     choices = result_json.get("choices", [])
     if not choices:
         raise RuntimeError("MINIMAX returned empty choices.")
     return extract_message_content(choices[0].get("message", {}).get("content", ""))
 
 
-def call_nvidia(api_key: str, prompt: str, model_name: str) -> str:
-    base_url = os.environ.get("NVIDIA_OPENAI_BASE_URL", "").strip() or NVIDIA_OPENAI_BASE_URL
+def _iter_sse_data(lines: Iterable[str]) -> Iterable[str]:
+    for raw_line in lines:
+        if not raw_line:
+            continue
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.startswith("data:"):
+            yield line[5:].strip()
+        elif line.startswith("{"):
+            yield line
+
+
+def _collect_stream_text(response: requests.Response, provider_label: str) -> str:
+    chunks: list[str] = []
+    for data in _iter_sse_data(response.iter_lines(decode_unicode=True)):
+        if data == "[DONE]":
+            break
+        try:
+            event = json.loads(data)
+        except json.JSONDecodeError:
+            continue
+        choices = event.get("choices", [])
+        for choice in choices:
+            delta = choice.get("delta") or choice.get("message") or {}
+            content = extract_message_content(delta.get("content", ""))
+            if content:
+                chunks.append(content)
+    text = "".join(chunks).strip()
+    if text:
+        return text
+    raise RuntimeError(f"{provider_label} stream returned no content.")
+
+
+def call_openrouter(api_key: str, prompt: str, model_name: str) -> str:
+    base_url = os.environ.get("OPENROUTER_OPENAI_BASE_URL", "").strip() or OPENROUTER_OPENAI_BASE_URL
     endpoint = f"{base_url.rstrip('/')}/chat/completions"
+    stream = OPENROUTER_STREAM
     payload = {
         "model": model_name,
         "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 16384,
-        "temperature": 1.0,
-        "top_p": 1.0,
-        "stream": False,
-        "chat_template_kwargs": {"thinking": True},
+        "max_tokens": OPENROUTER_MAX_TOKENS,
+        "temperature": 0.55,
+        "top_p": 0.9,
+        "stream": stream,
+    }
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Accept": "text/event-stream" if stream else "application/json",
+        "Content-Type": "application/json",
+        "HTTP-Referer": os.environ.get("OPENROUTER_SITE_URL", "https://github.com/duguBoss/daily-nasa-hub"),
+        "X-Title": os.environ.get("OPENROUTER_APP_NAME", "daily-nasa-hub"),
     }
     response = requests.post(
         endpoint,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-        },
+        headers=headers,
         json=payload,
-        timeout=REQUEST_TIMEOUT,
+        timeout=_request_timeout(OPENROUTER_REQUEST_TIMEOUT),
+        stream=stream,
     )
     if response.status_code != 200:
-        raise RuntimeError(f"NVIDIA request failed ({response.status_code}): {response.text}")
-    result_json = response.json()
+        raise RuntimeError(f"OpenRouter request failed ({response.status_code}): {_response_excerpt(response)}")
+    if stream:
+        return _collect_stream_text(response, f"OpenRouter:{model_name}")
+
+    result_json = _parse_json_response(response, f"OpenRouter:{model_name}")
     choices = result_json.get("choices", [])
     if not choices:
-        raise RuntimeError("NVIDIA returned empty choices.")
+        raise RuntimeError("OpenRouter returned empty choices.")
     return extract_message_content(choices[0].get("message", {}).get("content", ""))
 
 
@@ -145,7 +219,7 @@ def normalize_whitespace(text: str) -> str:
 def build_model_candidates(
     gemini_api_key: str | None,
     minimax_api_key: str | None,
-    nvidia_api_key: str | None,
+    openrouter_api_key: str | None,
 ) -> list[tuple[str, str, str, Callable[[str, str, str], str]]]:
     model_candidates: list[tuple[str, str, str, Callable[[str, str, str], str]]] = []
     if gemini_api_key:
@@ -158,13 +232,13 @@ def build_model_candidates(
         for model_name in gemini_models:
             if model_name:
                 model_candidates.append(("gemini", model_name, gemini_api_key, call_gemini))
-    if nvidia_api_key:
-        nvidia_models = [model_name.strip() for model_name in NVIDIA_MODEL_SERIES if model_name.strip()]
-        env_model = os.environ.get("NVIDIA_MODEL_NAME", "").strip()
+    if openrouter_api_key:
+        openrouter_models = [model_name.strip() for model_name in OPENROUTER_MODEL_SERIES if model_name.strip()]
+        env_model = os.environ.get("OPENROUTER_MODEL_NAME", "").strip()
         if env_model:
-            nvidia_models = [env_model, *[name for name in nvidia_models if name != env_model]]
-        for model_name in nvidia_models:
-            model_candidates.append(("nvidia", model_name, nvidia_api_key, call_nvidia))
+            openrouter_models = [env_model, *[name for name in openrouter_models if name != env_model]]
+        for model_name in openrouter_models:
+            model_candidates.append(("openrouter", model_name, openrouter_api_key, call_openrouter))
     if minimax_api_key:
         minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
         model_candidates.append(("minimax", minimax_model_name, minimax_api_key, call_minimax))

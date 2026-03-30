@@ -76,6 +76,6 @@ def get_optional_minimax_api_key() -> str | None:
     return api_key or None
 
 
-def get_optional_nvidia_api_key() -> str | None:
-    api_key = os.environ.get("NVIDIA_API_KEY", "").strip()
+def get_optional_openrouter_api_key() -> str | None:
+    api_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
     return api_key or None
