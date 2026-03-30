@@ -18,54 +18,27 @@ from .common import (
 )
 from .config import FORBIDDEN_TITLE_PATTERNS, MIN_QUALITY_SCORE, TITLE_KEYWORDS
 from .rendering import build_fallback_html, build_wechat_fallback_title, fit_title_length
-from .prompts import FAN_PERSPECTIVE_TERMS, MIN_CHINESE_CHARS, MISSION_HINT_TERMS, build_story_terms
+from .prompts import FAN_PERSPECTIVE_TERMS, FORBIDDEN_TITLE_TERMS, MIN_CHINESE_CHARS, MISSION_HINT_TERMS, build_story_terms
 
 
 TEMPLATE_PHRASES = (
-    "这条消息聚焦",
-    "帮助你快速理解",
-    "内容详细梳理",
-    "对你意味着什么",
-    "下一步关注点",
-    "今天的NASA速报就到这里",
-    "准备好了吗",
-    "让我们一起深入",
+    "值得持续关注",
+    "释放了一个信号",
+    "后续仍值得期待",
+    "对普通读者来说",
+    "这也意味着",
+    "可以持续关注后续进展",
 )
 ARTICLE_STOPWORDS = {
-    "nasa",
-    "news",
-    "daily",
-    "today",
-    "mission",
-    "missions",
-    "article",
-    "story",
-    "science",
-    "image",
-    "photo",
-    "launch",
-    "final",
-    "preparations",
-    "underway",
-    "what",
-    "read",
-    "more",
-    "from",
+    "nasa", "news", "daily", "today", "mission", "missions", "article", "story", "science", "image", "photo", "launch",
+    "final", "preparations", "underway", "what", "read", "more", "from", "最新", "动态", "消息", "新闻", "任务", "进展", "节点", "发布",
 }
+SOURCE_JUMP_TOKENS = ("点击原文", "查看原文", "延伸阅读", "来源：", "来源:", "source:", "相关阅读")
 
 
-def sanitize_payload(
-    payload: Any,
-    default_payload: dict[str, Any],
-    date_str: str,
-    cover_urls: list[str],
-    articles: list[dict[str, Any]],
-    recent_titles: list[str],
-    allow_template_fallback: bool,
-) -> dict[str, Any]:
+def sanitize_payload(payload: Any, default_payload: dict[str, Any], date_str: str, cover_urls: list[str], articles: list[dict[str, Any]], recent_titles: list[str], allow_template_fallback: bool) -> dict[str, Any]:
     normalized: dict[str, Any] = payload if isinstance(payload, dict) else {}
     normalized = dict(normalized)
-
     payload_date = str(normalized.get("date", "")).strip()
     normalized["date"] = payload_date if payload_date else date_str
 
@@ -78,18 +51,17 @@ def sanitize_payload(
     songs = normalized.get("songs", [])
     if not isinstance(songs, list) or not songs:
         songs = default_payload.get("songs", [])
-    fixed_songs: list[dict[str, str]] = []
+    fixed_songs = []
     for song in songs[:5]:
-        if not isinstance(song, dict):
-            continue
-        name = normalize_whitespace(str(song.get("name", "")))
-        artist = normalize_whitespace(str(song.get("artist", ""))) or "NASA"
-        if name:
-            fixed_songs.append({"name": name, "artist": artist})
+        if isinstance(song, dict):
+            name = normalize_whitespace(str(song.get("name", "")))
+            artist = normalize_whitespace(str(song.get("artist", ""))) or "NASA"
+            if name:
+                fixed_songs.append({"name": name, "artist": artist})
     normalized["songs"] = fixed_songs or default_payload.get("songs", [])
 
     title = normalize_whitespace(str(normalized.get("title", "")))
-    title_invalid = (not title) or count_chinese_chars(title) < 6 or is_title_repetitive(title, recent_titles)
+    title_invalid = (not title) or count_chinese_chars(title) < 6 or is_title_repetitive(title, recent_titles) or bool(_title_weakness_hits(title)) or not title_matches_story_terms(title, articles)
     if title_invalid:
         title = build_wechat_fallback_title(date_str, articles, recent_titles)
     normalized["title"] = fit_title_length(title)
@@ -100,18 +72,13 @@ def sanitize_payload(
     if allow_template_fallback and not is_html_chinese_friendly(weixin_html):
         weixin_html = build_fallback_html(date_str, normalized["title"], articles, normalized["covers"])
 
-    weixin_html = ensure_follow_header(weixin_html)
-    weixin_html = enforce_outer_side_margin(weixin_html, side_px=0)
-    weixin_html = strip_html_leading_whitespace(weixin_html)
-    normalized["weixin_html"] = weixin_html
+    normalized["weixin_html"] = strip_html_leading_whitespace(enforce_outer_side_margin(ensure_follow_header(weixin_html), side_px=0))
     return normalized
 
 
 def has_repeated_sentences(text: str) -> bool:
     parts = [normalize_whitespace(p) for p in re.split(r"[。！？!?\n]", text) if normalize_whitespace(p)]
     long_parts = [p for p in parts if len(p) >= 18]
-    if len(long_parts) <= 1:
-        return False
     seen: dict[str, int] = {}
     for part in long_parts:
         seen[part] = seen.get(part, 0) + 1
@@ -137,23 +104,18 @@ def _template_phrase_hits(text: str) -> list[str]:
 
 
 def _article_terms(article: dict[str, Any]) -> list[str]:
-    source = normalize_whitespace(
-        f"{article.get('title_en', '')} {article.get('title', '')} {article.get('summary', '')} {article.get('content', '')}"
-    )
-    terms: list[str] = []
+    source = normalize_whitespace(f"{article.get('title_en', '')} {article.get('title', '')} {article.get('summary', '')} {article.get('content', '')}")
+    terms = []
     terms.extend(re.findall(r"\b[A-Z]{2,}(?:-[0-9]+)?\b", source))
     terms.extend(re.findall(r"\b[A-Z][A-Za-z0-9-]{2,}(?:\s+[A-Z][A-Za-z0-9-]{2,}){0,2}\b", source))
     terms.extend(re.findall(r"[\u4e00-\u9fff]{2,8}", source))
     terms.extend(re.findall(r"\b(?:19|20)\d{2}\b", source))
-
     deduped: list[str] = []
     seen: set[str] = set()
     for term in terms:
         clean = normalize_whitespace(term).strip()
         key = clean.lower()
-        if len(clean) < 2 or key in seen:
-            continue
-        if key in ARTICLE_STOPWORDS or clean in {"今日", "动态", "进展", "新闻", "任务", "科普"}:
+        if len(clean) < 2 or key in seen or key in ARTICLE_STOPWORDS or clean in {"任务更新", "相关进展", "最新进展", "最新节点", "关键节点"}:
             continue
         seen.add(key)
         deduped.append(clean)
@@ -165,25 +127,28 @@ def _grounded_article_count(plain_text: str, articles: list[dict[str, Any]]) -> 
     grounded = 0
     for article in articles:
         terms = _article_terms(article)
-        if not terms:
-            grounded += 1
-            continue
-        if any(term.lower().replace(" ", "") in normalized_plain for term in terms[:8]):
+        if not terms or any(term.lower().replace(" ", "") in normalized_plain for term in terms[:8]):
             grounded += 1
     return grounded
 
 
-def evaluate_payload_quality(
-    payload: dict[str, Any],
-    articles: list[dict[str, Any]],
-    recent_titles: list[str] | None = None,
-) -> dict[str, Any]:
+def _title_weakness_hits(title: str) -> list[str]:
+    hits = [term for term in FORBIDDEN_TITLE_TERMS if term in title]
+    if re.search(r"^(?:[0-9一二三四五六七八九十两]+条?)", title):
+        hits.append("count_headline")
+    return hits
+
+
+def _title_repeated_in_body(title: str, plain_text: str) -> bool:
+    normalized_title = normalize_whitespace(title)
+    return bool(normalized_title and normalized_title in plain_text)
+
+
+def evaluate_payload_quality(payload: dict[str, Any], articles: list[dict[str, Any]], recent_titles: list[str] | None = None) -> dict[str, Any]:
     recent_titles = recent_titles or []
     title = normalize_whitespace(str(payload.get("title", "")))
     html = str(payload.get("weixin_html", ""))
-    soup = BeautifulSoup(html or "<section></section>", "html.parser")
-    plain_text = clean_english_artifacts(soup.get_text(" ", strip=True))
-
+    plain_text = clean_english_artifacts(BeautifulSoup(html or "<section></section>", "html.parser").get_text(" ", strip=True))
     issues: list[str] = []
     breakdown: dict[str, int] = {}
 
@@ -192,16 +157,16 @@ def evaluate_payload_quality(
         title_score += 8
     else:
         issues.append("title_length_not_14_28")
-    if re.search(r"[0-9一二三四五六七八九十两3]", title):
-        title_score += 4
-    else:
-        issues.append("title_missing_number_signal")
     if any(keyword in title.lower() for keyword in TITLE_KEYWORDS):
-        title_score += 7
+        title_score += 9
     else:
         issues.append("title_missing_mission_keyword")
     if any(pattern in title.lower() for pattern in FORBIDDEN_TITLE_PATTERNS):
         issues.append("title_contains_forbidden_pattern")
+    if _title_weakness_hits(title):
+        issues.append("title_too_generic_or_slangy")
+    else:
+        title_score += 6
     if title_matches_story_terms(title, articles):
         title_score += 8
     else:
@@ -213,8 +178,7 @@ def evaluate_payload_quality(
 
     chinese_chars, english_words, ratio = text_language_stats(plain_text)
     long_english_phrase = bool(re.search(r"(?:\b[A-Za-z]{3,}\b\s+){5,}", plain_text))
-    target_articles = max(1, len(articles))
-    min_chinese_chars = max(MIN_CHINESE_CHARS, 320 + target_articles * 120)
+    min_chinese_chars = max(MIN_CHINESE_CHARS, 320 + max(1, len(articles)) * 120)
 
     language_score = 0
     if chinese_chars >= min_chinese_chars:
@@ -244,15 +208,8 @@ def evaluate_payload_quality(
     if "data-side-margin='0'" not in html and 'data-side-margin="0"' not in html:
         issues.append("side_spacing_not_zero")
 
-    factual_signal_count = len(
-        re.findall(
-            r"\b(?:19|20)\d{2}\b|\d+(?:\.\d+)?\s*(?:million|billion|%|km|kg|hours?|days?|payloads?|missions?)",
-            plain_text,
-            flags=re.I,
-        )
-    ) + len(re.findall(r"\d+月\d+日", plain_text))
-    required_facts = max(4, len(articles) * 2)
-    if factual_signal_count >= required_facts:
+    factual_signal_count = len(re.findall(r"\b(?:19|20)\d{2}\b|\d+(?:\.\d+)?\s*(?:million|billion|%|km|kg|hours?|days?|payloads?|missions?)", plain_text, flags=re.I)) + len(re.findall(r"\d+", plain_text))
+    if factual_signal_count >= max(4, len(articles) * 2):
         language_score += 6
     else:
         issues.append("factual_density_low")
@@ -276,19 +233,16 @@ def evaluate_payload_quality(
     breakdown["language"] = max(0, language_score)
 
     structure_score = 0
-    if "<h1" in html.lower():
-        structure_score += 5
+    if "<h1" not in html.lower():
+        structure_score += 6
     else:
-        issues.append("missing_h1")
-    card_count = len(re.findall(r"NASA新闻\s*\d{2}", plain_text))
-    if "NASA每日科普" in plain_text:
-        card_count += 1
+        issues.append("body_should_not_render_main_title")
+    card_count = len(re.findall(r"NASA新闻\s*\d{2}", plain_text)) + (1 if "NASA每日科普" in plain_text else 0)
     if card_count >= max(1, len(articles)):
         structure_score += 10
     else:
         issues.append("news_card_count_insufficient")
-    style_attr_count = html.lower().count("style=")
-    if style_attr_count >= 10 and "<section" in html.lower():
+    if html.lower().count("style=") >= 10 and "<section" in html.lower():
         structure_score += 4
     else:
         issues.append("layout_style_too_plain")
@@ -300,6 +254,10 @@ def evaluate_payload_quality(
         structure_score += 4
     else:
         issues.append("missing_news_divider")
+    if not _title_repeated_in_body(title, plain_text):
+        structure_score += 4
+    else:
+        issues.append("title_repeated_in_body")
     breakdown["structure"] = structure_score
 
     compliance_score = 0
@@ -307,7 +265,7 @@ def evaluate_payload_quality(
         compliance_score += 10
     else:
         issues.append("contains_external_link")
-    if "原文" not in plain_text and "source" not in plain_text.lower():
+    if not any(token.lower() in plain_text.lower() for token in SOURCE_JUMP_TOKENS):
         compliance_score += 5
     else:
         issues.append("contains_source_jump_copy")
@@ -315,8 +273,7 @@ def evaluate_payload_quality(
         compliance_score += 5
     else:
         issues.append("repeated_content_detected")
-    template_hits = _template_phrase_hits(plain_text)
-    if not template_hits:
+    if not _template_phrase_hits(plain_text):
         compliance_score += 5
     else:
         issues.append("templated_phrases_detected")
@@ -343,25 +300,10 @@ def evaluate_payload_quality(
 
     total_score = title_score + breakdown["language"] + breakdown["structure"] + compliance_score + seo_score
     hard_fail_issues = {
-        "contains_external_link",
-        "contains_source_jump_copy",
-        "too_much_english",
-        "long_english_phrase_detected",
-        "html_contains_browser_artifact",
-        "html_not_chinese_friendly",
-        "title_similar_to_recent",
-        "title_contains_forbidden_pattern",
-        "title_not_specific_to_story",
-        "body_below_500_chinese_chars",
-        "factual_density_low",
-        "article_grounding_missing",
-        "layout_style_too_plain",
-        "side_spacing_not_zero",
-        "templated_phrases_detected",
-        "missing_science_card_label",
-        "missing_news_divider",
+        "contains_external_link", "contains_source_jump_copy", "too_much_english", "long_english_phrase_detected", "html_contains_browser_artifact", "html_not_chinese_friendly",
+        "title_similar_to_recent", "title_contains_forbidden_pattern", "title_not_specific_to_story", "title_too_generic_or_slangy", "body_below_500_chinese_chars", "factual_density_low",
+        "article_grounding_missing", "layout_style_too_plain", "side_spacing_not_zero", "templated_phrases_detected", "missing_science_card_label", "missing_news_divider", "body_should_not_render_main_title", "title_repeated_in_body",
     }
     if any(issue in hard_fail_issues for issue in issues):
         total_score = min(total_score, MIN_QUALITY_SCORE - 1)
-
     return {"score": max(0, min(100, total_score)), "breakdown": breakdown, "issues": issues}

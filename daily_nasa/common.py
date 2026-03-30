@@ -75,10 +75,7 @@ def extract_numeric_fact(text: str) -> str:
 
 
 def normalize_cn_title(title: str) -> str:
-    text = normalize_whitespace(title)
-    if count_chinese_chars(text) >= 4:
-        return text
-    return text
+    return normalize_whitespace(title)
 
 
 def normalize_cn_summary(summary: str, title: str) -> str:
@@ -137,7 +134,7 @@ def canonicalize_url(raw_url: str, base_url: str = "https://www.nasa.gov") -> st
 
 def title_skeleton(title: str) -> str:
     text = normalize_whitespace(title).lower()
-    text = re.sub(r"[0-9一二三四五六七八九十条个篇：:，,。.!！？?、\-\s]", "", text)
+    text = re.sub(r"[0-9一二三四五六七八九十两条个篇：:，,。.!！？?、\-\s]", "", text)
     for token in GENERIC_TITLE_TOKENS:
         text = text.replace(token, "")
     return text
@@ -190,5 +187,4 @@ def is_html_chinese_friendly(weixin_html: str) -> bool:
 def strip_html_leading_whitespace(weixin_html: str) -> str:
     if not weixin_html:
         return weixin_html
-    weixin_html = re.sub(r"<(p|span|h[1-6]|strong|em|a|li|td|th|div|section|article)([^>]*)>\s+", r"<\1\2>", weixin_html)
-    return weixin_html
+    return re.sub(r"<(p|span|h[1-6]|strong|em|a|li|td|th|div|section|article)([^>]*)>\s+", r"<\1\2>", weixin_html)
