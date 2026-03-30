@@ -32,11 +32,6 @@ def main() -> None:
     seen_urls = set(state.get("seen_urls", []))
     print(f"Loaded state: seen_urls={len(seen_urls)}")
 
-    top_list = fetch_top_n_articles(LIST_TOP_N)
-    top_urls = [item["url"] for item in top_list]
-    selected: list[dict[str, Any]] = []
-    reused_source_date = ""
-
     todays_apod = fetch_apod_candidates(1)
     if todays_apod:
         print(f"Today's APOD: {todays_apod[0]['title']}")
@@ -45,21 +40,30 @@ def main() -> None:
     if sfn_news:
         print(f"SpaceFlight News: {len(sfn_news)} articles available")
 
+    top_list = fetch_top_n_articles(LIST_TOP_N)
+    top_urls = [item["url"] for item in top_list]
     new_candidates = [item for item in top_list if item["url"] not in seen_urls]
     print(f"New NASA candidates after dedupe check: {len(new_candidates)}")
     for idx, item in enumerate(new_candidates, start=1):
         print(f"  NEW {idx}. {item['title']}")
 
-    selected = []
+    selected: list[dict[str, Any]] = []
+    reused_source_date = ""
+
     if todays_apod:
         selected.append(todays_apod[0])
 
     if new_candidates:
         selected.append(new_candidates[0])
         print(f"Selected NASA news: {new_candidates[0]['title']}")
+        if sfn_news and len(selected) < 3:
+            selected.append(sfn_news[0])
+            print(f"Added SpaceFlight news as 3rd: {sfn_news[0]['title']}")
     elif sfn_news:
         selected.append(sfn_news[0])
         print(f"No new NASA news, using SpaceFlight news: {sfn_news[0]['title']}")
+        if todays_apod and len(selected) < 2:
+            pass
     else:
         history_candidates, history_date = load_previous_day_candidates(target_date, 1)
         if history_candidates:
@@ -71,10 +75,6 @@ def main() -> None:
             if iotd_candidate:
                 selected.append(iotd_candidate)
                 print("Fallback to NASA Image of the Day.")
-
-    if sfn_news and len(selected) < 2:
-        selected.append(sfn_news[0])
-        print(f"Added SpaceFlight news: {sfn_news[0]['title']}")
 
     if top_list:
         print("Top list URLs:")
