@@ -16,7 +16,7 @@ from daily_nasa.config import (
     PRIMARY_MODEL_NAME,
     SHANGHAI_TZ,
 )
-from daily_nasa.fetching import build_processed_articles, fetch_image_of_the_day_candidate, fetch_top_n_articles
+from daily_nasa.fetching import build_processed_articles, fetch_apod_candidates, fetch_image_of_the_day_candidate, fetch_top_n_articles
 from daily_nasa.persistence import get_optional_api_key, get_optional_minimax_api_key, save_news
 from daily_nasa.state import cleanup_old_files, load_previous_day_candidates, load_seen_state, save_seen_state
 
@@ -63,6 +63,12 @@ def main() -> None:
                     selected = [iotd_candidate]
                     if iotd_candidate["url"] not in top_urls:
                         top_urls = [iotd_candidate["url"]] + top_urls
+                else:
+                    print("No IOTD found, fallback to NASA APOD.")
+                    apod_candidates = fetch_apod_candidates(MERGE_TOP_N)
+                    if apod_candidates:
+                        selected = apod_candidates
+                        print(f"Selected {len(apod_candidates)} APOD candidates.")
     else:
         print("No list items found, fallback to latest historical daily content.")
         history_candidates, history_date = load_previous_day_candidates(target_date, MERGE_TOP_N)
@@ -78,6 +84,12 @@ def main() -> None:
             if iotd_candidate:
                 selected = [iotd_candidate]
                 top_urls = [iotd_candidate["url"]]
+            else:
+                print("No IOTD found, fallback to NASA APOD.")
+                apod_candidates = fetch_apod_candidates(MERGE_TOP_N)
+                if apod_candidates:
+                    selected = apod_candidates
+                    print(f"Selected {len(apod_candidates)} APOD candidates.")
 
     if not selected:
         print("No available candidate after fallback, only update state and exit.")

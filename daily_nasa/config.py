@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import pytz
@@ -10,6 +11,7 @@ NASA_NEWS_URLS = [
     "https://www.nasa.gov/2026-news-releases/",
 ]
 IMAGE_OF_THE_DAY_URL = "https://www.nasa.gov/image-of-the-day/"
+APOD_API_KEY = os.environ.get("NASA_APOD_API_KEY", "DEMO_KEY")
 
 # Model policy requested by user:
 # primary model -> fallback model -> extra fallback model.

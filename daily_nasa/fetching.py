@@ -17,7 +17,7 @@ from .common import (
     normalize_whitespace,
     slugify,
 )
-from .config import ASSET_ROOT, LIST_TOP_N, NASA_NEWS_URLS, REQUEST_TIMEOUT
+from .config import APOD_API_KEY, ASSET_ROOT, LIST_TOP_N, NASA_NEWS_URLS, REQUEST_TIMEOUT
 
 
 def is_nasa_article_url(url: str) -> bool:
@@ -192,6 +192,47 @@ def fetch_image_of_the_day_candidate(image_of_the_day_url: str) -> dict[str, Any
     return None
 
 
+def fetch_apod_candidates(count: int = 3) -> list[dict[str, Any]]:
+    try:
+        url = f"https://api.nasa.gov/planetary/apod?api_key={APOD_API_KEY}&count={count}"
+        response = requests.get(url, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        items = response.json()
+    except Exception as exc:
+        print(f"Failed to fetch APOD: {exc}")
+        return []
+
+    if not isinstance(items, list):
+        items = [items]
+
+    candidates: list[dict[str, Any]] = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        title = normalize_whitespace(item.get("title", ""))
+        explanation = normalize_whitespace(item.get("explanation", ""))
+        date = item.get("date", "")
+        media_type = item.get("media_type", "")
+        image_url = item.get("url", "")
+        hdurl = item.get("hdurl", "")
+
+        if not title or media_type != "image":
+            continue
+        candidates.append(
+            {
+                "title": title,
+                "url": f"https://apod.nasa.gov/apod/astropix.html",
+                "source": "NASA APOD",
+                "summary": explanation[:300],
+                "cover_url": image_url,
+                "hdurl": hdurl,
+                "apod_date": date,
+                "is_apod": True,
+            }
+        )
+    return candidates
+
+
 def infer_channel_name(url: str) -> str:
     url_lower = url.lower()
     if "/news-release/" in url_lower:
@@ -291,12 +332,23 @@ def build_processed_articles(candidates: list[dict[str, Any]], date_str: str) ->
     processed_articles: list[dict[str, Any]] = []
     for idx, candidate in enumerate(candidates, start=1):
         url = candidate["url"]
+        is_apod = candidate.get("is_apod", False)
         print(f"Processing article {idx}/{len(candidates)}: {candidate['title']}")
-        try:
-            detail = fetch_article_content(url)
-        except Exception as exc:
-            print(f"Failed to fetch article detail: {exc}")
-            detail = {"title": candidate["title"], "summary": "", "content": "", "image_url": "", "publish_time": ""}
+
+        if is_apod:
+            detail = {
+                "title": candidate["title"],
+                "summary": candidate.get("summary", ""),
+                "content": candidate.get("summary", ""),
+                "image_url": candidate.get("cover_url", "") or candidate.get("hdurl", ""),
+                "publish_time": candidate.get("apod_date", ""),
+            }
+        else:
+            try:
+                detail = fetch_article_content(url)
+            except Exception as exc:
+                print(f"Failed to fetch article detail: {exc}")
+                detail = {"title": candidate["title"], "summary": "", "content": "", "image_url": "", "publish_time": ""}
 
         article_hash = hashlib.md5(url.encode("utf-8")).hexdigest()[:12]
         article_id = f"nasa-{article_hash}"
@@ -324,11 +376,12 @@ def build_processed_articles(candidates: list[dict[str, Any]], date_str: str) ->
                 "content": detail.get("content", ""),
                 "url": url,
                 "publish_time": detail.get("publish_time", ""),
-                "channel": infer_channel_name(url),
+                "channel": "NASA APOD" if is_apod else infer_channel_name(url),
                 "image_url": image_url,
                 "image_path": image_path,
                 "cover_url": cover_url,
             }
         )
-        time.sleep(0.8)
+        if not is_apod:
+            time.sleep(0.8)
     return processed_articles
