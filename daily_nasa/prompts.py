@@ -65,6 +65,7 @@ MANDATORY OUTPUT RULES:
 12) Each news card should include at least 2 concrete facts from source (time, amount,机构,里程碑).
 13) Tone: write as "航天爱好者带读" instead of neutral newswire. No templated section headers.
 14) Keep rich WeChat visual style: cards, contrast blocks, and clear hierarchy (h1/h3/strong).
+15) Each news card must include its cover image at the top using: <img src='IMAGE_URL' style='width:100%;display:block;border-radius:12px;margin:0 0 12px 0;object-fit:cover;'> where IMAGE_URL is from the article's Image field in the materials.
 
 JSON schema:
 {{

@@ -76,72 +76,20 @@ def extract_numeric_fact(text: str) -> str:
 
 def normalize_cn_title(title: str) -> str:
     text = normalize_whitespace(title)
+    # If already has Chinese, return as-is
     if count_chinese_chars(text) >= 4:
         return text
-
-    lower = text.lower()
-    exact_rules = [
-        (
-            "artemis ii crew arrives at launch site, shares moon mascot",
-            "Artemis II乘组抵达发射场并公布月球吉祥物",
-        ),
-        (
-            "nasa selects intuitive machines to deliver artemis science, tech to moon",
-            "NASA选定Intuitive Machines执行Artemis月面科学与技术投送",
-        ),
-        ("i am artemis", "Artemis人物故事：一线岗位与任务协同"),
-    ]
-    for key, cn in exact_rules:
-        if key in lower:
-            return cn
-
-    keyword_rules = [
-        (("artemis", "launch"), "Artemis任务发布发射阶段进展"),
-        (("intuitive machines", "clps"), "CLPS月面投送新增商业合同"),
-        (("spacestation", "spacewalk"), "空间站舱外任务窗口开启"),
-        (("moon", "lunar"), "NASA登月任务发布最新节点"),
-        (("rocket", "launch"), "NASA火箭任务发布关键里程碑"),
-        (("image", "gallery"), "NASA航天影像发布今日重点"),
-    ]
-    for keys, cn in keyword_rules:
-        if any(key in lower for key in keys):
-            return cn
-
-    proper_nouns = re.findall(r"[A-Z][A-Za-z0-9-]{2,}", text)
-    if proper_nouns:
-        return f"NASA任务更新：{proper_nouns[0]}相关进展"
-    return "NASA任务更新：关键任务节点发布"
+    # Otherwise return original English title for AI to translate
+    return text
 
 
 def normalize_cn_summary(summary: str, title: str) -> str:
     text = clean_english_artifacts(summary)
+    # If already has sufficient Chinese, return as-is
     if count_chinese_chars(text) >= 28:
         return text[:260]
-
-    lower = (f"{title} {summary}").lower()
-    mission = normalize_cn_title(title).replace("NASA任务更新：", "")
-    facts: list[str] = []
-
-    numeric_fact = extract_numeric_fact(summary)
-    if numeric_fact:
-        facts.append(numeric_fact)
-    if "crew" in lower and "launch" in lower:
-        facts.append("乘组状态已进入发射前协同准备")
-    if "clps" in lower or "intuitive machines" in lower:
-        facts.append("任务属于NASA商业月面载荷服务体系")
-    if "moon" in lower or "lunar" in lower:
-        facts.append("核心目标围绕月面能力验证")
-    if "spacewalk" in lower or "iss" in lower or "spacestation" in lower:
-        facts.append("与空间站长期在轨运营相关")
-
-    fact_text = "；".join(dict.fromkeys(facts))
-    if fact_text:
-        return f"这条消息聚焦{mission}。{fact_text}。值得关注任务目标、执行节点与后续验证安排。"
-
-    return (
-        f"这条消息聚焦{mission}。本文提炼任务目标、关键进展与后续节点，"
-        "帮助你快速理解这条NASA动态为什么值得持续关注。"
-    )
+    # Otherwise return original for AI to process
+    return text[:260]
 
 
 def ensure_follow_header(weixin_html: str) -> str:
