@@ -16,7 +16,7 @@ from daily_nasa.config import (
     PRIMARY_MODEL_NAME,
     SHANGHAI_TZ,
 )
-from daily_nasa.fetching import build_processed_articles, fetch_apod_candidates, fetch_image_of_the_day_candidate, fetch_top_n_articles
+from daily_nasa.fetching import build_processed_articles, fetch_apod_candidates, fetch_image_of_the_day_candidate, fetch_spaceflight_news_today, fetch_top_n_articles
 from daily_nasa.persistence import get_optional_api_key, get_optional_minimax_api_key, save_news
 from daily_nasa.state import cleanup_old_files, load_previous_day_candidates, load_seen_state, save_seen_state
 
@@ -37,38 +37,44 @@ def main() -> None:
     selected: list[dict[str, Any]] = []
     reused_source_date = ""
 
-    new_candidates = [item for item in top_list if item["url"] not in seen_urls]
-    print(f"New candidates after dedupe check: {len(new_candidates)}")
-    for idx, item in enumerate(new_candidates, start=1):
-        print(f"  NEW {idx}. {item['title']}")
-
     todays_apod = fetch_apod_candidates(1)
     if todays_apod:
         print(f"Today's APOD: {todays_apod[0]['title']}")
 
+    sfn_news = fetch_spaceflight_news_today()
+    if sfn_news:
+        print(f"SpaceFlight News: {len(sfn_news)} articles available")
+
+    new_candidates = [item for item in top_list if item["url"] not in seen_urls]
+    print(f"New NASA candidates after dedupe check: {len(new_candidates)}")
+    for idx, item in enumerate(new_candidates, start=1):
+        print(f"  NEW {idx}. {item['title']}")
+
+    selected = []
+    if todays_apod:
+        selected.append(todays_apod[0])
+
     if new_candidates:
-        selected = [new_candidates[0]]
-        print(f"Selected latest news: {selected[0]['title']}")
-        if todays_apod:
-            selected = [todays_apod[0]] + selected
-            print(f"Combined APOD + latest news, total={len(selected)}")
+        selected.append(new_candidates[0])
+        print(f"Selected NASA news: {new_candidates[0]['title']}")
+    elif sfn_news:
+        selected.append(sfn_news[0])
+        print(f"No new NASA news, using SpaceFlight news: {sfn_news[0]['title']}")
     else:
-        if todays_apod:
-            selected = todays_apod
-            print("No new news today, using APOD only.")
+        history_candidates, history_date = load_previous_day_candidates(target_date, 1)
+        if history_candidates:
+            selected.append(history_candidates[0])
+            reused_source_date = history_date
+            print(f"No new content, reuse historical from {history_date}")
         else:
-            print("No APOD today, fallback to historical content.")
-            history_candidates, history_date = load_previous_day_candidates(target_date, 1)
-            if history_candidates:
-                selected = history_candidates
-                reused_source_date = history_date
-                print(f"Reuse historical content from {history_date}")
-            else:
-                iotd_candidate = fetch_image_of_the_day_candidate(IMAGE_OF_THE_DAY_URL)
-                if iotd_candidate:
-                    selected = [iotd_candidate]
-                    if iotd_candidate["url"] not in top_urls:
-                        top_urls = [iotd_candidate["url"]] + top_urls
+            iotd_candidate = fetch_image_of_the_day_candidate(IMAGE_OF_THE_DAY_URL)
+            if iotd_candidate:
+                selected.append(iotd_candidate)
+                print("Fallback to NASA Image of the Day.")
+
+    if sfn_news and len(selected) < 2:
+        selected.append(sfn_news[0])
+        print(f"Added SpaceFlight news: {sfn_news[0]['title']}")
 
     if top_list:
         print("Top list URLs:")

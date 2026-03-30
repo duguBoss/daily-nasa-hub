@@ -12,6 +12,8 @@ NASA_NEWS_URLS = [
 ]
 IMAGE_OF_THE_DAY_URL = "https://www.nasa.gov/image-of-the-day/"
 APOD_API_KEY = os.environ.get("NASA_APOD_API_KEY", "DEMO_KEY")
+SFN_API_KEY = os.environ.get("SFN_API_KEY", "")
+SFN_API_BASE = "https://api.spaceflightnewsapi.net/v4"
 
 # Model policy requested by user:
 # primary model -> fallback model -> extra fallback model.

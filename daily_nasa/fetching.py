@@ -17,7 +17,7 @@ from .common import (
     normalize_whitespace,
     slugify,
 )
-from .config import APOD_API_KEY, ASSET_ROOT, LIST_TOP_N, NASA_NEWS_URLS, REQUEST_TIMEOUT
+from .config import APOD_API_KEY, ASSET_ROOT, LIST_TOP_N, NASA_NEWS_URLS, REQUEST_TIMEOUT, SFN_API_BASE, SFN_API_KEY
 
 
 def is_nasa_article_url(url: str) -> bool:
@@ -233,6 +233,46 @@ def fetch_apod_candidates(count: int = 3) -> list[dict[str, Any]]:
     return candidates
 
 
+def fetch_spaceflight_news_today() -> list[dict[str, Any]]:
+    if not SFN_API_KEY:
+        print("SFN_API_KEY not set, skipping SpaceFlight News API.")
+        return []
+    try:
+        url = f"{SFN_API_BASE}/articles/?limit=10&ordering=-published_at&format=json"
+        headers = {"Authorization": f"Token {SFN_API_KEY}"} if SFN_API_KEY else {}
+        response = requests.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+    except Exception as exc:
+        print(f"Failed to fetch SpaceFlight News: {exc}")
+        return []
+
+    results = data.get("results", []) if isinstance(data, dict) else []
+    candidates: list[dict[str, Any]] = []
+    for item in results:
+        if not isinstance(item, dict):
+            continue
+        title = normalize_whitespace(item.get("title", ""))
+        summary = normalize_whitespace(item.get("summary", ""))
+        url_out = item.get("url", "")
+        image_url = item.get("image_url", "")
+        published_at = item.get("published_at", "")
+        if not title or not url_out:
+            continue
+        candidates.append(
+            {
+                "title": title,
+                "url": url_out,
+                "source": "SpaceFlight News",
+                "summary": summary[:300] if summary else "",
+                "cover_url": image_url if image_url else "",
+                "publish_time": published_at,
+                "is_sfn": True,
+            }
+        )
+    return candidates
+
+
 def infer_channel_name(url: str) -> str:
     url_lower = url.lower()
     if "/news-release/" in url_lower:
@@ -333,6 +373,7 @@ def build_processed_articles(candidates: list[dict[str, Any]], date_str: str) ->
     for idx, candidate in enumerate(candidates, start=1):
         url = candidate["url"]
         is_apod = candidate.get("is_apod", False)
+        is_sfn = candidate.get("is_sfn", False)
         print(f"Processing article {idx}/{len(candidates)}: {candidate['title']}")
 
         if is_apod:
@@ -342,6 +383,14 @@ def build_processed_articles(candidates: list[dict[str, Any]], date_str: str) ->
                 "content": candidate.get("summary", ""),
                 "image_url": candidate.get("cover_url", "") or candidate.get("hdurl", ""),
                 "publish_time": candidate.get("apod_date", ""),
+            }
+        elif is_sfn:
+            detail = {
+                "title": candidate["title"],
+                "summary": candidate.get("summary", ""),
+                "content": candidate.get("summary", ""),
+                "image_url": candidate.get("cover_url", ""),
+                "publish_time": candidate.get("publish_time", ""),
             }
         else:
             try:
@@ -376,7 +425,7 @@ def build_processed_articles(candidates: list[dict[str, Any]], date_str: str) ->
                 "content": detail.get("content", ""),
                 "url": url,
                 "publish_time": detail.get("publish_time", ""),
-                "channel": "NASA APOD" if is_apod else infer_channel_name(url),
+                "channel": "NASA APOD" if is_apod else ("SpaceFlight News" if is_sfn else infer_channel_name(url)),
                 "image_url": image_url,
                 "image_path": image_path,
                 "cover_url": cover_url,
