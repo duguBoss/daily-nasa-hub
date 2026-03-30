@@ -1,24 +1,24 @@
-# 3条NASA要闻：Artemis登月冲刺，彗星Hyaku
+# 3条NASA要闻：Artemis II冲刺与空间站机器人
 
 - 日期: 2026-03-30
 
-## 1. NASA任务更新：Here相关进展
+## 1. 183 Days in the Sun
 
 - 频道: NASA APOD
 - 链接: 
 
-这条消息聚焦Here相关进展。本文提炼任务目标、关键进展与后续节点，帮助你快速理解这条NASA动态为什么值得持续关注。
+A single 183 day exposure with a pinhole camera and photographic paper resulted in this long-duration solargraph. Recorded from solstice to solstice, June 21 to December 21, in 2022, it follows the Sun's daily arcing path through planet Earth's skies from Mert
 
-## 2. NASA登月任务发布最新节点
+## 2. Final Preparations Underway for NASA’s Moon Mission
 
 - 频道: NASA
 - 链接: https://www.nasa.gov/blogs/missions/2026/03/29/final-preparations-underway-for-nasas-moon-mission
 
-这条消息聚焦NASA登月任务发布最新节点。关键时间点在4月1日；核心目标围绕月面能力验证；与空间站长期在轨运营相关。值得关注任务目标、执行节点与后续验证安排。
+Teams at NASA’s Kennedy Space Center in Florida are making final preparations toward beginning launch countdown activities for the Artemis II mission, set to launch as early as Wednesday, April 1. The weather forecast fo
 
-## 3. Artemis任务发布发射阶段进展
+## 3. With Voyager’s help, Icarus Robotics to test free-flyer on ISS
 
 - 频道: SpaceFlight News
-- 链接: https://spaceflightnow.com/2026/03/30/live-coverage-spacex-to-launch-119-payloads-on-smallsat-rideshare-mission-from-california/
+- 链接: https://spacenews.com/with-voyagers-help-icarus-robotics-to-test-free-flyer-on-iss/
 
-这条消息聚焦Artemis任务发布发射阶段进展。与空间站长期在轨运营相关。值得关注任务目标、执行节点与后续验证安排。
+SAN FRANCISCO – Voyager Technologies announced plans March 30 to help Icarus Robotics test a free-flying platform, called Joyride, on the International Space Station. Under the agreement, Voyager will handle payload integration, safety certification, coordinat
