@@ -179,7 +179,7 @@ def score_title_candidate(
         score += 4
     if not is_title_repetitive(title, recent_titles):
         score += 3
-    return fit_title_length(best_title)
+    return fit_title_length(title)
 
 
 def build_article_blocks(articles: list[dict[str, Any]]) -> str:
