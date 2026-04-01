@@ -94,48 +94,49 @@ def _generate_title_step(
     recent_titles: list[str],
 ) -> tuple[str, str, str]:
     """Step 1: Generate title only. Returns (title, provider, model).
-    
-    Will retry up to MAX_TITLE_RETRIES (20) times until a valid title is generated.
-    No fallback to default titles - must be AI generated.
+
+    Strategy: For each model, keep retrying until success (valid title).
+    Only switch to next model when API call fails (exception).
     """
     from .common import count_chinese_chars
     from .config import MAX_TITLE_RETRIES
-    
+
     prompt = build_title_prompt(date_str, articles, recent_titles)
-    
-    for retry in range(MAX_TITLE_RETRIES):
-        print(f"[Step 1/4] Title generation attempt {retry + 1}/{MAX_TITLE_RETRIES}")
-        
-        for provider, model_name, provider_api_key, caller in model_candidates:
+
+    for provider, model_name, provider_api_key, caller in model_candidates:
+        print(f"[Step 1/4] Using {provider}:{model_name}")
+
+        for attempt in range(MAX_TITLE_RETRIES):
             try:
-                print(f"  Trying {provider}:{model_name}")
+                print(f"  Attempt {attempt + 1}/{MAX_TITLE_RETRIES}")
                 raw = caller(provider_api_key, prompt, model_name)
                 # Clean up the response - remove quotes and whitespace
                 title = raw.strip().strip('"').strip("'")
-                
+
                 # Validate: must be Chinese title with 20-30 chars
                 if _is_valid_chinese_title(title):
                     print(f"[Step 1/4] ✓ Title generated ({len(title)} chars): {title[:40]}...")
                     return title, provider, model_name
                 else:
-                    # Detailed rejection reason
+                    # Detailed rejection reason - but continue with same model
                     title_no_punct = re.sub(r'[^\u4e00-\u9fff\w]', '', title)
                     char_count = len(title_no_punct)
                     chinese_count = count_chinese_chars(title)
                     if not (20 <= char_count <= 30):
-                        print(f"  ✗ Rejected (length {char_count}, need 20-30): {title[:40]}...")
+                        print(f"  ✗ Rejected (length {char_count}, need 20-30), retrying...")
                     else:
-                        print(f"  ✗ Rejected (only {chinese_count}/{char_count} Chinese): {title[:40]}...")
+                        print(f"  ✗ Rejected (only {chinese_count}/{char_count} Chinese), retrying...")
+                    # Continue to next attempt with same model
+                    continue
+
             except Exception as e:
-                print(f"  ✗ Failed with {provider}:{model_name}: {e}")
-                continue
-        
-        if retry < MAX_TITLE_RETRIES - 1:
-            print(f"  Retrying... ({retry + 1}/{MAX_TITLE_RETRIES} attempts so far)")
-    
-    # No fallback - raise error if all retries exhausted
+                print(f"  ✗ API failed: {e}")
+                print(f"  Switching to next model...")
+                break  # Break inner loop, switch to next model
+
+    # No fallback - raise error if all models exhausted
     raise RuntimeError(
-        f"Failed to generate valid title after {MAX_TITLE_RETRIES} attempts. "
+        f"Failed to generate valid title after trying all models. "
         "Title must be 20-30 Chinese characters. No default fallback allowed."
     )
 
@@ -154,27 +155,40 @@ def _generate_card_step(
     article: dict[str, Any],
     date_str: str,
 ) -> tuple[str, str, str]:
-    """Step 2/3/4: Generate content for a single card. Returns (html, provider, model)."""
+    """Step 2/3/4: Generate content for a single card. Returns (html, provider, model).
+
+    Strategy: For each model, keep retrying until success (valid content).
+    Only switch to next model when API call fails (exception).
+    """
+    from .config import MAX_MODEL_ATTEMPTS
+
     prompt = build_card_prompt(card_number, article, date_str)
-    
+
     for provider, model_name, provider_api_key, caller in model_candidates:
-        try:
-            print(f"[Step {card_number+1}/4] Generating card {card_number} with {provider}:{model_name}")
-            raw = caller(provider_api_key, prompt, model_name)
-            html = raw.strip()
-            
-            # Validate: must have Chinese content
-            if html and len(html) > 50 and _has_chinese_content(html, min_chars=20):
-                print(f"[Step {card_number+1}/4] Card {card_number} generated: {len(html)} chars")
-                return html, provider, model_name
-            else:
-                chinese_count = len(re.findall(r"[\u4e00-\u9fff]", html)) if html else 0
-                print(f"[Step {card_number+1}/4] Card rejected (not enough Chinese: {chinese_count} chars): {html[:60] if html else 'empty'}...")
-        except Exception as e:
-            print(f"[Step {card_number+1}/4] Failed with {provider}:{model_name}: {e}")
-            continue
-    
+        print(f"[Step {card_number+1}/4] Using {provider}:{model_name} for card {card_number}")
+
+        for attempt in range(MAX_MODEL_ATTEMPTS):
+            try:
+                print(f"  Attempt {attempt + 1}/{MAX_MODEL_ATTEMPTS}")
+                raw = caller(provider_api_key, prompt, model_name)
+                html = raw.strip()
+
+                # Validate: must have Chinese content
+                if html and len(html) > 50 and _has_chinese_content(html, min_chars=20):
+                    print(f"[Step {card_number+1}/4] Card {card_number} generated: {len(html)} chars")
+                    return html, provider, model_name
+                else:
+                    chinese_count = len(re.findall(r"[\u4e00-\u9fff]", html)) if html else 0
+                    print(f"  ✗ Rejected (not enough Chinese: {chinese_count} chars), retrying...")
+                    continue  # Retry with same model
+
+            except Exception as e:
+                print(f"  ✗ API failed: {e}")
+                print(f"  Switching to next model...")
+                break  # Switch to next model
+
     # Fallback to basic HTML using article's Chinese title and summary (light theme)
+    print(f"[Step {card_number+1}/4] All models failed, using fallback HTML")
     image = article.get("cover_url", "") or article.get("image_url", "")
     title = article.get("title", "")
     summary = article.get("summary", "")
