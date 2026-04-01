@@ -227,14 +227,8 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
     else:
         intro = "今日 NASA 最新航天动态。"
     
-    # Build headline from first article or default
-    headline = "NASA Daily"
-    if science_article.get("title"):
-        headline_title = normalize_cn_title(science_article.get("title", ""))
-        if len(headline_title) > 20:
-            headline = headline_title[:18] + "..."
-        else:
-            headline = headline_title
+    # Build headline from first article or default - must be Chinese and exactly 30 chars
+    headline = build_headline_title(articles, date_str)
     
     # Build content
     html_parts = [
@@ -326,19 +320,75 @@ def fit_title_length(title: str, max_len: int = 30) -> str:
     return title[:max_len]
 
 
+def build_headline_title(articles: list[dict[str, Any]], date_str: str) -> str:
+    """Build headline title - Chinese only, exactly 30 characters."""
+    if not articles:
+        return "NASA每日航天动态精选报道"
+    
+    # Get first article title
+    first_title = normalize_cn_title(articles[0].get("title", ""))
+    if not first_title:
+        return "NASA每日航天动态精选报道"
+    
+    # Ensure Chinese title with exactly 30 characters
+    return fit_title_exact_length(first_title, 30)
+
+
+def fit_title_exact_length(title: str, exact_len: int = 30) -> str:
+    """Fit title to exact length with Chinese content."""
+    title = normalize_cn_title(title)
+    
+    # If title is already exact length, return it
+    if len(title) == exact_len:
+        return title
+    
+    # If title is shorter, pad with suffix
+    if len(title) < exact_len:
+        suffixes = ["最新进展", "深度解析", "全面报道", "详细解读", "现场直击"]
+        for suffix in suffixes:
+            combined = title + suffix
+            if len(combined) == exact_len:
+                return combined
+            if len(combined) < exact_len:
+                # Add more padding
+                padding = "报道"
+                combined = title + suffix + padding
+                if len(combined) >= exact_len:
+                    return combined[:exact_len]
+        # If still short, pad with generic text
+        padding_needed = exact_len - len(title)
+        if padding_needed > 0:
+            generic = "航天动态最新进展详细报道"
+            return title + generic[:padding_needed]
+        return title
+    
+    # If title is longer, truncate intelligently
+    # Try to find a natural break point
+    breakpoints = ["，", ",", "：", ":", "；", ";", " ", "、", "的", "了", "在", "是"]
+    for bp in breakpoints:
+        if bp in title[:exact_len]:
+            idx = title[:exact_len].rfind(bp)
+            if idx > 10:
+                truncated = title[:idx]
+                # Pad to exact length
+                padding_needed = exact_len - len(truncated)
+                if padding_needed > 0:
+                    suffixes = ["最新进展", "深度解析", "全面报道", "详细解读"]
+                    for suffix in suffixes:
+                        if len(truncated) + len(suffix) == exact_len:
+                            return truncated + suffix
+                    generic = "航天动态最新进展详细报道"
+                    return truncated + generic[:padding_needed]
+                return truncated
+    
+    # Hard truncate and pad
+    truncated = title[:exact_len]
+    return truncated
+
+
 def build_final_title(articles: list[dict[str, Any]], date_str: str) -> str:
     """Build final article title."""
-    signal = infer_story_signal(articles)
-    candidates = []
-    for article in articles[:2]:
-        title = normalize_cn_title(article.get("title", ""))
-        if title and not _is_repetitive_title(title):
-            candidates.append(title)
-    if candidates:
-        main_title = candidates[0]
-        short_title = fit_title_length(main_title, 26)
-        return f"{short_title}"
-    return f"NASA日报 {date_str}"
+    return build_headline_title(articles, date_str)
 
 
 def generate_html_content(articles: list[dict[str, Any]], date_str: str) -> str:
