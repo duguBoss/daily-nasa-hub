@@ -79,3 +79,8 @@ def get_optional_minimax_api_key() -> str | None:
 def get_optional_openrouter_api_key() -> str | None:
     api_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
     return api_key or None
+
+
+def get_optional_groq_api_key() -> str | None:
+    api_key = os.environ.get("GROQ_API_KEY", "").strip()
+    return api_key or None

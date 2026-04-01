@@ -5,6 +5,7 @@ from typing import Any
 from .models import (
     build_model_candidates,
     call_gemini,
+    call_groq,
     call_minimax,
     call_openrouter,
     is_quota_or_rate_limit_error,
@@ -54,6 +55,7 @@ __all__ = [
     "build_gemini_prompt",
     "build_gemini_rewrite_prompt",
     "call_gemini",
+    "call_groq",
     "call_minimax",
     "call_openrouter",
     "parse_model_json",
@@ -68,6 +70,7 @@ def generate_payload(
     gemini_api_key: str | None,
     minimax_api_key: str | None,
     openrouter_api_key: str | None,
+    groq_api_key: str | None,
     date_str: str,
     articles: list[dict[str, Any]],
     cover_urls: list[str],
@@ -85,12 +88,12 @@ def generate_payload(
     )
     default_quality = evaluate_payload_quality(default_payload, articles, recent_titles)
 
-    if REQUIRE_AI_GENERATION and not gemini_api_key and not minimax_api_key and not openrouter_api_key:
+    if REQUIRE_AI_GENERATION and not gemini_api_key and not minimax_api_key and not openrouter_api_key and not groq_api_key:
         raise RuntimeError(
-            "None of GEMINI_API_KEY, OPENROUTER_API_KEY, or MINIMAX_API_KEY is set. AI generation is required for publishing."
+            "None of GEMINI_API_KEY, OPENROUTER_API_KEY, GROQ_API_KEY, or MINIMAX_API_KEY is set. AI generation is required for publishing."
         )
 
-    model_candidates = build_model_candidates(gemini_api_key, minimax_api_key, openrouter_api_key)
+    model_candidates = build_model_candidates(gemini_api_key, minimax_api_key, openrouter_api_key, groq_api_key)
 
     if REQUIRE_AI_GENERATION and not model_candidates:
         raise RuntimeError("No usable model candidate found for AI generation.")
@@ -100,7 +103,7 @@ def generate_payload(
         primary_provider, primary_model_name = model_candidates[0][0], model_candidates[0][1]
 
     meta: dict[str, Any] = {
-        "ai_enabled": bool(gemini_api_key or minimax_api_key or openrouter_api_key),
+        "ai_enabled": bool(gemini_api_key or minimax_api_key or openrouter_api_key or groq_api_key),
         "ai_success": False,
         "provider": primary_provider,
         "model": primary_model_name,

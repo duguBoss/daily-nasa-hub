@@ -12,6 +12,9 @@ from .config import (
     FALLBACK_MODEL_NAME,
     GEMINI_ADDITIONAL_FALLBACK_MODELS,
     GEMINI_REQUEST_TIMEOUT,
+    GROQ_MAX_TOKENS,
+    GROQ_MODEL_SERIES,
+    GROQ_REQUEST_TIMEOUT,
     MINIMAX_MODEL_NAME,
     MINIMAX_OPENAI_BASE_URL,
     MINIMAX_REQUEST_TIMEOUT,
@@ -204,6 +207,43 @@ def extract_message_content(content: Any) -> str:
     return str(content or "")
 
 
+def call_groq(api_key: str, prompt: str, model_name: str) -> str:
+    """Call Groq API using OpenAI-compatible interface."""
+    try:
+        from groq import Groq
+    except ImportError:
+        raise RuntimeError("groq package not installed. Run: pip install groq")
+    
+    client = Groq(api_key=api_key)
+    
+    # Build messages
+    messages = [{"role": "user", "content": prompt}]
+    
+    # Create completion with streaming
+    completion = client.chat.completions.create(
+        model=model_name,
+        messages=messages,
+        temperature=0.55,
+        max_completion_tokens=GROQ_MAX_TOKENS,
+        top_p=0.9,
+        stream=True,
+        stop=None,
+    )
+    
+    # Collect streamed content
+    chunks: list[str] = []
+    for chunk in completion:
+        content = chunk.choices[0].delta.content
+        if content:
+            chunks.append(content)
+    
+    result = "".join(chunks).strip()
+    if not result:
+        raise RuntimeError(f"Groq:{model_name} returned empty content")
+    
+    return result
+
+
 def parse_model_json(text: str) -> dict[str, Any]:
     text = normalize_whitespace(text)
     if text.startswith("```"):
@@ -220,9 +260,20 @@ def build_model_candidates(
     gemini_api_key: str | None,
     minimax_api_key: str | None,
     openrouter_api_key: str | None,
+    groq_api_key: str | None,
 ) -> list[tuple[str, str, str, Callable[[str, str, str], str]]]:
     model_candidates: list[tuple[str, str, str, Callable[[str, str, str], str]]] = []
-    # OpenRouter first (user preference)
+    
+    # Groq first (user preference - most reliable)
+    if groq_api_key:
+        groq_models = [model_name.strip() for model_name in GROQ_MODEL_SERIES if model_name.strip()]
+        env_model = os.environ.get("GROQ_MODEL_NAME", "").strip()
+        if env_model:
+            groq_models = [env_model, *[name for name in groq_models if name != env_model]]
+        for model_name in groq_models:
+            model_candidates.append(("groq", model_name, groq_api_key, call_groq))
+    
+    # OpenRouter second
     if openrouter_api_key:
         openrouter_models = [model_name.strip() for model_name in OPENROUTER_MODEL_SERIES if model_name.strip()]
         env_model = os.environ.get("OPENROUTER_MODEL_NAME", "").strip()
@@ -230,7 +281,8 @@ def build_model_candidates(
             openrouter_models = [env_model, *[name for name in openrouter_models if name != env_model]]
         for model_name in openrouter_models:
             model_candidates.append(("openrouter", model_name, openrouter_api_key, call_openrouter))
-    # Gemini as fallback (MiniMax removed due to timeout issues)
+    
+    # Gemini as fallback
     if gemini_api_key:
         gemini_models = [
             PRIMARY_MODEL_NAME,
@@ -241,4 +293,5 @@ def build_model_candidates(
         for model_name in gemini_models:
             if model_name:
                 model_candidates.append(("gemini", model_name, gemini_api_key, call_gemini))
+    
     return model_candidates

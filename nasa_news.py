@@ -18,7 +18,7 @@ from daily_nasa.config import (
     SHANGHAI_TZ,
 )
 from daily_nasa.fetching import build_processed_articles, fetch_apod_candidates, fetch_image_of_the_day_candidate, fetch_spaceflight_news_today, fetch_top_n_articles
-from daily_nasa.persistence import get_optional_api_key, get_optional_minimax_api_key, get_optional_openrouter_api_key, save_news
+from daily_nasa.persistence import get_optional_api_key, get_optional_groq_api_key, get_optional_minimax_api_key, get_optional_openrouter_api_key, save_news
 from daily_nasa.state import cleanup_old_files, load_previous_day_candidates, load_seen_state, save_seen_state
 
 
@@ -120,6 +120,7 @@ def main() -> None:
     gemini_api_key = get_optional_api_key()
     minimax_api_key = get_optional_minimax_api_key()
     openrouter_api_key = get_optional_openrouter_api_key()
+    groq_api_key = get_optional_groq_api_key()
     minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
     openrouter_models = [model_name for model_name in OPENROUTER_MODEL_SERIES if model_name]
     gemini_fallbacks = [FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME, *list(GEMINI_ADDITIONAL_FALLBACK_MODELS)]
@@ -133,6 +134,7 @@ def main() -> None:
         gemini_api_key,
         minimax_api_key,
         openrouter_api_key,
+        groq_api_key,
         date_str,
         processed_articles,
         cover_urls,
