@@ -120,6 +120,8 @@ MANDATORY OUTPUT RULES:
 21) Preserve important English mission/entity names on first mention when needed, and explain them naturally in Chinese instead of forcing awkward translation.
 22) HTML rule: no leading whitespace right after opening tags.
 23) Side margin/padding must be 0 (or omitted) on the outer wrapper.
+24) Card styling must be FULL-WIDTH with NO side padding/margin: use `margin:0;padding:0` on cards. Do NOT use `padding:1em` or `margin: 2em` that creates side whitespace. Cards should touch screen edges.
+25) Images must be `width:100%` with no border-radius or side margins.
 
 JSON schema:
 {{
