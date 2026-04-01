@@ -92,45 +92,51 @@ def _generate_title_step(
     articles: list[dict[str, Any]],
     recent_titles: list[str],
 ) -> tuple[str, str, str]:
-    """Step 1: Generate title only. Returns (title, provider, model)."""
+    """Step 1: Generate title only. Returns (title, provider, model).
+    
+    Will retry up to MAX_TITLE_RETRIES (20) times until a valid title is generated.
+    No fallback to default titles - must be AI generated.
+    """
     from .common import count_chinese_chars
+    from .config import MAX_TITLE_RETRIES
     
     prompt = build_title_prompt(date_str, articles, recent_titles)
     
-    for provider, model_name, provider_api_key, caller in model_candidates:
-        try:
-            print(f"[Step 1/4] Generating title with {provider}:{model_name}")
-            raw = caller(provider_api_key, prompt, model_name)
-            # Clean up the response - remove quotes and whitespace
-            title = raw.strip().strip('"').strip("'")
-            
-            # Validate: must be Chinese title with 20-30 chars
-            if _is_valid_chinese_title(title):
-                print(f"[Step 1/4] Title generated ({len(title)} chars): {title[:40]}...")
-                return title, provider, model_name
-            else:
-                # Detailed rejection reason
-                title_no_punct = re.sub(r'[^\u4e00-\u9fff\w]', '', title)
-                char_count = len(title_no_punct)
-                chinese_count = count_chinese_chars(title)
-                if not (20 <= char_count <= 30):
-                    print(f"[Step 1/4] Title rejected (length {char_count}, need 20-30): {title[:40]}...")
+    for retry in range(MAX_TITLE_RETRIES):
+        print(f"[Step 1/4] Title generation attempt {retry + 1}/{MAX_TITLE_RETRIES}")
+        
+        for provider, model_name, provider_api_key, caller in model_candidates:
+            try:
+                print(f"  Trying {provider}:{model_name}")
+                raw = caller(provider_api_key, prompt, model_name)
+                # Clean up the response - remove quotes and whitespace
+                title = raw.strip().strip('"').strip("'")
+                
+                # Validate: must be Chinese title with 20-30 chars
+                if _is_valid_chinese_title(title):
+                    print(f"[Step 1/4] ✓ Title generated ({len(title)} chars): {title[:40]}...")
+                    return title, provider, model_name
                 else:
-                    print(f"[Step 1/4] Title rejected (only {chinese_count}/{char_count} Chinese): {title[:40]}...")
-        except Exception as e:
-            print(f"[Step 1/4] Failed with {provider}:{model_name}: {e}")
-            continue
+                    # Detailed rejection reason
+                    title_no_punct = re.sub(r'[^\u4e00-\u9fff\w]', '', title)
+                    char_count = len(title_no_punct)
+                    chinese_count = count_chinese_chars(title)
+                    if not (20 <= char_count <= 30):
+                        print(f"  ✗ Rejected (length {char_count}, need 20-30): {title[:40]}...")
+                    else:
+                        print(f"  ✗ Rejected (only {chinese_count}/{char_count} Chinese): {title[:40]}...")
+            except Exception as e:
+                print(f"  ✗ Failed with {provider}:{model_name}: {e}")
+                continue
+        
+        if retry < MAX_TITLE_RETRIES - 1:
+            print(f"  Retrying... ({retry + 1}/{MAX_TITLE_RETRIES} attempts so far)")
     
-    # Fallback to first article title
-    if articles:
-        title = articles[0].get("title", "")
-        if _is_valid_chinese_title(title):
-            return title, "fallback", "article_title"
-        print(f"[Step 1/4] Article title also not valid Chinese, using default")
-    
-    # Default fallback
-    default_title = f"NASA每日航天动态精选报道"
-    return default_title, "fallback", "default"
+    # No fallback - raise error if all retries exhausted
+    raise RuntimeError(
+        f"Failed to generate valid title after {MAX_TITLE_RETRIES} attempts. "
+        "Title must be 20-30 Chinese characters. No default fallback allowed."
+    )
 
 
 def _has_chinese_content(text: str, min_chars: int = 20) -> bool:

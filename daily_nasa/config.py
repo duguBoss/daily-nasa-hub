@@ -78,6 +78,9 @@ MAX_SEEN_URLS = 1200
 MIN_QUALITY_SCORE = 92
 MAX_MODEL_ATTEMPTS = 2
 
+# Title generation: retry up to 20 times, no default fallback
+MAX_TITLE_RETRIES = 20
+
 # Strict mode: must use model output; no model means error.
 REQUIRE_AI_GENERATION = True
 
