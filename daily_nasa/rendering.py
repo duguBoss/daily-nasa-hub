@@ -178,24 +178,23 @@ def _build_article_section(article: dict[str, Any], category: str) -> str:
     html += f"<p style='margin:0;font-size:11px;color:#fff;letter-spacing:1px;text-transform:uppercase;font-weight:500;'>{label}</p>"
     html += "</div>"
 
-    # Image with overlay gradient
+    # Image - full width within card, no padding
     if image:
-        html += f"<div style='position:relative;width:100%;height:200px;overflow:hidden;'>"
-        html += f"<img src='{image}' style='width:100%;height:100%;object-fit:cover;'>"
-        html += f"<div style='position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,0.3));'></div>"
+        html += f"<div style='width:100%;height:220px;overflow:hidden;'>"
+        html += f"<img src='{image}' style='display:block;width:100%;height:100%;object-fit:cover;'>"
         html += "</div>"
 
-    # Content area
-    html += f"<div style='padding:24px;'>"
-    html += f"<h2 style='margin:0 0 10px 0;font-size:20px;font-weight:600;color:{TEXT_PRIMARY};line-height:1.4;'>{escape(title)}</h2>"
-    html += f"<p style='margin:0 0 16px 0;font-size:12px;color:{TEXT_LABEL};'>{escape(meta)}</p>"
+    # Content area - full width text
+    html += f"<div style='padding:20px 0;'>"
+    html += f"<h2 style='margin:0 16px 10px 16px;font-size:20px;font-weight:600;color:{TEXT_PRIMARY};line-height:1.4;'>{escape(title)}</h2>"
+    html += f"<p style='margin:0 16px 16px 16px;font-size:12px;color:{TEXT_LABEL};'>{escape(meta)}</p>"
 
     # Divider
-    html += f"<div style='width:40px;height:3px;background:{ACCENT_BLUE};border-radius:2px;margin:16px 0;'></div>"
+    html += f"<div style='width:40px;height:3px;background:{ACCENT_BLUE};border-radius:2px;margin:16px;'></div>"
 
-    # Paragraphs
+    # Paragraphs - full width
     for para in paragraphs:
-        html += f"<p style='margin:0 0 12px 0;font-size:14px;color:{TEXT_SECONDARY};line-height:1.8;'>{escape(para)}</p>"
+        html += f"<p style='margin:0 16px 12px 16px;font-size:14px;color:{TEXT_SECONDARY};line-height:1.8;'>{escape(para)}</p>"
 
     html += "</div></div>"
     return html
@@ -214,15 +213,16 @@ def _build_header(date_str: str, headline: str) -> str:
 
 
 def _build_intro(text: str) -> str:
-    """Build modern intro section with card design."""
+    """Build modern intro section with card design - full width text."""
     return (
-        f"<div style='margin:16px;background:{LIGHT_CARD_BG};border-radius:12px;box-shadow:{CARD_SHADOW};padding:24px;'>"
-        f"<div style='display:flex;align-items:center;margin-bottom:12px;'>"
+        f"<div style='margin:16px;background:{LIGHT_CARD_BG};border-radius:12px;box-shadow:{CARD_SHADOW};overflow:hidden;'>"
+        f"<div style='padding:16px 0;'>"
+        f"<div style='display:flex;align-items:center;margin:0 16px 12px 16px;'>"
         f"<div style='width:4px;height:20px;background:{ACCENT_BLUE};border-radius:2px;margin-right:10px;'></div>"
         f"<p style='margin:0;font-size:13px;color:{TEXT_LABEL};letter-spacing:1px;text-transform:uppercase;font-weight:500;'>今日导读</p>"
         f"</div>"
-        f"<p style='margin:0;font-size:15px;color:{TEXT_SECONDARY};line-height:1.8;'>{escape(text)}</p>"
-        f"</div>"
+        f"<p style='margin:0 16px;font-size:15px;color:{TEXT_SECONDARY};line-height:1.8;'>{escape(text)}</p>"
+        f"</div></div>"
     )
 
 
