@@ -1,24 +1,24 @@
-# Atlantis on Pad 39A
+# The Colorful Moon
 
 - 日期: 2026-04-01
 
-## 1. Atlantis on Pad 39A
+## 1. The Colorful Moon
 
 - 频道: NASA APOD
 - 链接: 
 
-An intricate network of lighting plays across the 130 foot high Rotating Service Structure (RSS) in this dramatic night view of the Space Shuttle Atlantis on the Kennedy Space Center's launch pad 39A. Small human figures visible in silhouette emphasize the str
+Do you recognize the Earth's Moon when you see it? The crazy, patchwork appearance of the false-color image makes this almost full view of the Moon's familiar near side look very strange. The Sea of Tranquillity (Mare Tranquillitatis) is the bright blue area a
 
-## 2. March of the Harmattan
+## 2. LIVE: Artemis II Launch Day Updates
 
-- 频道: NASA Science
-- 链接: https://science.nasa.gov/earth/earth-observatory/march-of-the-harmattan
+- 频道: NASA
+- 链接: https://www.nasa.gov/blogs/missions/2026/04/01/live-artemis-ii-launch-day-updates
 
-Strong winds in March 2026 carried Saharan dust across northwestern Africa and toward the Canary Islands, reducing visibility and prompting alerts. In early spring 2026, a dry, dust-laden wind known as the harmattan swep
+Live updates for launch of NASA’s Artemis II test flight will be published on this page. All times are Eastern. The Artemis II launch team is now performing the liquid oxygen main propulsion system chilldown on the SLS (
 
-## 3. March of the Harmattan
+## 3. From the Midwest to the Moon
 
 - 频道: SpaceFlight News
-- 链接: https://science.nasa.gov/earth/earth-observatory/march-of-the-harmattan/
+- 链接: https://spacenews.com/from-the-midwest-to-the-moon-sn-focus/
 
-Strong winds in March 2026 carried Saharan dust across northwestern Africa and toward the Canary Islands, reducing visibility and prompting alerts.
+Why space companies are betting on Ohio The post From the Midwest to the Moon appeared first on SpaceNews.
