@@ -98,6 +98,25 @@ def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]], r
     return f"NASA 每日动态 {date_str}"
 
 
+def build_default_payload(
+    date_str: str,
+    articles: list[dict[str, Any]],
+    cover_urls: list[str],
+    recent_titles: list[str],
+) -> dict[str, Any]:
+    """Build default payload when AI generation fails or as fallback."""
+    title = build_wechat_fallback_title(date_str, articles, recent_titles)
+    weixin_html = build_fallback_html(date_str, title, articles, cover_urls)
+    
+    return {
+        "title": title,
+        "weixin_html": weixin_html,
+        "covers": cover_urls,
+        "date": date_str,
+        "songs": [],
+    }
+
+
 def build_article_blocks(articles: list[dict[str, Any]]) -> str:
     """Build article blocks for AI prompt context."""
     blocks = []
