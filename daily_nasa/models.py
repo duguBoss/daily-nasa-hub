@@ -230,7 +230,7 @@ def build_model_candidates(
             openrouter_models = [env_model, *[name for name in openrouter_models if name != env_model]]
         for model_name in openrouter_models:
             model_candidates.append(("openrouter", model_name, openrouter_api_key, call_openrouter))
-    # Gemini as fallback
+    # Gemini as fallback (MiniMax removed due to timeout issues)
     if gemini_api_key:
         gemini_models = [
             PRIMARY_MODEL_NAME,
@@ -241,8 +241,4 @@ def build_model_candidates(
         for model_name in gemini_models:
             if model_name:
                 model_candidates.append(("gemini", model_name, gemini_api_key, call_gemini))
-    # MiniMax as last fallback
-    if minimax_api_key:
-        minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
-        model_candidates.append(("minimax", minimax_model_name, minimax_api_key, call_minimax))
     return model_candidates
