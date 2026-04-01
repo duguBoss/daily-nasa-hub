@@ -87,6 +87,33 @@ def _article_label(category: str) -> str:
     return labels.get(category, "NASA News")
 
 
+def build_article_blocks(articles: list[dict[str, Any]]) -> str:
+    """Build article blocks for AI prompt context."""
+    blocks = []
+    for i, article in enumerate(articles[:5], 1):
+        title = article.get("title", "")
+        summary = article.get("summary", "")
+        content = article.get("content", "")
+        channel = article.get("channel", "NASA")
+        pub_time = article.get("publish_time", "")
+        
+        block_parts = [f"【文章{i}】"]
+        if title:
+            block_parts.append(f"标题：{title}")
+        if channel:
+            block_parts.append(f"来源：{channel}")
+        if pub_time:
+            block_parts.append(f"时间：{pub_time}")
+        if summary:
+            block_parts.append(f"摘要：{summary}")
+        if content:
+            block_parts.append(f"内容：{content[:500]}...")
+        
+        blocks.append("\n".join(block_parts))
+    
+    return "\n\n".join(blocks)
+
+
 def _channel_meta(article: dict[str, Any]) -> str:
     """Get article meta info."""
     parts = []
