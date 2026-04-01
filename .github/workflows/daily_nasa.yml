@@ -15,22 +15,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 优化点 1：使用 uv 代替传统的 setup-python 和 pip
-      # uv 是用 Rust 写的，安装速度比 pip 快 10-100 倍
-      - name: Install uv
-        uses: astral-sh/setup-uv@v3
-        with:
-          enable-cache: true # 自动处理缓存，第二次运行极快
-          cache-dependency-glob: "requirements.txt"
-
       - name: Set up Python
-        run: uv python install 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-      # 优化点 2：使用 uv 同步依赖
-      # 如果 requirements.txt 没变，uv 会直接从缓存读取，几乎不耗时
       - name: Install dependencies
         run: |
-          uv pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Run NASA news generator
         env:
@@ -48,15 +41,14 @@ jobs:
           OPENROUTER_STREAM: "true"
           OPENROUTER_MAX_TOKENS: "8192"
           GROQ_MAX_TOKENS: "8192"
-        # 优化点 3：使用 uv run 执行，确保环境隔离且快速
-        run: uv run nasa_news.py
+        run: python nasa_news.py
 
       - name: Commit and push generated files
-        # 优化点 4：将配置提取，减少重复执行
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add *.md *.json assets/ state/
+          git status
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
