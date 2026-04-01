@@ -87,6 +87,17 @@ def _article_label(category: str) -> str:
     return labels.get(category, "NASA News")
 
 
+def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]], recent_titles: list[str]) -> str:
+    """Build a fallback title from articles when AI generation fails."""
+    if articles:
+        first_article = articles[0]
+        title = first_article.get("title", "")
+        if title:
+            return fit_title_length(title)
+    
+    return f"NASA 每日动态 {date_str}"
+
+
 def build_article_blocks(articles: list[dict[str, Any]]) -> str:
     """Build article blocks for AI prompt context."""
     blocks = []
