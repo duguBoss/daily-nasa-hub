@@ -62,14 +62,15 @@ def sanitize_payload(payload: Any, default_payload: dict[str, Any], date_str: st
 
     title = normalize_whitespace(str(normalized.get("title", "")))
     chinese_chars = count_chinese_chars(title)
-    # Title must have at least 10 Chinese characters and be mostly Chinese
+    # Title validation - be more lenient with AI-generated titles
+    # Only reject if: empty, too few Chinese chars, or repetitive
     title_invalid = (
-        not title 
+        not title
         or chinese_chars < 10  # At least 10 Chinese characters
         or chinese_chars < len(title) * 0.5  # At least 50% Chinese
-        or is_title_repetitive(title, recent_titles) 
-        or bool(_title_weakness_hits(title)) 
-        or not title_matches_story_terms(title, articles)
+        or is_title_repetitive(title, recent_titles)
+        or bool(_title_weakness_hits(title))
+        # Removed: title_matches_story_terms check - too strict for AI-generated titles
     )
     if title_invalid:
         title = build_wechat_fallback_title(date_str, articles, recent_titles)

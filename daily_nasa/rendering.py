@@ -19,15 +19,18 @@ GENERIC_SUBJECT_FRAGMENTS = (
 FORBIDDEN_TITLE_TOKENS = {"3条", "三条", "要闻", "盘点", "汇总", "速报", "冲刺", "开扯", "扒", "合集"}
 
 
-# Light theme styles - white transparent background
-LIGHT_BG = "#ffffff"
+# Modern light theme styles
+LIGHT_BG = "#fafafa"
 LIGHT_CARD_BG = "#ffffff"
-BORDER_COLOR = "#e5e5e5"
+BORDER_COLOR = "#e8e8e8"
 TEXT_PRIMARY = "#1a1a1a"
-TEXT_SECONDARY = "#333333"
-TEXT_MUTED = "#666666"
-TEXT_LABEL = "#888888"
-ACCENT_BLUE = "#2563eb"
+TEXT_SECONDARY = "#4a4a4a"
+TEXT_MUTED = "#6b7280"
+TEXT_LABEL = "#9ca3af"
+ACCENT_BLUE = "#3b82f6"
+ACCENT_GRADIENT = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+CARD_SHADOW = "0 2px 8px rgba(0,0,0,0.08)"
+CARD_SHADOW_HOVER = "0 4px 16px rgba(0,0,0,0.12)"
 
 FONT_FAMILY = "-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif"
 
@@ -88,13 +91,17 @@ def _article_label(category: str) -> str:
 
 
 def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]], recent_titles: list[str]) -> str:
-    """Build a fallback title from articles when AI generation fails."""
+    """Build a fallback title from articles when AI generation fails.
+
+    Uses Chinese title (title field) not English title (title_en).
+    """
     if articles:
         first_article = articles[0]
+        # Use Chinese title (already normalized), not title_en
         title = first_article.get("title", "")
         if title:
             return fit_title_length(title)
-    
+
     return f"NASA 每日动态 {date_str}"
 
 
@@ -157,62 +164,81 @@ def _channel_meta(article: dict[str, Any]) -> str:
 
 
 def _build_article_section(article: dict[str, Any], category: str) -> str:
-    """Build a full article section with dark theme."""
+    """Build a modern article section with card design."""
     image = article.get("cover_url", "") or article.get("image_url", "")
     title = normalize_cn_title(article.get("title", ""))
     meta = _channel_meta(article)
     paragraphs = _article_paragraphs(article, max_paragraphs=2)
     label = _article_label(category)
-    
-    html = f"<div style='padding:28px 24px;border-bottom:1px solid {BORDER_COLOR};'>"
-    html += f"<p style='margin:0 0 16px 0;font-size:10px;color:{TEXT_MUTED};letter-spacing:2px;text-transform:uppercase;'>{label}</p>"
-    
-    if image:
-        html += f"<img src='{image}' style='width:100%;height:260px;object-fit:cover;border-radius:4px;margin:0 0 20px 0;'>"
-    
-    html += f"<h2 style='margin:0 0 12px 0;font-size:22px;font-weight:400;color:{TEXT_PRIMARY};line-height:1.4;'>{escape(title)}</h2>"
-    html += f"<p style='margin:0 0 20px 0;font-size:13px;color:{TEXT_MUTED};'>{escape(meta)}</p>"
-    
-    for para in paragraphs:
-        html += f"<p style='margin:0 0 14px 0;font-size:14px;color:{TEXT_SECONDARY};line-height:1.9;font-weight:300;'>{escape(para)}</p>"
-    
+
+    html = f"<div style='margin:16px;background:{LIGHT_CARD_BG};border-radius:12px;box-shadow:{CARD_SHADOW};overflow:hidden;'>"
+
+    # Category label bar
+    html += f"<div style='padding:12px 20px;background:{ACCENT_GRADIENT};'>"
+    html += f"<p style='margin:0;font-size:11px;color:#fff;letter-spacing:1px;text-transform:uppercase;font-weight:500;'>{label}</p>"
     html += "</div>"
+
+    # Image with overlay gradient
+    if image:
+        html += f"<div style='position:relative;width:100%;height:200px;overflow:hidden;'>"
+        html += f"<img src='{image}' style='width:100%;height:100%;object-fit:cover;'>"
+        html += f"<div style='position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,0.3));'></div>"
+        html += "</div>"
+
+    # Content area
+    html += f"<div style='padding:24px;'>"
+    html += f"<h2 style='margin:0 0 10px 0;font-size:20px;font-weight:600;color:{TEXT_PRIMARY};line-height:1.4;'>{escape(title)}</h2>"
+    html += f"<p style='margin:0 0 16px 0;font-size:12px;color:{TEXT_LABEL};'>{escape(meta)}</p>"
+
+    # Divider
+    html += f"<div style='width:40px;height:3px;background:{ACCENT_BLUE};border-radius:2px;margin:16px 0;'></div>"
+
+    # Paragraphs
+    for para in paragraphs:
+        html += f"<p style='margin:0 0 12px 0;font-size:14px;color:{TEXT_SECONDARY};line-height:1.8;'>{escape(para)}</p>"
+
+    html += "</div></div>"
     return html
 
 
 def _build_header(date_str: str, headline: str) -> str:
-    """Build dark header with image overlay."""
+    """Build modern header with gradient background."""
     return (
-        f"<div style='position:relative;width:100%;height:280px;overflow:hidden;'>"
-        f"<img src='{TOP_BANNER_URL}' style='width:100%;height:100%;object-fit:cover;filter:brightness(0.7);'>"
-        f"<div style='position:absolute;bottom:0;left:0;right:0;padding:30px;background:linear-gradient(transparent,rgba(0,0,0,0.8));'>"
-        f"<p style='margin:0 0 8px 0;font-size:11px;color:{TEXT_LABEL};letter-spacing:2px;text-transform:uppercase;'>{escape(date_str)}</p>"
-        f"<h1 style='margin:0;font-size:28px;font-weight:300;color:{TEXT_PRIMARY};line-height:1.3;letter-spacing:-0.5px;'>{escape(headline)}</h1>"
+        f"<div style='position:relative;width:100%;padding:40px 24px;background:{ACCENT_GRADIENT};text-align:center;'>"
+        f"<div style='max-width:600px;margin:0 auto;'>"
+        f"<p style='margin:0 0 12px 0;font-size:12px;color:rgba(255,255,255,0.8);letter-spacing:2px;text-transform:uppercase;'>{escape(date_str)}</p>"
+        f"<h1 style='margin:0;font-size:26px;font-weight:600;color:#fff;line-height:1.4;letter-spacing:-0.3px;'>{escape(headline)}</h1>"
+        f"<div style='width:60px;height:4px;background:rgba(255,255,255,0.5);border-radius:2px;margin:20px auto 0;'></div>"
         f"</div></div>"
     )
 
 
 def _build_intro(text: str) -> str:
-    """Build intro section with light theme."""
+    """Build modern intro section with card design."""
     return (
-        f"<div style='padding:28px 24px;border-bottom:1px solid {BORDER_COLOR};'>"
-        f"<p style='margin:0;font-size:15px;color:{TEXT_SECONDARY};line-height:1.8;font-weight:300;'>{escape(text)}</p>"
+        f"<div style='margin:16px;background:{LIGHT_CARD_BG};border-radius:12px;box-shadow:{CARD_SHADOW};padding:24px;'>"
+        f"<div style='display:flex;align-items:center;margin-bottom:12px;'>"
+        f"<div style='width:4px;height:20px;background:{ACCENT_BLUE};border-radius:2px;margin-right:10px;'></div>"
+        f"<p style='margin:0;font-size:13px;color:{TEXT_LABEL};letter-spacing:1px;text-transform:uppercase;font-weight:500;'>今日导读</p>"
+        f"</div>"
+        f"<p style='margin:0;font-size:15px;color:{TEXT_SECONDARY};line-height:1.8;'>{escape(text)}</p>"
         f"</div>"
     )
 
 
 def _build_footer() -> str:
-    """Build light footer."""
+    """Build modern footer with gradient."""
     return (
-        f"<div style='padding:32px 24px;background:#f5f5f5;text-align:center;border-top:1px solid {BORDER_COLOR};'>"
-        f"<p style='margin:0 0 8px 0;font-size:11px;color:{TEXT_LABEL};letter-spacing:2px;'>NASA DAILY</p>"
-        f"<p style='margin:0;font-size:12px;color:{TEXT_MUTED};'>Daily space exploration updates</p>"
+        f"<div style='margin-top:24px;padding:32px 24px;background:{ACCENT_GRADIENT};text-align:center;'>"
+        f"<p style='margin:0 0 8px 0;font-size:14px;color:#fff;font-weight:600;letter-spacing:2px;'>NASA DAILY</p>"
+        f"<p style='margin:0 0 16px 0;font-size:12px;color:rgba(255,255,255,0.8);'>探索宇宙，每日更新</p>"
+        f"<div style='width:40px;height:2px;background:rgba(255,255,255,0.5);border-radius:1px;margin:0 auto;'></div>"
         f"</div>"
     )
 
 
 def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> str:
-    """Build complete HTML with light theme."""
+    """Build complete HTML with modern card-based design."""
     science_article = articles[0] if articles else {}
     news_articles = articles[1:4] if len(articles) > 1 else []
 
@@ -227,19 +253,30 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
     else:
         intro = "今日 NASA 最新航天动态。"
 
-    # Build headline from first article or default - must be Chinese and exactly 30 chars
+    # Build headline from first article or default
     headline = build_headline_title(articles, date_str)
 
-    # Build content with light theme
+    # Build content with modern card-based design
     html_parts = [
-        f"<div style='background:{LIGHT_BG};width:100%;font-family:{FONT_FAMILY};color:{TEXT_PRIMARY};'>",
+        f"<div style='background:{LIGHT_BG};width:100%;font-family:{FONT_FAMILY};color:{TEXT_PRIMARY};padding-bottom:16px;'>",
         _build_header(date_str, headline),
         _build_intro(intro),
     ]
 
-    # Science article
+    # Science article (featured)
     if science_article:
         html_parts.append(_build_article_section(science_article, "science"))
+
+    # Section divider for news
+    if news_articles:
+        html_parts.append(
+            f"<div style='margin:24px 16px 16px;'>"
+            f"<div style='display:flex;align-items:center;'>"
+            f"<div style='flex:1;height:1px;background:{BORDER_COLOR};'></div>"
+            f"<span style='margin:0 16px;font-size:13px;color:{TEXT_LABEL};font-weight:500;'>更多新闻</span>"
+            f"<div style='flex:1;height:1px;background:{BORDER_COLOR};'></div>"
+            f"</div></div>"
+        )
 
     # News articles with alternating categories
     categories = ["station", "deep", "mars", "earth", "tech"]
