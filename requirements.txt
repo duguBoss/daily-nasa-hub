@@ -4,3 +4,4 @@ pytz
 opencc
 groq
 Pillow
+openai

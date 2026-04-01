@@ -44,10 +44,11 @@ GEMINI_ADDITIONAL_FALLBACK_MODELS = (
 )
 OPENROUTER_OPENAI_BASE_URL = "https://openrouter.ai/api/v1"
 OPENROUTER_MODEL_SERIES = (
+    "stepfun/step-3.5-flash:free",
     "qwen/qwen3.6-plus-preview:free",
     "nvidia/nemotron-3-super-120b-a12b:free",
-    "minimax/minimax-m2.5:free",
-    "stepfun/step-3.5-flash:free",
+    "arcee-ai/trinity-large-preview:free",
+    "z-ai/glm-4.5-air:free",
     "nvidia/nemotron-3-nano-30b-a3b:free",
 )
 MINIMAX_OPENAI_BASE_URL = "https://api.minimaxi.com/v1"

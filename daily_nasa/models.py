@@ -157,41 +157,40 @@ def _collect_stream_text(response: requests.Response, provider_label: str) -> st
 
 
 def call_openrouter(api_key: str, prompt: str, model_name: str) -> str:
-    base_url = os.environ.get("OPENROUTER_OPENAI_BASE_URL", "").strip() or OPENROUTER_OPENAI_BASE_URL
-    endpoint = f"{base_url.rstrip('/')}/chat/completions"
-    stream = OPENROUTER_STREAM
-    payload = {
-        "model": model_name,
-        "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": OPENROUTER_MAX_TOKENS,
-        "temperature": 0.55,
-        "top_p": 0.9,
-        "stream": stream,
-    }
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Accept": "text/event-stream" if stream else "application/json",
-        "Content-Type": "application/json",
-        "HTTP-Referer": os.environ.get("OPENROUTER_SITE_URL", "https://github.com/duguBoss/daily-nasa-hub"),
-        "X-Title": os.environ.get("OPENROUTER_APP_NAME", "daily-nasa-hub"),
-    }
-    response = requests.post(
-        endpoint,
-        headers=headers,
-        json=payload,
-        timeout=_request_timeout(OPENROUTER_REQUEST_TIMEOUT),
-        stream=stream,
-    )
-    if response.status_code != 200:
-        raise RuntimeError(f"OpenRouter request failed ({response.status_code}): {_response_excerpt(response)}")
-    if stream:
-        return _collect_stream_text(response, f"OpenRouter:{model_name}")
+    """Call OpenRouter API using OpenAI client."""
+    try:
+        from openai import OpenAI
+    except ImportError:
+        raise RuntimeError("openai package not installed. Run: pip install openai")
 
-    result_json = _parse_json_response(response, f"OpenRouter:{model_name}")
-    choices = result_json.get("choices", [])
-    if not choices:
+    base_url = os.environ.get("OPENROUTER_OPENAI_BASE_URL", "").strip() or OPENROUTER_OPENAI_BASE_URL
+
+    client = OpenAI(
+        base_url=base_url,
+        api_key=api_key,
+    )
+
+    # Build messages
+    messages = [{"role": "user", "content": prompt}]
+
+    # Create completion
+    completion = client.chat.completions.create(
+        model=model_name,
+        messages=messages,
+        max_tokens=OPENROUTER_MAX_TOKENS,
+        temperature=0.55,
+        top_p=0.9,
+        extra_headers={
+            "HTTP-Referer": os.environ.get("OPENROUTER_SITE_URL", "https://github.com/duguBoss/daily-nasa-hub"),
+            "X-Title": os.environ.get("OPENROUTER_APP_NAME", "daily-nasa-hub"),
+        },
+    )
+
+    # Extract content from response
+    if not completion.choices:
         raise RuntimeError("OpenRouter returned empty choices.")
-    return extract_message_content(choices[0].get("message", {}).get("content", ""))
+
+    return extract_message_content(completion.choices[0].message.content)
 
 
 def extract_message_content(content: Any) -> str:
