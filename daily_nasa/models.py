@@ -245,11 +245,48 @@ def call_groq(api_key: str, prompt: str, model_name: str) -> str:
 
 
 def parse_model_json(text: str) -> dict[str, Any]:
+    """Parse JSON from model response with error handling for incomplete JSON."""
     text = normalize_whitespace(text)
     if text.startswith("```"):
         text = re.sub(r"^```(?:json)?\s*", "", text)
         text = re.sub(r"\s*```$", "", text)
-    return json.loads(text)
+    
+    # Try to parse as-is first
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as e:
+        # Try to fix common JSON issues
+        # 1. Remove trailing commas before } or ]
+        fixed_text = re.sub(r',(\s*[}\]])', r'\1', text)
+        # 2. Try to close unclosed strings by finding the last complete key-value pair
+        # Find the last complete property and truncate there
+        last_complete = re.search(r'("[^"]*"\s*:\s*(?:"[^"]*"|[^,{}\[\]]*))\s*$', fixed_text)
+        if last_complete:
+            # Try to find a good truncation point
+            truncated = fixed_text[:last_complete.end()]
+            # Close any open structures
+            open_braces = truncated.count('{') - truncated.count('}')
+            open_brackets = truncated.count('[') - truncated.count(']')
+            truncated += '}' * open_braces + ']' * open_brackets
+            try:
+                return json.loads(truncated)
+            except json.JSONDecodeError:
+                pass
+        
+        # 3. If all else fails, try to extract just the title and weixin_html fields
+        title_match = re.search(r'"title"\s*:\s*"([^"]*)"', text)
+        html_match = re.search(r'"weixin_html"\s*:\s*"([^"]*)"', text, re.DOTALL)
+        
+        if title_match or html_match:
+            result: dict[str, Any] = {}
+            if title_match:
+                result["title"] = title_match.group(1)
+            if html_match:
+                result["weixin_html"] = html_match.group(1)
+            return result
+        
+        # Re-raise the original error if we can't fix it
+        raise e
 
 
 def normalize_whitespace(text: str) -> str:
