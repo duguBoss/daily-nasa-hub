@@ -29,14 +29,18 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           OPENROUTER_MODEL_NAME: ${{ vars.OPENROUTER_MODEL_NAME }}
+          GROQ_MODEL_NAME: ${{ vars.GROQ_MODEL_NAME }}
           MINIMAX_MODEL_NAME: ${{ vars.MINIMAX_MODEL_NAME }}
           MINIMAX_OPENAI_BASE_URL: ${{ vars.MINIMAX_OPENAI_BASE_URL }}
           OPENROUTER_REQUEST_TIMEOUT: "180"
           MINIMAX_REQUEST_TIMEOUT: "120"
+          GROQ_REQUEST_TIMEOUT: "180"
           OPENROUTER_STREAM: "true"
           OPENROUTER_MAX_TOKENS: "8192"
+          GROQ_MAX_TOKENS: "8192"
         run: python nasa_news.py
 
       - name: Commit and push generated files
