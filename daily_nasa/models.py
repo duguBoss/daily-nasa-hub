@@ -264,16 +264,7 @@ def build_model_candidates(
 ) -> list[tuple[str, str, str, Callable[[str, str, str], str]]]:
     model_candidates: list[tuple[str, str, str, Callable[[str, str, str], str]]] = []
     
-    # Groq first (user preference - most reliable)
-    if groq_api_key:
-        groq_models = [model_name.strip() for model_name in GROQ_MODEL_SERIES if model_name.strip()]
-        env_model = os.environ.get("GROQ_MODEL_NAME", "").strip()
-        if env_model:
-            groq_models = [env_model, *[name for name in groq_models if name != env_model]]
-        for model_name in groq_models:
-            model_candidates.append(("groq", model_name, groq_api_key, call_groq))
-    
-    # OpenRouter second
+    # OpenRouter first (user preference - highest priority)
     if openrouter_api_key:
         openrouter_models = [model_name.strip() for model_name in OPENROUTER_MODEL_SERIES if model_name.strip()]
         env_model = os.environ.get("OPENROUTER_MODEL_NAME", "").strip()
@@ -281,6 +272,15 @@ def build_model_candidates(
             openrouter_models = [env_model, *[name for name in openrouter_models if name != env_model]]
         for model_name in openrouter_models:
             model_candidates.append(("openrouter", model_name, openrouter_api_key, call_openrouter))
+    
+    # Groq second
+    if groq_api_key:
+        groq_models = [model_name.strip() for model_name in GROQ_MODEL_SERIES if model_name.strip()]
+        env_model = os.environ.get("GROQ_MODEL_NAME", "").strip()
+        if env_model:
+            groq_models = [env_model, *[name for name in groq_models if name != env_model]]
+        for model_name in groq_models:
+            model_candidates.append(("groq", model_name, groq_api_key, call_groq))
     
     # Gemini as fallback
     if gemini_api_key:
