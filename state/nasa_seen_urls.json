@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-01T20:38:30.175434+08:00",
+  "updated_at": "2026-04-01T21:37:18.670889+08:00",
   "date": "2026-04-01",
   "last_fetch_urls": [
     "https://www.nasa.gov/blogs/missions/2026/04/01/live-artemis-ii-launch-day-updates",
@@ -9,7 +9,8 @@
     "https://www.nasa.gov/image-article/godspeed-artemis-ii"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/blogs/missions/2026/04/01/live-artemis-ii-launch-day-updates"
+    "https://www.nasa.gov/blogs/missions/2026/04/01/live-artemis-ii-launch-day-updates",
+    "https://science.nasa.gov/earth/earth-observatory/march-of-the-harmattan"
   ],
   "seen_urls": [
     "https://www.nasa.gov/blogs/missions/2026/04/01/live-artemis-ii-launch-day-updates",
