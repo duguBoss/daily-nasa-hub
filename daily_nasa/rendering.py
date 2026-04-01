@@ -9,6 +9,13 @@ from .config import BOTTOM_BANNER_URL, TITLE_KEYWORDS, TOP_BANNER_URL
 
 
 CARD_IMAGE_STYLE = "width:100%;display:block;border-radius:16px;margin:0 0 14px 0;object-fit:cover;"
+SECTION_STYLE = "width:100%;max-width:100%;box-sizing:border-box;"
+CARD_CONTAINER_STYLE = "margin:0 0 24px 0;padding:18px;border-radius:20px;background:linear-gradient(180deg,#f5f9ff 0%,#ffffff 100%);border:1px solid #d9e7fb;box-shadow:0 12px 28px rgba(20,35,54,0.06);"
+NEWS_CARD_STYLE = "margin:0 0 18px 0;padding:18px;border:1px solid #e4ebf2;border-radius:18px;background:#ffffff;box-shadow:0 8px 22px rgba(20,35,54,0.05);"
+LABEL_SCIENCE_STYLE = "display:inline-block;margin:0 0 12px 0;padding:6px 14px;border-radius:999px;background:linear-gradient(135deg,#0b3d91 0%,#1e5bb5 100%);color:#ffffff;font-size:12px;font-weight:600;letter-spacing:0.08em;box-shadow:0 2px 8px rgba(11,61,145,0.25);"
+LABEL_NEWS_STYLE = "display:inline-block;padding:5px 12px;border-radius:999px;background:linear-gradient(135deg,#eef4fb 0%,#f5f9ff 100%);color:#1a4a7a;font-size:12px;font-weight:500;border:1px solid #d4e3f5;"
+TITLE_SCIENCE_STYLE = "margin:0 0 10px 0;font-size:24px;line-height:1.38;color:#0a2540;font-weight:700;"
+TITLE_NEWS_STYLE = "margin:0 0 10px 0;font-size:21px;line-height:1.42;color:#132238;font-weight:600;"
 ARTICLE_SKIP_TOKENS = {
     "nasa", "today", "daily", "update", "mission", "missions", "news", "story", "photo", "image",
     "article", "science", "space", "launch", "final", "preparations", "underway", "what", "read", "more",
@@ -100,12 +107,12 @@ def _build_science_card(article: dict[str, Any]) -> str:
     meta = _channel_meta(article)
     paragraphs = _article_paragraphs(article, max_paragraphs=3)
     card = (
-        "<section style='margin:0 0 24px 0;padding:18px;border-radius:20px;background:linear-gradient(180deg,#f5f9ff 0%,#ffffff 100%);border:1px solid #d9e7fb;box-shadow:0 12px 28px rgba(20,35,54,0.06);'>"
-        "<section style='display:inline-block;margin:0 0 12px 0;padding:6px 12px;border-radius:999px;background:#0b3d91;color:#ffffff;font-size:12px;letter-spacing:0.08em;'>NASA每日科普</section>"
+        f"<section style='{CARD_CONTAINER_STYLE}{SECTION_STYLE}'>"
+        f"<section style='{LABEL_SCIENCE_STYLE}'>📡 NASA每日科普</section>"
     )
     if image:
         card += f"<img src='{image}' style='{CARD_IMAGE_STYLE}'>"
-    card += f"<h3 style='margin:0 0 8px 0;font-size:22px;line-height:1.42;color:#11263f;'>{escape(title)}</h3><p style='margin:0 0 14px 0;font-size:13px;line-height:1.7;color:#5e738c;'>{escape(meta)}</p>{_render_fact_strip(article, '#0b3d91')}{_render_paragraphs(paragraphs, '#30485f')}</section>"
+    card += f"<h3 style='{TITLE_SCIENCE_STYLE}'>{escape(title)}</h3><p style='margin:0 0 14px 0;font-size:13px;line-height:1.7;color:#5e738c;'>{escape(meta)}</p>{_render_fact_strip(article, '#0b3d91')}{_render_paragraphs(paragraphs, '#30485f')}</section>"
     return card
 
 
@@ -115,19 +122,19 @@ def _build_news_card(article: dict[str, Any], idx: int) -> str:
     meta = _channel_meta(article)
     paragraphs = _article_paragraphs(article, max_paragraphs=3)
     card = (
-        "<section style='margin:0 0 18px 0;padding:18px;border:1px solid #e4ebf2;border-radius:18px;background:#ffffff;box-shadow:0 8px 22px rgba(20,35,54,0.05);'>"
-        "<section style='display:flex;align-items:center;justify-content:space-between;margin:0 0 12px 0;'>"
-        f"<span style='display:inline-block;padding:5px 11px;border-radius:999px;background:#eef4fb;color:#24496f;font-size:12px;'>{_article_label(False, idx)}</span>"
-        f"<span style='font-size:12px;color:#7f90a5;'>新闻 {idx:02d}</span></section>"
+        f"<section style='{NEWS_CARD_STYLE}{SECTION_STYLE}'>"
+        "<section style='display:flex;align-items:center;justify-content:space-between;margin:0 0 14px 0;'>"
+        f"<span style='{LABEL_NEWS_STYLE}'>🚀 {_article_label(False, idx)}</span>"
+        f"<span style='font-size:12px;color:#7f90a5;font-weight:500;'>#{idx:02d}</span></section>"
     )
     if image:
         card += f"<img src='{image}' style='{CARD_IMAGE_STYLE}'>"
-    card += f"<h3 style='margin:0 0 8px 0;font-size:20px;line-height:1.48;color:#172a43;'>{escape(title)}</h3><p style='margin:0 0 14px 0;font-size:13px;line-height:1.7;color:#61758a;'>{escape(meta)}</p>{_render_fact_strip(article, '#3b82f6')}{_render_paragraphs(paragraphs)}</section>"
+    card += f"<h3 style='{TITLE_NEWS_STYLE}'>{escape(title)}</h3><p style='margin:0 0 14px 0;font-size:13px;line-height:1.7;color:#61758a;'>{escape(meta)}</p>{_render_fact_strip(article, '#3b82f6')}{_render_paragraphs(paragraphs)}</section>"
     return card
 
 
 def _build_divider(label: str) -> str:
-    return f"<section style='display:flex;align-items:center;gap:12px;margin:28px 0 22px 0;'><section style='flex:1;height:1px;background:linear-gradient(to right,#d4dfeb,#eef3f8);'></section><span style='padding:0 2px;font-size:13px;letter-spacing:0.08em;color:#6c829a;'>{escape(label)}</span><section style='flex:1;height:1px;background:linear-gradient(to left,#d4dfeb,#eef3f8);'></section></section>"
+    return f"<section style='display:flex;align-items:center;gap:12px;margin:28px 0 22px 0;width:100%;box-sizing:border-box;'><section style='flex:1;height:1px;background:linear-gradient(to right,#d4dfeb,#eef3f8);'></section><span style='padding:6px 16px;font-size:13px;letter-spacing:0.1em;color:#4a6fa5;font-weight:600;background:linear-gradient(135deg,#f0f5fa 0%,#e8f0f8 100%);border-radius:999px;border:1px solid #d4e3f5;'>{escape(label)}</span><section style='flex:1;height:1px;background:linear-gradient(to left,#d4dfeb,#eef3f8);'></section></section>"
 
 
 def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> str:
@@ -144,10 +151,10 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
     if news_articles:
         cards_html += _build_divider("今日NASA新闻") + "".join(_build_news_card(article, idx) for idx, article in enumerate(news_articles, start=1))
     return (
-        "<section style='background:#f4f8fc;'>"
+        "<section style='background:#f4f8fc;width:100%;max-width:100%;margin:0;padding:0;box-sizing:border-box;'>"
         f"<img src='{TOP_BANNER_URL}' style='width:100%;display:block;'>"
-        "<section style='padding:24px 12px 8px 12px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;'>"
-        f"<section style='padding:16px 16px 0 16px;margin-bottom:22px;'><p style='margin:0;font-size:15px;line-height:1.9;color:#364a60;'>{escape(intro)}</p></section>{cards_html}</section>"
+        "<section style='padding:20px 0 8px 0;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;width:100%;max-width:100%;box-sizing:border-box;'>"
+        f"<section style='padding:16px 0 0 0;margin-bottom:22px;width:100%;box-sizing:border-box;'><p style='margin:0;font-size:15px;line-height:1.9;color:#364a60;'>{escape(intro)}</p></section>{cards_html}</section>"
         f"<img src='{BOTTOM_BANNER_URL}' style='width:100%;display:block;'>"
         "</section>"
     )
