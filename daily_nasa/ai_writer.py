@@ -14,9 +14,11 @@ from .models import (
 from .prompts import (
     FAN_PERSPECTIVE_TERMS,
     MISSION_HINT_TERMS,
+    build_card_prompt,
     build_gemini_prompt,
     build_gemini_rewrite_prompt,
     build_story_terms,
+    build_title_prompt,
 )
 from .quality import (
     evaluate_payload_quality,
@@ -66,6 +68,66 @@ __all__ = [
 ]
 
 
+def _generate_title_step(
+    model_candidates: list,
+    date_str: str,
+    articles: list[dict[str, Any]],
+    recent_titles: list[str],
+) -> tuple[str, str, str]:
+    """Step 1: Generate title only. Returns (title, provider, model)."""
+    prompt = build_title_prompt(date_str, articles, recent_titles)
+    
+    for provider, model_name, provider_api_key, caller in model_candidates:
+        try:
+            print(f"[Step 1/4] Generating title with {provider}:{model_name}")
+            raw = caller(provider_api_key, prompt, model_name)
+            # Clean up the response - remove quotes and whitespace
+            title = raw.strip().strip('"').strip("'")
+            if title and len(title) >= 10:
+                print(f"[Step 1/4] Title generated: {title[:30]}...")
+                return title, provider, model_name
+        except Exception as e:
+            print(f"[Step 1/4] Failed with {provider}:{model_name}: {e}")
+            continue
+    
+    # Fallback to first article title
+    if articles:
+        title = articles[0].get("title", "")
+        if title:
+            return title, "fallback", "article_title"
+    
+    return f"NASA每日航天动态 {date_str}", "fallback", "default"
+
+
+def _generate_card_step(
+    model_candidates: list,
+    card_number: int,
+    article: dict[str, Any],
+    date_str: str,
+) -> tuple[str, str, str]:
+    """Step 2/3/4: Generate content for a single card. Returns (html, provider, model)."""
+    prompt = build_card_prompt(card_number, article, date_str)
+    
+    for provider, model_name, provider_api_key, caller in model_candidates:
+        try:
+            print(f"[Step {card_number+1}/4] Generating card {card_number} with {provider}:{model_name}")
+            raw = caller(provider_api_key, prompt, model_name)
+            html = raw.strip()
+            if html and len(html) > 50:
+                print(f"[Step {card_number+1}/4] Card {card_number} generated: {len(html)} chars")
+                return html, provider, model_name
+        except Exception as e:
+            print(f"[Step {card_number+1}/4] Failed with {provider}:{model_name}: {e}")
+            continue
+    
+    # Fallback to basic HTML
+    image = article.get("cover_url", "") or article.get("image_url", "")
+    title = article.get("title", "")
+    summary = article.get("summary", "")
+    fallback_html = f'<img src="{image}" style="width:100%;display:block;"><p style="margin:1em 0;font-size:0.95em;line-height:1.7em;color:#bbb;">{title}</p><p style="margin:1em 0;font-size:0.95em;line-height:1.7em;color:#bbb;">{summary}</p>'
+    return fallback_html, "fallback", "basic"
+
+
 def generate_payload(
     gemini_api_key: str | None,
     minimax_api_key: str | None,
@@ -75,6 +137,7 @@ def generate_payload(
     articles: list[dict[str, Any]],
     cover_urls: list[str],
 ) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Generate payload using step-by-step approach for better reliability."""
     recent_titles = load_recent_titles()
     default_payload = build_default_payload(date_str, articles, cover_urls, recent_titles)
     default_payload = sanitize_payload(
@@ -115,100 +178,88 @@ def generate_payload(
         "attempts": 0,
     }
 
-    latest_payload = default_payload
-    latest_quality = default_quality
-    last_error = ""
-
-    for attempt in range(1, MAX_MODEL_ATTEMPTS + 1):
-        attempt_best_payload: dict[str, Any] | None = None
-        attempt_best_quality: dict[str, Any] | None = None
-        attempt_best_model = ""
-        attempt_best_provider = ""
-
-        for provider, model_name, provider_api_key, caller in model_candidates:
-            model_label = f"{provider}:{model_name}"
-            try:
-                print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS}: trying {model_label}")
-                if attempt == 1:
-                    prompt = build_gemini_prompt(date_str, articles, cover_urls, recent_titles)
-                else:
-                    prompt = build_gemini_rewrite_prompt(
-                        date_str,
-                        articles,
-                        latest_payload,
-                        latest_quality,
-                        attempt,
-                    )
-
-                raw = caller(provider_api_key, prompt, model_name)
-                parsed = parse_model_json(raw)
-                candidate = sanitize_payload(
-                    parsed,
-                    default_payload,
-                    date_str,
-                    cover_urls,
-                    articles,
-                    recent_titles,
-                    allow_template_fallback=False,
-                )
-                quality = evaluate_payload_quality(candidate, articles, recent_titles)
-
-                print(
-                    f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_label}: "
-                    f"quality={quality['score']} issues={quality['issues'][:6]}"
-                )
-
-                if attempt_best_quality is None or quality["score"] > attempt_best_quality["score"]:
-                    attempt_best_payload = candidate
-                    attempt_best_quality = quality
-                    attempt_best_model = model_name
-                    attempt_best_provider = provider
-
-                if quality["score"] >= MIN_QUALITY_SCORE:
-                    meta.update(
-                        {
-                            "ai_success": True,
-                            "provider": provider,
-                            "fallback_used": not (
-                                provider == primary_provider and model_name == primary_model_name
-                            ),
-                            "model": model_name,
-                            "quality_score": quality["score"],
-                            "quality_breakdown": quality["breakdown"],
-                            "quality_issues": quality["issues"],
-                            "attempts": attempt,
-                        }
-                    )
-                    return candidate, meta
-            except Exception as exc:
-                last_error = f"{model_label}: {exc}"
-                if is_quota_or_rate_limit_error(str(exc)):
-                    print(
-                        f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_label} hit quota/rate limit; "
-                        "switching to next model."
-                    )
-                print(f"Model attempt {attempt}/{MAX_MODEL_ATTEMPTS} with {model_label} failed: {exc}")
-
-        if attempt_best_payload is not None and attempt_best_quality is not None:
-            latest_payload = attempt_best_payload
-            latest_quality = attempt_best_quality
-            meta.update(
-                {
-                    "quality_score": attempt_best_quality["score"],
-                    "quality_breakdown": attempt_best_quality["breakdown"],
-                    "quality_issues": attempt_best_quality["issues"],
-                    "provider": attempt_best_provider or primary_provider,
-                    "model": attempt_best_model or primary_model_name,
-                    "attempts": attempt,
-                    "fallback_used": not (
-                        (attempt_best_provider or primary_provider) == primary_provider
-                        and (attempt_best_model or primary_model_name) == primary_model_name
-                    ),
-                }
-            )
-
-    raise RuntimeError(
-        f"Model output below quality threshold after {MAX_MODEL_ATTEMPTS} attempts. "
-        f"Best score={meta['quality_score']}, required={MIN_QUALITY_SCORE}, "
-        f"issues={meta['quality_issues'][:6]}, last_error={last_error}"
+    # Step-by-step generation
+    print("\n=== Starting Step-by-Step Generation ===\n")
+    
+    # Step 1: Generate title
+    title, title_provider, title_model = _generate_title_step(model_candidates, date_str, articles, recent_titles)
+    print(f"[Step 1/4] Complete: Title = '{title[:40]}...'\n")
+    
+    # Step 2-4: Generate cards (up to 3 cards)
+    card_htmls = []
+    card_models = []
+    for i, article in enumerate(articles[:3]):
+        card_num = i + 1
+        html, card_provider, card_model = _generate_card_step(model_candidates, card_num, article, date_str)
+        card_htmls.append(html)
+        card_models.append(f"{card_provider}:{card_model}")
+        print(f"[Step {card_num+1}/4] Complete: Card {card_num} generated\n")
+    
+    # Build songs from article titles
+    songs = []
+    for article in articles[:3]:
+        songs.append({
+            "name": article.get("title", "")[:30],
+            "artist": article.get("channel", "NASA")
+        })
+    
+    # Assemble final payload
+    # Build weixin_html with dark theme styling
+    header_gif = "https://mmbiz.qpic.cn/mmbiz_gif/xm1dT1jCe8lIO3P2oFVtd1x040PKGCRPN033gUTrHQQz0Licdqug5X1QgUPQBRCicoTqdYMrpgk7etibXLkK9rwcg/0?wx_fmt=gif&from=appmsg"
+    
+    weixin_html_parts = [
+        f"<section data-side-margin='0' style='margin:0;padding:0;box-sizing:border-box;background:#0a0a0a;color:#eee;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;'>"
+    ]
+    
+    # Add header GIF
+    weixin_html_parts.append(f"<section style='margin:0;padding:0;'><img src='{header_gif}' style='width:100%;display:block;'></section>")
+    
+    # Add cards
+    for i, html in enumerate(card_htmls):
+        if i == 1:  # Add divider before card 2
+            weixin_html_parts.append("<section style='text-align:center;margin:2em 0;padding:10px;background:#1a1a1a;'><span style='font-weight:bold;color:#fff;'>今日NASA新闻</span></section>")
+        weixin_html_parts.append(f"<section style='margin:0;padding:0;'>{html}</section>")
+    
+    weixin_html_parts.append("</section>")
+    weixin_html = "".join(weixin_html_parts)
+    
+    # Build final payload
+    payload = {
+        "date": date_str,
+        "title": title,
+        "covers": cover_urls[:5],
+        "songs": songs,
+        "weixin_html": weixin_html,
+    }
+    
+    # Sanitize and evaluate
+    payload = sanitize_payload(
+        payload,
+        default_payload,
+        date_str,
+        cover_urls,
+        articles,
+        recent_titles,
+        allow_template_fallback=False,
     )
+    quality = evaluate_payload_quality(payload, articles, recent_titles)
+    
+    print(f"\n=== Generation Complete ===")
+    print(f"Title: {title[:50]}...")
+    print(f"Quality Score: {quality['score']}")
+    print(f"Issues: {quality['issues'][:3]}")
+    print(f"Models used: title={title_model}, cards={card_models}")
+    
+    meta.update({
+        "ai_success": True,
+        "provider": title_provider,
+        "model": title_model,
+        "quality_score": quality["score"],
+        "quality_breakdown": quality["breakdown"],
+        "quality_issues": quality["issues"],
+        "attempts": 1,
+        "fallback_used": title_provider != primary_provider,
+        "card_models": card_models,
+    })
+    
+    return payload, meta

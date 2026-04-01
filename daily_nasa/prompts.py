@@ -173,6 +173,82 @@ Hard constraints:
 """
 
 
+def build_title_prompt(date_str: str, articles: list[dict[str, Any]], recent_titles: list[str]) -> str:
+    """Generate title only - step 1."""
+    return f"""You are a NASA enthusiast and Chinese science editor.
+Write a compelling Chinese headline for today's NASA news.
+
+Date: {date_str}
+News materials:
+{build_article_blocks(articles)}
+
+Recent titles to avoid duplication:
+{json.dumps(recent_titles[:12], ensure_ascii=False)}
+
+Requirements:
+1) Output ONLY the title text, no JSON, no quotes, no extra text.
+2) Title must be 20-30 Chinese characters.
+3) Must include concrete mission name, entity, or scientific fact from materials.
+4) Must be information-dense and curiosity-inducing.
+5) Do NOT use generic phrases like "3条要闻", "今日速报", "盘点".
+6) Do NOT use internet slang like "冲刺", "盘", "开扯", "扒".
+
+Output format: Just the raw title text."""
+
+
+def build_card_prompt(card_number: int, article: dict[str, Any], date_str: str) -> str:
+    """Generate content for a single card - step 2/3/4."""
+    is_science = card_number == 1
+    
+    article_block = f"""【文章】
+标题：{article.get('title', '')}
+来源：{article.get('channel', 'NASA')}
+时间：{article.get('publish_time', '')}
+摘要：{article.get('summary', '')}
+内容：{article.get('content', '')[:800]}..."""
+    
+    if is_science:
+        return f"""You are a NASA enthusiast writing a science explanation for Chinese readers.
+Write content for the "NASA每日科普" section.
+
+Date: {date_str}
+Source material:
+{article_block}
+
+Requirements:
+1) Output ONLY the HTML content for this card, no JSON, no extra text.
+2) Start with the image: <img src="{article.get('cover_url', '') or article.get('image_url', '')}" style="width:100%;display:block;">
+3) Then write 2-3 paragraphs explaining:
+   - What the reader is seeing (the image/subject)
+   - Why it matters scientifically
+4) Use natural, direct language. Avoid templated phrases.
+5) HTML must have no leading whitespace after opening tags.
+6) Full-width layout: use margin:0;padding:0.
+7) Text styling: font-size:0.95em; line-height:1.7em; color:#bbb.
+
+Output format: Just the raw HTML string."""
+    else:
+        return f"""You are a NASA enthusiast writing news coverage for Chinese readers.
+Write content for news card #{card_number-1}.
+
+Date: {date_str}
+Source material:
+{article_block}
+
+Requirements:
+1) Output ONLY the HTML content for this card, no JSON, no extra text.
+2) Start with the image: <img src="{article.get('cover_url', '') or article.get('image_url', '')}" style="width:100%;display:block;">
+3) Then write 2-3 paragraphs:
+   - First: what happened (the news event)
+   - Second: why this development matters
+4) Use natural, direct language. Avoid templated phrases like "值得持续关注".
+5) HTML must have no leading whitespace after opening tags.
+6) Full-width layout: use margin:0;padding:0.
+7) Text styling: font-size:0.95em; line-height:1.7em; color:#bbb.
+
+Output format: Just the raw HTML string."""
+
+
 def _story_candidate_tokens(text: str) -> list[str]:
     candidates: list[str] = []
     candidates.extend(re.findall(r"\b[A-Z]{2,}(?:-[0-9]+)?\b", text))
