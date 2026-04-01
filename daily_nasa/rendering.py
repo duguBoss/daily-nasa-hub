@@ -8,14 +8,6 @@ from .common import is_title_repetitive, normalize_cn_summary, normalize_cn_titl
 from .config import BOTTOM_BANNER_URL, TITLE_KEYWORDS, TOP_BANNER_URL
 
 
-CARD_IMAGE_STYLE = "width:100%;display:block;border-radius:16px;margin:0 0 14px 0;object-fit:cover;"
-SECTION_STYLE = "width:100%;max-width:100%;box-sizing:border-box;"
-CARD_CONTAINER_STYLE = "margin:0 0 24px 0;padding:18px;border-radius:20px;background:linear-gradient(180deg,#f5f9ff 0%,#ffffff 100%);border:1px solid #d9e7fb;box-shadow:0 12px 28px rgba(20,35,54,0.06);"
-NEWS_CARD_STYLE = "margin:0 0 18px 0;padding:18px;border:1px solid #e4ebf2;border-radius:18px;background:#ffffff;box-shadow:0 8px 22px rgba(20,35,54,0.05);"
-LABEL_SCIENCE_STYLE = "display:inline-block;margin:0 0 12px 0;padding:6px 14px;border-radius:999px;background:linear-gradient(135deg,#0b3d91 0%,#1e5bb5 100%);color:#ffffff;font-size:12px;font-weight:600;letter-spacing:0.08em;box-shadow:0 2px 8px rgba(11,61,145,0.25);"
-LABEL_NEWS_STYLE = "display:inline-block;padding:5px 12px;border-radius:999px;background:linear-gradient(135deg,#eef4fb 0%,#f5f9ff 100%);color:#1a4a7a;font-size:12px;font-weight:500;border:1px solid #d4e3f5;"
-TITLE_SCIENCE_STYLE = "margin:0 0 10px 0;font-size:24px;line-height:1.38;color:#0a2540;font-weight:700;"
-TITLE_NEWS_STYLE = "margin:0 0 10px 0;font-size:21px;line-height:1.42;color:#132238;font-weight:600;"
 ARTICLE_SKIP_TOKENS = {
     "nasa", "today", "daily", "update", "mission", "missions", "news", "story", "photo", "image",
     "article", "science", "space", "launch", "final", "preparations", "underway", "what", "read", "more",
@@ -25,6 +17,19 @@ GENERIC_SUBJECT_FRAGMENTS = (
     "任务更新", "相关进展", "最新进展", "最新节点", "关键节点", "阶段进展", "发射阶段进展", "发布最新节点", "发布发射阶段进展",
 )
 FORBIDDEN_TITLE_TOKENS = {"3条", "三条", "要闻", "盘点", "汇总", "速报", "冲刺", "开扯", "扒", "合集"}
+
+
+# New dark theme styles
+DARK_BG = "#0a0a0a"
+DARK_CARD_BG = "#0a0a0a"
+BORDER_COLOR = "#1a1a1a"
+TEXT_PRIMARY = "#fff"
+TEXT_SECONDARY = "#bbb"
+TEXT_MUTED = "#666"
+TEXT_LABEL = "#888"
+ACCENT_BLUE = "#3b82f6"
+
+FONT_FAMILY = "-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif"
 
 
 def _plain_text_from_article(article: dict[str, Any]) -> str:
@@ -52,6 +57,7 @@ def _dedupe_preserve_order(items: list[str]) -> list[str]:
 
 
 def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 2) -> list[str]:
+    """Extract paragraphs for article body."""
     title = normalize_cn_title(article.get("title", ""))
     summary = normalize_cn_summary(article.get("summary", ""), title)
     paragraphs = []
@@ -62,102 +68,138 @@ def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 2) -> lis
     for paragraph in _dedupe_preserve_order(paragraphs):
         clean = normalize_whitespace(paragraph)
         if clean and clean != title:
-            trimmed.append(clean[:260])
+            trimmed.append(clean[:280])
         if len(trimmed) >= max_paragraphs:
             break
     return trimmed or ([title] if title else [])
 
 
-def _extract_fact_snippets(article: dict[str, Any], limit: int = 3) -> list[str]:
-    sentences = _split_sentences(_plain_text_from_article(article))
-    fact_like = [
-        sentence for sentence in sentences
-        if re.search(r"\b(?:19|20)\d{2}\b|\d+(?:\.\d+)?\s*(?:million|billion|%|km|kg|hours?|days?|payloads?)", sentence, flags=re.I)
-        or re.search(r"\b[A-Z]{2,}(?:-[0-9]+)?\b", sentence)
-        or re.search(r"\d+", sentence)
-    ]
-    if not fact_like:
-        fact_like = sentences[:limit]
-    return [item[:180] for item in _dedupe_preserve_order(fact_like)[:limit]]
-
-
-def _article_label(science: bool, index: int = 0) -> str:
-    return "NASA每日科普" if science else f"NASA新闻 {index:02d}"
+def _article_label(category: str) -> str:
+    """Get article category label."""
+    labels = {
+        "science": "Daily Science",
+        "station": "Space Station",
+        "deep": "Deep Space",
+        "mars": "Mars Exploration",
+        "earth": "Earth Science",
+        "tech": "Technology",
+    }
+    return labels.get(category, "NASA News")
 
 
 def _channel_meta(article: dict[str, Any]) -> str:
-    return " · ".join(part for part in [article.get("channel", "NASA"), article.get("publish_time", "")] if part)
+    """Get article meta info."""
+    parts = []
+    channel = article.get("channel", "")
+    if channel and channel != "NASA":
+        parts.append(channel)
+    pub_time = article.get("publish_time", "")
+    if pub_time:
+        parts.append(pub_time)
+    return " · ".join(parts) if parts else "NASA"
 
 
-def _render_paragraphs(paragraphs: list[str], color: str = "#31465f") -> str:
-    return "".join(f"<p style='margin:0 0 10px 0;font-size:15px;line-height:1.92;color:{color};'>{escape(paragraph)}</p>" for paragraph in paragraphs)
-
-
-def _render_fact_strip(article: dict[str, Any], accent: str) -> str:
-    facts = _extract_fact_snippets(article, limit=2)
-    if not facts:
-        return ""
-    facts_html = "".join(f"<p style='margin:0 0 6px 0;font-size:13px;line-height:1.75;color:#49617d;'>{escape(fact)}</p>" for fact in facts)
-    return f"<section style='margin:4px 0 14px 0;padding:12px 14px;border-left:3px solid {accent};border-radius:12px;background:#f6f9fc;'>{facts_html}</section>"
-
-
-def _build_science_card(article: dict[str, Any]) -> str:
+def _build_article_section(article: dict[str, Any], category: str) -> str:
+    """Build a full article section with dark theme."""
     image = article.get("cover_url", "") or article.get("image_url", "")
     title = normalize_cn_title(article.get("title", ""))
     meta = _channel_meta(article)
-    paragraphs = _article_paragraphs(article, max_paragraphs=3)
-    card = (
-        f"<section style='{CARD_CONTAINER_STYLE}{SECTION_STYLE}'>"
-        f"<section style='{LABEL_SCIENCE_STYLE}'>📡 NASA每日科普</section>"
-    )
+    paragraphs = _article_paragraphs(article, max_paragraphs=2)
+    label = _article_label(category)
+    
+    html = f"<div style='padding:28px 24px;border-bottom:1px solid {BORDER_COLOR};'>"
+    html += f"<p style='margin:0 0 16px 0;font-size:10px;color:{TEXT_MUTED};letter-spacing:2px;text-transform:uppercase;'>{label}</p>"
+    
     if image:
-        card += f"<img src='{image}' style='{CARD_IMAGE_STYLE}'>"
-    card += f"<h3 style='{TITLE_SCIENCE_STYLE}'>{escape(title)}</h3><p style='margin:0 0 14px 0;font-size:13px;line-height:1.7;color:#5e738c;'>{escape(meta)}</p>{_render_fact_strip(article, '#0b3d91')}{_render_paragraphs(paragraphs, '#30485f')}</section>"
-    return card
+        html += f"<img src='{image}' style='width:100%;height:260px;object-fit:cover;border-radius:4px;margin:0 0 20px 0;'>"
+    
+    html += f"<h2 style='margin:0 0 12px 0;font-size:22px;font-weight:400;color:{TEXT_PRIMARY};line-height:1.4;'>{escape(title)}</h2>"
+    html += f"<p style='margin:0 0 20px 0;font-size:13px;color:{TEXT_MUTED};'>{escape(meta)}</p>"
+    
+    for para in paragraphs:
+        html += f"<p style='margin:0 0 14px 0;font-size:14px;color:{TEXT_SECONDARY};line-height:1.9;font-weight:300;'>{escape(para)}</p>"
+    
+    html += "</div>"
+    return html
 
 
-def _build_news_card(article: dict[str, Any], idx: int) -> str:
-    image = article.get("cover_url", "") or article.get("image_url", "")
-    title = normalize_cn_title(article.get("title", ""))
-    meta = _channel_meta(article)
-    paragraphs = _article_paragraphs(article, max_paragraphs=3)
-    card = (
-        f"<section style='{NEWS_CARD_STYLE}{SECTION_STYLE}'>"
-        "<section style='display:flex;align-items:center;justify-content:space-between;margin:0 0 14px 0;'>"
-        f"<span style='{LABEL_NEWS_STYLE}'>🚀 {_article_label(False, idx)}</span>"
-        f"<span style='font-size:12px;color:#7f90a5;font-weight:500;'>#{idx:02d}</span></section>"
+def _build_header(date_str: str, headline: str) -> str:
+    """Build dark header with image overlay."""
+    return (
+        f"<div style='position:relative;width:100%;height:280px;overflow:hidden;'>"
+        f"<img src='{TOP_BANNER_URL}' style='width:100%;height:100%;object-fit:cover;filter:brightness(0.7);'>"
+        f"<div style='position:absolute;bottom:0;left:0;right:0;padding:30px;background:linear-gradient(transparent,rgba(0,0,0,0.8));'>"
+        f"<p style='margin:0 0 8px 0;font-size:11px;color:{TEXT_LABEL};letter-spacing:2px;text-transform:uppercase;'>{escape(date_str)}</p>"
+        f"<h1 style='margin:0;font-size:28px;font-weight:300;color:{TEXT_PRIMARY};line-height:1.3;letter-spacing:-0.5px;'>{escape(headline)}</h1>"
+        f"</div></div>"
     )
-    if image:
-        card += f"<img src='{image}' style='{CARD_IMAGE_STYLE}'>"
-    card += f"<h3 style='{TITLE_NEWS_STYLE}'>{escape(title)}</h3><p style='margin:0 0 14px 0;font-size:13px;line-height:1.7;color:#61758a;'>{escape(meta)}</p>{_render_fact_strip(article, '#3b82f6')}{_render_paragraphs(paragraphs)}</section>"
-    return card
 
 
-def _build_divider(label: str) -> str:
-    return f"<section style='display:flex;align-items:center;gap:12px;margin:28px 0 22px 0;width:100%;box-sizing:border-box;'><section style='flex:1;height:1px;background:linear-gradient(to right,#d4dfeb,#eef3f8);'></section><span style='padding:6px 16px;font-size:13px;letter-spacing:0.1em;color:#4a6fa5;font-weight:600;background:linear-gradient(135deg,#f0f5fa 0%,#e8f0f8 100%);border-radius:999px;border:1px solid #d4e3f5;'>{escape(label)}</span><section style='flex:1;height:1px;background:linear-gradient(to left,#d4dfeb,#eef3f8);'></section></section>"
+def _build_intro(text: str) -> str:
+    """Build intro section."""
+    return (
+        f"<div style='padding:28px 24px;border-bottom:1px solid {BORDER_COLOR};'>"
+        f"<p style='margin:0;font-size:15px;color:#aaa;line-height:1.8;font-weight:300;'>{escape(text)}</p>"
+        f"</div>"
+    )
+
+
+def _build_footer() -> str:
+    """Build dark footer."""
+    return (
+        f"<div style='padding:32px 24px;background:#111;text-align:center;'>"
+        f"<p style='margin:0 0 8px 0;font-size:11px;color:#444;letter-spacing:2px;'>NASA DAILY</p>"
+        f"<p style='margin:0;font-size:12px;color:#333;'>Daily space exploration updates</p>"
+        f"</div>"
+    )
 
 
 def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> str:
+    """Build complete HTML with new dark theme."""
     science_article = articles[0] if articles else {}
-    news_articles = articles[1:3] if len(articles) > 1 else []
+    news_articles = articles[1:4] if len(articles) > 1 else []
+    
+    # Build intro text
     lead_titles = [normalize_cn_title(article.get("title", "")) for article in articles[:3] if article.get("title")]
     if len(lead_titles) >= 3:
-        intro = f"今天这份 NASA 日报先带你看懂 {lead_titles[0]}，再快速补上 {lead_titles[1]} 和 {lead_titles[2]} 的关键信息。"
+        intro = f"今日聚焦 {lead_titles[0]}，{lead_titles[1]}，以及 {lead_titles[2]}。"
+    elif len(lead_titles) == 2:
+        intro = f"今日聚焦 {lead_titles[0]} 和 {lead_titles[1]}。"
     elif lead_titles:
-        intro = f"今天先把 {lead_titles[0]} 这条线索讲明白，再带你把 NASA 当天最值得看的进展顺一遍。"
+        intro = f"今日聚焦 {lead_titles[0]}。"
     else:
-        intro = "今天这份 NASA 日报会先讲清一条值得细看的科普内容，再补上当天最重要的两条航天动态。"
-    cards_html = _build_science_card(science_article) if science_article else ""
-    if news_articles:
-        cards_html += _build_divider("今日NASA新闻") + "".join(_build_news_card(article, idx) for idx, article in enumerate(news_articles, start=1))
-    return (
-        "<section style='background:#f4f8fc;width:100%;max-width:100%;margin:0;padding:0;box-sizing:border-box;'>"
-        f"<img src='{TOP_BANNER_URL}' style='width:100%;display:block;'>"
-        "<section style='padding:20px 0 8px 0;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;width:100%;max-width:100%;box-sizing:border-box;'>"
-        f"<section style='padding:16px 0 0 0;margin-bottom:22px;width:100%;box-sizing:border-box;'><p style='margin:0;font-size:15px;line-height:1.9;color:#364a60;'>{escape(intro)}</p></section>{cards_html}</section>"
-        f"<img src='{BOTTOM_BANNER_URL}' style='width:100%;display:block;'>"
-        "</section>"
-    )
+        intro = "今日 NASA 最新航天动态。"
+    
+    # Build headline from first article or default
+    headline = "NASA Daily"
+    if science_article.get("title"):
+        headline_title = normalize_cn_title(science_article.get("title", ""))
+        if len(headline_title) > 20:
+            headline = headline_title[:18] + "..."
+        else:
+            headline = headline_title
+    
+    # Build content
+    html_parts = [
+        f"<div style='background:{DARK_BG};width:100%;font-family:{FONT_FAMILY};'>",
+        _build_header(date_str, headline),
+        _build_intro(intro),
+    ]
+    
+    # Science article
+    if science_article:
+        html_parts.append(_build_article_section(science_article, "science"))
+    
+    # News articles with alternating categories
+    categories = ["station", "deep", "mars", "earth", "tech"]
+    for idx, article in enumerate(news_articles):
+        category = categories[idx % len(categories)]
+        html_parts.append(_build_article_section(article, category))
+    
+    html_parts.append(_build_footer())
+    html_parts.append("</div>")
+    
+    return "".join(html_parts)
 
 
 def pick_title_focus(articles: list[dict[str, Any]]) -> str:
@@ -207,128 +249,43 @@ def _title_subject_candidates(text: str) -> list[str]:
     return deduped
 
 
-def _clean_subject(token: str) -> str:
-    clean = normalize_whitespace(token).strip(":, ")
-    clean = re.sub(r"^NASA", "", clean, flags=re.I).strip(":, ")
-    for fragment in GENERIC_SUBJECT_FRAGMENTS:
-        clean = clean.replace(fragment, "")
-    clean = re.sub("^(\u4eca\u65e5|\u6700\u65b0|NASA)", "", clean).strip(":, ")
-    clean = re.sub("(\u4eca\u5929|\u8fdb\u5c55|\u8282\u70b9|\u52a8\u6001|\u6d88\u606f|\u53d1\u5e03)$", "", clean).strip(":, ")
-    clean = re.sub("(\u4efb\u52a1\u53d1\u5e03)$", "\u4efb\u52a1", clean).strip(":, ")
-    if clean.lower().startswith(("final preparations", "here comes", "live coverage", "live ", "this ")):
-        return ""
-    return clean
+def _is_repetitive_title(title: str) -> bool:
+    return is_title_repetitive(title)
 
 
-def _first_meaningful_subject(article: dict[str, Any]) -> str:
-    for text in [normalize_whitespace(str(article.get("title", ""))), normalize_whitespace(str(article.get("title_en", ""))), normalize_whitespace(str(article.get("summary", "")))]:
-        for token in _title_subject_candidates(text):
-            clean = _clean_subject(token)
-            if clean and clean.lower() not in ARTICLE_SKIP_TOKENS and clean not in {"登月任务发布", "NASA任务更新", "相关进展", "最新进展", "最新节点", "关键节点"}:
-                return clean[:14]
-    return ""
+def fit_title_length(title: str, max_len: int = 30) -> str:
+    """Fit title to max length while preserving meaning."""
+    title = normalize_cn_title(title)
+    if len(title) <= max_len:
+        return title
+    # Try to find a natural break point
+    breakpoints = ["，", ",", "：", ":", "；", ";", " ", "、"]
+    for bp in breakpoints:
+        if bp in title[:max_len]:
+            idx = title[:max_len].rfind(bp)
+            if idx > 10:
+                return title[:idx]
+    # If no breakpoint, truncate at max_len
+    return title[:max_len]
 
 
-def extract_lead_subject(articles: list[dict[str, Any]]) -> str:
-    for article in articles[1:]:
-        if subject := _first_meaningful_subject(article):
-            return subject
-    if articles and (subject := _first_meaningful_subject(articles[0])):
-        return subject
-    return infer_story_signal(articles)
-
-
-def _secondary_subject(articles: list[dict[str, Any]]) -> str:
-    used = {extract_lead_subject(articles).lower()}
-    for article in articles[1:]:
-        subject = _first_meaningful_subject(article)
-        if subject and subject.lower() not in used:
-            return subject[:14]
-    for article in articles:
-        subject = _first_meaningful_subject(article)
-        if subject and subject.lower() not in used:
-            return subject[:14]
-    return infer_story_signal(articles)
-
-
-def fit_title_length(title: str) -> str:
-    text = normalize_whitespace(title).strip("：:，,。.!！？? ")
-    # If title is too long, try to find a natural break point
-    if len(text) > 28:
-        # Look for natural break points: comma, period, or space before position 28
-        for i in range(27, 14, -1):
-            if text[i] in "，,、。！？；":
-                return text[:i+1].rstrip("，,、 ")
-        # If no natural break, keep the first 28 chars but ensure it ends with a complete word
-        truncated = text[:28]
-        # Don't cut in the middle of a word if possible
-        if len(text) > 28 and text[28] not in "，,、。！？； ":
-            # Find last space or punctuation before position 28
-            for i in range(27, 14, -1):
-                if text[i] in " ":
-                    return text[:i].rstrip()
-        return truncated.rstrip("，,、 ")
-    if len(text) < 14:
-        text = f"{text}迎来关键进展"
-    return text
-
-
-def score_title_candidate(title: str, signal: str, lead_subject: str, recent_titles: list[str], preferred_style: str) -> int:
-    text_lower = title.lower()
-    score = 4 if signal.lower() in text_lower else 0
-    score += 6 if any(kw in text_lower for kw in TITLE_KEYWORDS) else 0
-    score += 5 if lead_subject.lower() in text_lower else 0
-    score += 4 if preferred_style and preferred_style.lower() in text_lower else 0
-    score += 6 if lead_subject.lower() in text_lower and preferred_style and preferred_style.lower() in text_lower else 0
-    score += 5 if not any(token in title for token in FORBIDDEN_TITLE_TOKENS) else 0
-    score += 3 if not is_title_repetitive(title, recent_titles) else 0
-    score += 3 if any(mark in title for mark in ["关键", "节点", "发射", "登月", "载荷", "图像"]) else 0
-    return score
-
-
-def build_article_blocks(articles: list[dict[str, Any]]) -> str:
-    blocks = []
-    for idx, article in enumerate(articles, start=1):
-        fact_snippets = _extract_fact_snippets(article, limit=3)
-        block = [f"[News {idx}]", f"Role: {'science_card' if idx == 1 else f'news_card_{idx - 1}'}", f"Title: {normalize_whitespace(article.get('title', ''))}"]
-        if title_en := normalize_whitespace(article.get("title_en", "")):
-            if title_en != normalize_whitespace(article.get("title", "")):
-                block.append(f"Original Title: {title_en}")
-        for label, value in [("Channel", article.get("channel", "")), ("Time", article.get("publish_time", "")), ("Summary", normalize_whitespace(article.get("summary", ""))), ("Content excerpt", _plain_text_from_article(article)[:1200]), ("Image", article.get("cover_url", "") or article.get("image_url", "")), ("URL", article.get("url", ""))]:
-            if value:
-                block.append(f"{label}: {value}")
-        if fact_snippets:
-            block.append(f"Required grounding facts: {' | '.join(fact_snippets)}")
-        block.append("Constraint: only use facts from this block when writing this card.")
-        blocks.append("\n".join(block))
-    return "\n\n".join(blocks)
-
-
-def build_default_payload(date_str: str, articles: list[dict[str, Any]], cover_urls: list[str], recent_titles: list[str]) -> dict[str, Any]:
-    fallback_title = build_wechat_fallback_title(date_str, articles, recent_titles)
-    default_covers = [url for url in cover_urls if url][:5]
-    songs = [{"name": normalize_whitespace(article.get("title", ""))[:60], "artist": article.get("channel", "NASA")} for article in articles[:3] if normalize_whitespace(article.get("title", ""))]
-    return {"date": date_str, "title": fallback_title, "covers": default_covers, "songs": songs, "weixin_html": build_fallback_html(date_str, fallback_title, articles, default_covers)}
-
-
-def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]], recent_titles: list[str]) -> str:
+def build_final_title(articles: list[dict[str, Any]], date_str: str) -> str:
+    """Build final article title."""
     signal = infer_story_signal(articles)
-    lead_subject = extract_lead_subject(articles)
-    secondary = _secondary_subject(articles)
-    candidates = [
-        f"{lead_subject}迎来关键进展，{secondary}也有新消息",
-        f"{lead_subject}时间表更新，{secondary}同步出现关键变化",
-        f"{signal}之外，{secondary}也带来新节点",
-        f"{lead_subject}这次先有新进展，{secondary}也放出信号",
-        f"{lead_subject}推进到哪一步了，{secondary}今天说清楚",
-    ]
-    filtered = [candidate for candidate in candidates if not any(token in candidate for token in FORBIDDEN_TITLE_TOKENS)] or [f"{lead_subject}迎来关键进展，{secondary}也有更新"]
-    best_title = fit_title_length(filtered[0])
-    best_score = -1
-    for candidate in filtered:
-        fitted = fit_title_length(candidate)
-        score = score_title_candidate(fitted, signal, lead_subject, recent_titles, secondary)
-        if score > best_score:
-            best_score = score
-            best_title = fitted
-    return best_title
+    candidates = []
+    for article in articles[:2]:
+        title = normalize_cn_title(article.get("title", ""))
+        if title and not _is_repetitive_title(title):
+            candidates.append(title)
+    if candidates:
+        main_title = candidates[0]
+        short_title = fit_title_length(main_title, 26)
+        return f"{short_title}"
+    return f"NASA日报 {date_str}"
+
+
+def generate_html_content(articles: list[dict[str, Any]], date_str: str) -> str:
+    """Generate complete HTML content for WeChat."""
+    title = build_final_title(articles, date_str)
+    cover_urls = [a.get("cover_url", "") or a.get("image_url", "") for a in articles[:3]]
+    return build_fallback_html(date_str, title, articles, cover_urls)
