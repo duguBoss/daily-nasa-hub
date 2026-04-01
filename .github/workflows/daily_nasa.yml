@@ -41,7 +41,7 @@ jobs:
           OPENROUTER_STREAM: "true"
           OPENROUTER_MAX_TOKENS: "8192"
           GROQ_MAX_TOKENS: "8192"
-        run: python nasa_news.py
+        run: python -u nasa_news.py
 
       - name: Commit and push generated files
         run: |
