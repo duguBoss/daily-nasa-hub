@@ -1,14 +1,14 @@
 {
   "date": "2026-04-01",
-  "title": "The East 96th Street Moon",
+  "title": "旅行者号运行至90天文单位，深空科学观测持续进行",
   "covers": [
-    "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/37c30d432d85-the-east-96th-street-moon.jpg",
+    "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/39f863e6210b-voyager-at-90-au.jpg",
     "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/fe6de76f0467-live-artemis-ii-launch-day-updates.jpg",
     "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/b973cbb6e5a1-aspect-aerospace-secures-early-funding-t.jpeg"
   ],
   "songs": [
     {
-      "name": "The East 96th Street Moon",
+      "name": "Voyager at 90 AU",
       "artist": "NASA APOD"
     },
     {
@@ -20,7 +20,7 @@
       "artist": "SpaceFlight News"
     }
   ],
-  "weixin_html": "<section data-side-margin='0' style='margin:0;padding:0;box-sizing:border-box;background:#ffffff;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;'><section style='margin:0;padding:0;'><img src='https://mmbiz.qpic.cn/mmbiz_gif/xm1dT1jCe8lIO3P2oFVtd1x040PKGCRPN033gUTrHQQz0Licdqug5X1QgUPQBRCicoTqdYMrpgk7etibXLkK9rwcg/0?wx_fmt=gif&from=appmsg' style='width:100%;display:block;'></section><section style='margin:0;padding:0;'><img src=\"https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/37c30d432d85-the-east-96th-street-moon.jpg\" style=\"width:100%;display:block;\">\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333; margin:0; padding:0;\">这张照片捕捉到2018年6月28日，一个近乎满的“草莓月”从纽约曼哈顿上东区东96街后方缓缓升起的瞬间。月亮低悬于城市天际线，因光线穿过浓厚且朦胧的大气层，原本明亮的月盘呈现出温暖的黄色，边缘略显朦胧扭曲，与街道上车流和闪烁的城市灯光巧妙融合，构成一幅静谧而充满生机的都市夜景。</p>\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333; margin:0; padding:0;\">这一景象直观展示了大气光学的核心原理。当月亮靠近地平线时，其光线需穿越更长的空气路径，短波蓝光被大量散射，剩余的红黄光使月亮呈现暖色调；同时，大气湍流导致月面边缘出现“ ruffled”的扭曲感。此外，城市灯光与月亮的共存，也微妙反映了光污染对天文观测的影响，但正是这种自然现象与人类环境的交织，让科学变得触手可及，唤起我们对头顶星空的好奇与关注。</p></section><section style='text-align:center;margin:2em 0;padding:10px;background:#f5f5f5;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;'><span style='font-weight:bold;color:#1a1a1a;'>今日NASA新闻</span></section><section style='margin:0;padding:0;'><img src=\"https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/fe6de76f0467-live-artemis-ii-launch-day-updates.jpg\" style=\"width:100%;display:block;margin:0;padding:0;\">\n<div style=\"margin:0;padding:0;font-size:0.95em; line-height:1.7em; color:#333333;\"><p>2026年4月1日，在肯尼迪航天中心，NASA的阿耳忒弥斯II号任务发射团队正按计划进行最后的燃料加注工作。根据实时更新，团队已成功完成中间低温推进级液氢储箱的“ topping ”（最终加注）阶段，并开始为SLS火箭核心级进行液氢的持续补充。这一系列操作是发射前至关重要的燃料装载流程的最后环节。</p>\n<p>液氢是SLR火箭的核心推进剂，但其温度极低（约-253摄氏度），在加注过程中会自然蒸发。因此，“ topping ”和“ replenish ”（补充）步骤至关重要，它们确保储箱在发射前始终保持在100%的满负荷状态，为火箭发动机提供稳定、足量的燃料。这一进展标志着阿耳忒弥斯II号载人绕月飞行任务已进入发射前的最后准备倒计时阶段。</p>\n</div></section><section style='margin:0;padding:0;'><img src=\"https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/b973cbb6e5a1-aspect-aerospace-secures-early-funding-t.jpeg\" style=\"width:100%;display:block;margin:0;padding:0;\">\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333;margin:0;padding:0;\">南阿拉巴马大学衍生公司Aspect Aerospace日前获得240万美元早期融资，用于开发一种电路板大小的微型航天器。这些卫星将被部署至极低地球轨道，以集群形式运行，主要任务是监测近地空间环境。</p>\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333;margin:0;padding:0;\">这项技术的核心在于其颠覆性的部署方式与成本结构。传统卫星需要单独发射，而该设计允许从在轨母舰一次性释放大量微型卫星，快速构建密集观测网络。对于极低轨道区域——这里大气阻力大、轨道衰减快，但传感器数据价值极高——这种低成本、可快速补充的集群方案，能持续提供该区域的空间天气、大气密度及轨道碎片数据，填补了现有监测网络的空白。</p></section></section>",
+  "weixin_html": "<section data-side-margin='0' style='margin:0;padding:0;box-sizing:border-box;background:#ffffff;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;'><section style='margin:0;padding:0;'><img src='https://mmbiz.qpic.cn/mmbiz_gif/xm1dT1jCe8lIO3P2oFVtd1x040PKGCRPN033gUTrHQQz0Licdqug5X1QgUPQBRCicoTqdYMrpgk7etibXLkK9rwcg/0?wx_fmt=gif&from=appmsg' style='width:100%;display:block;'></section><section style='margin:0;padding:0;'><img src=\"https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/39f863e6210b-voyager-at-90-au.jpg\" style=\"width:100%;display:block;\">\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333;\">这张图片呈现了旅行者1号探测器在2003年抵达距离太阳90天文单位（约12光时）深空时的艺术想象。画面中，微小的探测器悬浮于浩瀚的黑暗宇宙，背景隐约勾勒出太阳系外行星的轨道轮廓，象征着人类科技已触及太阳系的外围边界。</p>\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333;\">这一距离使旅行者1号成为当时人类最遥远的人造物体，并已开始穿越太阳风层顶，进入星际空间。其科学意义深远：探测器携带的“金唱片”记录了地球文明的声音与图像，作为人类向宇宙发出的永久问候；同时，它直接测量了太阳系边缘的磁场、粒子辐射等数据，为我们首次揭示了恒星与星际介质相互作用的真实环境，奠定了深空探测的里程碑。</p></section><section style='text-align:center;margin:2em 0;padding:10px;background:#f5f5f5;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;'><span style='font-weight:bold;color:#1a1a1a;'>今日NASA新闻</span></section><section style='margin:0;padding:0;'><img src=\"https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/fe6de76f0467-live-artemis-ii-launch-day-updates.jpg\" style=\"width:100%;display:block;margin:0;padding:0;\">\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333;margin:0;padding:0;\">在2026年4月1日的发射日，NASA的阿尔忒弥斯II号载人绕月测试飞行任务进入关键倒计时阶段。发射团队已完成对中间低温推进级液氢储罐的“加注”流程，并随即将其状态转为“补充模式”。此模式将自动维持储罐内的超冷液氢处于飞行所需的精确液位，直至最终点火升空。</p>\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333;margin:0;padding:0;\">液氢储罐进入补充模式是发射前最后几个关键步骤之一。它意味着此前成功的冷却、通风泄压检查以及完全加注均已就绪，现在系统将 actively 补偿因自然蒸发而可能发生的微量损耗，确保推进剂在最后时刻保持稳定。这一精细操作直接关系到火箭能否获得预定推力，是保障发射安全与任务成功的核心环节。</p></section><section style='margin:0;padding:0;'><img src=\"https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/b973cbb6e5a1-aspect-aerospace-secures-early-funding-t.jpeg\" style=\"width:100%;display:block;\">\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333; margin:0; padding:0;\">美国航天初创公司Aspect Aerospace近日宣布，成功获得240万美元的早期融资。该公司是南阿拉巴马大学的衍生企业，这笔资金将用于推进其创新的极低地球轨道（VLEO）微小卫星项目。其核心目标是开发出电路板大小的航天器，这些卫星可从母舰在太空中部署，以群集形式进入VLEO区域，专门用于监测空间环境参数。</p>\n<p style=\"font-size:0.95em; line-height:1.7em; color:#333333; margin:0; padding:0;\">这一进展之所以关键，是因为极低地球轨道（通常指低于200公里高度）的大气环境复杂，传统卫星难以长期稳定运行，但该区域的数据对于精确预测空间天气、评估轨道衰减风险以及追踪日益增长的空间碎片至关重要。Aspect Aerospace的电路板卫星设计不仅体积极小、成本低廉，更支持大规模群集部署，能够构建起高密度的观测网络。这种模式有望以显著降低的成本，提供高时空分辨率的环境数据，从而提升对近地空间环境的整体监测能力，为在轨航天器的安全运行和未来任务规划提供有力支撑。</p></section></section>",
   "generation": {
     "ai_enabled": true,
     "ai_success": true,
@@ -30,13 +30,15 @@
     "fallback_used": false,
     "quality_score": 91,
     "quality_breakdown": {
-      "title": 31,
+      "title": 14,
       "language": 31,
       "structure": 18,
       "compliance": 25,
       "seo": 3
     },
     "quality_issues": [
+      "title_missing_mission_keyword",
+      "title_not_specific_to_story",
       "article_grounding_partial",
       "mission_terms_insufficient",
       "news_card_count_insufficient",
@@ -63,23 +65,23 @@
   ],
   "articles": [
     {
-      "id": "nasa-37c30d432d85",
-      "title": "The East 96th Street Moon",
-      "title_en": "The East 96th Street Moon",
+      "id": "nasa-39f863e6210b",
+      "title": "Voyager at 90 AU",
+      "title_en": "Voyager at 90 AU",
       "channel": "NASA APOD",
-      "summary": "A very full Moon rose over Manhattan's Upper Eastside on June 28, known to some as the Strawberry Moon. Near the horizon, the warm yellow lunar disk was a bit ruffled and dimmed by a long sight-line through dense, hazy atmosphere. Still it fit well with traffi",
+      "summary": "Launched in 1977, Voyager 1 is now about 12 light-hours or 90 astronomical units (AU) from the Sun, making this spacecraft humanity's most distant ambassador to the cosmos. Well beyond the orbits of the outer planets, Voyager 1 is believed to be entering the r",
       "url": "",
-      "publish_time": "2018-06-30",
-      "image_url": "https://apod.nasa.gov/apod/image/1806/_SSH1593jsm.jpg",
-      "image_path": "assets/generated/2026-04-01/37c30d432d85-the-east-96th-street-moon.jpg",
-      "cover_url": "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/37c30d432d85-the-east-96th-street-moon.jpg"
+      "publish_time": "2003-11-20",
+      "image_url": "https://apod.nasa.gov/apod/image/0311/bubble_voyager_full.jpg",
+      "image_path": "assets/generated/2026-04-01/39f863e6210b-voyager-at-90-au.jpg",
+      "cover_url": "https://raw.githubusercontent.com/duguBoss/daily-nasa-hub/main/assets/generated/2026-04-01/39f863e6210b-voyager-at-90-au.jpg"
     },
     {
       "id": "nasa-fe6de76f0467",
       "title": "LIVE: Artemis II Launch Day Updates",
       "title_en": "LIVE: Artemis II Launch Day Updates",
       "channel": "NASA",
-      "summary": "Live updates for launch of NASA’s Artemis II test flight will be published on this page. All times are Eastern. NASA teams have begun the topping phase for the interim cryogenic propulsion stage liquid hydrogen (LH2) tan",
+      "summary": "Live updates for launch of NASA’s Artemis II test flight will be published on this page. All times are Eastern. NASA teams have transitioned the interim cryogenic propulsion stage liquid hydrogen tank to replenish mode d",
       "url": "https://www.nasa.gov/blogs/missions/2026/04/01/live-artemis-ii-launch-day-updates",
       "publish_time": "April 1, 2026 7:36AM",
       "image_url": "https://images-assets.nasa.gov/image/Artemis%20II%20at%20the%20pad%20Moon%2001292026_1/Artemis%20II%20at%20the%20pad%20Moon%2001292026_1~large.jpg",
