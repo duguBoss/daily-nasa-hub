@@ -1,13 +1,13 @@
-# March迎来关键进展，Blue Ghost也有新消息
+# Atlantis on Pad 39A
 
 - 日期: 2026-04-01
 
-## 1. Blue Ghost on the Moon
+## 1. Atlantis on Pad 39A
 
 - 频道: NASA APOD
 - 链接: 
 
-There's a new lander on the Moon. Yesterday Firefly Aerospace's Blue Ghost executed the first-ever successful commercial lunar landing. During its planned 60-day mission, Blue Ghost will deploy several NASA-commissioned scientific instruments, including Planet
+An intricate network of lighting plays across the 130 foot high Rotating Service Structure (RSS) in this dramatic night view of the Space Shuttle Atlantis on the Kennedy Space Center's launch pad 39A. Small human figures visible in silhouette emphasize the str
 
 ## 2. March of the Harmattan
 
