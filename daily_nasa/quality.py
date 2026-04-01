@@ -61,17 +61,29 @@ def sanitize_payload(payload: Any, default_payload: dict[str, Any], date_str: st
     normalized["songs"] = fixed_songs or default_payload.get("songs", [])
 
     title = normalize_whitespace(str(normalized.get("title", "")))
-    title_invalid = (not title) or count_chinese_chars(title) < 6 or is_title_repetitive(title, recent_titles) or bool(_title_weakness_hits(title)) or not title_matches_story_terms(title, articles)
+    chinese_chars = count_chinese_chars(title)
+    # Title must have at least 10 Chinese characters and be mostly Chinese
+    title_invalid = (
+        not title 
+        or chinese_chars < 10  # At least 10 Chinese characters
+        or chinese_chars < len(title) * 0.5  # At least 50% Chinese
+        or is_title_repetitive(title, recent_titles) 
+        or bool(_title_weakness_hits(title)) 
+        or not title_matches_story_terms(title, articles)
+    )
     if title_invalid:
         title = build_wechat_fallback_title(date_str, articles, recent_titles)
     normalized["title"] = fit_title_length(title)
 
     weixin_html = str(normalized.get("weixin_html", "")).strip()
-    if not weixin_html.startswith("<section"):
-        weixin_html = default_payload["weixin_html"] if allow_template_fallback else ""
-    if allow_template_fallback and not is_html_chinese_friendly(weixin_html):
+    
+    # Always use new dark theme HTML - rebuild from articles to ensure consistent styling
+    # AI-generated HTML may have old styling, so we regenerate with new theme
+    if allow_template_fallback:
         weixin_html = build_fallback_html(date_str, normalized["title"], articles, normalized["covers"])
-
+    elif not weixin_html.startswith("<section"):
+        weixin_html = default_payload["weixin_html"] if allow_template_fallback else ""
+    
     normalized["weixin_html"] = strip_html_leading_whitespace(enforce_outer_side_margin(ensure_follow_header(weixin_html), side_px=0))
     return normalized
 
