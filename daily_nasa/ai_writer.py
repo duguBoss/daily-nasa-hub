@@ -69,12 +69,21 @@ __all__ = [
 
 
 def _is_valid_chinese_title(title: str) -> bool:
-    """Check if title is valid Chinese title (at least 10 Chinese chars, mostly Chinese)."""
-    if not title or len(title) < 10:
+    """Check if title is valid Chinese title (20-30 chars, mostly Chinese)."""
+    if not title:
         return False
+    
+    # Remove punctuation for length check
+    title_no_punct = re.sub(r'[^\u4e00-\u9fff\w]', '', title)
+    char_count = len(title_no_punct)
+    
+    # Must be 20-30 characters
+    if not (20 <= char_count <= 30):
+        return False
+    
     chinese_chars = len(re.findall(r"[\u4e00-\u9fff]", title))
-    # At least 10 Chinese chars and 50% Chinese
-    return chinese_chars >= 10 and chinese_chars >= len(title) * 0.5
+    # At least 80% Chinese (allow some numbers/English names)
+    return chinese_chars >= char_count * 0.8
 
 
 def _generate_title_step(
@@ -95,13 +104,19 @@ def _generate_title_step(
             # Clean up the response - remove quotes and whitespace
             title = raw.strip().strip('"').strip("'")
             
-            # Validate: must be Chinese title with at least 10 Chinese chars
+            # Validate: must be Chinese title with 20-30 chars
             if _is_valid_chinese_title(title):
-                print(f"[Step 1/4] Title generated: {title[:30]}...")
+                print(f"[Step 1/4] Title generated ({len(title)} chars): {title[:40]}...")
                 return title, provider, model_name
             else:
+                # Detailed rejection reason
+                title_no_punct = re.sub(r'[^\u4e00-\u9fff\w]', '', title)
+                char_count = len(title_no_punct)
                 chinese_count = count_chinese_chars(title)
-                print(f"[Step 1/4] Title rejected (not Chinese enough: {chinese_count} Chinese chars in {len(title)} total): {title[:40]}...")
+                if not (20 <= char_count <= 30):
+                    print(f"[Step 1/4] Title rejected (length {char_count}, need 20-30): {title[:40]}...")
+                else:
+                    print(f"[Step 1/4] Title rejected (only {chinese_count}/{char_count} Chinese): {title[:40]}...")
         except Exception as e:
             print(f"[Step 1/4] Failed with {provider}:{model_name}: {e}")
             continue
