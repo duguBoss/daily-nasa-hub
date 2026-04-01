@@ -246,12 +246,23 @@ def _secondary_subject(articles: list[dict[str, Any]]) -> str:
 
 def fit_title_length(title: str) -> str:
     text = normalize_whitespace(title).strip("：:，,。.!！？? ")
+    # If title is too long, try to find a natural break point
     if len(text) > 28:
-        text = text[:28].rstrip("，,、 ")
+        # Look for natural break points: comma, period, or space before position 28
+        for i in range(27, 14, -1):
+            if text[i] in "，,、。！？；":
+                return text[:i+1].rstrip("，,、 ")
+        # If no natural break, keep the first 28 chars but ensure it ends with a complete word
+        truncated = text[:28]
+        # Don't cut in the middle of a word if possible
+        if len(text) > 28 and text[28] not in "，,、。！？； ":
+            # Find last space or punctuation before position 28
+            for i in range(27, 14, -1):
+                if text[i] in " ":
+                    return text[:i].rstrip()
+        return truncated.rstrip("，,、 ")
     if len(text) < 14:
         text = f"{text}迎来关键进展"
-    if len(text) > 28:
-        text = text[:28].rstrip("，,、 ")
     return text
 
 
