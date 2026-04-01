@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import re
 import time
 from pathlib import Path
@@ -18,6 +19,13 @@ from .common import (
     slugify,
 )
 from .config import APOD_API_KEY, ASSET_ROOT, LIST_TOP_N, NASA_NEWS_URLS, REQUEST_TIMEOUT, SFN_API_BASE, SFN_API_KEY
+
+# Optional PIL import for webp to jpg conversion
+try:
+    from PIL import Image
+    PIL_AVAILABLE = True
+except ImportError:
+    PIL_AVAILABLE = False
 
 
 def is_nasa_article_url(url: str) -> bool:
@@ -352,6 +360,23 @@ def fetch_article_content(url: str) -> dict[str, Any]:
     }
 
 
+def _convert_webp_to_jpg(image_data: bytes) -> bytes | None:
+    """Convert webp image data to jpg format. Returns None if conversion fails."""
+    if not PIL_AVAILABLE:
+        return None
+    try:
+        img = Image.open(io.BytesIO(image_data))
+        # Convert to RGB if necessary (remove alpha channel)
+        if img.mode in ('RGBA', 'LA', 'P'):
+            img = img.convert('RGB')
+        output = io.BytesIO()
+        img.save(output, format='JPEG', quality=95)
+        return output.getvalue()
+    except Exception as exc:
+        print(f"WebP to JPG conversion failed: {exc}")
+        return None
+
+
 def download_image(image_url: str, file_path: Path) -> bool:
     if not image_url:
         return False
@@ -364,8 +389,20 @@ def download_image(image_url: str, file_path: Path) -> bool:
         print(f"Downloading image: {image_url[:80]}...")
         response = requests.get(image_url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": "Mozilla/5.0"})
         response.raise_for_status()
+        image_data = response.content
+
+        # Check if it's webp and convert to jpg
+        is_webp = image_url.lower().endswith('.webp') or image_url.lower().endswith('.web')
+        if is_webp and PIL_AVAILABLE:
+            converted = _convert_webp_to_jpg(image_data)
+            if converted:
+                image_data = converted
+                # Update file path to use .jpg extension
+                file_path = file_path.with_suffix('.jpg')
+                print(f"  Converted WebP to JPG")
+
         with open(file_path, "wb") as file:
-            file.write(response.content)
+            file.write(image_data)
         print(f"Image saved: {file_path}")
         return True
     except Exception as exc:
@@ -413,11 +450,19 @@ def build_processed_articles(candidates: list[dict[str, Any]], date_str: str) ->
 
         if image_url:
             slug = slugify(candidate["title"])[:40]
+            # Check if it's webp - if so, we'll convert to jpg
+            is_webp = bool(re.search(r'\.webp(?:$|[?#])', image_url, re.I))
             suffix_match = re.search(r"\.(jpg|jpeg|png|webp)(?:$|[?#])", image_url, re.I)
             image_ext = "." + suffix_match.group(1).lower() if suffix_match else ".jpg"
+            # Force jpg extension for webp images
+            if is_webp:
+                image_ext = ".jpg"
             file_name = f"{article_hash}-{slug}{image_ext}"
             local_path = ASSET_ROOT / date_str / file_name
             if download_image(image_url, local_path):
+                # download_image may have changed the path to .jpg if webp was converted
+                if not local_path.exists() and local_path.with_suffix('.jpg').exists():
+                    local_path = local_path.with_suffix('.jpg')
                 image_path = str(local_path).replace("\\", "/")
                 cover_url = github_asset_url(image_path)
 
