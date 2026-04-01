@@ -1,24 +1,24 @@
-# Artemis II载人登月火箭准备就绪，4月1日晚间迎
+# March迎来关键进展，Blue Ghost也有新消息
 
 - 日期: 2026-04-01
 
-## 1. Sun Pillar with Upper Tangent Arc
+## 1. Blue Ghost on the Moon
 
 - 频道: NASA APOD
 - 链接: 
 
-This was not a typical sun pillar. Just after sunrise two weeks ago in Providence, Rhode Island, USA, a photographer, looking out his window, was suddenly awestruck. The astonishment was caused by a sun pillar that fanned out at the top. Sun pillars, singular 
+There's a new lander on the Moon. Yesterday Firefly Aerospace's Blue Ghost executed the first-ever successful commercial lunar landing. During its planned 60-day mission, Blue Ghost will deploy several NASA-commissioned scientific instruments, including Planet
 
-## 2. NASA Teams Readying Artemis II Moon Rocket for Launch
+## 2. March of the Harmattan
 
-- 频道: NASA
-- 链接: https://www.nasa.gov/blogs/missions/2026/03/31/nasa-teams-readying-artemis-ii-moon-rocket-for-launch
+- 频道: NASA Science
+- 链接: https://science.nasa.gov/earth/earth-observatory/march-of-the-harmattan
 
-As the Artemis II countdown moves steadily toward liftoff no earlier than 6:24 p.m. EDT, Wednesday, April 1, launch teams at NASA’s Kennedy Space Center in Florida continue completing a sequence of highly choreographed s
+Strong winds in March 2026 carried Saharan dust across northwestern Africa and toward the Canary Islands, reducing visibility and prompting alerts. In early spring 2026, a dry, dust-laden wind known as the harmattan swep
 
-## 3. Artemis II set to return humanity to the Moon with launch on Wednesday evening
+## 3. March of the Harmattan
 
 - 频道: SpaceFlight News
-- 链接: https://www.nasaspaceflight.com/2026/03/artemis-ii-launch/
+- 链接: https://science.nasa.gov/earth/earth-observatory/march-of-the-harmattan/
 
-At 23:35 UTC on Dec. 16, 1972, the Apollo 17 command module, America, successfully completed… The post Artemis II set to return humanity to the Moon with launch on Wednesday evening appeared first on NASASpaceFlight.com.
+Strong winds in March 2026 carried Saharan dust across northwestern Africa and toward the Canary Islands, reducing visibility and prompting alerts.

@@ -1,17 +1,19 @@
 {
-  "updated_at": "2026-04-01T06:05:38.415116+08:00",
+  "updated_at": "2026-04-01T14:14:59.954358+08:00",
   "date": "2026-04-01",
   "last_fetch_urls": [
+    "https://science.nasa.gov/earth/earth-observatory/march-of-the-harmattan",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/31/medical-tests-microbiology-top-research-schedule-aboard-station",
     "https://www.nasa.gov/blogs/missions/2026/03/31/nasa-teams-readying-artemis-ii-moon-rocket-for-launch",
     "https://www.nasa.gov/image-article/godspeed-artemis-ii",
-    "https://science.nasa.gov/missions/landsat/landsat-reveals-reservoir-changes-and-bathymetry",
-    "https://science.nasa.gov/earth/earth-observatory/fires-tear-through-nebraska-grasslands",
-    "https://www.nasa.gov/blogs/missions/2026/03/30/nasas-artemis-ii-launch-mission-countdown-begins"
+    "https://science.nasa.gov/missions/landsat/landsat-reveals-reservoir-changes-and-bathymetry"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/blogs/missions/2026/03/31/nasa-teams-readying-artemis-ii-moon-rocket-for-launch"
+    "https://science.nasa.gov/earth/earth-observatory/march-of-the-harmattan"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/earth/earth-observatory/march-of-the-harmattan",
+    "https://www.nasa.gov/blogs/spacestation/2026/03/31/medical-tests-microbiology-top-research-schedule-aboard-station",
     "https://www.nasa.gov/blogs/missions/2026/03/31/nasa-teams-readying-artemis-ii-moon-rocket-for-launch",
     "https://www.nasa.gov/image-article/godspeed-artemis-ii",
     "https://science.nasa.gov/missions/landsat/landsat-reveals-reservoir-changes-and-bathymetry",
