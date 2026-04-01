@@ -174,11 +174,11 @@ def _generate_card_step(
             print(f"[Step {card_number+1}/4] Failed with {provider}:{model_name}: {e}")
             continue
     
-    # Fallback to basic HTML using article's Chinese title and summary
+    # Fallback to basic HTML using article's Chinese title and summary (light theme)
     image = article.get("cover_url", "") or article.get("image_url", "")
     title = article.get("title", "")
     summary = article.get("summary", "")
-    fallback_html = f'<img src="{image}" style="width:100%;display:block;"><p style="margin:1em 0;font-size:0.95em;line-height:1.7em;color:#bbb;">{title}</p><p style="margin:1em 0;font-size:0.95em;line-height:1.7em;color:#bbb;">{summary}</p>'
+    fallback_html = f'<img src="{image}" style="width:100%;display:block;"><p style="margin:1em 0;font-size:0.95em;line-height:1.7em;color:#333;">{title}</p><p style="margin:1em 0;font-size:0.95em;line-height:1.7em;color:#555;">{summary}</p>'
     return fallback_html, "fallback", "basic"
 
 
@@ -258,22 +258,22 @@ def generate_payload(
         })
     
     # Assemble final payload
-    # Build weixin_html with dark theme styling
+    # Build weixin_html with light theme styling
     header_gif = "https://mmbiz.qpic.cn/mmbiz_gif/xm1dT1jCe8lIO3P2oFVtd1x040PKGCRPN033gUTrHQQz0Licdqug5X1QgUPQBRCicoTqdYMrpgk7etibXLkK9rwcg/0?wx_fmt=gif&from=appmsg"
-    
+
     weixin_html_parts = [
-        f"<section data-side-margin='0' style='margin:0;padding:0;box-sizing:border-box;background:#0a0a0a;color:#eee;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;'>"
+        f"<section data-side-margin='0' style='margin:0;padding:0;box-sizing:border-box;background:#ffffff;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;'>"
     ]
-    
+
     # Add header GIF
     weixin_html_parts.append(f"<section style='margin:0;padding:0;'><img src='{header_gif}' style='width:100%;display:block;'></section>")
-    
+
     # Add cards
     for i, html in enumerate(card_htmls):
         if i == 1:  # Add divider before card 2
-            weixin_html_parts.append("<section style='text-align:center;margin:2em 0;padding:10px;background:#1a1a1a;'><span style='font-weight:bold;color:#fff;'>今日NASA新闻</span></section>")
+            weixin_html_parts.append("<section style='text-align:center;margin:2em 0;padding:10px;background:#f5f5f5;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;'><span style='font-weight:bold;color:#1a1a1a;'>今日NASA新闻</span></section>")
         weixin_html_parts.append(f"<section style='margin:0;padding:0;'>{html}</section>")
-    
+
     weixin_html_parts.append("</section>")
     weixin_html = "".join(weixin_html_parts)
     

@@ -247,7 +247,7 @@ def build_card_prompt(card_number: int, article: dict[str, Any], date_str: str) 
 4) 使用自然、直接的语言，避免模板化表达。
 5) HTML标签后不要有前导空格。
 6) 全宽布局：使用 margin:0;padding:0。
-7) 文字样式：font-size:0.95em; line-height:1.7em; color:#bbb。
+7) 文字样式（浅色主题）：font-size:0.95em; line-height:1.7em; color:#333333。
 8) 所有文字必须是简体中文。
 
 输出格式：纯HTML字符串。"""
@@ -268,10 +268,10 @@ def build_card_prompt(card_number: int, article: dict[str, Any], date_str: str) 
 4) 使用自然、直接的语言，避免"值得持续关注"等模板化表达。
 5) HTML标签后不要有前导空格。
 6) 全宽布局：使用 margin:0;padding:0。
-7) 文字样式：font-size:0.95em; line-height:1.7em; color:#bbb。
+7) 文字样式（浅色主题）：font-size:0.95em; line-height:1.7em; color:#333333。
 8) 所有文字必须是简体中文。
 
-Output format: Just the raw HTML string."""
+输出格式：纯HTML字符串。"""
 
 
 def _story_candidate_tokens(text: str) -> list[str]:

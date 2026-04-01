@@ -19,15 +19,15 @@ GENERIC_SUBJECT_FRAGMENTS = (
 FORBIDDEN_TITLE_TOKENS = {"3条", "三条", "要闻", "盘点", "汇总", "速报", "冲刺", "开扯", "扒", "合集"}
 
 
-# New dark theme styles
-DARK_BG = "#0a0a0a"
-DARK_CARD_BG = "#0a0a0a"
-BORDER_COLOR = "#1a1a1a"
-TEXT_PRIMARY = "#fff"
-TEXT_SECONDARY = "#bbb"
-TEXT_MUTED = "#666"
-TEXT_LABEL = "#888"
-ACCENT_BLUE = "#3b82f6"
+# Light theme styles - white transparent background
+LIGHT_BG = "#ffffff"
+LIGHT_CARD_BG = "#ffffff"
+BORDER_COLOR = "#e5e5e5"
+TEXT_PRIMARY = "#1a1a1a"
+TEXT_SECONDARY = "#333333"
+TEXT_MUTED = "#666666"
+TEXT_LABEL = "#888888"
+ACCENT_BLUE = "#2563eb"
 
 FONT_FAMILY = "-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif"
 
@@ -193,29 +193,29 @@ def _build_header(date_str: str, headline: str) -> str:
 
 
 def _build_intro(text: str) -> str:
-    """Build intro section."""
+    """Build intro section with light theme."""
     return (
         f"<div style='padding:28px 24px;border-bottom:1px solid {BORDER_COLOR};'>"
-        f"<p style='margin:0;font-size:15px;color:#aaa;line-height:1.8;font-weight:300;'>{escape(text)}</p>"
+        f"<p style='margin:0;font-size:15px;color:{TEXT_SECONDARY};line-height:1.8;font-weight:300;'>{escape(text)}</p>"
         f"</div>"
     )
 
 
 def _build_footer() -> str:
-    """Build dark footer."""
+    """Build light footer."""
     return (
-        f"<div style='padding:32px 24px;background:#111;text-align:center;'>"
-        f"<p style='margin:0 0 8px 0;font-size:11px;color:#444;letter-spacing:2px;'>NASA DAILY</p>"
-        f"<p style='margin:0;font-size:12px;color:#333;'>Daily space exploration updates</p>"
+        f"<div style='padding:32px 24px;background:#f5f5f5;text-align:center;border-top:1px solid {BORDER_COLOR};'>"
+        f"<p style='margin:0 0 8px 0;font-size:11px;color:{TEXT_LABEL};letter-spacing:2px;'>NASA DAILY</p>"
+        f"<p style='margin:0;font-size:12px;color:{TEXT_MUTED};'>Daily space exploration updates</p>"
         f"</div>"
     )
 
 
 def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> str:
-    """Build complete HTML with new dark theme."""
+    """Build complete HTML with light theme."""
     science_article = articles[0] if articles else {}
     news_articles = articles[1:4] if len(articles) > 1 else []
-    
+
     # Build intro text
     lead_titles = [normalize_cn_title(article.get("title", "")) for article in articles[:3] if article.get("title")]
     if len(lead_titles) >= 3:
@@ -226,30 +226,30 @@ def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]
         intro = f"今日聚焦 {lead_titles[0]}。"
     else:
         intro = "今日 NASA 最新航天动态。"
-    
+
     # Build headline from first article or default - must be Chinese and exactly 30 chars
     headline = build_headline_title(articles, date_str)
-    
-    # Build content
+
+    # Build content with light theme
     html_parts = [
-        f"<div style='background:{DARK_BG};width:100%;font-family:{FONT_FAMILY};'>",
+        f"<div style='background:{LIGHT_BG};width:100%;font-family:{FONT_FAMILY};color:{TEXT_PRIMARY};'>",
         _build_header(date_str, headline),
         _build_intro(intro),
     ]
-    
+
     # Science article
     if science_article:
         html_parts.append(_build_article_section(science_article, "science"))
-    
+
     # News articles with alternating categories
     categories = ["station", "deep", "mars", "earth", "tech"]
     for idx, article in enumerate(news_articles):
         category = categories[idx % len(categories)]
         html_parts.append(_build_article_section(article, category))
-    
+
     html_parts.append(_build_footer())
     html_parts.append("</div>")
-    
+
     return "".join(html_parts)
 
 
