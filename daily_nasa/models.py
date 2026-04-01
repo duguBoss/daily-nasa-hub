@@ -53,7 +53,10 @@ def _response_excerpt(response: requests.Response, limit: int = 400) -> str:
 
 
 def _parse_json_response(response: requests.Response, provider_label: str) -> dict[str, Any]:
+    """Parse JSON response with proper UTF-8 encoding handling."""
     try:
+        # Ensure proper encoding - force UTF-8
+        response.encoding = 'utf-8'
         return response.json()
     except ValueError as exc:
         excerpt = _response_excerpt(response)
@@ -192,7 +195,11 @@ def call_openrouter(api_key: str, prompt: str, model_name: str) -> str:
 
 
 def extract_message_content(content: Any) -> str:
+    """Extract text content from various response formats with UTF-8 handling."""
     if isinstance(content, str):
+        # Ensure proper UTF-8 handling
+        if isinstance(content, bytes):
+            return content.decode('utf-8', errors='replace')
         return content
     if isinstance(content, list):
         parts: list[str] = []

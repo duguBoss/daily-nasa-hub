@@ -68,6 +68,15 @@ __all__ = [
 ]
 
 
+def _is_valid_chinese_title(title: str) -> bool:
+    """Check if title is valid Chinese title (at least 10 Chinese chars, mostly Chinese)."""
+    if not title or len(title) < 10:
+        return False
+    chinese_chars = len(re.findall(r"[\u4e00-\u9fff]", title))
+    # At least 10 Chinese chars and 50% Chinese
+    return chinese_chars >= 10 and chinese_chars >= len(title) * 0.5
+
+
 def _generate_title_step(
     model_candidates: list,
     date_str: str,
@@ -75,6 +84,8 @@ def _generate_title_step(
     recent_titles: list[str],
 ) -> tuple[str, str, str]:
     """Step 1: Generate title only. Returns (title, provider, model)."""
+    from .common import count_chinese_chars
+    
     prompt = build_title_prompt(date_str, articles, recent_titles)
     
     for provider, model_name, provider_api_key, caller in model_candidates:
@@ -83,9 +94,14 @@ def _generate_title_step(
             raw = caller(provider_api_key, prompt, model_name)
             # Clean up the response - remove quotes and whitespace
             title = raw.strip().strip('"').strip("'")
-            if title and len(title) >= 10:
+            
+            # Validate: must be Chinese title with at least 10 Chinese chars
+            if _is_valid_chinese_title(title):
                 print(f"[Step 1/4] Title generated: {title[:30]}...")
                 return title, provider, model_name
+            else:
+                chinese_count = count_chinese_chars(title)
+                print(f"[Step 1/4] Title rejected (not Chinese enough: {chinese_count} Chinese chars in {len(title)} total): {title[:40]}...")
         except Exception as e:
             print(f"[Step 1/4] Failed with {provider}:{model_name}: {e}")
             continue
@@ -93,10 +109,21 @@ def _generate_title_step(
     # Fallback to first article title
     if articles:
         title = articles[0].get("title", "")
-        if title:
+        if _is_valid_chinese_title(title):
             return title, "fallback", "article_title"
+        print(f"[Step 1/4] Article title also not valid Chinese, using default")
     
-    return f"NASA每日航天动态 {date_str}", "fallback", "default"
+    # Default fallback
+    default_title = f"NASA每日航天动态精选报道"
+    return default_title, "fallback", "default"
+
+
+def _has_chinese_content(text: str, min_chars: int = 20) -> bool:
+    """Check if text has sufficient Chinese content."""
+    if not text:
+        return False
+    chinese_chars = len(re.findall(r"[\u4e00-\u9fff]", text))
+    return chinese_chars >= min_chars
 
 
 def _generate_card_step(
@@ -113,14 +140,19 @@ def _generate_card_step(
             print(f"[Step {card_number+1}/4] Generating card {card_number} with {provider}:{model_name}")
             raw = caller(provider_api_key, prompt, model_name)
             html = raw.strip()
-            if html and len(html) > 50:
+            
+            # Validate: must have Chinese content
+            if html and len(html) > 50 and _has_chinese_content(html, min_chars=20):
                 print(f"[Step {card_number+1}/4] Card {card_number} generated: {len(html)} chars")
                 return html, provider, model_name
+            else:
+                chinese_count = len(re.findall(r"[\u4e00-\u9fff]", html)) if html else 0
+                print(f"[Step {card_number+1}/4] Card rejected (not enough Chinese: {chinese_count} chars): {html[:60] if html else 'empty'}...")
         except Exception as e:
             print(f"[Step {card_number+1}/4] Failed with {provider}:{model_name}: {e}")
             continue
     
-    # Fallback to basic HTML
+    # Fallback to basic HTML using article's Chinese title and summary
     image = article.get("cover_url", "") or article.get("image_url", "")
     title = article.get("title", "")
     summary = article.get("summary", "")

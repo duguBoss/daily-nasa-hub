@@ -175,25 +175,26 @@ Hard constraints:
 
 def build_title_prompt(date_str: str, articles: list[dict[str, Any]], recent_titles: list[str]) -> str:
     """Generate title only - step 1."""
-    return f"""You are a NASA enthusiast and Chinese science editor.
-Write a compelling Chinese headline for today's NASA news.
+    return f"""你是一个NASA爱好者和资深中文科技编辑。
+为今天的NASA新闻写一个吸引人的中文标题。
 
-Date: {date_str}
-News materials:
+日期：{date_str}
+新闻素材：
 {build_article_blocks(articles)}
 
-Recent titles to avoid duplication:
+近期标题（避免重复）：
 {json.dumps(recent_titles[:12], ensure_ascii=False)}
 
-Requirements:
-1) Output ONLY the title text, no JSON, no quotes, no extra text.
-2) Title must be 20-30 Chinese characters.
-3) Must include concrete mission name, entity, or scientific fact from materials.
-4) Must be information-dense and curiosity-inducing.
-5) Do NOT use generic phrases like "3条要闻", "今日速报", "盘点".
-6) Do NOT use internet slang like "冲刺", "盘", "开扯", "扒".
+要求：
+1) 只输出标题文字，不要JSON格式，不要引号，不要任何额外文字。
+2) 标题必须是20-30个中文字符。
+3) 必须包含具体的任务名称、实体名称或科学事实。
+4) 标题要有信息密度，能激发读者好奇心。
+5) 禁止使用"3条要闻"、"今日速报"、"盘点"等低信息量词汇。
+6) 禁止使用"冲刺"、"盘"、"开扯"、"扒"等网络用语。
+7) 标题必须是中文，不能是英文。
 
-Output format: Just the raw title text."""
+输出格式：纯中文标题文字"""
 
 
 def build_card_prompt(card_number: int, article: dict[str, Any], date_str: str) -> str:
@@ -208,43 +209,45 @@ def build_card_prompt(card_number: int, article: dict[str, Any], date_str: str) 
 内容：{article.get('content', '')[:800]}..."""
     
     if is_science:
-        return f"""You are a NASA enthusiast writing a science explanation for Chinese readers.
-Write content for the "NASA每日科普" section.
+        return f"""你是一个NASA爱好者，为中文读者撰写科学解释。
+为"NASA每日科普"栏目撰写内容。
 
-Date: {date_str}
-Source material:
+日期：{date_str}
+素材：
 {article_block}
 
-Requirements:
-1) Output ONLY the HTML content for this card, no JSON, no extra text.
-2) Start with the image: <img src="{article.get('cover_url', '') or article.get('image_url', '')}" style="width:100%;display:block;">
-3) Then write 2-3 paragraphs explaining:
-   - What the reader is seeing (the image/subject)
-   - Why it matters scientifically
-4) Use natural, direct language. Avoid templated phrases.
-5) HTML must have no leading whitespace after opening tags.
-6) Full-width layout: use margin:0;padding:0.
-7) Text styling: font-size:0.95em; line-height:1.7em; color:#bbb.
+要求：
+1) 只输出HTML内容，不要JSON，不要任何额外文字。
+2) 以图片开头：<img src="{article.get('cover_url', '') or article.get('image_url', '')}" style="width:100%;display:block;">
+3) 然后写2-3段文字：
+   - 第一段：解释读者看到的是什么（图片/主题）
+   - 第二段：解释这在科学上为什么重要
+4) 使用自然、直接的语言，避免模板化表达。
+5) HTML标签后不要有前导空格。
+6) 全宽布局：使用 margin:0;padding:0。
+7) 文字样式：font-size:0.95em; line-height:1.7em; color:#bbb。
+8) 所有文字必须是简体中文。
 
-Output format: Just the raw HTML string."""
+输出格式：纯HTML字符串。"""
     else:
-        return f"""You are a NASA enthusiast writing news coverage for Chinese readers.
-Write content for news card #{card_number-1}.
+        return f"""你是一个NASA爱好者，为中文读者撰写新闻报道。
+为新闻卡片 #{card_number-1} 撰写内容。
 
-Date: {date_str}
-Source material:
+日期：{date_str}
+素材：
 {article_block}
 
-Requirements:
-1) Output ONLY the HTML content for this card, no JSON, no extra text.
-2) Start with the image: <img src="{article.get('cover_url', '') or article.get('image_url', '')}" style="width:100%;display:block;">
-3) Then write 2-3 paragraphs:
-   - First: what happened (the news event)
-   - Second: why this development matters
-4) Use natural, direct language. Avoid templated phrases like "值得持续关注".
-5) HTML must have no leading whitespace after opening tags.
-6) Full-width layout: use margin:0;padding:0.
-7) Text styling: font-size:0.95em; line-height:1.7em; color:#bbb.
+要求：
+1) 只输出HTML内容，不要JSON，不要任何额外文字。
+2) 以图片开头：<img src="{article.get('cover_url', '') or article.get('image_url', '')}" style="width:100%;display:block;">
+3) 然后写2-3段文字：
+   - 第一段：发生了什么（新闻事件）
+   - 第二段：这一进展为什么重要
+4) 使用自然、直接的语言，避免"值得持续关注"等模板化表达。
+5) HTML标签后不要有前导空格。
+6) 全宽布局：使用 margin:0;padding:0。
+7) 文字样式：font-size:0.95em; line-height:1.7em; color:#bbb。
+8) 所有文字必须是简体中文。
 
 Output format: Just the raw HTML string."""
 
