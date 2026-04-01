@@ -321,7 +321,7 @@ def fit_title_length(title: str, max_len: int = 30) -> str:
 
 
 def build_headline_title(articles: list[dict[str, Any]], date_str: str) -> str:
-    """Build headline title - Chinese only, exactly 30 characters."""
+    """Build headline title - Chinese only, 20-30 characters, naturally complete."""
     if not articles:
         return "NASA每日航天动态精选报道"
     
@@ -330,60 +330,37 @@ def build_headline_title(articles: list[dict[str, Any]], date_str: str) -> str:
     if not first_title:
         return "NASA每日航天动态精选报道"
     
-    # Ensure Chinese title with exactly 30 characters
-    return fit_title_exact_length(first_title, 30)
+    # Ensure Chinese title within 20-30 characters, naturally complete
+    return fit_title_exact_length(first_title, min_len=20, max_len=30)
 
 
-def fit_title_exact_length(title: str, exact_len: int = 30) -> str:
-    """Fit title to exact length with Chinese content."""
+def fit_title_exact_length(title: str, min_len: int = 20, max_len: int = 30) -> str:
+    """Fit title to length range with Chinese content - must be naturally complete.
+    
+    Title must be between min_len and max_len characters.
+    If title is too short, return it as-is (AI should generate better title).
+    If title is too long, truncate at natural break point.
+    """
     title = normalize_cn_title(title)
     
-    # If title is already exact length, return it
-    if len(title) == exact_len:
+    # If title is within range, return it
+    if min_len <= len(title) <= max_len:
         return title
     
-    # If title is shorter, pad with suffix
-    if len(title) < exact_len:
-        suffixes = ["最新进展", "深度解析", "全面报道", "详细解读", "现场直击"]
-        for suffix in suffixes:
-            combined = title + suffix
-            if len(combined) == exact_len:
-                return combined
-            if len(combined) < exact_len:
-                # Add more padding
-                padding = "报道"
-                combined = title + suffix + padding
-                if len(combined) >= exact_len:
-                    return combined[:exact_len]
-        # If still short, pad with generic text
-        padding_needed = exact_len - len(title)
-        if padding_needed > 0:
-            generic = "航天动态最新进展详细报道"
-            return title + generic[:padding_needed]
+    # If title is shorter than min_len, return as-is (don't pad artificially)
+    if len(title) < min_len:
         return title
     
-    # If title is longer, truncate intelligently
-    # Try to find a natural break point
-    breakpoints = ["，", ",", "：", ":", "；", ";", " ", "、", "的", "了", "在", "是"]
+    # If title is longer than max_len, truncate intelligently at natural break
+    breakpoints = ["，", ",", "：", ":", "；", ";", " ", "、"]
     for bp in breakpoints:
-        if bp in title[:exact_len]:
-            idx = title[:exact_len].rfind(bp)
-            if idx > 10:
-                truncated = title[:idx]
-                # Pad to exact length
-                padding_needed = exact_len - len(truncated)
-                if padding_needed > 0:
-                    suffixes = ["最新进展", "深度解析", "全面报道", "详细解读"]
-                    for suffix in suffixes:
-                        if len(truncated) + len(suffix) == exact_len:
-                            return truncated + suffix
-                    generic = "航天动态最新进展详细报道"
-                    return truncated + generic[:padding_needed]
-                return truncated
+        if bp in title[:max_len]:
+            idx = title[:max_len].rfind(bp)
+            if idx >= min_len:
+                return title[:idx]
     
-    # Hard truncate and pad
-    truncated = title[:exact_len]
-    return truncated
+    # If no good breakpoint, hard truncate at max_len
+    return title[:max_len]
 
 
 def build_final_title(articles: list[dict[str, Any]], date_str: str) -> str:
