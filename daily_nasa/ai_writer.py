@@ -432,8 +432,10 @@ def generate_payload(
         # Update article with Chinese content
         processed_article = dict(article)
         processed_article["title"] = chinese_content.get("title", article.get("title", ""))
-        processed_article["summary"] = chinese_content.get("summary", "")
-        processed_article["content"] = chinese_content.get("content", "")
+        # Join paragraphs into content
+        paragraphs = chinese_content.get("paragraphs", [])
+        processed_article["content"] = "\n\n".join(paragraphs) if paragraphs else article.get("content", "")
+        processed_article["summary"] = paragraphs[0][:200] if paragraphs else article.get("summary", "")
         processed_articles.append(processed_article)
         print(f"[Step {card_num+1}/4] Complete: Card {card_num} generated with Chinese content\n")
     
