@@ -377,6 +377,67 @@ def _convert_webp_to_jpg(image_data: bytes) -> bytes | None:
         return None
 
 
+def _compress_image(image_data: bytes, max_size_mb: float = 5.0, quality: int = 85) -> bytes:
+    """Compress image if it exceeds max_size_mb. Returns compressed image data."""
+    if not PIL_AVAILABLE:
+        return image_data
+    
+    max_size_bytes = int(max_size_mb * 1024 * 1024)
+    
+    # If already small enough, return as-is
+    if len(image_data) <= max_size_bytes:
+        return image_data
+    
+    try:
+        img = Image.open(io.BytesIO(image_data))
+        
+        # Convert to RGB if necessary
+        if img.mode in ('RGBA', 'LA', 'P'):
+            img = img.convert('RGB')
+        
+        # Try different quality levels and resize if needed
+        current_quality = quality
+        min_quality = 60
+        
+        while current_quality >= min_quality:
+            output = io.BytesIO()
+            img.save(output, format='JPEG', quality=current_quality, optimize=True)
+            compressed = output.getvalue()
+            
+            if len(compressed) <= max_size_bytes:
+                print(f"  Compressed image: {len(image_data)/1024/1024:.2f}MB -> {len(compressed)/1024/1024:.2f}MB (quality={current_quality})")
+                return compressed
+            
+            # Reduce quality and try again
+            current_quality -= 10
+        
+        # If quality reduction alone isn't enough, resize the image
+        width, height = img.size
+        scale = 0.9
+        while scale > 0.5:
+            new_width = int(width * scale)
+            new_height = int(height * scale)
+            resized = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            
+            output = io.BytesIO()
+            resized.save(output, format='JPEG', quality=min_quality, optimize=True)
+            compressed = output.getvalue()
+            
+            if len(compressed) <= max_size_bytes:
+                print(f"  Resized and compressed image: {len(image_data)/1024/1024:.2f}MB -> {len(compressed)/1024/1024:.2f}MB (scale={scale:.1f})")
+                return compressed
+            
+            scale -= 0.1
+        
+        # Last resort: return the smallest we could get
+        print(f"  Warning: Could not compress below {max_size_mb}MB, returning best effort")
+        return compressed
+        
+    except Exception as exc:
+        print(f"Image compression failed: {exc}, using original")
+        return image_data
+
+
 def download_image(image_url: str, file_path: Path) -> bool:
     if not image_url:
         return False
@@ -390,6 +451,7 @@ def download_image(image_url: str, file_path: Path) -> bool:
         response = requests.get(image_url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": "Mozilla/5.0"})
         response.raise_for_status()
         image_data = response.content
+        original_size = len(image_data)
 
         # Check if it's webp and convert to jpg
         is_webp = image_url.lower().endswith('.webp') or image_url.lower().endswith('.web')
@@ -399,11 +461,17 @@ def download_image(image_url: str, file_path: Path) -> bool:
                 image_data = converted
                 # Update file path to use .jpg extension
                 file_path = file_path.with_suffix('.jpg')
-                print(f"  Converted WebP to JPG")
+                print(f"  Converted WebP to JPG: {original_size/1024/1024:.2f}MB -> {len(image_data)/1024/1024:.2f}MB")
+
+        # Compress if image is larger than 5MB
+        if PIL_AVAILABLE and len(image_data) > 5 * 1024 * 1024:
+            image_data = _compress_image(image_data, max_size_mb=5.0)
+            # Update file path to jpg if compressed
+            file_path = file_path.with_suffix('.jpg')
 
         with open(file_path, "wb") as file:
             file.write(image_data)
-        print(f"Image saved: {file_path}")
+        print(f"Image saved: {file_path} ({len(image_data)/1024/1024:.2f}MB)")
         return True
     except Exception as exc:
         print(f"Failed to download image {image_url[:80]}: {exc}")
