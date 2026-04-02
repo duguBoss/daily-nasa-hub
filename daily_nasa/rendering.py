@@ -5,7 +5,8 @@ from html import escape
 from typing import Any
 
 from .common import is_title_repetitive, normalize_cn_summary, normalize_cn_title, normalize_whitespace
-from .config import BOTTOM_BANNER_URL, TITLE_KEYWORDS, TOP_BANNER_URL
+from .config import TOP_BANNER_URL
+from . import template as tpl
 
 
 ARTICLE_SKIP_TOKENS = {
@@ -17,22 +18,6 @@ GENERIC_SUBJECT_FRAGMENTS = (
     "任务更新", "相关进展", "最新进展", "最新节点", "关键节点", "阶段进展", "发射阶段进展", "发布最新节点", "发布发射阶段进展",
 )
 FORBIDDEN_TITLE_TOKENS = {"3条", "三条", "要闻", "盘点", "汇总", "速报", "冲刺", "开扯", "扒", "合集"}
-
-
-# Modern light theme styles
-LIGHT_BG = "#fafafa"
-LIGHT_CARD_BG = "#ffffff"
-BORDER_COLOR = "#e8e8e8"
-TEXT_PRIMARY = "#1a1a1a"
-TEXT_SECONDARY = "#4a4a4a"
-TEXT_MUTED = "#6b7280"
-TEXT_LABEL = "#9ca3af"
-ACCENT_BLUE = "#3b82f6"
-ACCENT_GRADIENT = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-CARD_SHADOW = "0 2px 8px rgba(0,0,0,0.08)"
-CARD_SHADOW_HOVER = "0 4px 16px rgba(0,0,0,0.12)"
-
-FONT_FAMILY = "-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif"
 
 
 def _plain_text_from_article(article: dict[str, Any]) -> str:
@@ -59,7 +44,7 @@ def _dedupe_preserve_order(items: list[str]) -> list[str]:
     return result
 
 
-def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 2) -> list[str]:
+def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3) -> list[str]:
     """Extract paragraphs for article body."""
     title = normalize_cn_title(article.get("title", ""))
     summary = normalize_cn_summary(article.get("summary", ""), title)
@@ -77,17 +62,39 @@ def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 2) -> lis
     return trimmed or ([title] if title else [])
 
 
-def _article_label(category: str) -> str:
-    """Get article category label."""
-    labels = {
-        "science": "Daily Science",
-        "station": "Space Station",
-        "deep": "Deep Space",
-        "mars": "Mars Exploration",
-        "earth": "Earth Science",
-        "tech": "Technology",
-    }
-    return labels.get(category, "NASA News")
+def _extract_tag_from_title(title_en: str) -> str:
+    """Extract mission tag from English title."""
+    title_lower = title_en.lower()
+    tags = [
+        ("artemis", "Artemis"),
+        ("orion", "Orion"),
+        ("webb", "Webb"),
+        ("hubble", "Hubble"),
+        ("perseverance", "Perseverance"),
+        ("curiosity", "Curiosity"),
+        ("ingenuity", "Ingenuity"),
+        ("spacex", "SpaceX"),
+        ("falcon", "Falcon"),
+        ("starship", "Starship"),
+        ("iss", "ISS"),
+        ("spacewalk", "Spacewalk"),
+        ("mars", "Mars"),
+        ("moon", "Moon"),
+        ("lunar", "Lunar"),
+        ("jupiter", "Jupiter"),
+        ("saturn", "Saturn"),
+        ("neptune", "Neptune"),
+        ("uranus", "Uranus"),
+        ("pluto", "Pluto"),
+        ("asteroid", "Asteroid"),
+        ("comet", "Comet"),
+        ("galaxy", "Galaxy"),
+        ("nebula", "Nebula"),
+    ]
+    for keyword, tag in tags:
+        if keyword in title_lower:
+            return tag
+    return "NASA"
 
 
 def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]], recent_titles: list[str]) -> str:
@@ -114,7 +121,7 @@ def build_default_payload(
     """Build default payload when AI generation fails or as fallback."""
     title = build_wechat_fallback_title(date_str, articles, recent_titles)
     weixin_html = build_fallback_html(date_str, title, articles, cover_urls)
-    
+
     return {
         "title": title,
         "weixin_html": weixin_html,
@@ -133,7 +140,7 @@ def build_article_blocks(articles: list[dict[str, Any]]) -> str:
         content = article.get("content", "")
         channel = article.get("channel", "NASA")
         pub_time = article.get("publish_time", "")
-        
+
         block_parts = [f"【文章{i}】"]
         if title:
             block_parts.append(f"标题：{title}")
@@ -145,149 +152,99 @@ def build_article_blocks(articles: list[dict[str, Any]]) -> str:
             block_parts.append(f"摘要：{summary}")
         if content:
             block_parts.append(f"内容：{content[:500]}...")
-        
+
         blocks.append("\n".join(block_parts))
-    
+
     return "\n\n".join(blocks)
 
 
-def _channel_meta(article: dict[str, Any]) -> str:
-    """Get article meta info."""
-    parts = []
-    channel = article.get("channel", "")
-    if channel and channel != "NASA":
-        parts.append(channel)
-    pub_time = article.get("publish_time", "")
-    if pub_time:
-        parts.append(pub_time)
-    return " · ".join(parts) if parts else "NASA"
+def _build_apod_from_article(article: dict[str, Any], vol: str) -> str:
+    """Build APOD section from first article."""
+    title_cn = normalize_cn_title(article.get("title", ""))
+    title_en = article.get("title_en", "")
+    image_url = article.get("cover_url", "") or article.get("image_url", "")
 
+    # Extract optics and object from content or summary
+    content = f"{article.get('summary', '')} {article.get('content', '')}"
 
-def _build_article_section(article: dict[str, Any], category: str) -> str:
-    """Build a modern article section with card design."""
-    image = article.get("cover_url", "") or article.get("image_url", "")
-    title = normalize_cn_title(article.get("title", ""))
-    meta = _channel_meta(article)
-    paragraphs = _article_paragraphs(article, max_paragraphs=2)
-    label = _article_label(category)
+    # Try to extract optics info
+    optics_match = re.search(r'(JWST|Hubble|Spitzer|Chandra|NIRCam|MIRI|WFC3)[\s\w]*', content, re.I)
+    optics = optics_match.group(1).upper() if optics_match else "NASA"
 
-    html = f"<div style='margin:16px;background:{LIGHT_CARD_BG};border-radius:12px;box-shadow:{CARD_SHADOW};overflow:hidden;'>"
+    # Try to extract object name
+    obj_match = re.search(r'([A-Z]{1,2}\d{1,4}|M\d{1,3}|NGC\s*\d{1,4}|Eagle|Orion|Crab|Andromeda|Milky Way)', content)
+    obj = obj_match.group(1) if obj_match else "DEEP SPACE"
 
-    # Category label bar
-    html += f"<div style='padding:12px 20px;background:{ACCENT_GRADIENT};'>"
-    html += f"<p style='margin:0;font-size:11px;color:#fff;letter-spacing:1px;text-transform:uppercase;font-weight:500;'>{label}</p>"
-    html += "</div>"
+    # Get paragraphs
+    paragraphs = _article_paragraphs(article, max_paragraphs=3)
 
-    # Image - full width within card, no padding
-    if image:
-        html += f"<div style='width:100%;height:220px;overflow:hidden;'>"
-        html += f"<img src='{image}' style='display:block;width:100%;height:100%;object-fit:cover;'>"
-        html += "</div>"
-
-    # Content area - full width text
-    html += f"<div style='padding:20px 0;'>"
-    html += f"<h2 style='margin:0 16px 10px 16px;font-size:20px;font-weight:600;color:{TEXT_PRIMARY};line-height:1.4;'>{escape(title)}</h2>"
-    html += f"<p style='margin:0 16px 16px 16px;font-size:12px;color:{TEXT_LABEL};'>{escape(meta)}</p>"
-
-    # Divider
-    html += f"<div style='width:40px;height:3px;background:{ACCENT_BLUE};border-radius:2px;margin:16px;'></div>"
-
-    # Paragraphs - full width
-    for para in paragraphs:
-        html += f"<p style='margin:0 16px 12px 16px;font-size:14px;color:{TEXT_SECONDARY};line-height:1.8;'>{escape(para)}</p>"
-
-    html += "</div></div>"
-    return html
-
-
-def _build_header(date_str: str, headline: str) -> str:
-    """Build modern header with gradient background."""
-    return (
-        f"<div style='position:relative;width:100%;padding:40px 24px;background:{ACCENT_GRADIENT};text-align:center;'>"
-        f"<div style='max-width:600px;margin:0 auto;'>"
-        f"<p style='margin:0 0 12px 0;font-size:12px;color:rgba(255,255,255,0.8);letter-spacing:2px;text-transform:uppercase;'>{escape(date_str)}</p>"
-        f"<h1 style='margin:0;font-size:26px;font-weight:600;color:#fff;line-height:1.4;letter-spacing:-0.3px;'>{escape(headline)}</h1>"
-        f"<div style='width:60px;height:4px;background:rgba(255,255,255,0.5);border-radius:2px;margin:20px auto 0;'></div>"
-        f"</div></div>"
+    return tpl.render_apod_section(
+        vol=vol,
+        image_url=image_url or TOP_BANNER_URL,
+        image_alt=title_cn or "NASA Image",
+        optics=optics,
+        obj=obj.upper(),
+        title_cn=title_cn or "NASA每日天文图",
+        title_en=title_en or "NASA Astronomy Picture",
+        paragraphs=paragraphs,
     )
 
 
-def _build_intro(text: str) -> str:
-    """Build modern intro section with card design - full width text."""
-    return (
-        f"<div style='margin:16px;background:{LIGHT_CARD_BG};border-radius:12px;box-shadow:{CARD_SHADOW};overflow:hidden;'>"
-        f"<div style='padding:16px 0;'>"
-        f"<div style='display:flex;align-items:center;margin:0 16px 12px 16px;'>"
-        f"<div style='width:4px;height:20px;background:{ACCENT_BLUE};border-radius:2px;margin-right:10px;'></div>"
-        f"<p style='margin:0;font-size:13px;color:{TEXT_LABEL};letter-spacing:1px;text-transform:uppercase;font-weight:500;'>今日导读</p>"
-        f"</div>"
-        f"<p style='margin:0 16px;font-size:15px;color:{TEXT_SECONDARY};line-height:1.8;'>{escape(text)}</p>"
-        f"</div></div>"
-    )
+def _build_news_from_articles(articles: list[dict[str, Any]]) -> str:
+    """Build news section from remaining articles."""
+    news_items = []
+    for idx, article in enumerate(articles, 1):
+        title = normalize_cn_title(article.get("title", ""))
+        title_en = article.get("title_en", "")
+        tag = _extract_tag_from_title(title_en)
+        image_url = article.get("cover_url", "") or article.get("image_url", "")
+        paragraphs = _article_paragraphs(article, max_paragraphs=3)
 
+        news_items.append(tpl.render_news_item(
+            index=idx,
+            title=title,
+            tag=tag,
+            image_url=image_url or TOP_BANNER_URL,
+            image_alt=title,
+            paragraphs=paragraphs,
+        ))
 
-def _build_footer() -> str:
-    """Build modern footer with gradient."""
-    return (
-        f"<div style='margin-top:24px;padding:32px 24px;background:{ACCENT_GRADIENT};text-align:center;'>"
-        f"<p style='margin:0 0 8px 0;font-size:14px;color:#fff;font-weight:600;letter-spacing:2px;'>NASA DAILY</p>"
-        f"<p style='margin:0 0 16px 0;font-size:12px;color:rgba(255,255,255,0.8);'>探索宇宙，每日更新</p>"
-        f"<div style='width:40px;height:2px;background:rgba(255,255,255,0.5);border-radius:1px;margin:0 auto;'></div>"
-        f"</div>"
-    )
+    return tpl.render_news_section(''.join(news_items))
 
 
 def build_fallback_html(date_str: str, title: str, articles: list[dict[str, Any]], cover_urls: list[str]) -> str:
-    """Build complete HTML with modern card-based design."""
-    science_article = articles[0] if articles else {}
-    news_articles = articles[1:4] if len(articles) > 1 else []
-
-    # Build intro text
-    lead_titles = [normalize_cn_title(article.get("title", "")) for article in articles[:3] if article.get("title")]
-    if len(lead_titles) >= 3:
-        intro = f"今日聚焦 {lead_titles[0]}，{lead_titles[1]}，以及 {lead_titles[2]}。"
-    elif len(lead_titles) == 2:
-        intro = f"今日聚焦 {lead_titles[0]} 和 {lead_titles[1]}。"
-    elif lead_titles:
-        intro = f"今日聚焦 {lead_titles[0]}。"
-    else:
-        intro = "今日 NASA 最新航天动态。"
-
-    # Build headline from first article or default
-    headline = build_headline_title(articles, date_str)
-
-    # Build content with modern card-based design
-    html_parts = [
-        f"<div style='background:{LIGHT_BG};width:100%;font-family:{FONT_FAMILY};color:{TEXT_PRIMARY};padding-bottom:16px;'>",
-        _build_header(date_str, headline),
-        _build_intro(intro),
-    ]
-
-    # Science article (featured)
-    if science_article:
-        html_parts.append(_build_article_section(science_article, "science"))
-
-    # Section divider for news
-    if news_articles:
-        html_parts.append(
-            f"<div style='margin:24px 16px 16px;'>"
-            f"<div style='display:flex;align-items:center;'>"
-            f"<div style='flex:1;height:1px;background:{BORDER_COLOR};'></div>"
-            f"<span style='margin:0 16px;font-size:13px;color:{TEXT_LABEL};font-weight:500;'>更多新闻</span>"
-            f"<div style='flex:1;height:1px;background:{BORDER_COLOR};'></div>"
-            f"</div></div>"
+    """Build complete HTML using template system."""
+    if not articles:
+        # Fallback when no articles
+        apod_html = tpl.render_apod_section(
+            vol=date_str[:4],
+            image_url=TOP_BANNER_URL,
+            image_alt="NASA",
+            optics="NASA",
+            obj="SPACE",
+            title_cn="NASA每日航天动态",
+            title_en="NASA Daily Space Updates",
+            paragraphs=["今日暂无最新航天动态，请持续关注NASA官方发布。"],
+        )
+        news_html = tpl.render_news_section('')
+        return tpl.render_full_html(
+            banner_url=TOP_BANNER_URL,
+            apod_html=apod_html,
+            news_html=news_html,
         )
 
-    # News articles with alternating categories
-    categories = ["station", "deep", "mars", "earth", "tech"]
-    for idx, article in enumerate(news_articles):
-        category = categories[idx % len(categories)]
-        html_parts.append(_build_article_section(article, category))
+    # First article as APOD
+    apod_html = _build_apod_from_article(articles[0], vol=date_str[:4])
 
-    html_parts.append(_build_footer())
-    html_parts.append("</div>")
+    # Remaining articles as news
+    news_html = _build_news_from_articles(articles[1:4])
 
-    return "".join(html_parts)
+    return tpl.render_full_html(
+        banner_url=TOP_BANNER_URL,
+        apod_html=apod_html,
+        news_html=news_html,
+        show_divider=len(articles) > 1,
+    )
 
 
 def pick_title_focus(articles: list[dict[str, Any]]) -> str:
@@ -361,33 +318,33 @@ def build_headline_title(articles: list[dict[str, Any]], date_str: str) -> str:
     """Build headline title - Chinese only, 20-30 characters, naturally complete."""
     if not articles:
         return "NASA每日航天动态精选报道"
-    
+
     # Get first article title
     first_title = normalize_cn_title(articles[0].get("title", ""))
     if not first_title:
         return "NASA每日航天动态精选报道"
-    
+
     # Ensure Chinese title within 20-30 characters, naturally complete
     return fit_title_exact_length(first_title, min_len=20, max_len=30)
 
 
 def fit_title_exact_length(title: str, min_len: int = 20, max_len: int = 30) -> str:
     """Fit title to length range with Chinese content - must be naturally complete.
-    
+
     Title must be between min_len and max_len characters.
     If title is too short, return it as-is (AI should generate better title).
     If title is too long, truncate at natural break point.
     """
     title = normalize_cn_title(title)
-    
+
     # If title is within range, return it
     if min_len <= len(title) <= max_len:
         return title
-    
+
     # If title is shorter than min_len, return as-is (don't pad artificially)
     if len(title) < min_len:
         return title
-    
+
     # If title is longer than max_len, truncate intelligently at natural break
     breakpoints = ["，", ",", "：", ":", "；", ";", " ", "、"]
     for bp in breakpoints:
@@ -395,7 +352,7 @@ def fit_title_exact_length(title: str, min_len: int = 20, max_len: int = 30) -> 
             idx = title[:max_len].rfind(bp)
             if idx >= min_len:
                 return title[:idx]
-    
+
     # If no good breakpoint, hard truncate at max_len
     return title[:max_len]
 
