@@ -197,6 +197,11 @@ def _generate_card_step(
     return fallback_html, "fallback", "basic"
 
 
+def _count_chinese_chars(text: str) -> int:
+    """Count Chinese characters in text."""
+    return len(re.findall(r"[\u4e00-\u9fff]", text))
+
+
 def _generate_card_content_step(
     model_candidates: list,
     card_number: int,
@@ -206,49 +211,68 @@ def _generate_card_content_step(
     """Step 2/3/4: Generate Chinese content for a single card. Returns (content_dict, provider, model).
     
     content_dict contains: title, summary, content (paragraphs)
+    Each paragraph must be 400-500 Chinese characters.
     """
     from .config import MAX_MODEL_ATTEMPTS
-    from .prompts import build_card_content_prompt
+    from .prompts import build_card_content_prompt, build_card_rewrite_prompt
 
-    prompt = build_card_content_prompt(card_number, article, date_str)
-
+    # Track previous attempts for rewrite
+    previous_attempts = []
+    
     for provider, model_name, provider_api_key, caller in model_candidates:
         print(f"[Step {card_number+1}/4] Using {provider}:{model_name} for card {card_number} content")
 
         for attempt in range(MAX_MODEL_ATTEMPTS):
             try:
                 print(f"  Attempt {attempt + 1}/{MAX_MODEL_ATTEMPTS}")
+                
+                # Use rewrite prompt if we have previous attempts
+                if previous_attempts:
+                    prompt = build_card_rewrite_prompt(card_number, article, date_str, previous_attempts)
+                else:
+                    prompt = build_card_content_prompt(card_number, article, date_str)
+                
                 raw = caller(provider_api_key, prompt, model_name)
                 raw = raw.strip()
 
                 # Parse JSON response
-                try:
-                    content = json.loads(raw)
-                    if isinstance(content, dict) and "title" in content and "paragraphs" in content:
-                        # Validate: must have Chinese content
-                        text_to_check = content.get("title", "") + "".join(content.get("paragraphs", []))
-                        if _has_chinese_content(text_to_check, min_chars=20):
-                            print(f"[Step {card_number+1}/4] Card {card_number} content generated: {len(text_to_check)} chars")
-                            return content, provider, model_name
-                        else:
-                            chinese_count = len(re.findall(r"[\u4e00-\u9fff]", text_to_check))
-                            print(f"  ✗ Rejected (not enough Chinese: {chinese_count} chars), retrying...")
-                            continue
-                except json.JSONDecodeError:
-                    # Try to extract JSON from markdown code block
-                    json_match = re.search(r'```json\s*(.*?)\s*```', raw, re.DOTALL)
-                    if json_match:
-                        try:
-                            content = json.loads(json_match.group(1))
-                            if isinstance(content, dict) and "title" in content and "paragraphs" in content:
-                                text_to_check = content.get("title", "") + "".join(content.get("paragraphs", []))
-                                if _has_chinese_content(text_to_check, min_chars=20):
-                                    print(f"[Step {card_number+1}/4] Card {card_number} content generated: {len(text_to_check)} chars")
-                                    return content, provider, model_name
-                        except json.JSONDecodeError:
-                            pass
+                content = _parse_json_response(raw)
+                if content:
+                    # Validate Chinese content
+                    paragraphs = content.get("paragraphs", [])
+                    if not paragraphs:
+                        print(f"  ✗ No paragraphs found, retrying...")
+                        previous_attempts.append({"error": "no_paragraphs", "raw": raw[:200]})
+                        continue
                     
+                    # Check each paragraph length (400-500 Chinese chars)
+                    valid_lengths = True
+                    for i, para in enumerate(paragraphs):
+                        char_count = _count_chinese_chars(para)
+                        if char_count < 400:
+                            print(f"  ✗ Paragraph {i+1} too short: {char_count} chars (need 400-500), will rewrite...")
+                            valid_lengths = False
+                            break
+                        elif char_count > 500:
+                            print(f"  ✗ Paragraph {i+1} too long: {char_count} chars (need 400-500), will rewrite...")
+                            valid_lengths = False
+                            break
+                    
+                    if not valid_lengths:
+                        # Store this attempt and retry with rewrite prompt
+                        previous_attempts.append({
+                            "content": content,
+                            "paragraph_lengths": [_count_chinese_chars(p) for p in paragraphs]
+                        })
+                        continue
+                    
+                    # All validations passed
+                    total_chars = sum(_count_chinese_chars(p) for p in paragraphs)
+                    print(f"[Step {card_number+1}/4] Card {card_number} content generated: {len(paragraphs)} paragraphs, {total_chars} total chars")
+                    return content, provider, model_name
+                else:
                     print(f"  ✗ Invalid JSON response, retrying...")
+                    previous_attempts.append({"error": "invalid_json", "raw": raw[:200]})
                     continue
 
             except Exception as e:
@@ -256,13 +280,39 @@ def _generate_card_content_step(
                 print(f"  Switching to next model...")
                 break  # Switch to next model
 
-    # Fallback to original article content
+    # Fallback: use last generated content even if length is not perfect
+    if previous_attempts:
+        last_attempt = previous_attempts[-1]
+        if "content" in last_attempt:
+            print(f"[Step {card_number+1}/4] Using best effort content (length may not be perfect)")
+            return last_attempt["content"], "fallback", "best_effort"
+
+    # Ultimate fallback to original article content
     print(f"[Step {card_number+1}/4] All models failed, using fallback content")
     return {
         "title": article.get("title", ""),
         "summary": article.get("summary", ""),
         "paragraphs": [article.get("summary", ""), article.get("content", "")[:200]]
     }, "fallback", "original"
+
+
+def _parse_json_response(raw: str) -> dict[str, Any] | None:
+    """Parse JSON from model response."""
+    try:
+        content = json.loads(raw)
+        if isinstance(content, dict) and "title" in content and "paragraphs" in content:
+            return content
+    except json.JSONDecodeError:
+        # Try to extract JSON from markdown code block
+        json_match = re.search(r'```json\s*(.*?)\s*```', raw, re.DOTALL)
+        if json_match:
+            try:
+                content = json.loads(json_match.group(1))
+                if isinstance(content, dict) and "title" in content and "paragraphs" in content:
+                    return content
+            except json.JSONDecodeError:
+                pass
+    return None
 
 
 def generate_payload(

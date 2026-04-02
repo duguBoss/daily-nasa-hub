@@ -291,26 +291,94 @@ def build_card_content_prompt(card_number: int, article: dict[str, Any], date_st
 
 {article_block}
 
-【输出要求】
+【严格要求 - 必须遵守】
 1) 只输出JSON格式，不要任何额外文字或markdown标记。
 2) JSON必须包含以下字段：
    - "title": 中文标题（15-25字，信息丰富，像自媒体标题）
-   - "paragraphs": 段落数组，2-3个段落，每个段落80-150字
+   - "paragraphs": 段落数组，2-3个段落
 
-3) 内容要求：
-   - 第一段：解释主题/事件是什么
-   - 第二段：解释科学意义/为什么重要
+3) 【字数要求 - 最重要】
+   - 每个段落必须严格控制在400-500个汉字之间（不含标点）
+   - 少于400字或超过500字都是不合格的
+   - 写完后必须逐段统计字数，确保符合要求
+   - 最佳长度：450字左右
+
+4) 内容要求：
+   - 第一段：详细解释主题/事件是什么，提供具体细节
+   - 第二段：深入解释科学意义/为什么重要，包含技术细节
    - 使用自然、直接的语言，避免模板化表达
    - 保留重要的英文术语首次出现时附带中文解释
    - 所有文字必须是简体中文
 
-4) 标题要求：
+5) 标题要求：
    - 必须包含具体任务名、发现或科学事实
    - 不要_generic标题如"NASA最新消息"
    - 不要互联网黑话如"盘"、"扒"、"开扯"
 
 输出格式示例：
-{{"title": "韦伯望远镜捕捉到创生之柱新细节：恒星诞生区的壮丽景象", "paragraphs": ["詹姆斯·韦伯空间望远镜（JWST）近日发布了著名的'创生之柱'最新图像...", "这张图像的科学价值在于..."]}}
+{{"title": "韦伯望远镜捕捉到创生之柱新细节：恒星诞生区的壮丽景象", "paragraphs": ["詹姆斯·韦伯空间望远镜（JWST）近日发布了著名的'创生之柱'最新图像，展示了恒星诞生区域的惊人细节。这张图像使用近红外相机拍摄，能够穿透尘埃云，揭示出此前从未见过的年轻恒星。图像中可以看到数十颗正在形成的恒星，它们被包裹在气体和尘埃云中，正在经历引力坍缩过程。这些恒星的年龄只有几十万年，是天文学研究的重要目标...", "这张图像的科学价值在于它帮助天文学家理解恒星形成的早期阶段。通过分析这些年轻恒星的光谱，科学家可以确定它们的温度、质量和化学成分。此外，图像还揭示了恒星形成过程中喷流和外流的现象，这些都是恒星演化理论的重要组成部分。韦伯望远镜的高分辨率成像能力使得科学家能够以前所未有的精度观测这些遥远的天体..."]}}
+"""
+
+
+def build_card_rewrite_prompt(card_number: int, article: dict[str, Any], date_str: str, previous_attempts: list) -> str:
+    """Generate rewrite prompt based on previous attempts to fix length issues."""
+    is_science = card_number == 1
+    
+    # Analyze previous attempt
+    last_attempt = previous_attempts[-1] if previous_attempts else {}
+    paragraph_lengths = last_attempt.get("paragraph_lengths", [])
+    
+    # Build feedback about what went wrong
+    feedback_parts = []
+    for i, length in enumerate(paragraph_lengths):
+        if length < 400:
+            feedback_parts.append(f"第{i+1}段：当前{length}字，需要增加{400-length}字")
+        elif length > 500:
+            feedback_parts.append(f"第{i+1}段：当前{length}字，需要减少{length-500}字")
+    
+    feedback = "\n".join(feedback_parts) if feedback_parts else "字数需要调整"
+    
+    article_block = f"""【原文素材】
+标题：{article.get('title', '')}
+英文标题：{article.get('title_en', '')}
+来源：{article.get('channel', 'NASA')}
+摘要：{article.get('summary', '')}
+内容：{article.get('content', '')[:1000]}..."""
+    
+    card_type = "NASA每日科普" if is_science else f"NASA新闻 #{card_number-1}"
+    content_focus = "科学解释" if is_science else "新闻报道"
+    
+    return f"""你是NASA中文科技媒体编辑，为中文读者撰写{content_focus}内容。
+
+【任务】
+为"{card_type}"栏目重新撰写中文内容。
+
+日期：{date_str}
+
+{article_block}
+
+【上次生成的问题】
+{feedback}
+
+【重写要求 - 必须严格遵守】
+1) 只输出JSON格式，不要任何额外文字或markdown标记。
+2) JSON必须包含以下字段：
+   - "title": 中文标题（15-25字）
+   - "paragraphs": 段落数组，2-3个段落
+
+3) 【字数要求 - 最重要】
+   - 每个段落必须严格控制在400-500个汉字之间（不含标点）
+   - 如果之前字数太少，请增加更多细节、背景信息、技术说明
+   - 如果之前字数太多，请精简表达，删除冗余描述，保留核心信息
+   - 写完后必须逐段统计字数，确保符合400-500字要求
+
+4) 内容要求：
+   - 保持内容完整性和准确性
+   - 使用自然、直接的语言
+   - 所有文字必须是简体中文
+
+输出格式示例：
+{{"title": "...", "paragraphs": ["...", "..."]}}
 """
 
 
