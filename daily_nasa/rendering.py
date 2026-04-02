@@ -20,7 +20,22 @@ FORBIDDEN_TITLE_TOKENS = {"3条", "三条", "要闻", "盘点", "汇总", "速�
 
 
 def _plain_text_from_article(article: dict[str, Any]) -> str:
-    parts = [normalize_whitespace(str(article.get("summary", ""))), normalize_whitespace(str(article.get("content", "")))]
+    """Extract plain text from article.
+    
+    If content has sufficient Chinese characters (AI-generated), use content only.
+    Otherwise, combine summary and content.
+    """
+    content = normalize_whitespace(str(article.get("content", "")))
+    summary = normalize_whitespace(str(article.get("summary", "")))
+    
+    # Check if content is AI-generated (has sufficient Chinese characters)
+    chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', content))
+    if chinese_chars >= 400:
+        # AI-generated content, use content only to avoid duplication with summary
+        return content
+    
+    # Fallback: combine summary and content
+    parts = [summary, content]
     return normalize_whitespace("\n\n".join(part for part in parts if part))
 
 
@@ -47,7 +62,7 @@ def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_ch
     """Extract paragraphs for article body.
     
     Each paragraph should be 400-700 Chinese characters for rich content.
-    If content is already AI-generated (has sufficient length), use it directly.
+    If content is already AI-generated (has sufficient length), use it directly without truncation.
     """
     title = normalize_cn_title(article.get("title", ""))
     content = _plain_text_from_article(article)
@@ -55,8 +70,9 @@ def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_ch
     # Check if content is already AI-generated (has sufficient Chinese characters)
     chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', content))
     if chinese_chars >= 400:
-        # Content is already AI-generated, use it directly as a single paragraph
-        return [content[:max_chars]]
+        # Content is already AI-generated, use it directly without truncation
+        # AI content is already validated to be 400-700 chars, no need to truncate
+        return [content]
     
     # Fallback: process content from original article
     summary = normalize_cn_summary(article.get("summary", ""), title)
