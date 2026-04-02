@@ -292,13 +292,13 @@ def build_card_content_prompt(card_number: int, article: dict[str, Any], date_st
 {article_block}
 
 【字数要求 - 必须严格遵守】
-⚠️ 只写1个段落，必须包含400-500个汉字（这是硬性要求）
-⚠️ 400字以下或500字以上都是不合格的
+⚠️ 只写1个段落，必须包含400-700个汉字（这是硬性要求）
+⚠️ 400字以下或700字以上都是不合格的
 ⚠️ 写完后必须逐字统计，确保符合要求
-⚠️ 最佳长度：450字左右
+⚠️ 最佳长度：500-600字左右
 
 【内容结构要求】
-写一个完整的段落（400-500字），包含以下内容：
+写一个完整的段落（400-700字），包含以下内容：
 1. 开头：简要介绍这是什么事件/发现/技术
 2. 中间：详细说明关键信息
    - 时间、地点、参与方
@@ -325,7 +325,7 @@ def build_card_content_prompt(card_number: int, article: dict[str, Any], date_st
 
 【输出格式】
 只输出JSON，不要任何其他文字：
-{{"title": "中文标题", "paragraphs": ["段落内容（400-500字）..."]}}
+{{"title": "中文标题", "paragraphs": ["段落内容（400-700字）..."]}}
 
 【参考示例】
 标题：韦伯望远镜捕捉到创生之柱新细节：恒星诞生区的壮丽景象
@@ -348,8 +348,8 @@ def build_card_rewrite_prompt(card_number: int, article: dict[str, Any], date_st
     for i, length in enumerate(paragraph_lengths):
         if length < 400:
             feedback_parts.append(f"❌ 第{i+1}段：当前只有{length}字，严重不足！需要增加{400-length}字以上")
-        elif length > 500:
-            feedback_parts.append(f"❌ 第{i+1}段：当前有{length}字，太长了！需要减少{length-500}字")
+        elif length > 700:
+            feedback_parts.append(f"❌ 第{i+1}段：当前有{length}字，太长了！需要减少{length-700}字")
     
     feedback = "\n".join(feedback_parts) if feedback_parts else "字数需要调整"
     
@@ -402,10 +402,10 @@ def build_card_rewrite_prompt(card_number: int, article: dict[str, Any], date_st
 {last_content_text}
 
 【重写要求 - 必须严格遵守】
-⚠️ 只写1个段落，必须包含400-500个汉字（硬性要求）
+⚠️ 只写1个段落，必须包含400-700个汉字（硬性要求）
 ⚠️ 写完后逐字统计，确保符合要求
 
-1. 写一个完整的段落（400-500字）
+1. 写一个完整的段落（400-700字）
 2. 如果之前字数太少：
    - 大幅扩展内容，添加背景、细节、数据、分析
    - 详细解释科学原理和工作机制
@@ -416,7 +416,7 @@ def build_card_rewrite_prompt(card_number: int, article: dict[str, Any], date_st
 
 【输出格式】
 只输出JSON：
-{{"title": "中文标题", "paragraphs": ["段落内容（400-500字）..."]}}
+{{"title": "中文标题", "paragraphs": ["段落内容（400-700字）..."]}}
 """
 
 

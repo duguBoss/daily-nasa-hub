@@ -211,7 +211,7 @@ def _generate_card_content_step(
     """Step 2/3/4: Generate Chinese content for a single card. Returns (content_dict, provider, model).
     
     content_dict contains: title, summary, content (paragraphs)
-    Each paragraph must be 400-500 Chinese characters.
+    Each paragraph must be 400-700 Chinese characters.
     """
     from .prompts import build_card_content_prompt, build_card_rewrite_prompt
 
@@ -247,7 +247,7 @@ def _generate_card_content_step(
                         previous_attempts.append({"error": "no_paragraphs", "raw": raw[:200]})
                         continue
                     
-                    # Check each paragraph length (400-500 Chinese chars)
+                    # Check each paragraph length (400-700 Chinese chars)
                     valid_lengths = True
                     length_issues = []
                     for i, para in enumerate(paragraphs):
@@ -255,7 +255,7 @@ def _generate_card_content_step(
                         if char_count < 400:
                             length_issues.append(f"para{i+1}={char_count}(short)")
                             valid_lengths = False
-                        elif char_count > 500:
+                        elif char_count > 700:
                             length_issues.append(f"para{i+1}={char_count}(long)")
                             valid_lengths = False
                     
@@ -292,7 +292,7 @@ def _generate_card_content_step(
                 all_valid = True
                 for para in paragraphs:
                     char_count = _count_chinese_chars(para)
-                    if char_count < 400 or char_count > 500:
+                    if char_count < 400 or char_count > 700:
                         all_valid = False
                         break
                 
