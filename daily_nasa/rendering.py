@@ -43,14 +43,23 @@ def _dedupe_preserve_order(items: list[str]) -> list[str]:
     return result
 
 
-def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_chars: int = 400, max_chars: int = 500) -> list[str]:
+def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_chars: int = 400, max_chars: int = 700) -> list[str]:
     """Extract paragraphs for article body.
     
-    Each paragraph should be 400-500 Chinese characters for rich content.
+    Each paragraph should be 400-700 Chinese characters for rich content.
+    If content is already AI-generated (has sufficient length), use it directly.
     """
     title = normalize_cn_title(article.get("title", ""))
-    summary = normalize_cn_summary(article.get("summary", ""), title)
     content = _plain_text_from_article(article)
+    
+    # Check if content is already AI-generated (has sufficient Chinese characters)
+    chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', content))
+    if chinese_chars >= 400:
+        # Content is already AI-generated, use it directly as a single paragraph
+        return [content[:max_chars]]
+    
+    # Fallback: process content from original article
+    summary = normalize_cn_summary(article.get("summary", ""), title)
     
     paragraphs = []
     
@@ -58,7 +67,7 @@ def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_ch
     full_text = f"{summary}\n\n{content}".strip()
     sentences = _split_sentences(full_text)
     
-    # Build paragraphs with 400-500 chars each
+    # Build paragraphs with 400-700 chars each
     current_para = ""
     for sentence in _dedupe_preserve_order(sentences):
         clean = normalize_whitespace(sentence)
