@@ -58,9 +58,7 @@ APOD_TEMPLATE = _minify_html('''
             <span style="letter-spacing: 1px;">ISSUE</span>
         </section>
     </section>
-    <section style="width: 100%; margin: 0; line-height: 0;">
-        <img src="{image_url}" style="width: 100%; display: block; margin: 0;" alt="{image_alt}" />
-    </section>
+    {image_section}
     <section style="background-color: #000000; color: #a1a1aa; padding: 8px 16px; font-size: 11px; font-family: Consolas, 'Courier New', monospace; display: flex; justify-content: space-between; letter-spacing: 0.5px;">
         <span><span style="color:#FC3D21;">OPTICS:</span> {optics}</span>
         <span><span style="color:#FC3D21;">OBJ:</span> {obj}</span>
@@ -118,9 +116,7 @@ NEWS_ITEM_FIRST_TEMPLATE = _minify_html('''
             {title}
         </section>
     </section>
-    <section style="width: 100%; margin: 0;">
-        <img src="{image_url}" style="width: 100%; display: block; margin: 0;" alt="{image_alt}" />
-    </section>
+    {image_section}
     <section style="padding: 20px 16px 10px 16px; line-height: 1.8; text-align: justify; word-wrap: break-word;">
         {paragraphs}
     </section>
@@ -140,9 +136,7 @@ NEWS_ITEM_TEMPLATE = _minify_html('''
             {title}
         </section>
     </section>
-    <section style="width: 100%; margin: 0;">
-        <img src="{image_url}" style="width: 100%; display: block; margin: 0;" alt="{image_alt}" />
-    </section>
+    {image_section}
     <section style="padding: 20px 16px 10px 16px; line-height: 1.8; text-align: justify; word-wrap: break-word;">
         {paragraphs}
     </section>
@@ -286,7 +280,7 @@ def render_news_item(
         index: News index number
         title: News title
         tag: News tag/category
-        image_url: Image URL
+        image_url: Image URL (if empty, no image section will be rendered)
         image_alt: Image alt text
         paragraphs: List of paragraph texts
         highlights: Optional highlights for each paragraph
@@ -294,14 +288,19 @@ def render_news_item(
     """
     content = render_news_content(paragraphs, highlights)
     
+    # Build image section only if image_url is provided and not empty
+    if image_url and image_url.strip():
+        image_section = f'<section style="width: 100%; margin: 0;"><img src="{escape(image_url)}" style="width: 100%; display: block; margin: 0;" alt="{escape(image_alt)}" /></section>'
+    else:
+        image_section = ''
+    
     template = NEWS_ITEM_FIRST_TEMPLATE if is_first else NEWS_ITEM_TEMPLATE
     
     return template.format(
         index=index,
         title=escape(title),
         tag=escape(tag),
-        image_url=escape(image_url),
-        image_alt=escape(image_alt),
+        image_section=image_section,
         paragraphs=content,
     )
 
@@ -317,12 +316,22 @@ def render_apod_section(
     paragraphs: List[str],
     highlights: Optional[List[List[Tuple[str, str]]]] = None,
 ) -> str:
-    """Render APOD section."""
+    """Render APOD section.
+    
+    Args:
+        image_url: Image URL (if empty, no image section will be rendered)
+    """
     content = render_apod_content(paragraphs, highlights)
+    
+    # Build image section only if image_url is provided and not empty
+    if image_url and image_url.strip():
+        image_section = f'<section style="width: 100%; margin: 0; line-height: 0;"><img src="{escape(image_url)}" style="width: 100%; display: block; margin: 0;" alt="{escape(image_alt)}" /></section>'
+    else:
+        image_section = ''
+    
     return APOD_TEMPLATE.format(
         vol=escape(vol),
-        image_url=escape(image_url),
-        image_alt=escape(image_alt),
+        image_section=image_section,
         optics=escape(optics),
         obj=escape(obj),
         title_cn=escape(title_cn),

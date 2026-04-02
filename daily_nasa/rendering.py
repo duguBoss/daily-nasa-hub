@@ -43,22 +43,59 @@ def _dedupe_preserve_order(items: list[str]) -> list[str]:
     return result
 
 
-def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3) -> list[str]:
-    """Extract paragraphs for article body."""
+def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_chars: int = 400, max_chars: int = 500) -> list[str]:
+    """Extract paragraphs for article body.
+    
+    Each paragraph should be 400-500 Chinese characters for rich content.
+    """
     title = normalize_cn_title(article.get("title", ""))
     summary = normalize_cn_summary(article.get("summary", ""), title)
+    content = _plain_text_from_article(article)
+    
     paragraphs = []
-    if summary:
-        paragraphs.append(summary)
-    paragraphs.extend(_split_sentences(_plain_text_from_article(article)))
-    trimmed: list[str] = []
-    for paragraph in _dedupe_preserve_order(paragraphs):
-        clean = normalize_whitespace(paragraph)
-        if clean and clean != title:
-            trimmed.append(clean[:280])
-        if len(trimmed) >= max_paragraphs:
-            break
-    return trimmed or ([title] if title else [])
+    
+    # Combine summary and content for rich paragraphs
+    full_text = f"{summary}\n\n{content}".strip()
+    sentences = _split_sentences(full_text)
+    
+    # Build paragraphs with 400-500 chars each
+    current_para = ""
+    for sentence in _dedupe_preserve_order(sentences):
+        clean = normalize_whitespace(sentence)
+        if not clean or clean == title:
+            continue
+            
+        # Add sentence to current paragraph
+        if current_para:
+            current_para += " " + clean
+        else:
+            current_para = clean
+        
+        # Check if we have enough content for this paragraph
+        char_count = len(current_para.replace(" ", ""))
+        if char_count >= min_chars:
+            paragraphs.append(current_para[:max_chars])
+            current_para = ""
+            if len(paragraphs) >= max_paragraphs:
+                break
+    
+    # Add remaining content if we haven't reached max paragraphs
+    if current_para and len(paragraphs) < max_paragraphs:
+        char_count = len(current_para.replace(" ", ""))
+        if char_count >= 50:  # At least 50 chars to be meaningful
+            paragraphs.append(current_para[:max_chars])
+    
+    # If we still don't have enough paragraphs, try to split long sentences
+    while len(paragraphs) < max_paragraphs and sentences:
+        for sentence in sentences[len(paragraphs):]:
+            clean = normalize_whitespace(sentence)
+            if clean and clean != title and len(clean) >= 50:
+                paragraphs.append(clean[:max_chars])
+                if len(paragraphs) >= max_paragraphs:
+                    break
+        break
+    
+    return paragraphs or ([title] if title else [])
 
 
 def _extract_tag_from_title(title_en: str) -> str:
@@ -218,7 +255,7 @@ def _build_apod_from_article(article: dict[str, Any], vol: str) -> str:
 
     return tpl.render_apod_section(
         vol=vol,
-        image_url=image_url or TOP_BANNER_URL,
+        image_url=image_url,  # No fallback - APOD should have its own image
         image_alt=title_cn or "NASA Image",
         optics=optics,
         obj=obj.upper(),
@@ -244,11 +281,12 @@ def _build_news_from_articles(articles: list[dict[str, Any]]) -> str:
         for para in paragraphs:
             highlights.append(_extract_highlights(para))
 
+        # Only pass image_url if it exists, don't use TOP_BANNER_URL as fallback
         news_items.append(tpl.render_news_item(
             index=idx,
             title=title,
             tag=tag,
-            image_url=image_url or TOP_BANNER_URL,
+            image_url=image_url,  # No fallback - if empty, no image will be shown
             image_alt=title,
             paragraphs=paragraphs,
             highlights=highlights if any(highlights) else None,
