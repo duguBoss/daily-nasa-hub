@@ -1,13 +1,13 @@
-# 阿尔忒弥斯二号成功发射，四名宇航员开启五十年来首次载人绕月
+# 阿尔忒弥斯二号完成远地点点火，四名宇航员准备接近操作
 
 - 日期: 2026-04-02
 
-## 1. Comet McNaught from New STEREO Satellite
+## 1. Comet Lovejoy in a Winter Sky
 
 - 频道: NASA APOD
 - 链接: 
 
-The brightest comet of recent decades was a surprising first sight for a new camera in space. The Sun Earth Connection Coronal and Heliospheric Investigation (SECCHI) instrument onboard the Solar TErrestrial RElations Observatory (STEREO) satellite had just op
+Which of these night sky icons can you find in this beautiful and deep exposure of the northern winter sky? Skylights include the stars in Orion's belt, the Orion Nebula, the Pleiades star cluster, the bright stars Betelgeuse and Rigel, the California Nebula, 
 
 ## 2. Artemis II Flight Update: Apogee Raise Burn Complete, Crew Looks Ahead to Proximity Operations
 
