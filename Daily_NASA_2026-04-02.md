@@ -1,24 +1,24 @@
-# 阿尔忒弥斯二号接近操作完成，近地点提升燃烧待发
+# 阿尔忒弥斯二号机组地面团队成功排除猎户座飞船厕所故障
 
 - 日期: 2026-04-02
 
-## 1. Arp 188 and the Tadpole's Tidal Tail
+## 1. A Circumhorizontal Arc Over Ohio
 
 - 频道: NASA APOD
 - 链接: 
 
-In this stunning vista recorded with the Hubble Space Telescope's Advanced Camera for Surveys, distant galaxies form a dramatic backdrop for disrupted spiral galaxy Arp 188, the Tadpole Galaxy. The cosmic tadpole is a mere 420 million light-years distant towar
+Why would clouds appear to be different colors? The reason here is that ice crystals in distant cirrus clouds are acting like little floating prisms. Sometimes known as a fire rainbow for its flame-like appearance, a circumhorizon arc lies parallel to the hori
 
-## 2. Artemis II Flight Update: Proximity Operations Complete, Perigee Raise Burn Up Next
+## 2. Artemis II Flight Update: Crew and Ground Teams Successfully Troubleshoot Orion’s Toilet
 
 - 频道: NASA
-- 链接: https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-proximity-operations-complete-perigee-raise-burn-up-next
+- 链接: https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-update-crew-and-ground-teams-successfully-troubleshoot-orions-toilet
 
-The Artemis II crew successfully completed the proximity operations demonstration , concluding one of the mission’s early objectives and providing valuable data on how the Orion spacecraft, named Integrity, performs duri
+The Artemis II crew, working closely with mission control in Houston, were able to restore the Orion spacecraft’s toilet to normal operations following the proximity operations demonstration. Ahead of the apogee raise bu
 
-## 3. First Time is the Charm! Four Astronauts Headed to the Moon
+## 3. Réunion Island Lava Reaches the Sea
 
 - 频道: SpaceFlight News
-- 链接: https://spacepolicyonline.com/news/first-time-is-the-charm-four-astronauts-headed-to-the-moon/
+- 链接: https://science.nasa.gov/earth/earth-observatory/reunion-island-lava-reaches-the-sea/
 
-All the hard work to get the Space Launch System rocket and Orion spacecraft ready to send four people around the Moon for the first time in 53 years paid […]
+The February 2026 eruption at Piton de la Fournaise has lasted longer and produced a larger volume of lava than recent eruptions from this frequently active volcano.
