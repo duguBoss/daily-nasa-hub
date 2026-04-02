@@ -1,20 +1,20 @@
-# 韦伯望远镜证实米拉克幽灵星系实为遥远星系，距离超千万光年
+# 阿尔忒弥斯2号载人飞船发射升空，四名宇航员开启首次绕月飞行
 
 - 日期: 2026-04-02
 
-## 1. Mirach's Ghost
+## 1. NGC 6888: The Crescent Nebula
 
 - 频道: NASA APOD
 - 链接: 
 
-As far as ghosts go, Mirach's Ghost isn't really that scary. In fact, Mirach's Ghost is just a faint, fuzzy galaxy, well known to astronomers, that happens to be seen nearly along the line-of-sight to Mirach, a bright star. Centered in this star field, Mirach 
+NGC 6888, also known as the Crescent Nebula, is a about 25 light-years across blown by winds from its central, bright, massive star. A triumvirate of astroimagers ( Joe, Glenn, Russell) created this sharp portrait of the cosmic bubble. Their telescopic collabo
 
 ## 2. Artemis II Flight Update: Apogee Raise Burn Complete, Crew Looks Ahead to Proximity Operations
 
 - 频道: NASA
 - 链接: https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-apogee-raise-burn-complete-crew-looks-ahead-to-proximity-operations
 
-The apogee raise burn was successfully completed, continuing to fine tune the Orion spacecraft’s orbit around Earth. The ICPS ( interim cryogenic propulsion stage ) ignited its RL10 engine for a precisely timed burn that
+
 
 ## 3. Liftoff! NASA Launches Astronauts on Historic Artemis Moon Mission
 
