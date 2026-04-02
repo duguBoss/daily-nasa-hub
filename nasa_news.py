@@ -27,7 +27,7 @@ def main() -> None:
     date_str = target_date.isoformat()
     print(f"Running NASA daily pipeline for {date_str}")
 
-    cleanup_old_files(target_date, keep_days=1)
+    cleanup_old_files(target_date, keep_days=0)  # Clean all history files except today
 
     state = load_seen_state()
     seen_urls = set(state.get("seen_urls", []))

@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 import re
-from html import escape
 from typing import Any
 
-from .common import is_title_repetitive, normalize_cn_summary, normalize_cn_title, normalize_whitespace
+from .common import normalize_cn_summary, normalize_cn_title, normalize_whitespace
 from .config import TOP_BANNER_URL
 from . import template as tpl
 
@@ -97,6 +96,41 @@ def _extract_tag_from_title(title_en: str) -> str:
     return "NASA"
 
 
+def _extract_highlights(text: str) -> list[tuple[str, str]]:
+    """Extract keywords to highlight from text.
+    
+    Returns list of (keyword, color) tuples.
+    """
+    highlights = []
+    
+    # Blue highlights - missions and spacecraft
+    blue_keywords = [
+        "詹姆斯·韦伯空间望远镜", "JWST", "韦伯", "哈勃", "Hubble", "斯皮策", "Spitzer",
+        "钱德拉", "Chandra", "近红外相机", "NIRCam", "MIRI", "WFC3",
+        "猎户座", "Orion", "阿耳忒弥斯", "Artemis", "毅力号", "Perseverance",
+        "好奇号", "Curiosity", "机智号", "Ingenuity", "龙飞船", "Dragon",
+        "载人龙", "Crew Dragon", "星舰", "Starship", "猎鹰", "Falcon",
+        "国际空间站", "ISS", "天宫", "Tiangong",
+    ]
+    
+    # Red highlights - key data and discoveries
+    red_keywords = [
+        "6500光年", "老鹰星云", "创生之柱", "新生恒星",
+        "零下150℃", "零上150℃", "热真空", "生命保障系统",
+        "有机分子", "碳基芳香族化合物", "35亿年", "同位素分析",
+    ]
+    
+    for kw in blue_keywords:
+        if kw in text:
+            highlights.append((kw, "blue"))
+    
+    for kw in red_keywords:
+        if kw in text:
+            highlights.append((kw, "red"))
+    
+    return highlights
+
+
 def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]], recent_titles: list[str]) -> str:
     """Build a fallback title from articles when AI generation fails.
 
@@ -104,7 +138,6 @@ def build_wechat_fallback_title(date_str: str, articles: list[dict[str, Any]], r
     """
     if articles:
         first_article = articles[0]
-        # Use Chinese title (already normalized), not title_en
         title = first_article.get("title", "")
         if title:
             return fit_title_length(title)
@@ -177,6 +210,11 @@ def _build_apod_from_article(article: dict[str, Any], vol: str) -> str:
 
     # Get paragraphs
     paragraphs = _article_paragraphs(article, max_paragraphs=3)
+    
+    # Extract highlights for each paragraph
+    highlights = []
+    for para in paragraphs:
+        highlights.append(_extract_highlights(para))
 
     return tpl.render_apod_section(
         vol=vol,
@@ -187,6 +225,7 @@ def _build_apod_from_article(article: dict[str, Any], vol: str) -> str:
         title_cn=title_cn or "NASA每日天文图",
         title_en=title_en or "NASA Astronomy Picture",
         paragraphs=paragraphs,
+        highlights=highlights if any(highlights) else None,
     )
 
 
@@ -200,6 +239,11 @@ def _build_news_from_articles(articles: list[dict[str, Any]]) -> str:
         image_url = article.get("cover_url", "") or article.get("image_url", "")
         paragraphs = _article_paragraphs(article, max_paragraphs=3)
 
+        # Extract highlights for each paragraph
+        highlights = []
+        for para in paragraphs:
+            highlights.append(_extract_highlights(para))
+
         news_items.append(tpl.render_news_item(
             index=idx,
             title=title,
@@ -207,6 +251,8 @@ def _build_news_from_articles(articles: list[dict[str, Any]]) -> str:
             image_url=image_url or TOP_BANNER_URL,
             image_alt=title,
             paragraphs=paragraphs,
+            highlights=highlights if any(highlights) else None,
+            is_first=(idx == 1),
         ))
 
     return tpl.render_news_section(''.join(news_items))
@@ -292,10 +338,6 @@ def _title_subject_candidates(text: str) -> list[str]:
             seen.add(key)
             deduped.append(clean)
     return deduped
-
-
-def _is_repetitive_title(title: str) -> bool:
-    return is_title_repetitive(title)
 
 
 def fit_title_length(title: str, max_len: int = 30) -> str:
