@@ -1,24 +1,24 @@
-# 阿尔忒弥斯2号载人飞船发射升空，四名宇航员开启首次绕月飞行
+# 阿尔忒弥斯二号接近操作完成，近地点提升燃烧待发
 
 - 日期: 2026-04-02
 
-## 1. NGC 6888: The Crescent Nebula
+## 1. Arp 188 and the Tadpole's Tidal Tail
 
 - 频道: NASA APOD
 - 链接: 
 
-NGC 6888, also known as the Crescent Nebula, is a about 25 light-years across blown by winds from its central, bright, massive star. A triumvirate of astroimagers ( Joe, Glenn, Russell) created this sharp portrait of the cosmic bubble. Their telescopic collabo
+In this stunning vista recorded with the Hubble Space Telescope's Advanced Camera for Surveys, distant galaxies form a dramatic backdrop for disrupted spiral galaxy Arp 188, the Tadpole Galaxy. The cosmic tadpole is a mere 420 million light-years distant towar
 
-## 2. Artemis II Flight Update: Apogee Raise Burn Complete, Crew Looks Ahead to Proximity Operations
+## 2. Artemis II Flight Update: Proximity Operations Complete, Perigee Raise Burn Up Next
 
 - 频道: NASA
-- 链接: https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-apogee-raise-burn-complete-crew-looks-ahead-to-proximity-operations
+- 链接: https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-proximity-operations-complete-perigee-raise-burn-up-next
 
+The Artemis II crew successfully completed the proximity operations demonstration , concluding one of the mission’s early objectives and providing valuable data on how the Orion spacecraft, named Integrity, performs duri
 
-
-## 3. Liftoff! NASA Launches Astronauts on Historic Artemis Moon Mission
+## 3. First Time is the Charm! Four Astronauts Headed to the Moon
 
 - 频道: SpaceFlight News
-- 链接: https://www.nasa.gov/news-release/liftoff-nasa-launches-astronauts-on-historic-artemis-moon-mission/
+- 链接: https://spacepolicyonline.com/news/first-time-is-the-charm-four-astronauts-headed-to-the-moon/
 
-Spurred by American ingenuity, astronauts on NASA’s Artemis II mission are in flight, preparing for the first crewed lunar flyby in more than 50 years. NASA’s SLS (Space Launch System) rocket lifted off from Launch Pad 39B at the agency’s Kennedy Space Center 
+All the hard work to get the Space Launch System rocket and Orion spacecraft ready to send four people around the Moon for the first time in 53 years paid […]
