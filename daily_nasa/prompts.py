@@ -265,6 +265,87 @@ def build_card_prompt(card_number: int, article: dict[str, Any], date_str: str) 
 8) 所有文字必须是简体中文。
 
 输出格式：纯HTML字符串。"""
+
+
+def build_card_content_prompt(card_number: int, article: dict[str, Any], date_str: str) -> str:
+    """Generate Chinese content for a single card - returns JSON with title and paragraphs."""
+    is_science = card_number == 1
+    
+    article_block = f"""【原文素材】
+标题：{article.get('title', '')}
+英文标题：{article.get('title_en', '')}
+来源：{article.get('channel', 'NASA')}
+时间：{article.get('publish_time', '')}
+摘要：{article.get('summary', '')}
+内容：{article.get('content', '')[:1000]}..."""
+    
+    card_type = "NASA每日科普" if is_science else f"NASA新闻 #{card_number-1}"
+    content_focus = "科学解释" if is_science else "新闻报道"
+    
+    return f"""你是NASA中文科技媒体编辑，为中文读者撰写{content_focus}内容。
+
+【任务】
+为"{card_type}"栏目撰写中文内容。
+
+日期：{date_str}
+
+{article_block}
+
+【输出要求】
+1) 只输出JSON格式，不要任何额外文字或markdown标记。
+2) JSON必须包含以下字段：
+   - "title": 中文标题（15-25字，信息丰富，像自媒体标题）
+   - "paragraphs": 段落数组，2-3个段落，每个段落80-150字
+
+3) 内容要求：
+   - 第一段：解释主题/事件是什么
+   - 第二段：解释科学意义/为什么重要
+   - 使用自然、直接的语言，避免模板化表达
+   - 保留重要的英文术语首次出现时附带中文解释
+   - 所有文字必须是简体中文
+
+4) 标题要求：
+   - 必须包含具体任务名、发现或科学事实
+   - 不要_generic标题如"NASA最新消息"
+   - 不要互联网黑话如"盘"、"扒"、"开扯"
+
+输出格式示例：
+{{"title": "韦伯望远镜捕捉到创生之柱新细节：恒星诞生区的壮丽景象", "paragraphs": ["詹姆斯·韦伯空间望远镜（JWST）近日发布了著名的'创生之柱'最新图像...", "这张图像的科学价值在于..."]}}
+"""
+
+
+def build_card_prompt(card_number: int, article: dict[str, Any], date_str: str) -> str:
+    """Generate content for a single card - step 2/3/4."""
+    is_science = card_number == 1
+    
+    article_block = f"""【文章】
+标题：{article.get('title', '')}
+来源：{article.get('channel', 'NASA')}
+时间：{article.get('publish_time', '')}
+摘要：{article.get('summary', '')}
+内容：{article.get('content', '')[:800]}..."""
+    
+    if is_science:
+        return f"""你是一个NASA爱好者，为中文读者撰写科学解释。
+为"NASA每日科普"栏目撰写内容。
+
+日期：{date_str}
+素材：
+{article_block}
+
+要求：
+1) 只输出HTML内容，不要JSON，不要任何额外文字。
+2) 以图片开头：<img src="{article.get('cover_url', '') or article.get('image_url', '')}" style="width:100%;display:block;">
+3) 然后写2-3段文字：
+   - 第一段：解释读者看到的是什么（图片/主题）
+   - 第二段：解释这在科学上为什么重要
+4) 使用自然、直接的语言，避免模板化表达。
+5) HTML标签后不要有前导空格。
+6) 全宽布局：使用 margin:0;padding:0。
+7) 文字样式（浅色主题）：font-size:0.95em; line-height:1.7em; color:#333333。
+8) 所有文字必须是简体中文。
+
+输出格式：纯HTML字符串。"""
     else:
         return f"""你是一个NASA爱好者，为中文读者撰写新闻报道。
 为新闻卡片 #{card_number-1} 撰写内容。

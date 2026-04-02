@@ -86,8 +86,24 @@ def normalize_cn_summary(summary: str, title: str) -> str:
 
 
 def ensure_follow_header(weixin_html: str) -> str:
-    if FOLLOW_HEADER_GIF in weixin_html:
+    """Ensure the follow header GIF is at the beginning of HTML.
+    
+    If HTML already starts with the header section, return as-is.
+    Otherwise, prepend the header.
+    """
+    html = (weixin_html or "").strip()
+    if not html:
+        return html
+    
+    # Check if HTML already starts with a header section containing the GIF
+    # The template system already includes the header, so check for common patterns
+    if html.startswith("<section") and FOLLOW_HEADER_GIF in html[:500]:
         return weixin_html
+    
+    # Check if the header is already present anywhere in the first 1KB
+    if FOLLOW_HEADER_GIF in html[:1024]:
+        return weixin_html
+    
     header = (
         "<section style='margin:0;padding:0;'>"
         f"<img src='{FOLLOW_HEADER_GIF}' style='width:100%;display:block;'>"

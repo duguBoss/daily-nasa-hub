@@ -78,14 +78,12 @@ def sanitize_payload(payload: Any, default_payload: dict[str, Any], date_str: st
 
     weixin_html = str(normalized.get("weixin_html", "")).strip()
     
-    # Always use new dark theme HTML - rebuild from articles to ensure consistent styling
-    # AI-generated HTML may have old styling, so we regenerate with new theme
-    if allow_template_fallback:
+    # Use template fallback HTML if AI generation failed or fallback is allowed
+    if allow_template_fallback or not weixin_html.startswith("<section"):
         weixin_html = build_fallback_html(date_str, normalized["title"], articles, normalized["covers"])
-    elif not weixin_html.startswith("<section"):
-        weixin_html = default_payload["weixin_html"] if allow_template_fallback else ""
     
-    normalized["weixin_html"] = strip_html_leading_whitespace(enforce_outer_side_margin(ensure_follow_header(weixin_html), side_px=0))
+    # Ensure outer side margin and clean whitespace
+    normalized["weixin_html"] = strip_html_leading_whitespace(enforce_outer_side_margin(weixin_html, side_px=0))
     return normalized
 
 

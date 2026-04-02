@@ -196,6 +196,74 @@ def _generate_card_step(
     return fallback_html, "fallback", "basic"
 
 
+def _generate_card_content_step(
+    model_candidates: list,
+    card_number: int,
+    article: dict[str, Any],
+    date_str: str,
+) -> tuple[dict[str, str], str, str]:
+    """Step 2/3/4: Generate Chinese content for a single card. Returns (content_dict, provider, model).
+    
+    content_dict contains: title, summary, content (paragraphs)
+    """
+    from .config import MAX_MODEL_ATTEMPTS
+    from .prompts import build_card_content_prompt
+
+    prompt = build_card_content_prompt(card_number, article, date_str)
+
+    for provider, model_name, provider_api_key, caller in model_candidates:
+        print(f"[Step {card_number+1}/4] Using {provider}:{model_name} for card {card_number} content")
+
+        for attempt in range(MAX_MODEL_ATTEMPTS):
+            try:
+                print(f"  Attempt {attempt + 1}/{MAX_MODEL_ATTEMPTS}")
+                raw = caller(provider_api_key, prompt, model_name)
+                raw = raw.strip()
+
+                # Parse JSON response
+                try:
+                    content = json.loads(raw)
+                    if isinstance(content, dict) and "title" in content and "paragraphs" in content:
+                        # Validate: must have Chinese content
+                        text_to_check = content.get("title", "") + "".join(content.get("paragraphs", []))
+                        if _has_chinese_content(text_to_check, min_chars=20):
+                            print(f"[Step {card_number+1}/4] Card {card_number} content generated: {len(text_to_check)} chars")
+                            return content, provider, model_name
+                        else:
+                            chinese_count = len(re.findall(r"[\u4e00-\u9fff]", text_to_check))
+                            print(f"  ✗ Rejected (not enough Chinese: {chinese_count} chars), retrying...")
+                            continue
+                except json.JSONDecodeError:
+                    # Try to extract JSON from markdown code block
+                    json_match = re.search(r'```json\s*(.*?)\s*```', raw, re.DOTALL)
+                    if json_match:
+                        try:
+                            content = json.loads(json_match.group(1))
+                            if isinstance(content, dict) and "title" in content and "paragraphs" in content:
+                                text_to_check = content.get("title", "") + "".join(content.get("paragraphs", []))
+                                if _has_chinese_content(text_to_check, min_chars=20):
+                                    print(f"[Step {card_number+1}/4] Card {card_number} content generated: {len(text_to_check)} chars")
+                                    return content, provider, model_name
+                        except json.JSONDecodeError:
+                            pass
+                    
+                    print(f"  ✗ Invalid JSON response, retrying...")
+                    continue
+
+            except Exception as e:
+                print(f"  ✗ API failed: {e}")
+                print(f"  Switching to next model...")
+                break  # Switch to next model
+
+    # Fallback to original article content
+    print(f"[Step {card_number+1}/4] All models failed, using fallback content")
+    return {
+        "title": article.get("title", ""),
+        "summary": article.get("summary", ""),
+        "paragraphs": [article.get("summary", ""), article.get("content", "")[:200]]
+    }, "fallback", "original"
+
+
 def generate_payload(
     gemini_api_key: str | None,
     minimax_api_key: str | None,
@@ -253,19 +321,25 @@ def generate_payload(
     title, title_provider, title_model = _generate_title_step(model_candidates, date_str, articles, recent_titles)
     print(f"[Step 1/4] Complete: Title = '{title[:40]}...'\n")
     
-    # Step 2-4: Generate cards (up to 3 cards)
-    card_htmls = []
+    # Step 2-4: Generate Chinese content for cards (up to 3 cards)
     card_models = []
+    processed_articles = []
     for i, article in enumerate(articles[:3]):
         card_num = i + 1
-        html, card_provider, card_model = _generate_card_step(model_candidates, card_num, article, date_str)
-        card_htmls.append(html)
+        chinese_content, card_provider, card_model = _generate_card_content_step(model_candidates, card_num, article, date_str)
         card_models.append(f"{card_provider}:{card_model}")
-        print(f"[Step {card_num+1}/4] Complete: Card {card_num} generated\n")
+        
+        # Update article with Chinese content
+        processed_article = dict(article)
+        processed_article["title"] = chinese_content.get("title", article.get("title", ""))
+        processed_article["summary"] = chinese_content.get("summary", "")
+        processed_article["content"] = chinese_content.get("content", "")
+        processed_articles.append(processed_article)
+        print(f"[Step {card_num+1}/4] Complete: Card {card_num} generated with Chinese content\n")
     
-    # Build songs from article titles
+    # Build songs from processed article titles
     songs = []
-    for article in articles[:3]:
+    for article in processed_articles:
         songs.append({
             "name": article.get("title", "")[:30],
             "artist": article.get("channel", "NASA")
@@ -276,18 +350,18 @@ def generate_payload(
     from . import template as tpl
     from .config import TOP_BANNER_URL
     
-    # Build APOD section from first article
-    apod_html = _build_apod_from_article(articles[0], vol=date_str[:4])
+    # Build APOD section from first processed article (science content)
+    apod_html = _build_apod_from_article(processed_articles[0], vol=date_str[:4])
     
-    # Build news section from remaining articles
-    news_html = _build_news_from_articles(articles[1:4])
+    # Build news section from remaining processed articles
+    news_html = _build_news_from_articles(processed_articles[1:])
     
     # Render full HTML using template
     weixin_html = tpl.render_full_html(
         banner_url=TOP_BANNER_URL,
         apod_html=apod_html,
         news_html=news_html,
-        show_divider=len(articles) > 1,
+        show_divider=len(processed_articles) > 1,
     )
     
     # Build final payload
