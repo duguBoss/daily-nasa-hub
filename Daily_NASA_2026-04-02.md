@@ -1,24 +1,24 @@
-# 科学帆船启航研究南大洋，五十天航程监测南极海域环境变化
+# 阿尔忒弥斯二号完成近地点提升机动，为绕月飞行优化轨道参数
 
 - 日期: 2026-04-02
 
-## 1. Spirit Pan from Gusev Crater
+## 1. At Last GLAST
 
 - 频道: NASA APOD
 - 链接: 
 
-After a seven month voyage of nearly 500 million kilometers through interplanetary space, NASA's Spirit Rover has reached the surface of Mars. Scroll right and see a mosaic panorama of Spirit's first images returned from its landing site in Gusev Crater! Taken
+Rising through a billowing cloud of smoke, a long time ago from a planet very very close by, this Delta II rocket left Cape Canaveral Air Force Station's launch pad 17-B at 12:05 pm EDT on June 11, 2008. Snug in the payload section was GLAST, the Gamma-ray Lar
 
-## 2. Sailing for Science: A 50-Day Mission to Study the Southern Ocean
+## 2. Artemis II Flight Update: Perigee Raise Maneuver Complete; NASA to Hold Press Conference
 
-- 频道: NASA Science
-- 链接: https://science.nasa.gov/blogs/notes-from-the-field/2026/04/01/sailing-for-science-a-50-day-mission-to-study-the-southern-ocean
+- 频道: NASA
+- 链接: https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-perigee-raise-maneuver-complete-nasa-to-hold-press-conference
 
-Emmanuel Boss, Ph.D., University of Maine Perseverance posed under sail as it approached Tasmania. Maxence Cagigal Del Solar from Gears Production
+The perigee raise maneuver was successfully completed, refining the Orion spacecraft’s orbit around Earth. The interim cryogenic propulsion stage ignited its RL10 engine for a precisely timed burn that increased the lowe
 
-## 3. SpaceX quietly files for big bang IPO
+## 3. Liftoff! NASA Launches Astronauts on Historic Artemis Moon Mission
 
 - 频道: SpaceFlight News
-- 链接: https://spacenews.com/spacex-quietly-files-for-big-bang-ipo/
+- 链接: https://www.nasa.gov/news-release/liftoff-nasa-launches-astronauts-on-historic-artemis-moon-mission/
 
-SpaceX has taken a key step toward going public after confidentially filing for a potentially record-breaking initial public offering, according to multiple reports citing people familiar with the matter, in what space leaders hope is a watershed moment for th
+Spurred by American ingenuity, astronauts on NASA’s Artemis II mission are in flight, preparing for the first crewed lunar flyby in more than 50 years. NASA’s SLS (Space Launch System) rocket lifted off from Launch Pad 39B at the agency’s Kennedy Space Center 
