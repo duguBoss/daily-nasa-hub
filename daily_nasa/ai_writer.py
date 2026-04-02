@@ -213,18 +213,20 @@ def _generate_card_content_step(
     content_dict contains: title, summary, content (paragraphs)
     Each paragraph must be 400-500 Chinese characters.
     """
-    from .config import MAX_MODEL_ATTEMPTS
     from .prompts import build_card_content_prompt, build_card_rewrite_prompt
 
     # Track previous attempts for rewrite
     previous_attempts = []
     
+    # Use more retries for length validation
+    max_retries_per_model = 5
+    
     for provider, model_name, provider_api_key, caller in model_candidates:
         print(f"[Step {card_number+1}/4] Using {provider}:{model_name} for card {card_number} content")
 
-        for attempt in range(MAX_MODEL_ATTEMPTS):
+        for attempt in range(max_retries_per_model):
             try:
-                print(f"  Attempt {attempt + 1}/{MAX_MODEL_ATTEMPTS}")
+                print(f"  Attempt {attempt + 1}/{max_retries_per_model}")
                 
                 # Use rewrite prompt if we have previous attempts
                 if previous_attempts:
@@ -247,18 +249,18 @@ def _generate_card_content_step(
                     
                     # Check each paragraph length (400-500 Chinese chars)
                     valid_lengths = True
+                    length_issues = []
                     for i, para in enumerate(paragraphs):
                         char_count = _count_chinese_chars(para)
                         if char_count < 400:
-                            print(f"  ✗ Paragraph {i+1} too short: {char_count} chars (need 400-500), will rewrite...")
+                            length_issues.append(f"para{i+1}={char_count}(short)")
                             valid_lengths = False
-                            break
                         elif char_count > 500:
-                            print(f"  ✗ Paragraph {i+1} too long: {char_count} chars (need 400-500), will rewrite...")
+                            length_issues.append(f"para{i+1}={char_count}(long)")
                             valid_lengths = False
-                            break
                     
                     if not valid_lengths:
+                        print(f"  ✗ Length issues: {', '.join(length_issues)}, will rewrite...")
                         # Store this attempt and retry with rewrite prompt
                         previous_attempts.append({
                             "content": content,
@@ -280,19 +282,42 @@ def _generate_card_content_step(
                 print(f"  Switching to next model...")
                 break  # Switch to next model
 
-    # Fallback: use last generated content even if length is not perfect
+    # Check if any previous attempt has valid length content
+    for attempt in reversed(previous_attempts):
+        if "content" in attempt:
+            content = attempt["content"]
+            paragraphs = content.get("paragraphs", [])
+            if paragraphs:
+                # Check if this attempt has valid lengths
+                all_valid = True
+                for para in paragraphs:
+                    char_count = _count_chinese_chars(para)
+                    if char_count < 400 or char_count > 500:
+                        all_valid = False
+                        break
+                
+                if all_valid:
+                    print(f"[Step {card_number+1}/4] Using valid content from previous attempt")
+                    return content, "fallback", "valid_retry"
+    
+    # If no valid content found, return the last attempt with a flag
+    # The caller should handle this by retrying the entire card generation
     if previous_attempts:
         last_attempt = previous_attempts[-1]
         if "content" in last_attempt:
-            print(f"[Step {card_number+1}/4] Using best effort content (length may not be perfect)")
-            return last_attempt["content"], "fallback", "best_effort"
+            print(f"[Step {card_number+1}/4] Warning: Returning content with invalid length - caller should retry")
+            # Return with a special marker to indicate length issue
+            content = last_attempt["content"]
+            content["_length_invalid"] = True
+            return content, "fallback", "length_invalid"
 
     # Ultimate fallback to original article content
     print(f"[Step {card_number+1}/4] All models failed, using fallback content")
     return {
         "title": article.get("title", ""),
         "summary": article.get("summary", ""),
-        "paragraphs": [article.get("summary", ""), article.get("content", "")[:200]]
+        "paragraphs": [article.get("summary", ""), article.get("content", "")[:200]],
+        "_length_invalid": True,
     }, "fallback", "original"
 
 
@@ -377,7 +402,31 @@ def generate_payload(
     processed_articles = []
     for i, article in enumerate(articles[:3]):
         card_num = i + 1
-        chinese_content, card_provider, card_model = _generate_card_content_step(model_candidates, card_num, article, date_str)
+        
+        # Retry loop for length validation
+        max_length_retries = 5
+        chinese_content = None
+        card_provider = ""
+        card_model = ""
+        
+        for length_retry in range(max_length_retries):
+            chinese_content, card_provider, card_model = _generate_card_content_step(
+                model_candidates, card_num, article, date_str
+            )
+            
+            # Check if content has valid length
+            if not chinese_content.get("_length_invalid"):
+                if length_retry > 0:
+                    print(f"[Step {card_num+1}/4] Content length valid after {length_retry + 1} attempts")
+                break
+            else:
+                # Remove the flag and retry
+                del chinese_content["_length_invalid"]
+                if length_retry < max_length_retries - 1:
+                    print(f"[Step {card_num+1}/4] Length invalid, retrying... ({length_retry + 1}/{max_length_retries})")
+                else:
+                    print(f"[Step {card_num+1}/4] Warning: Max retries reached, using best effort content")
+        
         card_models.append(f"{card_provider}:{card_model}")
         
         # Update article with Chinese content
