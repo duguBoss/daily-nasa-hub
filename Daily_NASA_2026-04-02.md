@@ -1,20 +1,20 @@
-# 阿尔忒弥斯二号完成近地点提升机动，为绕月飞行优化轨道参数
+# 阿尔忒弥斯二号成功发射，四名宇航员开启五十年来首次载人绕月
 
 - 日期: 2026-04-02
 
-## 1. At Last GLAST
+## 1. Comet McNaught from New STEREO Satellite
 
 - 频道: NASA APOD
 - 链接: 
 
-Rising through a billowing cloud of smoke, a long time ago from a planet very very close by, this Delta II rocket left Cape Canaveral Air Force Station's launch pad 17-B at 12:05 pm EDT on June 11, 2008. Snug in the payload section was GLAST, the Gamma-ray Lar
+The brightest comet of recent decades was a surprising first sight for a new camera in space. The Sun Earth Connection Coronal and Heliospheric Investigation (SECCHI) instrument onboard the Solar TErrestrial RElations Observatory (STEREO) satellite had just op
 
-## 2. Artemis II Flight Update: Perigee Raise Maneuver Complete; NASA to Hold Press Conference
+## 2. Artemis II Flight Update: Apogee Raise Burn Complete, Crew Looks Ahead to Proximity Operations
 
 - 频道: NASA
-- 链接: https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-perigee-raise-maneuver-complete-nasa-to-hold-press-conference
+- 链接: https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-apogee-raise-burn-complete-crew-looks-ahead-to-proximity-operations
 
-The perigee raise maneuver was successfully completed, refining the Orion spacecraft’s orbit around Earth. The interim cryogenic propulsion stage ignited its RL10 engine for a precisely timed burn that increased the lowe
+The apogee raise burn was successfully completed, continuing to fine tune the Orion spacecraft’s orbit around Earth. The ICPS ( interim cryogenic propulsion stage ) ignited its RL10 engine for a precisely timed burn that
 
 ## 3. Liftoff! NASA Launches Astronauts on Historic Artemis Moon Mission
 

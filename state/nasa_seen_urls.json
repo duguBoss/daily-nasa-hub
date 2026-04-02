@@ -1,17 +1,18 @@
 {
-  "updated_at": "2026-04-02T09:16:50.652360+08:00",
+  "updated_at": "2026-04-02T09:48:58.875686+08:00",
   "date": "2026-04-02",
   "last_fetch_urls": [
+    "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-apogee-raise-burn-complete-crew-looks-ahead-to-proximity-operations",
     "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-perigee-raise-maneuver-complete-nasa-to-hold-press-conference",
     "https://www.nasa.gov/news-release/liftoff-nasa-launches-astronauts-on-historic-artemis-moon-mission",
     "https://science.nasa.gov/blogs/notes-from-the-field/2026/04/01/sailing-for-science-a-50-day-mission-to-study-the-southern-ocean",
-    "https://www.nasa.gov/blogs/general-blog/2026/04/01/station-crew-works-robotics-research-as-artemis-ii-launch-preps-continue",
-    "https://www.nasa.gov/blogs/missions/2026/04/01/live-artemis-ii-launch-day-updates"
+    "https://www.nasa.gov/blogs/general-blog/2026/04/01/station-crew-works-robotics-research-as-artemis-ii-launch-preps-continue"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-perigee-raise-maneuver-complete-nasa-to-hold-press-conference"
+    "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-apogee-raise-burn-complete-crew-looks-ahead-to-proximity-operations"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-apogee-raise-burn-complete-crew-looks-ahead-to-proximity-operations",
     "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-perigee-raise-maneuver-complete-nasa-to-hold-press-conference",
     "https://www.nasa.gov/news-release/liftoff-nasa-launches-astronauts-on-historic-artemis-moon-mission",
     "https://science.nasa.gov/blogs/notes-from-the-field/2026/04/01/sailing-for-science-a-50-day-mission-to-study-the-southern-ocean",
