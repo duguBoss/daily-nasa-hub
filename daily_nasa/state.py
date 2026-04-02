@@ -11,17 +11,29 @@ from .config import ASSET_ROOT, LIST_TOP_N, MAX_SEEN_URLS, MERGE_TOP_N, SHANGHAI
 
 
 def cleanup_old_files(target_date: datetime.date, keep_days: int = 10) -> None:
+    """Clean up old files and folders.
+
+    When keep_days=0, delete all files except today's.
+    Otherwise, delete files older than keep_days.
+    """
     cutoff = target_date - datetime.timedelta(days=keep_days)
 
+    deleted_count = 0
     for pattern in ["Daily_NASA_*.json", "Daily_NASA_*.md"]:
         for file_path in Path(".").glob(pattern):
             try:
                 file_date = datetime.date.fromisoformat(file_path.stem.replace("Daily_NASA_", ""))
-                if file_date < cutoff:
+                # When keep_days=0, delete all files except today's
+                # Otherwise, delete files older than cutoff
+                should_delete = (file_date < cutoff) if keep_days > 0 else (file_date < target_date)
+                if should_delete:
                     file_path.unlink()
+                    deleted_count += 1
                     print(f"Deleted old file: {file_path}")
             except ValueError:
                 continue
+            except Exception as e:
+                print(f"Failed to delete file {file_path}: {e}")
 
     if ASSET_ROOT.exists():
         for child in ASSET_ROOT.iterdir():
@@ -31,9 +43,21 @@ def cleanup_old_files(target_date: datetime.date, keep_days: int = 10) -> None:
                 folder_date = datetime.date.fromisoformat(child.name)
             except ValueError:
                 continue
-            if folder_date < cutoff:
-                shutil.rmtree(child, ignore_errors=True)
-                print(f"Deleted old folder: {child}")
+            # When keep_days=0, delete all folders except today's
+            # Otherwise, delete folders older than cutoff
+            should_delete = (folder_date < cutoff) if keep_days > 0 else (folder_date < target_date)
+            if should_delete:
+                try:
+                    shutil.rmtree(child, ignore_errors=True)
+                    deleted_count += 1
+                    print(f"Deleted old folder: {child}")
+                except Exception as e:
+                    print(f"Failed to delete folder {child}: {e}")
+
+    if deleted_count == 0:
+        print("No old files to clean up")
+    else:
+        print(f"Cleanup complete: removed {deleted_count} items")
 
 
 def seed_seen_urls_from_history() -> list[str]:
