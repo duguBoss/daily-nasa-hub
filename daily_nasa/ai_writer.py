@@ -271,25 +271,24 @@ def generate_payload(
             "artist": article.get("channel", "NASA")
         })
     
-    # Assemble final payload
-    # Build weixin_html with light theme styling
-    header_gif = "https://mmbiz.qpic.cn/mmbiz_gif/xm1dT1jCe8lIO3P2oFVtd1x040PKGCRPN033gUTrHQQz0Licdqug5X1QgUPQBRCicoTqdYMrpgk7etibXLkK9rwcg/0?wx_fmt=gif&from=appmsg"
-
-    weixin_html_parts = [
-        f"<section data-side-margin='0' style='margin:0;padding:0;box-sizing:border-box;background:#ffffff;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;'>"
-    ]
-
-    # Add header GIF
-    weixin_html_parts.append(f"<section style='margin:0;padding:0;'><img src='{header_gif}' style='width:100%;display:block;'></section>")
-
-    # Add cards
-    for i, html in enumerate(card_htmls):
-        if i == 1:  # Add divider before card 2
-            weixin_html_parts.append("<section style='text-align:center;margin:2em 0;padding:10px;background:#f5f5f5;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;'><span style='font-weight:bold;color:#1a1a1a;'>今日NASA新闻</span></section>")
-        weixin_html_parts.append(f"<section style='margin:0;padding:0;'>{html}</section>")
-
-    weixin_html_parts.append("</section>")
-    weixin_html = "".join(weixin_html_parts)
+    # Assemble final payload using template system
+    from .rendering import _build_apod_from_article, _build_news_from_articles
+    from . import template as tpl
+    from .config import TOP_BANNER_URL
+    
+    # Build APOD section from first article
+    apod_html = _build_apod_from_article(articles[0], vol=date_str[:4])
+    
+    # Build news section from remaining articles
+    news_html = _build_news_from_articles(articles[1:4])
+    
+    # Render full HTML using template
+    weixin_html = tpl.render_full_html(
+        banner_url=TOP_BANNER_URL,
+        apod_html=apod_html,
+        news_html=news_html,
+        show_divider=len(articles) > 1,
+    )
     
     # Build final payload
     payload = {
