@@ -247,16 +247,16 @@ def _generate_card_content_step(
                         previous_attempts.append({"error": "no_paragraphs", "raw": raw[:200]})
                         continue
                     
-                    # Check each paragraph length (400-700 Chinese chars)
+                    # Check each paragraph length (200-300 Chinese chars per paragraph, expect 2 paragraphs)
                     valid_lengths = True
                     length_issues = []
                     for i, para in enumerate(paragraphs):
                         char_count = _count_chinese_chars(para)
-                        if char_count < 400:
-                            length_issues.append(f"para{i+1}={char_count}(short)")
+                        if char_count < 200:
+                            length_issues.append(f"para{i+1}={char_count}(short, need 200-300)")
                             valid_lengths = False
-                        elif char_count > 700:
-                            length_issues.append(f"para{i+1}={char_count}(long)")
+                        elif char_count > 300:
+                            length_issues.append(f"para{i+1}={char_count}(long, need 200-300)")
                             valid_lengths = False
                     
                     if not valid_lengths:
@@ -288,11 +288,11 @@ def _generate_card_content_step(
             content = attempt["content"]
             paragraphs = content.get("paragraphs", [])
             if paragraphs:
-                # Check if this attempt has valid lengths
+                # Check if this attempt has valid lengths (200-300 chars per paragraph)
                 all_valid = True
                 for para in paragraphs:
                     char_count = _count_chinese_chars(para)
-                    if char_count < 400 or char_count > 700:
+                    if char_count < 200 or char_count > 300:
                         all_valid = False
                         break
                 

@@ -28,9 +28,9 @@ def _plain_text_from_article(article: dict[str, Any]) -> str:
     content = normalize_whitespace(str(article.get("content", "")))
     summary = normalize_whitespace(str(article.get("summary", "")))
     
-    # Check if content is AI-generated (has sufficient Chinese characters)
+    # Check if content is AI-generated (has sufficient Chinese characters, expect 2 paragraphs of 200-300 chars each)
     chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', content))
-    if chinese_chars >= 400:
+    if chinese_chars >= 350:
         # AI-generated content, use content only to avoid duplication with summary
         return content
     
@@ -58,11 +58,11 @@ def _dedupe_preserve_order(items: list[str]) -> list[str]:
     return result
 
 
-def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_chars: int = 400, max_chars: int = 700) -> list[str]:
+def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_chars: int = 200, max_chars: int = 300) -> list[str]:
     """Extract paragraphs for article body.
     
-    Each paragraph should be 400-700 Chinese characters for rich content.
-    If content is already AI-generated (has sufficient length), use it directly without truncation.
+    Each paragraph should be 200-300 Chinese characters for rich content.
+    If content is already AI-generated (has sufficient length), split by double newlines to preserve paragraphs.
     """
     title = normalize_cn_title(article.get("title", ""))
     content = _plain_text_from_article(article)
@@ -70,9 +70,11 @@ def _article_paragraphs(article: dict[str, Any], max_paragraphs: int = 3, min_ch
     # Check if content is already AI-generated (has sufficient Chinese characters)
     chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', content))
     if chinese_chars >= 400:
-        # Content is already AI-generated, use it directly without truncation
-        # AI content is already validated to be 400-700 chars, no need to truncate
-        return [content]
+        # Content is already AI-generated, split by double newlines to get individual paragraphs
+        # AI generates 2 paragraphs separated by \n\n
+        paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
+        if paragraphs:
+            return paragraphs
     
     # Fallback: process content from original article
     summary = normalize_cn_summary(article.get("summary", ""), title)
