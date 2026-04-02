@@ -1,13 +1,13 @@
-# SWAN彗星最新图像揭示超长尾迹，尘埃粒子分布显示太阳风作用
+# 阿尔忒弥斯二号乘组与地面团队排除猎户座飞船厕所故障
 
 - 日期: 2026-04-02
 
-## 1. Long Tailed Comet SWAN
+## 1. The Voyagers' Message in a Bottle
 
 - 频道: NASA APOD
 - 链接: 
 
-Blowing in the solar wind the spectacular ion tail of Comet SWAN (C/2020 F8) extends far across this 10 degree wide telephoto field of view. Captured on May 2 its greenish coma was about 6 light-minutes from Earth. The pretty background starfield lies near the
+Launched thirty years ago, NASA's Voyager 1 and 2 spacecraft are now respectively 15 and 12.5 billion kilometers from the Sun, equivalent to about 14 and 11.5 light-hours distant. Still functioning, the Voyagers are being tracked and commanded through the Deep
 
 ## 2. Artemis II Flight Update: Crew and Ground Teams Successfully Troubleshoot Orion’s Toilet
 
