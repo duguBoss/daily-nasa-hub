@@ -1,13 +1,13 @@
-# 阿尔忒弥斯二号完成远地点点火，四名宇航员准备接近操作
+# 韦伯望远镜证实米拉克幽灵星系实为遥远星系，距离超千万光年
 
 - 日期: 2026-04-02
 
-## 1. Comet Lovejoy in a Winter Sky
+## 1. Mirach's Ghost
 
 - 频道: NASA APOD
 - 链接: 
 
-Which of these night sky icons can you find in this beautiful and deep exposure of the northern winter sky? Skylights include the stars in Orion's belt, the Orion Nebula, the Pleiades star cluster, the bright stars Betelgeuse and Rigel, the California Nebula, 
+As far as ghosts go, Mirach's Ghost isn't really that scary. In fact, Mirach's Ghost is just a faint, fuzzy galaxy, well known to astronomers, that happens to be seen nearly along the line-of-sight to Mirach, a bright star. Centered in this star field, Mirach 
 
 ## 2. Artemis II Flight Update: Apogee Raise Burn Complete, Crew Looks Ahead to Proximity Operations
 
