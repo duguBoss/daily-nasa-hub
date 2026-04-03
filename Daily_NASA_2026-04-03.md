@@ -1,24 +1,24 @@
-# 阿尔忒弥斯2号飞行第二天获准，休斯顿确认地月注入燃烧
+# 雨燕卫星成功完成姿态重新定向，为关键轨道维持任务争取宝贵时间
 
 - 日期: 2026-04-03
 
-## 1. Vela Supernova Remnant in Optical
+## 1. Eros Horizon View
 
 - 频道: NASA APOD
 - 链接: 
 
-About 11,000 years ago a star in the constellation of Vela exploded. This bright supernova may have been visible to the first human farmers. Today the Vela supernova remnant marks the position of a relatively close and recent explosion in our Galaxy. A roughly
+Since April 30, the robotic NEAR-Shoemaker spacecraft has been orbiting only 31 miles from asteroid Eros. Cruising over the asteroid's north and south poles at a leisurely 7 miles per hour, the spacecraft completes an orbit once every 1.2 earth days. This dram
 
-## 2. Artemis II Flight Day 2: Crew, Houston Poll ‘Go’ for Translunar Injection Burn
+## 2. Artemis II Astronauts Launch to Moon
 
-- 频道: NASA
-- 链接: https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-crew-houston-poll-go-for-translunar-injection-burn
+- 频道: NASA Gallery
+- 链接: https://www.nasa.gov/image-article/artemis-ii-astronauts-launch-to-moon/
 
-NASA’s Artemis II mission management team polled “Go” for the translunar injection burn to send the crew in the Orion spacecraft toward the Moon and send humans around Earth’s closest celestial neighbor for the first tim
+NASA’s Space Launch System rocket and Orion spacecraft lift off in this April 1, 2026, image. NASA’s Artemis II mission will take NASA astronauts Reid Wiseman, Victor Glover, and Christina Koch, and CSA (Canadian Space A
 
-## 3. Former Sierra Space CEO Tom Vice to lead Astrion
+## 3. Swift spacecraft reorientation buys time for reboost mission
 
 - 频道: SpaceFlight News
-- 链接: https://spacenews.com/former-sierra-space-ceo-tom-vice-to-lead-astrion/
+- 链接: https://spacenews.com/swift-spacecraft-reorientation-buys-time-for-reboost-mission/
 
-Huntsville-based defense contractor focuses on systems engineering and integration, and space mission assurance The post Former Sierra Space CEO Tom Vice to lead Astrion appeared first on SpaceNews.
+NASA modified operations of an astrophysics spacecraft in a decaying orbit to buy more time for a mission later this year that will attempt to raise its orbit. The post Swift spacecraft reorientation buys time for reboost mission appeared first on SpaceNews.
