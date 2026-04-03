@@ -176,19 +176,31 @@ Hard constraints:
 def build_title_prompt(date_str: str, articles: list[dict[str, Any]], recent_titles: list[str]) -> str:
     """Generate title only - step 1."""
     # Extract key facts from articles for title guidance
-    facts = []
-    for art in articles[:3]:
-        title = art.get('title', '')
-        if title:
-            facts.append(title)
+    # Articles are ordered: [0]=APOD/科普, [1]=第一条新闻, [2]=第二条新闻
+    # Title should be based on the first news article (index 1), not APOD or second news
+    primary_article = articles[1] if len(articles) > 1 else (articles[0] if articles else None)
+    secondary_article = articles[2] if len(articles) > 2 else None
+    
+    primary_title = primary_article.get('title', '') if primary_article else ''
+    primary_summary = primary_article.get('summary', '')[:200] if primary_article else ''
+    secondary_title = secondary_article.get('title', '') if secondary_article else ''
 
     return f"""你是NASA中文科技媒体主编，为今日NASA新闻撰写微信推文标题。
 
-【今日素材要点】
-{chr(10).join(f"- {f}" for f in facts) if facts else "NASA最新航天动态"}
+【今日核心新闻 - 标题必须基于这条新闻生成】
+标题：{primary_title}
+摘要：{primary_summary}
+
+【次要参考新闻】
+标题：{secondary_title}
 
 【近期已用标题】（严禁重复或雷同）
 {json.dumps(recent_titles[:12], ensure_ascii=False)}
+
+【重要规则 - 必须遵守】
+- 标题必须基于"今日核心新闻"生成，反映当天的主要NASA动态
+- 不要基于次要参考新闻或科普内容生成标题
+- 标题应该让读者一眼看出今天最重要的NASA新闻是什么
 
 【标题撰写规范 - 严格遵守】
 
