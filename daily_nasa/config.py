@@ -27,6 +27,7 @@ NASA_NEWS_URLS = [
     "https://www.nasa.gov/news/recently-published/",
     "https://www.nasa.gov/2026-news-releases/",
 ]
+NASA_NEWS_FEED_URL = "https://www.nasa.gov/news-release/feed/"
 IMAGE_OF_THE_DAY_URL = "https://www.nasa.gov/image-of-the-day/"
 APOD_API_KEY = os.environ.get("NASA_APOD_API_KEY", "DEMO_KEY")
 SFN_API_KEY = os.environ.get("SFN_API_KEY", "")

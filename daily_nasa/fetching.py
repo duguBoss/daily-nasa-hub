@@ -18,7 +18,7 @@ from .common import (
     normalize_whitespace,
     slugify,
 )
-from .config import APOD_API_KEY, ASSET_ROOT, LIST_TOP_N, NASA_NEWS_URLS, REQUEST_TIMEOUT, SFN_API_BASE, SFN_API_KEY
+from .config import APOD_API_KEY, ASSET_ROOT, LIST_TOP_N, NASA_NEWS_FEED_URL, NASA_NEWS_URLS, REQUEST_TIMEOUT, SFN_API_BASE, SFN_API_KEY
 
 # Optional PIL import for webp to jpg conversion
 try:
@@ -148,10 +148,127 @@ def parse_nasa_news_list(html: str, source_url: str, top_n: int) -> list[dict[st
     return deduped
 
 
+def parse_rss_feed(xml_content: str) -> list[dict[str, Any]]:
+    """Parse NASA RSS feed and return list of articles."""
+    from xml.etree import ElementTree as ET
+    
+    items: list[dict[str, Any]] = []
+    try:
+        root = ET.fromstring(xml_content)
+        # RSS 2.0 format: rss/channel/item
+        channel = root.find("channel")
+        if channel is None:
+            return items
+        
+        for item in channel.findall("item"):
+            title_elem = item.find("title")
+            link_elem = item.find("link")
+            pub_date_elem = item.find("pubDate")
+            
+            if title_elem is None or link_elem is None:
+                continue
+            
+            title = normalize_whitespace(title_elem.text or "")
+            url = normalize_whitespace(link_elem.text or "")
+            pub_date = normalize_whitespace(pub_date_elem.text if pub_date_elem is not None else "")
+            
+            if not title or not url:
+                continue
+            if len(title) < 8:
+                continue
+            if not is_nasa_article_url(url):
+                continue
+            
+            items.append({
+                "title": title,
+                "url": url,
+                "source": NASA_NEWS_FEED_URL,
+                "pub_date": pub_date,
+            })
+    except ET.ParseError as exc:
+        print(f"Failed to parse RSS feed: {exc}")
+    
+    return items
+
+
+def fetch_nasa_news_from_feed(target_date: datetime.date | None = None) -> list[dict[str, Any]]:
+    """Fetch NASA news from RSS feed for today and yesterday."""
+    import datetime
+    from email.utils import parsedate_to_datetime
+    
+    if target_date is None:
+        import pytz
+        target_date = datetime.datetime.now(pytz.timezone("Asia/Shanghai")).date()
+    
+    print(f"Fetching RSS feed: {NASA_NEWS_FEED_URL}")
+    try:
+        xml_content = fetch_page(NASA_NEWS_FEED_URL)
+        all_items = parse_rss_feed(xml_content)
+        print(f"RSS feed extracted {len(all_items)} articles")
+    except Exception as exc:
+        print(f"Failed to fetch RSS feed: {exc}")
+        return []
+    
+    today_items: list[dict[str, Any]] = []
+    yesterday_items: list[dict[str, Any]] = []
+    
+    yesterday_date = target_date - datetime.timedelta(days=1)
+    
+    for item in all_items:
+        pub_date_str = item.get("pub_date", "")
+        if pub_date_str:
+            try:
+                # Parse RFC 2822 date format
+                pub_dt = parsedate_to_datetime(pub_date_str)
+                pub_date = pub_dt.date()
+                
+                if pub_date == target_date:
+                    today_items.append(item)
+                elif pub_date == yesterday_date:
+                    yesterday_items.append(item)
+            except (ValueError, TypeError):
+                # If date parsing fails, include in today's items as fallback
+                today_items.append(item)
+        else:
+            # If no date, include in today's items
+            today_items.append(item)
+    
+    # Return today's items if available, otherwise yesterday's
+    if today_items:
+        print(f"Found {len(today_items)} articles from today ({target_date})")
+        return today_items
+    elif yesterday_items:
+        print(f"No articles from today, using {len(yesterday_items)} articles from yesterday ({yesterday_date})")
+        return yesterday_items
+    else:
+        print("No articles from today or yesterday found, returning all available")
+        return all_items
+
+
 def fetch_top_n_articles(top_n: int = LIST_TOP_N) -> list[dict[str, Any]]:
+    # First try RSS feed
     merged: list[dict[str, Any]] = []
     seen: set[str] = set()
+    
+    try:
+        import datetime
+        import pytz
+        target_date = datetime.datetime.now(pytz.timezone("Asia/Shanghai")).date()
+        rss_items = fetch_nasa_news_from_feed(target_date)
+        for item in rss_items:
+            if item["url"] in seen:
+                continue
+            seen.add(item["url"])
+            merged.append(item)
+            if len(merged) >= top_n:
+                return merged
+    except Exception as exc:
+        print(f"RSS feed failed, falling back to HTML scraping: {exc}")
+    
+    # Fallback to HTML scraping if RSS fails or insufficient items
     for source_url in NASA_NEWS_URLS:
+        if len(merged) >= top_n:
+            break
         print(f"Fetching list page: {source_url}")
         try:
             html = fetch_page(source_url)
