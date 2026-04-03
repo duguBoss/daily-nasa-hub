@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-04-02T14:12:25.785803+08:00",
-  "date": "2026-04-02",
+  "updated_at": "2026-04-03T06:13:22.550817+08:00",
+  "date": "2026-04-03",
   "last_fetch_urls": [
+    "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-crew-houston-poll-go-for-translunar-injection-burn",
+    "https://www.nasa.gov/image-article/artemis-ii-astronauts-launch-to-moon",
+    "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-update-perigee-raise-burn-complete",
     "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-update-crew-and-ground-teams-successfully-troubleshoot-orions-toilet",
-    "https://science.nasa.gov/earth/earth-observatory/reunion-island-lava-reaches-the-sea",
-    "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-proximity-operations-complete-perigee-raise-burn-up-next",
-    "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-apogee-raise-burn-complete-crew-looks-ahead-to-proximity-operations",
-    "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-perigee-raise-maneuver-complete-nasa-to-hold-press-conference"
+    "https://science.nasa.gov/earth/earth-observatory/reunion-island-lava-reaches-the-sea"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-update-crew-and-ground-teams-successfully-troubleshoot-orions-toilet"
+    "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-crew-houston-poll-go-for-translunar-injection-burn"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-crew-houston-poll-go-for-translunar-injection-burn",
+    "https://www.nasa.gov/image-article/artemis-ii-astronauts-launch-to-moon",
+    "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-update-perigee-raise-burn-complete",
     "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-update-crew-and-ground-teams-successfully-troubleshoot-orions-toilet",
     "https://science.nasa.gov/earth/earth-observatory/reunion-island-lava-reaches-the-sea",
     "https://www.nasa.gov/blogs/missions/2026/04/01/artemis-ii-flight-update-proximity-operations-complete-perigee-raise-burn-up-next",
