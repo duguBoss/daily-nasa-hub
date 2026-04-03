@@ -1,13 +1,13 @@
-# 雨燕卫星成功完成姿态重新定向，为关键轨道维持任务争取宝贵时间
+# 阿尔忒弥斯2号任务已成功发射，四名宇航员开启月球之旅
 
 - 日期: 2026-04-03
 
-## 1. Eros Horizon View
+## 1. CME, Comet and Planet Earth
 
 - 频道: NASA APOD
 - 链接: 
 
-Since April 30, the robotic NEAR-Shoemaker spacecraft has been orbiting only 31 miles from asteroid Eros. Cruising over the asteroid's north and south poles at a leisurely 7 miles per hour, the spacecraft completes an orbit once every 1.2 earth days. This dram
+After appearing in a popular photo opportunity with a young crescent Moon near sunset, naked-eye Comet PanSTARRS continues to rise in northern hemisphere skies. But this remarkable interplanetary perspective from March 13, finds the comet posing with our fair 
 
 ## 2. Artemis II Astronauts Launch to Moon
 
@@ -16,9 +16,9 @@ Since April 30, the robotic NEAR-Shoemaker spacecraft has been orbiting only 31 
 
 NASA’s Space Launch System rocket and Orion spacecraft lift off in this April 1, 2026, image. NASA’s Artemis II mission will take NASA astronauts Reid Wiseman, Victor Glover, and Christina Koch, and CSA (Canadian Space A
 
-## 3. Swift spacecraft reorientation buys time for reboost mission
+## 3. Artemis 2 heads to the moon
 
 - 频道: SpaceFlight News
-- 链接: https://spacenews.com/swift-spacecraft-reorientation-buys-time-for-reboost-mission/
+- 链接: https://spacenews.com/artemis-2-heads-to-the-moon/
 
-NASA modified operations of an astrophysics spacecraft in a decaying orbit to buy more time for a mission later this year that will attempt to raise its orbit. The post Swift spacecraft reorientation buys time for reboost mission appeared first on SpaceNews.
+NASA’s Artemis 2 mission is on its way to the moon after a successful maneuver April 2. The post Artemis 2 heads to the moon appeared first on SpaceNews.
