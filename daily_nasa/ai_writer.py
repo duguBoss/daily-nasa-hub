@@ -514,7 +514,7 @@ def generate_payload(
 def check_articles_duplicate(
     article1: dict[str, Any],
     article2: dict[str, Any],
-    model_candidates: list[tuple[str, str, str]],
+    model_candidates: list[tuple[str, str, str, Any]],
 ) -> tuple[bool, str]:
     """Check if two articles are about the same event using AI.
 
@@ -534,7 +534,7 @@ def check_articles_duplicate(
 
     prompt = build_dedupe_prompt(article1, article2)
 
-    for provider, model_name, api_key in model_candidates:
+    for provider, model_name, api_key, _call_func in model_candidates:
         try:
             if provider == "gemini":
                 raw = call_gemini(api_key, prompt, model_name)
