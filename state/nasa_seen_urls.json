@@ -1,17 +1,19 @@
 {
-  "updated_at": "2026-04-04T06:06:55.076307+08:00",
+  "updated_at": "2026-04-04T11:02:04.324645+08:00",
   "date": "2026-04-04",
   "last_fetch_urls": [
+    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grummans-crs-24-resupply-launch",
     "https://science.nasa.gov/missions/artemis/meet-nasas-new-artemis-ii-science-officers",
     "https://www.nasa.gov/image-article/virgil-i-gus-grissom",
     "https://www.nasa.gov/image-article/hello-world",
-    "https://science.nasa.gov/earth/earth-observatory/barents-sea-tied-to-low-arctic-sea-ice",
-    "https://www.nasa.gov/news-release/nasas-artemis-ii-mission-leaves-earth-orbit-for-flight-around-moon"
+    "https://science.nasa.gov/earth/earth-observatory/barents-sea-tied-to-low-arctic-sea-ice"
   ],
   "last_new_urls": [
+    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grummans-crs-24-resupply-launch",
     "https://science.nasa.gov/missions/artemis/meet-nasas-new-artemis-ii-science-officers"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grummans-crs-24-resupply-launch",
     "https://science.nasa.gov/missions/artemis/meet-nasas-new-artemis-ii-science-officers",
     "https://www.nasa.gov/image-article/virgil-i-gus-grissom",
     "https://www.nasa.gov/image-article/hello-world",
