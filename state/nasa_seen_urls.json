@@ -1,18 +1,20 @@
 {
-  "updated_at": "2026-04-04T11:02:04.324645+08:00",
-  "date": "2026-04-04",
+  "updated_at": "2026-04-05T05:54:42.412099+08:00",
+  "date": "2026-04-05",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grummans-crs-24-resupply-launch",
-    "https://science.nasa.gov/missions/artemis/meet-nasas-new-artemis-ii-science-officers",
-    "https://www.nasa.gov/image-article/virgil-i-gus-grissom",
-    "https://www.nasa.gov/image-article/hello-world",
-    "https://science.nasa.gov/earth/earth-observatory/barents-sea-tied-to-low-arctic-sea-ice"
+    "https://www.nasa.gov/missions/nasa-answers-your-most-pressing-artemis-ii-questions",
+    "https://www.nasa.gov/image-article/illuminated-in-orion",
+    "https://www.nasa.gov/missions/nasa-answers-your-most-pressing-artemis-ii-questions",
+    "https://www.nasa.gov/blogs/missions/2026/04/04/artemis-ii-flight-day-4-deep-space-flying-lunar-flyby-prep",
+    "https://www.nasa.gov/image-article/illuminated-in-orion"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grummans-crs-24-resupply-launch",
-    "https://science.nasa.gov/missions/artemis/meet-nasas-new-artemis-ii-science-officers"
+    "https://www.nasa.gov/missions/nasa-answers-your-most-pressing-artemis-ii-questions"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/nasa-answers-your-most-pressing-artemis-ii-questions",
+    "https://www.nasa.gov/image-article/illuminated-in-orion",
+    "https://www.nasa.gov/blogs/missions/2026/04/04/artemis-ii-flight-day-4-deep-space-flying-lunar-flyby-prep",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grummans-crs-24-resupply-launch",
     "https://science.nasa.gov/missions/artemis/meet-nasas-new-artemis-ii-science-officers",
     "https://www.nasa.gov/image-article/virgil-i-gus-grissom",
