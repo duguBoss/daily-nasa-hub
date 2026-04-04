@@ -548,3 +548,34 @@ def build_story_terms(articles: list[dict[str, Any]]) -> list[str]:
             seen.add(clean_term)
             deduped.append(clean_term)
     return deduped[:14]
+
+
+def build_dedupe_prompt(article1: dict[str, Any], article2: dict[str, Any]) -> str:
+    """Generate prompt to check if two articles are about the same event/story."""
+    return f"""你是NASA新闻编辑，需要判断以下两条新闻是否讲述的是同一件事。
+
+【新闻1】
+标题：{article1.get('title', '')}
+来源：{article1.get('channel', 'NASA')}
+摘要：{article1.get('summary', '')}
+
+【新闻2】
+标题：{article2.get('title', '')}
+来源：{article2.get('channel', 'NASA')}
+摘要：{article2.get('summary', '')}
+
+【判断标准】
+如果两条新闻满足以下任一条件，则视为重复：
+1. 讲述的是同一个NASA任务/事件的相同进展（如都是关于Artemis II发射的同一天进展）
+2. 讲述的是同一个航天器的相同操作（如都是关于Swift卫星姿态调整）
+3. 讲述的是同一个科学发现的相同内容
+4. 核心事实和关键信息高度重叠
+
+如果两条新闻讲述的是：
+- 同一个任务的不同阶段/不同天的事件 → 不重复
+- 不同任务/不同事件 → 不重复
+- 一个是任务概述，一个是具体技术细节但属于同一事件 → 重复
+
+【输出格式】
+只输出JSON，不要任何其他文字：
+{{"is_duplicate": true/false, "reason": "简要说明判断理由（20字以内）"}}"""

@@ -17,6 +17,7 @@ from .prompts import (
     FAN_PERSPECTIVE_TERMS,
     MISSION_HINT_TERMS,
     build_card_prompt,
+    build_dedupe_prompt,
     build_gemini_prompt,
     build_gemini_rewrite_prompt,
     build_story_terms,
@@ -67,6 +68,8 @@ __all__ = [
     "is_quota_or_rate_limit_error",
     "build_story_terms",
     "title_matches_story_terms",
+    "check_articles_duplicate",
+    "deduplicate_articles",
 ]
 
 
@@ -504,5 +507,112 @@ def generate_payload(
         "fallback_used": title_provider != primary_provider,
         "card_models": card_models,
     })
-    
+
     return payload, meta
+
+
+def check_articles_duplicate(
+    article1: dict[str, Any],
+    article2: dict[str, Any],
+    model_candidates: list[tuple[str, str, str]],
+) -> tuple[bool, str]:
+    """Check if two articles are about the same event using AI.
+
+    Returns:
+        (is_duplicate, reason)
+    """
+    if not model_candidates:
+        # Fallback: simple keyword matching if no AI available
+        title1 = article1.get("title", "").lower()
+        title2 = article2.get("title", "").lower()
+        # Check for common mission keywords
+        common_missions = ["artemis", "swift", "webb", "hubble", "spacex", "iss"]
+        for mission in common_missions:
+            if mission in title1 and mission in title2:
+                return True, f"Both mention {mission}"
+        return False, "No AI available, keyword check passed"
+
+    prompt = build_dedupe_prompt(article1, article2)
+
+    for provider, model_name, api_key in model_candidates:
+        try:
+            if provider == "gemini":
+                raw = call_gemini(api_key, prompt, model_name)
+            elif provider == "minimax":
+                raw = call_minimax(api_key, prompt, model_name)
+            elif provider == "openrouter":
+                raw = call_openrouter(api_key, prompt, model_name)
+            elif provider == "groq":
+                raw = call_groq(api_key, prompt, model_name)
+            else:
+                continue
+
+            # Parse JSON response
+            try:
+                result = json.loads(raw)
+            except json.JSONDecodeError:
+                # Try to extract JSON from markdown
+                json_match = re.search(r'```json\s*(.*?)\s*```', raw, re.DOTALL)
+                if json_match:
+                    result = json.loads(json_match.group(1))
+                else:
+                    # Try to find JSON-like structure
+                    json_match = re.search(r'\{[^}]*"is_duplicate"[^}]*\}', raw)
+                    if json_match:
+                        result = json.loads(json_match.group(0))
+                    else:
+                        continue
+
+            if isinstance(result, dict) and "is_duplicate" in result:
+                is_dup = result.get("is_duplicate", False)
+                reason = result.get("reason", "AI judgment")
+                return bool(is_dup), reason
+
+        except Exception as exc:
+            print(f"Dedupe check failed with {provider}/{model_name}: {exc}")
+            continue
+
+    # All models failed, fallback to keyword matching
+    return False, "AI check failed, assuming not duplicate"
+
+
+def deduplicate_articles(
+    articles: list[dict[str, Any]],
+    gemini_api_key: str | None,
+    minimax_api_key: str | None,
+    openrouter_api_key: str | None,
+    groq_api_key: str | None,
+) -> list[dict[str, Any]]:
+    """Remove duplicate articles based on AI analysis.
+
+    Keeps the first article and removes subsequent duplicates.
+    """
+    if len(articles) <= 1:
+        return articles
+
+    model_candidates = build_model_candidates(
+        gemini_api_key, minimax_api_key, openrouter_api_key, groq_api_key
+    )
+
+    unique_articles: list[dict[str, Any]] = [articles[0]]
+
+    for i, article in enumerate(articles[1:], start=2):
+        is_duplicate = False
+        duplicate_reason = ""
+
+        for existing in unique_articles:
+            is_dup, reason = check_articles_duplicate(
+                existing, article, model_candidates
+            )
+            if is_dup:
+                is_duplicate = True
+                duplicate_reason = reason
+                break
+
+        if is_duplicate:
+            print(f"Removing duplicate article #{i}: '{article.get('title', '')[:50]}...' - {duplicate_reason}")
+        else:
+            unique_articles.append(article)
+            print(f"Keeping article #{i}: '{article.get('title', '')[:50]}...'")
+
+    return unique_articles

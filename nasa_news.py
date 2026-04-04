@@ -4,7 +4,7 @@ import datetime
 import os
 from typing import Any
 
-from daily_nasa.ai_writer import generate_payload
+from daily_nasa.ai_writer import deduplicate_articles, generate_payload
 from daily_nasa.config import (
     EXTRA_FALLBACK_MODEL_NAME,
     FALLBACK_MODEL_NAME,
@@ -116,11 +116,31 @@ def main() -> None:
         save_seen_state(state, latest_urls=top_urls, new_urls=[], date_str=date_str)
         return
 
-    cover_urls = [article.get("cover_url", "") for article in processed_articles if article.get("cover_url", "")]
+    # Deduplicate articles using AI
     gemini_api_key = get_optional_api_key()
     minimax_api_key = get_optional_minimax_api_key()
     openrouter_api_key = get_optional_openrouter_api_key()
     groq_api_key = get_optional_groq_api_key()
+
+    print("\n=== Article Deduplication ===")
+    deduplicated_articles = deduplicate_articles(
+        processed_articles,
+        gemini_api_key,
+        minimax_api_key,
+        openrouter_api_key,
+        groq_api_key,
+    )
+    if len(deduplicated_articles) < len(processed_articles):
+        print(f"Removed {len(processed_articles) - len(deduplicated_articles)} duplicate article(s)")
+        print(f"Final article count: {len(deduplicated_articles)}")
+    else:
+        print("No duplicates found")
+    print("=== Deduplication Complete ===\n")
+
+    # Update selected and processed_articles to use deduplicated list
+    processed_articles = deduplicated_articles
+
+    cover_urls = [article.get("cover_url", "") for article in processed_articles if article.get("cover_url", "")]
     minimax_model_name = os.environ.get("MINIMAX_MODEL_NAME", "").strip() or MINIMAX_MODEL_NAME
     openrouter_models = [model_name for model_name in OPENROUTER_MODEL_SERIES if model_name]
     gemini_fallbacks = [FALLBACK_MODEL_NAME, EXTRA_FALLBACK_MODEL_NAME, *list(GEMINI_ADDITIONAL_FALLBACK_MODELS)]
