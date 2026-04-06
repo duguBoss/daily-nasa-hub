@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-04-05T05:54:42.412099+08:00",
-  "date": "2026-04-05",
+  "updated_at": "2026-04-06T08:09:21.614856+08:00",
+  "date": "2026-04-06",
   "last_fetch_urls": [
-    "https://www.nasa.gov/missions/nasa-answers-your-most-pressing-artemis-ii-questions",
-    "https://www.nasa.gov/image-article/illuminated-in-orion",
-    "https://www.nasa.gov/missions/nasa-answers-your-most-pressing-artemis-ii-questions",
-    "https://www.nasa.gov/blogs/missions/2026/04/04/artemis-ii-flight-day-4-deep-space-flying-lunar-flyby-prep",
-    "https://www.nasa.gov/image-article/illuminated-in-orion"
+    "https://www.nasa.gov/image-article/thinking-of-you-earth",
+    "https://www.nasa.gov/blogs/missions/2026/04/05/artemis-ii-flight-day-5-crew-demos-suits-readies-for-lunar-flyby",
+    "https://www.nasa.gov/blogs/missions/2026/04/05/artemis-ii-flight-day-5-crew-starts-day-with-suit-demo",
+    "https://www.nasa.gov/image-article/thinking-of-you-earth",
+    "https://www.nasa.gov/blogs/missions/2026/04/04/artemis-ii-flight-day-4-crew-completes-manual-piloting-demonstration"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/missions/nasa-answers-your-most-pressing-artemis-ii-questions"
+    "https://www.nasa.gov/image-article/thinking-of-you-earth"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/thinking-of-you-earth",
+    "https://www.nasa.gov/blogs/missions/2026/04/05/artemis-ii-flight-day-5-crew-demos-suits-readies-for-lunar-flyby",
+    "https://www.nasa.gov/blogs/missions/2026/04/05/artemis-ii-flight-day-5-crew-starts-day-with-suit-demo",
+    "https://www.nasa.gov/blogs/missions/2026/04/04/artemis-ii-flight-day-4-crew-completes-manual-piloting-demonstration",
     "https://www.nasa.gov/missions/nasa-answers-your-most-pressing-artemis-ii-questions",
     "https://www.nasa.gov/image-article/illuminated-in-orion",
     "https://www.nasa.gov/blogs/missions/2026/04/04/artemis-ii-flight-day-4-deep-space-flying-lunar-flyby-prep",
