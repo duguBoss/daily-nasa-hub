@@ -1,20 +1,23 @@
 {
-  "updated_at": "2026-04-08T07:04:38.614565+08:00",
-  "date": "2026-04-08",
+  "updated_at": "2026-04-09T07:04:53.995448+08:00",
+  "date": "2026-04-09",
   "last_fetch_urls": [
+    "https://www.nasa.gov/image-article/solar-eclipse-of-the-heart",
+    "https://science.nasa.gov/earth/earth-observatory/a-volcanic-medley-near-mammoth-lakes",
+    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/celestial-wonders-in-leo",
     "https://www.nasa.gov/news-release/nasas-artemis-ii-crew-beams-official-moon-flyby-photos-to-earth",
-    "https://www.nasa.gov/image-article/earthset",
-    "https://www.nasa.gov/news-release/nasa-to-host-media-call-with-artemis-ii-crew-on-way-home-from-moon",
-    "https://science.nasa.gov/earth/earth-observatory/drought-parches-florida",
-    "https://www.nasa.gov/news-release/nasas-artemis-ii-crew-beams-official-moon-flyby-photos-to-earth"
+    "https://www.nasa.gov/news-release/nasa-to-host-media-call-with-artemis-ii-crew-on-way-home-from-moon"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasas-artemis-ii-crew-beams-official-moon-flyby-photos-to-earth"
+    "https://www.nasa.gov/image-article/solar-eclipse-of-the-heart"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/solar-eclipse-of-the-heart",
+    "https://science.nasa.gov/earth/earth-observatory/a-volcanic-medley-near-mammoth-lakes",
+    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/celestial-wonders-in-leo",
     "https://www.nasa.gov/news-release/nasas-artemis-ii-crew-beams-official-moon-flyby-photos-to-earth",
-    "https://www.nasa.gov/image-article/earthset",
     "https://www.nasa.gov/news-release/nasa-to-host-media-call-with-artemis-ii-crew-on-way-home-from-moon",
+    "https://www.nasa.gov/image-article/earthset",
     "https://science.nasa.gov/earth/earth-observatory/drought-parches-florida",
     "https://www.nasa.gov/news-release/nasas-artemis-ii-crew-eclipses-record-for-farthest-human-spaceflight",
     "https://www.nasa.gov/missions/station/nasas-northrop-grumman-crs-24-mission-overview",
