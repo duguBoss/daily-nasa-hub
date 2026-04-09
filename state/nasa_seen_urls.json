@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-04-09T07:04:53.995448+08:00",
-  "date": "2026-04-09",
+  "updated_at": "2026-04-10T07:07:04.651505+08:00",
+  "date": "2026-04-10",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/solar-eclipse-of-the-heart",
-    "https://science.nasa.gov/earth/earth-observatory/a-volcanic-medley-near-mammoth-lakes",
-    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/celestial-wonders-in-leo",
-    "https://www.nasa.gov/news-release/nasas-artemis-ii-crew-beams-official-moon-flyby-photos-to-earth",
-    "https://www.nasa.gov/news-release/nasa-to-host-media-call-with-artemis-ii-crew-on-way-home-from-moon"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis-dan-florez",
+    "https://www.nasa.gov/image-article/indoor-testing-facilities-available-at-the-nasa-unmanned-autonomy-research-complex-nuarc",
+    "https://www.nasa.gov/image-article/starstruck",
+    "https://science.nasa.gov/photojournal/watching-the-artemis-ii-mission-unfold-at-jpls-space-flight-operations-facility",
+    "https://science.nasa.gov/photojournal/the-deep-space-network-acquires-artemis-ii-signal-2"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/solar-eclipse-of-the-heart"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis-dan-florez"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/artemis/i-am-artemis-dan-florez",
+    "https://www.nasa.gov/image-article/indoor-testing-facilities-available-at-the-nasa-unmanned-autonomy-research-complex-nuarc",
+    "https://www.nasa.gov/image-article/starstruck",
+    "https://science.nasa.gov/photojournal/watching-the-artemis-ii-mission-unfold-at-jpls-space-flight-operations-facility",
+    "https://science.nasa.gov/photojournal/the-deep-space-network-acquires-artemis-ii-signal-2",
     "https://www.nasa.gov/image-article/solar-eclipse-of-the-heart",
     "https://science.nasa.gov/earth/earth-observatory/a-volcanic-medley-near-mammoth-lakes",
     "https://science.nasa.gov/solar-system/skywatching/night-sky-network/celestial-wonders-in-leo",
