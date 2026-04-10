@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-04-10T07:07:04.651505+08:00",
-  "date": "2026-04-10",
+  "updated_at": "2026-04-11T06:57:40.725964+08:00",
+  "date": "2026-04-11",
   "last_fetch_urls": [
-    "https://www.nasa.gov/missions/artemis/i-am-artemis-dan-florez",
-    "https://www.nasa.gov/image-article/indoor-testing-facilities-available-at-the-nasa-unmanned-autonomy-research-complex-nuarc",
-    "https://www.nasa.gov/image-article/starstruck",
-    "https://science.nasa.gov/photojournal/watching-the-artemis-ii-mission-unfold-at-jpls-space-flight-operations-facility",
-    "https://science.nasa.gov/photojournal/the-deep-space-network-acquires-artemis-ii-signal-2"
+    "https://www.nasa.gov/image-article/new-perspective-of-home",
+    "https://science.nasa.gov/earth/earth-observatory/earthset-from-the-lunar-far-side",
+    "https://www.nasa.gov/blogs/spacestation/2026/04/10/crew-preps-for-cygnus-xl-cargo-mission-targeted-for-saturday-launch",
+    "https://www.nasa.gov/blogs/missions/2026/04/10/artemis-ii-flight-day-10-crew-completes-final-burn-before-splashdown",
+    "https://www.nasa.gov/image-article/new-perspective-of-home"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/missions/artemis/i-am-artemis-dan-florez"
+    "https://www.nasa.gov/image-article/new-perspective-of-home",
+    "https://science.nasa.gov/earth/earth-observatory/earthset-from-the-lunar-far-side"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/new-perspective-of-home",
+    "https://science.nasa.gov/earth/earth-observatory/earthset-from-the-lunar-far-side",
+    "https://www.nasa.gov/blogs/spacestation/2026/04/10/crew-preps-for-cygnus-xl-cargo-mission-targeted-for-saturday-launch",
+    "https://www.nasa.gov/blogs/missions/2026/04/10/artemis-ii-flight-day-10-crew-completes-final-burn-before-splashdown",
     "https://www.nasa.gov/missions/artemis/i-am-artemis-dan-florez",
     "https://www.nasa.gov/image-article/indoor-testing-facilities-available-at-the-nasa-unmanned-autonomy-research-complex-nuarc",
     "https://www.nasa.gov/image-article/starstruck",
