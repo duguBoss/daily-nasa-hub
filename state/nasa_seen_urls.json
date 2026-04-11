@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-04-11T06:57:40.725964+08:00",
-  "date": "2026-04-11",
+  "updated_at": "2026-04-12T06:54:44.708843+08:00",
+  "date": "2026-04-12",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/new-perspective-of-home",
-    "https://science.nasa.gov/earth/earth-observatory/earthset-from-the-lunar-far-side",
-    "https://www.nasa.gov/blogs/spacestation/2026/04/10/crew-preps-for-cygnus-xl-cargo-mission-targeted-for-saturday-launch",
-    "https://www.nasa.gov/blogs/missions/2026/04/10/artemis-ii-flight-day-10-crew-completes-final-burn-before-splashdown",
-    "https://www.nasa.gov/image-article/new-perspective-of-home"
+    "https://www.nasa.gov/news-release/la-nasa-da-la-bienvenida-a-la-tierra-a-los-exploradores-lunares-de-artemis-ii-quienes-batieron-records",
+    "https://www.nasa.gov/news-release/nasa-science-cargo-launch-aboard-northrop-grumman-crs-24",
+    "https://www.nasa.gov/image-article/artemis-ii-splashes-down",
+    "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth",
+    "https://www.nasa.gov/news-release/la-nasa-da-la-bienvenida-a-la-tierra-a-los-exploradores-lunares-de-artemis-ii-quienes-batieron-records"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/new-perspective-of-home",
-    "https://science.nasa.gov/earth/earth-observatory/earthset-from-the-lunar-far-side"
+    "https://www.nasa.gov/news-release/la-nasa-da-la-bienvenida-a-la-tierra-a-los-exploradores-lunares-de-artemis-ii-quienes-batieron-records",
+    "https://www.nasa.gov/news-release/nasa-science-cargo-launch-aboard-northrop-grumman-crs-24"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/la-nasa-da-la-bienvenida-a-la-tierra-a-los-exploradores-lunares-de-artemis-ii-quienes-batieron-records",
+    "https://www.nasa.gov/news-release/nasa-science-cargo-launch-aboard-northrop-grumman-crs-24",
+    "https://www.nasa.gov/image-article/artemis-ii-splashes-down",
+    "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth",
     "https://www.nasa.gov/image-article/new-perspective-of-home",
     "https://science.nasa.gov/earth/earth-observatory/earthset-from-the-lunar-far-side",
     "https://www.nasa.gov/blogs/spacestation/2026/04/10/crew-preps-for-cygnus-xl-cargo-mission-targeted-for-saturday-launch",
