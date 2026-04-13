@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-04-13T06:58:54.139141+08:00",
-  "date": "2026-04-13",
+  "updated_at": "2026-04-14T07:12:30.970623+08:00",
+  "date": "2026-04-14",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/la-nasa-da-la-bienvenida-a-la-tierra-a-los-exploradores-lunares-de-artemis-ii-quienes-batieron-records",
-    "https://www.nasa.gov/news-release/nasa-science-cargo-launch-aboard-northrop-grumman-crs-24",
-    "https://www.nasa.gov/image-article/artemis-ii-splashes-down",
-    "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth",
-    "https://www.nasa.gov/image-article/new-perspective-of-home"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-rollout-event-for-artemis-iii-moon-rocket-stage",
+    "https://www.nasa.gov/centers-and-facilities/marshall/nasa-announces-32nd-annual-human-exploration-rover-challenge-winners",
+    "https://www.nasa.gov/news-release/nasa-awards-data-engineering-informatics-support-contract",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4852-4858-when-data-take-their-time",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4845-4851-bye-bye-boxwork-bye-bye"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/la-nasa-da-la-bienvenida-a-la-tierra-a-los-exploradores-lunares-de-artemis-ii-quienes-batieron-records"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-rollout-event-for-artemis-iii-moon-rocket-stage",
+    "https://www.nasa.gov/centers-and-facilities/marshall/nasa-announces-32nd-annual-human-exploration-rover-challenge-winners"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-rollout-event-for-artemis-iii-moon-rocket-stage",
+    "https://www.nasa.gov/centers-and-facilities/marshall/nasa-announces-32nd-annual-human-exploration-rover-challenge-winners",
+    "https://www.nasa.gov/news-release/nasa-awards-data-engineering-informatics-support-contract",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4852-4858-when-data-take-their-time",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4845-4851-bye-bye-boxwork-bye-bye",
     "https://www.nasa.gov/news-release/la-nasa-da-la-bienvenida-a-la-tierra-a-los-exploradores-lunares-de-artemis-ii-quienes-batieron-records",
     "https://www.nasa.gov/news-release/nasa-science-cargo-launch-aboard-northrop-grumman-crs-24",
     "https://www.nasa.gov/image-article/artemis-ii-splashes-down",
