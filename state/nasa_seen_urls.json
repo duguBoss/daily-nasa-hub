@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-04-14T07:12:30.970623+08:00",
-  "date": "2026-04-14",
+  "updated_at": "2026-04-15T07:08:03.971298+08:00",
+  "date": "2026-04-15",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-rollout-event-for-artemis-iii-moon-rocket-stage",
-    "https://www.nasa.gov/centers-and-facilities/marshall/nasa-announces-32nd-annual-human-exploration-rover-challenge-winners",
-    "https://www.nasa.gov/news-release/nasa-awards-data-engineering-informatics-support-contract",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4852-4858-when-data-take-their-time",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4845-4851-bye-bye-boxwork-bye-bye"
+    "https://science.nasa.gov/missions/chandra/nasa-finds-young-stars-dim-in-x-rays-surprisingly-quickly",
+    "https://www.nasa.gov/image-article/a-hug-for-home-away-from-home",
+    "https://science.nasa.gov/earth/earth-observatory/april-2026-satellite-puzzler",
+    "https://www.nasa.gov/missions/station/iss-research/nutrition-research-arrives-aboard-space-station",
+    "https://science.nasa.gov/missions/webb/nasas-webb-redefines-dividing-line-between-planets-stars"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-rollout-event-for-artemis-iii-moon-rocket-stage",
-    "https://www.nasa.gov/centers-and-facilities/marshall/nasa-announces-32nd-annual-human-exploration-rover-challenge-winners"
+    "https://science.nasa.gov/missions/chandra/nasa-finds-young-stars-dim-in-x-rays-surprisingly-quickly",
+    "https://www.nasa.gov/image-article/a-hug-for-home-away-from-home"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/chandra/nasa-finds-young-stars-dim-in-x-rays-surprisingly-quickly",
+    "https://www.nasa.gov/image-article/a-hug-for-home-away-from-home",
+    "https://science.nasa.gov/earth/earth-observatory/april-2026-satellite-puzzler",
+    "https://www.nasa.gov/missions/station/iss-research/nutrition-research-arrives-aboard-space-station",
+    "https://science.nasa.gov/missions/webb/nasas-webb-redefines-dividing-line-between-planets-stars",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-rollout-event-for-artemis-iii-moon-rocket-stage",
     "https://www.nasa.gov/centers-and-facilities/marshall/nasa-announces-32nd-annual-human-exploration-rover-challenge-winners",
     "https://www.nasa.gov/news-release/nasa-awards-data-engineering-informatics-support-contract",
