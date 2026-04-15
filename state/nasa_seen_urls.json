@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-04-15T07:08:03.971298+08:00",
-  "date": "2026-04-15",
+  "updated_at": "2026-04-16T07:02:25.900374+08:00",
+  "date": "2026-04-16",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/chandra/nasa-finds-young-stars-dim-in-x-rays-surprisingly-quickly",
-    "https://www.nasa.gov/image-article/a-hug-for-home-away-from-home",
-    "https://science.nasa.gov/earth/earth-observatory/april-2026-satellite-puzzler",
-    "https://www.nasa.gov/missions/station/iss-research/nutrition-research-arrives-aboard-space-station",
-    "https://science.nasa.gov/missions/webb/nasas-webb-redefines-dividing-line-between-planets-stars"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-rebekah-tolatovicz",
+    "https://www.nasa.gov/news-release/nasa-selects-voyager-for-seventh-private-mission-to-space-station",
+    "https://www.nasa.gov/image-article/nasa-launches-six-cubesats-to-international-space-station",
+    "https://science.nasa.gov/earth/2026-nsta-hyperwall-schedule",
+    "https://science.nasa.gov/photojournal/nasas-spherex-mission-maps-water-ice-throughout-cygnus-x"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/chandra/nasa-finds-young-stars-dim-in-x-rays-surprisingly-quickly",
-    "https://www.nasa.gov/image-article/a-hug-for-home-away-from-home"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-rebekah-tolatovicz"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-rebekah-tolatovicz",
+    "https://www.nasa.gov/news-release/nasa-selects-voyager-for-seventh-private-mission-to-space-station",
+    "https://www.nasa.gov/image-article/nasa-launches-six-cubesats-to-international-space-station",
+    "https://science.nasa.gov/earth/2026-nsta-hyperwall-schedule",
+    "https://science.nasa.gov/photojournal/nasas-spherex-mission-maps-water-ice-throughout-cygnus-x",
     "https://science.nasa.gov/missions/chandra/nasa-finds-young-stars-dim-in-x-rays-surprisingly-quickly",
     "https://www.nasa.gov/image-article/a-hug-for-home-away-from-home",
     "https://science.nasa.gov/earth/earth-observatory/april-2026-satellite-puzzler",
