@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-04-17T07:12:31.554161+08:00",
-  "date": "2026-04-17",
+  "updated_at": "2026-04-18T07:02:19.777574+08:00",
+  "date": "2026-04-18",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-latvia-artemis-accords-signing-ceremony",
-    "https://www.nasa.gov/image-article/at-the-edge-of-light",
-    "https://science.nasa.gov/earth/earth-observatory/eyeing-the-richat-structure",
-    "https://www.nasa.gov/blogs/smallsatellites/2026/04/16/nasa-cubesat-begins-mission-to-study-radio-waves-in-space",
-    "https://science.nasa.gov/blogs/the-sun-spot/2026/04/16/nasa-heliophysics-spacecraft-witness-comets-demise"
+    "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data",
+    "https://science.nasa.gov/science-research/earth-science/webinar-4-29-nasa-csda-program-vendor-focus-mda-space",
+    "https://www.nasa.gov/news-release/nasa-opm-announce-new-nasa-force-website-open-job-applications",
+    "https://science.nasa.gov/science-research/earth-science/quality-assessment-report-evaluates-tomorrow-io-precipitation-radar-data",
+    "https://science.nasa.gov/get-involved/citizen-science/volunteers-discover-rare-space-weather-events-using-their-ears"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-latvia-artemis-accords-signing-ceremony"
+    "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data",
+    "https://science.nasa.gov/science-research/earth-science/webinar-4-29-nasa-csda-program-vendor-focus-mda-space",
+    "https://www.nasa.gov/news-release/nasa-opm-announce-new-nasa-force-website-open-job-applications",
+    "https://science.nasa.gov/science-research/earth-science/quality-assessment-report-evaluates-tomorrow-io-precipitation-radar-data",
+    "https://science.nasa.gov/get-involved/citizen-science/volunteers-discover-rare-space-weather-events-using-their-ears",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-latvia-artemis-accords-signing-ceremony",
     "https://www.nasa.gov/image-article/at-the-edge-of-light",
     "https://science.nasa.gov/earth/earth-observatory/eyeing-the-richat-structure",
