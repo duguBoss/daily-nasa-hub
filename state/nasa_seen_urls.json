@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-19T07:02:19.743099+08:00",
-  "date": "2026-04-19",
+  "updated_at": "2026-04-20T07:00:19.202117+08:00",
+  "date": "2026-04-20",
   "last_fetch_urls": [
     "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data",
     "https://science.nasa.gov/science-research/earth-science/webinar-4-29-nasa-csda-program-vendor-focus-mda-space",
@@ -9,7 +9,8 @@
     "https://science.nasa.gov/get-involved/citizen-science/volunteers-discover-rare-space-weather-events-using-their-ears"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data"
+    "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data",
+    "https://science.nasa.gov/science-research/earth-science/webinar-4-29-nasa-csda-program-vendor-focus-mda-space"
   ],
   "seen_urls": [
     "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data",
