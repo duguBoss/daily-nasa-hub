@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-04-20T07:00:19.202117+08:00",
-  "date": "2026-04-20",
+  "updated_at": "2026-04-21T07:01:54.180110+08:00",
+  "date": "2026-04-21",
   "last_fetch_urls": [
-    "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data",
-    "https://science.nasa.gov/science-research/earth-science/webinar-4-29-nasa-csda-program-vendor-focus-mda-space",
-    "https://www.nasa.gov/news-release/nasa-opm-announce-new-nasa-force-website-open-job-applications",
-    "https://science.nasa.gov/science-research/earth-science/quality-assessment-report-evaluates-tomorrow-io-precipitation-radar-data",
-    "https://science.nasa.gov/get-involved/citizen-science/volunteers-discover-rare-space-weather-events-using-their-ears"
+    "https://www.nasa.gov/missions/nasa-on-track-for-future-missions-with-initial-artemis-ii-assessments",
+    "https://www.nasa.gov/news-release/nasa-rolls-out-artemis-iii-moon-rocket-core-stage",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-34th-resupply-launch-to-space-station",
+    "https://www.nasa.gov/news-release/nasa-welcomes-latvia-as-newest-artemis-accords-signatory",
+    "https://www.nasa.gov/image-article/wheels-up-for-x-59"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data",
-    "https://science.nasa.gov/science-research/earth-science/webinar-4-29-nasa-csda-program-vendor-focus-mda-space"
+    "https://www.nasa.gov/missions/nasa-on-track-for-future-missions-with-initial-artemis-ii-assessments"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/nasa-on-track-for-future-missions-with-initial-artemis-ii-assessments",
+    "https://www.nasa.gov/news-release/nasa-rolls-out-artemis-iii-moon-rocket-core-stage",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-34th-resupply-launch-to-space-station",
+    "https://www.nasa.gov/news-release/nasa-welcomes-latvia-as-newest-artemis-accords-signatory",
+    "https://www.nasa.gov/image-article/wheels-up-for-x-59",
     "https://science.nasa.gov/uncategorized/csda-quality-assessment-report-evaluates-satellogic-newsat-data",
     "https://science.nasa.gov/science-research/earth-science/webinar-4-29-nasa-csda-program-vendor-focus-mda-space",
     "https://www.nasa.gov/news-release/nasa-opm-announce-new-nasa-force-website-open-job-applications",
