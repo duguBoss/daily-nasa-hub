@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-04-21T07:01:54.180110+08:00",
-  "date": "2026-04-21",
+  "updated_at": "2026-04-22T06:57:45.678226+08:00",
+  "date": "2026-04-22",
   "last_fetch_urls": [
-    "https://www.nasa.gov/missions/nasa-on-track-for-future-missions-with-initial-artemis-ii-assessments",
-    "https://www.nasa.gov/news-release/nasa-rolls-out-artemis-iii-moon-rocket-core-stage",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-34th-resupply-launch-to-space-station",
-    "https://www.nasa.gov/news-release/nasa-welcomes-latvia-as-newest-artemis-accords-signatory",
-    "https://www.nasa.gov/image-article/wheels-up-for-x-59"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-jordan-artemis-accords-signing-ceremony",
+    "https://science.nasa.gov/earth/new-nasa-views-of-earth-from-space",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-at-sxsw-johnson-director-vanessa-wyche-on-why-artemis-changes-everything",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasa-organ-sharing-network-unos-to-study-faster-organ-transport",
+    "https://www.nasa.gov/centers-and-facilities/ames/what-are-ames-contributions-to-artemis-ii"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/missions/nasa-on-track-for-future-missions-with-initial-artemis-ii-assessments"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-jordan-artemis-accords-signing-ceremony"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-jordan-artemis-accords-signing-ceremony",
+    "https://science.nasa.gov/earth/new-nasa-views-of-earth-from-space",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-at-sxsw-johnson-director-vanessa-wyche-on-why-artemis-changes-everything",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasa-organ-sharing-network-unos-to-study-faster-organ-transport",
+    "https://www.nasa.gov/centers-and-facilities/ames/what-are-ames-contributions-to-artemis-ii",
     "https://www.nasa.gov/missions/nasa-on-track-for-future-missions-with-initial-artemis-ii-assessments",
     "https://www.nasa.gov/news-release/nasa-rolls-out-artemis-iii-moon-rocket-core-stage",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-34th-resupply-launch-to-space-station",
