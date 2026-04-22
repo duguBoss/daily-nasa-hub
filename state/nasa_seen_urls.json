@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-04-22T06:57:45.678226+08:00",
-  "date": "2026-04-22",
+  "updated_at": "2026-04-23T07:07:52.970979+08:00",
+  "date": "2026-04-23",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-jordan-artemis-accords-signing-ceremony",
-    "https://science.nasa.gov/earth/new-nasa-views-of-earth-from-space",
-    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-at-sxsw-johnson-director-vanessa-wyche-on-why-artemis-changes-everything",
-    "https://www.nasa.gov/centers-and-facilities/langley/nasa-organ-sharing-network-unos-to-study-faster-organ-transport",
-    "https://www.nasa.gov/centers-and-facilities/ames/what-are-ames-contributions-to-artemis-ii"
+    "https://www.nasa.gov/centers-and-facilities/langley/nasas-777-aircraft-returns-home-with-science-flights-on-the-horizon",
+    "https://www.nasa.gov/image-article/nasa-targets-early-september-for-roman-space-telescope-launch",
+    "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-to-discuss-upcoming-launch-mission",
+    "https://www.nasa.gov/image-article/night-and-earth-day",
+    "https://science.nasa.gov/earth/advancing-earth-observation-at-nasa-since-release-of-earthrise-photo"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-jordan-artemis-accords-signing-ceremony"
+    "https://www.nasa.gov/centers-and-facilities/langley/nasas-777-aircraft-returns-home-with-science-flights-on-the-horizon"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/langley/nasas-777-aircraft-returns-home-with-science-flights-on-the-horizon",
+    "https://www.nasa.gov/image-article/nasa-targets-early-september-for-roman-space-telescope-launch",
+    "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-to-discuss-upcoming-launch-mission",
+    "https://www.nasa.gov/image-article/night-and-earth-day",
+    "https://science.nasa.gov/earth/advancing-earth-observation-at-nasa-since-release-of-earthrise-photo",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-jordan-artemis-accords-signing-ceremony",
     "https://science.nasa.gov/earth/new-nasa-views-of-earth-from-space",
     "https://www.nasa.gov/centers-and-facilities/johnson/nasa-at-sxsw-johnson-director-vanessa-wyche-on-why-artemis-changes-everything",
