@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-04-23T07:07:52.970979+08:00",
-  "date": "2026-04-23",
+  "updated_at": "2026-04-24T07:07:34.173686+08:00",
+  "date": "2026-04-24",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/langley/nasas-777-aircraft-returns-home-with-science-flights-on-the-horizon",
-    "https://www.nasa.gov/image-article/nasa-targets-early-september-for-roman-space-telescope-launch",
-    "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-to-discuss-upcoming-launch-mission",
-    "https://www.nasa.gov/image-article/night-and-earth-day",
-    "https://science.nasa.gov/earth/advancing-earth-observation-at-nasa-since-release-of-earthrise-photo"
+    "https://www.nasa.gov/news-release/nasa-shares-spacex-crew-13-assignments-for-space-station-mission",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-kennedy-prepares-facility-for-roman-space-telescope-arrival",
+    "https://www.nasa.gov/image-article/nasas-chandra-finds-young-stars-dim-quickly",
+    "https://science.nasa.gov/earth/earth-observatory/smoke-shrouds-northern-thailand",
+    "https://www.nasa.gov/news-release/nasa-shares-spacex-crew-13-assignments-for-space-station-mission"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/langley/nasas-777-aircraft-returns-home-with-science-flights-on-the-horizon"
+    "https://www.nasa.gov/news-release/nasa-shares-spacex-crew-13-assignments-for-space-station-mission",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-kennedy-prepares-facility-for-roman-space-telescope-arrival"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-shares-spacex-crew-13-assignments-for-space-station-mission",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-kennedy-prepares-facility-for-roman-space-telescope-arrival",
+    "https://www.nasa.gov/image-article/nasas-chandra-finds-young-stars-dim-quickly",
+    "https://science.nasa.gov/earth/earth-observatory/smoke-shrouds-northern-thailand",
     "https://www.nasa.gov/centers-and-facilities/langley/nasas-777-aircraft-returns-home-with-science-flights-on-the-horizon",
     "https://www.nasa.gov/image-article/nasa-targets-early-september-for-roman-space-telescope-launch",
     "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-to-discuss-upcoming-launch-mission",
