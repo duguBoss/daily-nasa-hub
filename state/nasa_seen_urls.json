@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-04-27T07:06:31.856778+08:00",
-  "date": "2026-04-27",
+  "updated_at": "2026-04-29T07:15:20.089440+08:00",
+  "date": "2026-04-29",
   "last_fetch_urls": [
-    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-peter-rossoni",
-    "https://www.nasa.gov/image-article/the-day-of-the-trifid-nebula",
-    "https://www.nasa.gov/news-release/nasa-astronauts-to-answer-questions-from-missouri-students",
-    "https://science.nasa.gov/earth/human-dimensions/agriculture/an-agricultural-mosaic-in-taiwan",
-    "https://www.nasa.gov/centers-and-facilities/johnson/johnson-leaders-honored-by-national-space-club-foundation"
+    "https://science.nasa.gov/missions/chandra/nasa-connects-little-red-dots-with-chandra-webb",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/new-x-59-hangar-home",
+    "https://science.nasa.gov/missions/landsat/nighttime-imaging-grows-landsats-science-value",
+    "https://science.nasa.gov/photojournal/curiosity-captures-a-360-degree-view-at-nevado-sajama",
+    "https://www.nasa.gov/missions/tech-demonstration/nasa-fires-up-powerful-lithium-fed-thruster-for-trips-to-mars"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-peter-rossoni"
+    "https://science.nasa.gov/missions/chandra/nasa-connects-little-red-dots-with-chandra-webb"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/chandra/nasa-connects-little-red-dots-with-chandra-webb",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/new-x-59-hangar-home",
+    "https://science.nasa.gov/missions/landsat/nighttime-imaging-grows-landsats-science-value",
+    "https://science.nasa.gov/photojournal/curiosity-captures-a-360-degree-view-at-nevado-sajama",
+    "https://www.nasa.gov/missions/tech-demonstration/nasa-fires-up-powerful-lithium-fed-thruster-for-trips-to-mars",
     "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-peter-rossoni",
     "https://www.nasa.gov/image-article/the-day-of-the-trifid-nebula",
     "https://www.nasa.gov/news-release/nasa-astronauts-to-answer-questions-from-missouri-students",
