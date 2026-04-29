@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-04-29T07:15:20.089440+08:00",
-  "date": "2026-04-29",
+  "updated_at": "2026-04-30T07:12:08.681464+08:00",
+  "date": "2026-04-30",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/chandra/nasa-connects-little-red-dots-with-chandra-webb",
-    "https://www.nasa.gov/centers-and-facilities/armstrong/new-x-59-hangar-home",
-    "https://science.nasa.gov/missions/landsat/nighttime-imaging-grows-landsats-science-value",
-    "https://science.nasa.gov/photojournal/curiosity-captures-a-360-degree-view-at-nevado-sajama",
-    "https://www.nasa.gov/missions/tech-demonstration/nasa-fires-up-powerful-lithium-fed-thruster-for-trips-to-mars"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-ryan-schulte",
+    "https://science.nasa.gov/photojournal/us-indian-spacecraft-captures-mexico-city-subsidence",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4873-4878-welcome-to-the-atacama-drill-target",
+    "https://www.nasa.gov/missions/nisar/us-indian-space-mission-maps-extreme-subsidence-in-mexico-city",
+    "https://www.nasa.gov/image-article/a-gently-glowing-galaxy"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/chandra/nasa-connects-little-red-dots-with-chandra-webb"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-ryan-schulte"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-ryan-schulte",
+    "https://science.nasa.gov/photojournal/us-indian-spacecraft-captures-mexico-city-subsidence",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4873-4878-welcome-to-the-atacama-drill-target",
+    "https://www.nasa.gov/missions/nisar/us-indian-space-mission-maps-extreme-subsidence-in-mexico-city",
+    "https://www.nasa.gov/image-article/a-gently-glowing-galaxy",
     "https://science.nasa.gov/missions/chandra/nasa-connects-little-red-dots-with-chandra-webb",
     "https://www.nasa.gov/centers-and-facilities/armstrong/new-x-59-hangar-home",
     "https://science.nasa.gov/missions/landsat/nighttime-imaging-grows-landsats-science-value",
