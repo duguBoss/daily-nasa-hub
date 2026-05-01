@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-05-01T07:17:58.198085+08:00",
-  "date": "2026-05-01",
+  "updated_at": "2026-05-02T07:22:55.198719+08:00",
+  "date": "2026-05-02",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-ireland-artemis-accords-signing",
-    "https://science.nasa.gov/photojournal/odyssey-team-celebrates-on-a-global-map-of-mars",
-    "https://science.nasa.gov/solar-system/whats-up-may-2026-skywatching-tips-from-nasa",
-    "https://www.nasa.gov/image-article/artemis-iii-moon-rocket-core-stage-on-the-move",
-    "https://www.nasa.gov/centers-and-facilities/goddard/nasa-goddards-greenbelt-visitor-center-marks-50th-anniversary"
+    "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire",
+    "https://www.nasa.gov/image-article/nasa-artemis-ii-crew-rings-nasdaq-closing-bell",
+    "https://www.nasa.gov/image-article/key-support-equipment-arrives-at-kennedy-for-roman-space-telescope",
+    "https://science.nasa.gov/science-research/heliophysics/nasas-storie-mission-to-tell-tale-of-earths-ring-current",
+    "https://science.nasa.gov/missions/hubble/hubble-spots-a-starry-spiral"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-ireland-artemis-accords-signing"
+    "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire",
+    "https://www.nasa.gov/image-article/nasa-artemis-ii-crew-rings-nasdaq-closing-bell"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire",
+    "https://www.nasa.gov/image-article/nasa-artemis-ii-crew-rings-nasdaq-closing-bell",
+    "https://www.nasa.gov/image-article/key-support-equipment-arrives-at-kennedy-for-roman-space-telescope",
+    "https://science.nasa.gov/science-research/heliophysics/nasas-storie-mission-to-tell-tale-of-earths-ring-current",
+    "https://science.nasa.gov/missions/hubble/hubble-spots-a-starry-spiral",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-ireland-artemis-accords-signing",
     "https://science.nasa.gov/photojournal/odyssey-team-celebrates-on-a-global-map-of-mars",
     "https://science.nasa.gov/solar-system/whats-up-may-2026-skywatching-tips-from-nasa",
