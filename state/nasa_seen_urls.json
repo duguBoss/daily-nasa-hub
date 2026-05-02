@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-05-02T07:22:55.198719+08:00",
-  "date": "2026-05-02",
+  "updated_at": "2026-05-03T07:11:25.957290+08:00",
+  "date": "2026-05-03",
   "last_fetch_urls": [
     "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire",
     "https://www.nasa.gov/image-article/nasa-artemis-ii-crew-rings-nasdaq-closing-bell",
@@ -9,8 +9,7 @@
     "https://science.nasa.gov/missions/hubble/hubble-spots-a-starry-spiral"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire",
-    "https://www.nasa.gov/image-article/nasa-artemis-ii-crew-rings-nasdaq-closing-bell"
+    "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire"
   ],
   "seen_urls": [
     "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire",
