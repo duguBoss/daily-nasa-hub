@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-04T07:11:45.943220+08:00",
-  "date": "2026-05-04",
+  "updated_at": "2026-05-05T07:18:20.715626+08:00",
+  "date": "2026-05-05",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire",
-    "https://www.nasa.gov/image-article/nasa-artemis-ii-crew-rings-nasdaq-closing-bell",
-    "https://www.nasa.gov/image-article/key-support-equipment-arrives-at-kennedy-for-roman-space-telescope",
-    "https://science.nasa.gov/science-research/heliophysics/nasas-storie-mission-to-tell-tale-of-earths-ring-current",
-    "https://science.nasa.gov/missions/hubble/hubble-spots-a-starry-spiral"
+    "https://www.nasa.gov/missions/artemis/nasa-welcomes-ireland-as-newest-artemis-accords-signatory",
+    "https://www.nasa.gov/missions/artemis/nasa-welcomes-malta-as-newest-artemis-accords-signatory",
+    "https://science.nasa.gov/learning-resources/science-activation/breaking-barriers-at-3rd-annual-findings-from-the-field-symposium",
+    "https://www.nasa.gov/missions/artemis/blue-origin-moon-lander-completes-testing-at-nasa-vacuum-chamber",
+    "https://www.nasa.gov/image-article/hubble-spots-a-starry-spiral"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire"
+    "https://www.nasa.gov/missions/artemis/nasa-welcomes-ireland-as-newest-artemis-accords-signatory"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/artemis/nasa-welcomes-ireland-as-newest-artemis-accords-signatory",
+    "https://www.nasa.gov/missions/artemis/nasa-welcomes-malta-as-newest-artemis-accords-signatory",
+    "https://science.nasa.gov/learning-resources/science-activation/breaking-barriers-at-3rd-annual-findings-from-the-field-symposium",
+    "https://www.nasa.gov/missions/artemis/blue-origin-moon-lander-completes-testing-at-nasa-vacuum-chamber",
+    "https://www.nasa.gov/image-article/hubble-spots-a-starry-spiral",
     "https://www.nasa.gov/news-release/nasa-kennedy-center-director-announces-plans-to-retire",
     "https://www.nasa.gov/image-article/nasa-artemis-ii-crew-rings-nasdaq-closing-bell",
     "https://www.nasa.gov/image-article/key-support-equipment-arrives-at-kennedy-for-roman-space-telescope",
