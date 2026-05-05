@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-05T07:18:20.715626+08:00",
-  "date": "2026-05-05",
+  "updated_at": "2026-05-06T07:13:15.511136+08:00",
+  "date": "2026-05-06",
   "last_fetch_urls": [
-    "https://www.nasa.gov/missions/artemis/nasa-welcomes-ireland-as-newest-artemis-accords-signatory",
-    "https://www.nasa.gov/missions/artemis/nasa-welcomes-malta-as-newest-artemis-accords-signatory",
-    "https://science.nasa.gov/learning-resources/science-activation/breaking-barriers-at-3rd-annual-findings-from-the-field-symposium",
-    "https://www.nasa.gov/missions/artemis/blue-origin-moon-lander-completes-testing-at-nasa-vacuum-chamber",
-    "https://www.nasa.gov/image-article/hubble-spots-a-starry-spiral"
+    "https://science.nasa.gov/learning-resources/science-activation/nasa-eclips-and-globe-educators-strengthen-a-regional-stem-ecosystem-in-coastal-virginia",
+    "https://science.nasa.gov/photojournal/nasas-perseverance-mars-rover-surveys-crocodile-bridge",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4879-4885-struggle-at-atacama",
+    "https://science.nasa.gov/get-involved/citizen-science/650-nasa-volunteers-have-co-authored-scientific-papers",
+    "https://science.nasa.gov/photojournal/nasas-curiosity-rover-frees-its-drill-from-a-rock"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/missions/artemis/nasa-welcomes-ireland-as-newest-artemis-accords-signatory"
+    "https://science.nasa.gov/learning-resources/science-activation/nasa-eclips-and-globe-educators-strengthen-a-regional-stem-ecosystem-in-coastal-virginia"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/learning-resources/science-activation/nasa-eclips-and-globe-educators-strengthen-a-regional-stem-ecosystem-in-coastal-virginia",
+    "https://science.nasa.gov/photojournal/nasas-perseverance-mars-rover-surveys-crocodile-bridge",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4879-4885-struggle-at-atacama",
+    "https://science.nasa.gov/get-involved/citizen-science/650-nasa-volunteers-have-co-authored-scientific-papers",
+    "https://science.nasa.gov/photojournal/nasas-curiosity-rover-frees-its-drill-from-a-rock",
     "https://www.nasa.gov/missions/artemis/nasa-welcomes-ireland-as-newest-artemis-accords-signatory",
     "https://www.nasa.gov/missions/artemis/nasa-welcomes-malta-as-newest-artemis-accords-signatory",
     "https://science.nasa.gov/learning-resources/science-activation/breaking-barriers-at-3rd-annual-findings-from-the-field-symposium",
