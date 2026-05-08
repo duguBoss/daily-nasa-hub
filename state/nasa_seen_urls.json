@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-08T07:23:02.421924+08:00",
-  "date": "2026-05-08",
+  "updated_at": "2026-05-09T07:21:35.151952+08:00",
+  "date": "2026-05-09",
   "last_fetch_urls": [
-    "https://science.nasa.gov/photojournal/nasa-sends-mars-helicopter-blades-beyond-mach-1",
-    "https://science.nasa.gov/photojournal/nasas-next-gen-mars-helicopter-rotors-are-moving-fast",
-    "https://www.nasa.gov/image-article/a-light-in-the-dark",
-    "https://science.nasa.gov/science-research/ai-foundation-model-in-orbit",
-    "https://www.nasa.gov/blogs/spacestation/2026/05/07/dna-inspired-treatments-space-agriculture-top-crews-research-schedule"
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-captures-mars-during-gravity-assist-approach",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis-anton-kiriwas",
+    "https://www.nasa.gov/image-article/glowing-views-from-the-space-station",
+    "https://www.nasa.gov/news-release/nasa-names-brian-hughes-to-launch-operations-role",
+    "https://science.nasa.gov/earth/earth-observatory/tracy-arms-post-tsunami-landscape"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/photojournal/nasa-sends-mars-helicopter-blades-beyond-mach-1"
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-captures-mars-during-gravity-assist-approach"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-captures-mars-during-gravity-assist-approach",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis-anton-kiriwas",
+    "https://www.nasa.gov/image-article/glowing-views-from-the-space-station",
+    "https://www.nasa.gov/news-release/nasa-names-brian-hughes-to-launch-operations-role",
+    "https://science.nasa.gov/earth/earth-observatory/tracy-arms-post-tsunami-landscape",
     "https://science.nasa.gov/photojournal/nasa-sends-mars-helicopter-blades-beyond-mach-1",
     "https://science.nasa.gov/photojournal/nasas-next-gen-mars-helicopter-rotors-are-moving-fast",
     "https://www.nasa.gov/image-article/a-light-in-the-dark",
