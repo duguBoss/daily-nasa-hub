@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-11T07:11:33.117897+08:00",
-  "date": "2026-05-11",
+  "updated_at": "2026-05-12T07:39:41.278098+08:00",
+  "date": "2026-05-12",
   "last_fetch_urls": [
-    "https://science.nasa.gov/photojournal/nasas-psyche-mission-captures-mars-during-gravity-assist-approach",
-    "https://www.nasa.gov/missions/artemis/i-am-artemis-anton-kiriwas",
-    "https://www.nasa.gov/image-article/glowing-views-from-the-space-station",
-    "https://www.nasa.gov/news-release/nasa-names-brian-hughes-to-launch-operations-role",
-    "https://science.nasa.gov/earth/earth-observatory/tracy-arms-post-tsunami-landscape"
+    "https://www.nasa.gov/centers-and-facilities/johnson/nicholas-houghton-engineering-crew-safety-for-artemis-ii",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-annual-lunabotics-robotics-competition",
+    "https://science.nasa.gov/science-research/earth-science/joint-earth-observation-mission-quality-assessment-framework-optical-guidelines-documents-released",
+    "https://science.nasa.gov/missions/roman-space-telescope/hubble-survey-sets-up-romans-future-look-near-milky-ways-center",
+    "https://www.nasa.gov/image-article/nasa-astronaut-jessica-meir-2"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/photojournal/nasas-psyche-mission-captures-mars-during-gravity-assist-approach"
+    "https://www.nasa.gov/centers-and-facilities/johnson/nicholas-houghton-engineering-crew-safety-for-artemis-ii"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/johnson/nicholas-houghton-engineering-crew-safety-for-artemis-ii",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-annual-lunabotics-robotics-competition",
+    "https://science.nasa.gov/science-research/earth-science/joint-earth-observation-mission-quality-assessment-framework-optical-guidelines-documents-released",
+    "https://science.nasa.gov/missions/roman-space-telescope/hubble-survey-sets-up-romans-future-look-near-milky-ways-center",
+    "https://www.nasa.gov/image-article/nasa-astronaut-jessica-meir-2",
     "https://science.nasa.gov/photojournal/nasas-psyche-mission-captures-mars-during-gravity-assist-approach",
     "https://www.nasa.gov/missions/artemis/i-am-artemis-anton-kiriwas",
     "https://www.nasa.gov/image-article/glowing-views-from-the-space-station",
