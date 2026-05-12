@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-12T07:39:41.278098+08:00",
-  "date": "2026-05-12",
+  "updated_at": "2026-05-13T07:43:50.338014+08:00",
+  "date": "2026-05-13",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/nicholas-houghton-engineering-crew-safety-for-artemis-ii",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-annual-lunabotics-robotics-competition",
-    "https://science.nasa.gov/science-research/earth-science/joint-earth-observation-mission-quality-assessment-framework-optical-guidelines-documents-released",
-    "https://science.nasa.gov/missions/roman-space-telescope/hubble-survey-sets-up-romans-future-look-near-milky-ways-center",
-    "https://www.nasa.gov/image-article/nasa-astronaut-jessica-meir-2"
+    "https://www.nasa.gov/image-article/perseverance-stuns-in-new-selfie",
+    "https://www.nasa.gov/missions/mars-2020-perseverance/perseverance-rover/nasas-perseverance-rover-snaps-selfie-in-mars-western-frontier",
+    "https://science.nasa.gov/photojournal/nasas-perseverance-captures-panorama-at-arbot",
+    "https://science.nasa.gov/photojournal/nasas-perseverance-rover-snaps-westernmost-selfie",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-kathleen-harmon"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/nicholas-houghton-engineering-crew-safety-for-artemis-ii"
+    "https://www.nasa.gov/image-article/perseverance-stuns-in-new-selfie"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/perseverance-stuns-in-new-selfie",
+    "https://www.nasa.gov/missions/mars-2020-perseverance/perseverance-rover/nasas-perseverance-rover-snaps-selfie-in-mars-western-frontier",
+    "https://science.nasa.gov/photojournal/nasas-perseverance-captures-panorama-at-arbot",
+    "https://science.nasa.gov/photojournal/nasas-perseverance-rover-snaps-westernmost-selfie",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-kathleen-harmon",
     "https://www.nasa.gov/centers-and-facilities/johnson/nicholas-houghton-engineering-crew-safety-for-artemis-ii",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-annual-lunabotics-robotics-competition",
     "https://science.nasa.gov/science-research/earth-science/joint-earth-observation-mission-quality-assessment-framework-optical-guidelines-documents-released",
