@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-13T07:43:50.338014+08:00",
-  "date": "2026-05-13",
+  "updated_at": "2026-05-14T07:26:02.803474+08:00",
+  "date": "2026-05-14",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/perseverance-stuns-in-new-selfie",
-    "https://www.nasa.gov/missions/mars-2020-perseverance/perseverance-rover/nasas-perseverance-rover-snaps-selfie-in-mars-western-frontier",
-    "https://science.nasa.gov/photojournal/nasas-perseverance-captures-panorama-at-arbot",
-    "https://science.nasa.gov/photojournal/nasas-perseverance-rover-snaps-westernmost-selfie",
-    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-kathleen-harmon"
+    "https://www.nasa.gov/image-article/rise-goes-to-washington",
+    "https://www.nasa.gov/missions/artemis/artemis-3/nasa-outlines-preliminary-artemis-iii-mission-plans",
+    "https://www.nasa.gov/missions/station/iss-research/studying-pneumonia-in-space-for-heart-health-on-earth",
+    "https://science.nasa.gov/missions/tess/nasas-planet-hunting-tess-reveals-dazzling-night-sky",
+    "https://science.nasa.gov/earth/earth-observatory/americas-emerald-isle"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/perseverance-stuns-in-new-selfie"
+    "https://www.nasa.gov/image-article/rise-goes-to-washington"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/rise-goes-to-washington",
+    "https://www.nasa.gov/missions/artemis/artemis-3/nasa-outlines-preliminary-artemis-iii-mission-plans",
+    "https://www.nasa.gov/missions/station/iss-research/studying-pneumonia-in-space-for-heart-health-on-earth",
+    "https://science.nasa.gov/missions/tess/nasas-planet-hunting-tess-reveals-dazzling-night-sky",
+    "https://science.nasa.gov/earth/earth-observatory/americas-emerald-isle",
     "https://www.nasa.gov/image-article/perseverance-stuns-in-new-selfie",
     "https://www.nasa.gov/missions/mars-2020-perseverance/perseverance-rover/nasas-perseverance-rover-snaps-selfie-in-mars-western-frontier",
     "https://science.nasa.gov/photojournal/nasas-perseverance-captures-panorama-at-arbot",
