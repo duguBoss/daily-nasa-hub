@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-14T07:26:02.803474+08:00",
-  "date": "2026-05-14",
+  "updated_at": "2026-05-15T07:30:43.115181+08:00",
+  "date": "2026-05-15",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/rise-goes-to-washington",
-    "https://www.nasa.gov/missions/artemis/artemis-3/nasa-outlines-preliminary-artemis-iii-mission-plans",
-    "https://www.nasa.gov/missions/station/iss-research/studying-pneumonia-in-space-for-heart-health-on-earth",
-    "https://science.nasa.gov/missions/tess/nasas-planet-hunting-tess-reveals-dazzling-night-sky",
-    "https://science.nasa.gov/earth/earth-observatory/americas-emerald-isle"
+    "https://www.nasa.gov/image-article/fresh-food-delivery-for-space-station",
+    "https://science.nasa.gov/earth/earth-observatory/ice-moves-out-of-aniak",
+    "https://science.nasa.gov/blogs/eyes/2026/05/14/psyche-mission-mars-flyby-event-added-to-eyes-on-the-solar-system-front-page",
+    "https://www.nasa.gov/blogs/spacestation/2026/05/14/dragon-targets-friday-launch-as-crew-keeps-up-science-and-spacewalk-preps",
+    "https://www.nasa.gov/blogs/quesst/2026/05/14/nasas-x-59-team-testing-aircraft-performance-at-all-speeds"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/rise-goes-to-washington"
+    "https://www.nasa.gov/image-article/fresh-food-delivery-for-space-station"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/fresh-food-delivery-for-space-station",
+    "https://science.nasa.gov/earth/earth-observatory/ice-moves-out-of-aniak",
+    "https://science.nasa.gov/blogs/eyes/2026/05/14/psyche-mission-mars-flyby-event-added-to-eyes-on-the-solar-system-front-page",
+    "https://www.nasa.gov/blogs/spacestation/2026/05/14/dragon-targets-friday-launch-as-crew-keeps-up-science-and-spacewalk-preps",
+    "https://www.nasa.gov/blogs/quesst/2026/05/14/nasas-x-59-team-testing-aircraft-performance-at-all-speeds",
     "https://www.nasa.gov/image-article/rise-goes-to-washington",
     "https://www.nasa.gov/missions/artemis/artemis-3/nasa-outlines-preliminary-artemis-iii-mission-plans",
     "https://www.nasa.gov/missions/station/iss-research/studying-pneumonia-in-space-for-heart-health-on-earth",
