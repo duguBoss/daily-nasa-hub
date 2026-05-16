@@ -1,13 +1,13 @@
-# 龙飞船第34次补给任务成功发射，携带新实验奔向国际空间站
+# 空间X第34次补给任务发射成功龙飞船载实验奔向国际空间站
 
-- 日期: 2026-05-16
+- 日期: 2026-05-17
 
-## 1. Stars, Sprites, Clouds, Auroras
+## 1. The Horsehead Nebula
 
 - 频道: NASA APOD
 - 链接: 
 
-What are those red streaks in the sky? While photographing unexpected auroras over a distant thunderstorm, something extraordinary happened: red sprites. This brief instance of rarely imaged high-altitude lightning flashed so bright that it was witnessed by se
+Sculpted by stellar winds and radiation, this dusty interstellar molecular cloud has by chance assumed an immediately recognizable shape. Fittingly known as The Horsehead Nebula, it lies some 1,500 light-years distant, embedded in the vast Orion cloud complex.
 
 ## 2. NASA Science, Cargo Launch on 34th SpaceX Resupply Mission to Station
 
