@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-05-18T07:25:56.899881+08:00",
-  "date": "2026-05-18",
+  "updated_at": "2026-05-19T07:32:44.765768+08:00",
+  "date": "2026-05-19",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-science-cargo-launch-on-34th-spacex-resupply-mission-to-station",
-    "https://www.nasa.gov/image-article/curiosity-shakes-loose-a-pesky-rock",
-    "https://science.nasa.gov/missions/hubble/hubble-sights-galaxy-in-transition",
-    "https://science.nasa.gov/earth/earth-observatory/picturing-earth-in-a-new-light",
-    "https://www.nasa.gov/image-article/fresh-food-delivery-for-space-station"
-  ],
-  "last_new_urls": [
+    "https://www.nasa.gov/centers-and-facilities/johnson/johnson-photographers-honored-for-award-winning-portraits",
+    "https://science.nasa.gov/missions/maven/nasas-maven-makes-1st-discovery-of-atmospheric-effect-at-mars",
+    "https://www.nasa.gov/news-release/nasa-selects-next-class-of-space-health-postdoctoral-fellows",
+    "https://www.nasa.gov/image-article/beacon-of-light",
     "https://www.nasa.gov/news-release/nasa-science-cargo-launch-on-34th-spacex-resupply-mission-to-station"
   ],
+  "last_new_urls": [
+    "https://www.nasa.gov/centers-and-facilities/johnson/johnson-photographers-honored-for-award-winning-portraits"
+  ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/johnson/johnson-photographers-honored-for-award-winning-portraits",
+    "https://science.nasa.gov/missions/maven/nasas-maven-makes-1st-discovery-of-atmospheric-effect-at-mars",
+    "https://www.nasa.gov/news-release/nasa-selects-next-class-of-space-health-postdoctoral-fellows",
+    "https://www.nasa.gov/image-article/beacon-of-light",
     "https://www.nasa.gov/news-release/nasa-science-cargo-launch-on-34th-spacex-resupply-mission-to-station",
     "https://www.nasa.gov/image-article/curiosity-shakes-loose-a-pesky-rock",
     "https://science.nasa.gov/missions/hubble/hubble-sights-galaxy-in-transition",
