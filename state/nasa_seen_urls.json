@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-19T07:32:44.765768+08:00",
-  "date": "2026-05-19",
+  "updated_at": "2026-05-20T07:40:26.385623+08:00",
+  "date": "2026-05-20",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/johnson-photographers-honored-for-award-winning-portraits",
-    "https://science.nasa.gov/missions/maven/nasas-maven-makes-1st-discovery-of-atmospheric-effect-at-mars",
-    "https://www.nasa.gov/news-release/nasa-selects-next-class-of-space-health-postdoctoral-fellows",
-    "https://www.nasa.gov/image-article/beacon-of-light",
-    "https://www.nasa.gov/news-release/nasa-science-cargo-launch-on-34th-spacex-resupply-mission-to-station"
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-images-mars-huygens-crater",
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-spies-mars-wind-blown-craters-during-close-approach",
+    "https://science.nasa.gov/photojournal/psyches-high-resolution-view-of-mars-south-pole",
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-sees-mars-south-pole-after-flyby",
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-images-the-crescent-of-mars"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/johnson-photographers-honored-for-award-winning-portraits"
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-images-mars-huygens-crater"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-images-mars-huygens-crater",
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-spies-mars-wind-blown-craters-during-close-approach",
+    "https://science.nasa.gov/photojournal/psyches-high-resolution-view-of-mars-south-pole",
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-sees-mars-south-pole-after-flyby",
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-images-the-crescent-of-mars",
     "https://www.nasa.gov/centers-and-facilities/johnson/johnson-photographers-honored-for-award-winning-portraits",
     "https://science.nasa.gov/missions/maven/nasas-maven-makes-1st-discovery-of-atmospheric-effect-at-mars",
     "https://www.nasa.gov/news-release/nasa-selects-next-class-of-space-health-postdoctoral-fellows",
