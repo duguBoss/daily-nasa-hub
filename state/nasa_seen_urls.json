@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-21T07:57:48.321691+08:00",
-  "date": "2026-05-21",
+  "updated_at": "2026-05-22T07:32:18.096109+08:00",
+  "date": "2026-05-22",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/la-nasa-informara-sobre-su-estrategia-y-misiones-para-la-base-lunar",
-    "https://www.nasa.gov/image-article/psyche-spacecraft-completes-mars-flyby",
-    "https://www.nasa.gov/news-release/nasa-to-provide-update-on-moon-base-strategy-missions",
-    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-tim-goddard",
-    "https://science.nasa.gov/missions/fermi/nasas-fermi-glimpses-power-source-of-supercharged-supernovae"
+    "https://www.nasa.gov/news-release/nasa-to-showcase-mission-to-boost-swift-spacecrafts-orbit",
+    "https://www.nasa.gov/news-release/nasa-joins-artemis-accords-workshop-as-global-signings-rise",
+    "https://www.nasa.gov/missions/artemis/nasa-seeks-interest-for-artemis-mission-cubesats",
+    "https://science.nasa.gov/science-research/heliophysics/nasas-awe-completes-mission-to-study-earths-effect-on-space-weather",
+    "https://www.nasa.gov/image-article/hubble-sights-galaxy-in-transition"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/la-nasa-informara-sobre-su-estrategia-y-misiones-para-la-base-lunar"
+    "https://www.nasa.gov/news-release/nasa-to-showcase-mission-to-boost-swift-spacecrafts-orbit"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-to-showcase-mission-to-boost-swift-spacecrafts-orbit",
+    "https://www.nasa.gov/news-release/nasa-joins-artemis-accords-workshop-as-global-signings-rise",
+    "https://www.nasa.gov/missions/artemis/nasa-seeks-interest-for-artemis-mission-cubesats",
+    "https://science.nasa.gov/science-research/heliophysics/nasas-awe-completes-mission-to-study-earths-effect-on-space-weather",
+    "https://www.nasa.gov/image-article/hubble-sights-galaxy-in-transition",
     "https://www.nasa.gov/news-release/la-nasa-informara-sobre-su-estrategia-y-misiones-para-la-base-lunar",
     "https://www.nasa.gov/image-article/psyche-spacecraft-completes-mars-flyby",
     "https://www.nasa.gov/news-release/nasa-to-provide-update-on-moon-base-strategy-missions",
