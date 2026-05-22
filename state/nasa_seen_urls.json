@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-22T07:32:18.096109+08:00",
-  "date": "2026-05-22",
+  "updated_at": "2026-05-23T07:25:45.741206+08:00",
+  "date": "2026-05-23",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-showcase-mission-to-boost-swift-spacecrafts-orbit",
-    "https://www.nasa.gov/news-release/nasa-joins-artemis-accords-workshop-as-global-signings-rise",
-    "https://www.nasa.gov/missions/artemis/nasa-seeks-interest-for-artemis-mission-cubesats",
-    "https://science.nasa.gov/science-research/heliophysics/nasas-awe-completes-mission-to-study-earths-effect-on-space-weather",
-    "https://www.nasa.gov/image-article/hubble-sights-galaxy-in-transition"
+    "https://www.nasa.gov/news-release/call-for-creatives-nasa-seeks-help-illuminating-mission-storytelling",
+    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-roscosmos-spacewalk-outside-space-station-2",
+    "https://www.nasa.gov/image-article/webb-studies-star-clusters",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/keeping-nasa-flying-ground-crews-ensure-aircraft-readiness",
+    "https://www.nasa.gov/news-release/nasa-to-compete-contract-for-jet-propulsion-laboratory-management"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-showcase-mission-to-boost-swift-spacecrafts-orbit"
+    "https://www.nasa.gov/news-release/call-for-creatives-nasa-seeks-help-illuminating-mission-storytelling"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/call-for-creatives-nasa-seeks-help-illuminating-mission-storytelling",
+    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-roscosmos-spacewalk-outside-space-station-2",
+    "https://www.nasa.gov/image-article/webb-studies-star-clusters",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/keeping-nasa-flying-ground-crews-ensure-aircraft-readiness",
+    "https://www.nasa.gov/news-release/nasa-to-compete-contract-for-jet-propulsion-laboratory-management",
     "https://www.nasa.gov/news-release/nasa-to-showcase-mission-to-boost-swift-spacecrafts-orbit",
     "https://www.nasa.gov/news-release/nasa-joins-artemis-accords-workshop-as-global-signings-rise",
     "https://www.nasa.gov/missions/artemis/nasa-seeks-interest-for-artemis-mission-cubesats",
