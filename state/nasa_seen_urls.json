@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-26T07:43:38.922803+08:00",
-  "date": "2026-05-26",
+  "updated_at": "2026-05-27T07:41:36.736064+08:00",
+  "date": "2026-05-27",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/call-for-creatives-nasa-seeks-help-illuminating-mission-storytelling",
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-roscosmos-spacewalk-outside-space-station-2",
-    "https://www.nasa.gov/image-article/webb-studies-star-clusters",
-    "https://www.nasa.gov/centers-and-facilities/armstrong/keeping-nasa-flying-ground-crews-ensure-aircraft-readiness",
-    "https://www.nasa.gov/news-release/nasa-to-compete-contract-for-jet-propulsion-laboratory-management"
+    "https://www.nasa.gov/news-release/nasa-to-announce-artemis-iii-crew-provide-mission-progress-update",
+    "https://www.nasa.gov/news-release/nasa-provides-update-on-moon-base-rovers-landers-missions",
+    "https://www.nasa.gov/image-article/chennai-city-lights",
+    "https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/new-instrument-used-antarctic-ice-sheet-to-probe-extreme-universe",
+    "https://science.nasa.gov/earth/earth-observatory/a-full-moon-checkup"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/call-for-creatives-nasa-seeks-help-illuminating-mission-storytelling"
+    "https://www.nasa.gov/news-release/nasa-to-announce-artemis-iii-crew-provide-mission-progress-update"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-to-announce-artemis-iii-crew-provide-mission-progress-update",
+    "https://www.nasa.gov/news-release/nasa-provides-update-on-moon-base-rovers-landers-missions",
+    "https://www.nasa.gov/image-article/chennai-city-lights",
+    "https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/new-instrument-used-antarctic-ice-sheet-to-probe-extreme-universe",
+    "https://science.nasa.gov/earth/earth-observatory/a-full-moon-checkup",
     "https://www.nasa.gov/news-release/call-for-creatives-nasa-seeks-help-illuminating-mission-storytelling",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-roscosmos-spacewalk-outside-space-station-2",
     "https://www.nasa.gov/image-article/webb-studies-star-clusters",
