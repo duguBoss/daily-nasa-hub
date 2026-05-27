@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-27T07:41:36.736064+08:00",
-  "date": "2026-05-27",
+  "updated_at": "2026-05-28T07:47:56.096661+08:00",
+  "date": "2026-05-28",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-announce-artemis-iii-crew-provide-mission-progress-update",
-    "https://www.nasa.gov/news-release/nasa-provides-update-on-moon-base-rovers-landers-missions",
-    "https://www.nasa.gov/image-article/chennai-city-lights",
-    "https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/new-instrument-used-antarctic-ice-sheet-to-probe-extreme-universe",
-    "https://science.nasa.gov/earth/earth-observatory/a-full-moon-checkup"
+    "https://science.nasa.gov/missions/landsat/released-nasa-goddard-issues-draft-request-for-proposal-for-the-landsat-10-spacecraft",
+    "https://www.nasa.gov/news-release/la-nasa-ofrece-informacion-actualizada-sobre-rovers-modulos-de-alunizaje-y-misiones-de-base-lunar",
+    "https://science.nasa.gov/learning-resources/science-activation/girl-scouts-event-brings-space-science-to-the-next-generation",
+    "https://www.nasa.gov/news-release/la-nasa-anunciara-la-tripulacion-de-artemis-iii-e-informara-sobre-el-progreso-de-la-mision",
+    "https://www.nasa.gov/image-article/students-build-moon-robots-for-nasas-2026-lunabotics-challenge"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-announce-artemis-iii-crew-provide-mission-progress-update"
+    "https://science.nasa.gov/missions/landsat/released-nasa-goddard-issues-draft-request-for-proposal-for-the-landsat-10-spacecraft"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/landsat/released-nasa-goddard-issues-draft-request-for-proposal-for-the-landsat-10-spacecraft",
+    "https://www.nasa.gov/news-release/la-nasa-ofrece-informacion-actualizada-sobre-rovers-modulos-de-alunizaje-y-misiones-de-base-lunar",
+    "https://science.nasa.gov/learning-resources/science-activation/girl-scouts-event-brings-space-science-to-the-next-generation",
+    "https://www.nasa.gov/news-release/la-nasa-anunciara-la-tripulacion-de-artemis-iii-e-informara-sobre-el-progreso-de-la-mision",
+    "https://www.nasa.gov/image-article/students-build-moon-robots-for-nasas-2026-lunabotics-challenge",
     "https://www.nasa.gov/news-release/nasa-to-announce-artemis-iii-crew-provide-mission-progress-update",
     "https://www.nasa.gov/news-release/nasa-provides-update-on-moon-base-rovers-landers-missions",
     "https://www.nasa.gov/image-article/chennai-city-lights",
