@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-05-29T08:15:35.246662+08:00",
-  "date": "2026-05-29",
+  "updated_at": "2026-05-30T07:45:56.002652+08:00",
+  "date": "2026-05-30",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/armstrong/nasas-x-59-prepares-for-first-supersonic-flight",
-    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-daniel-stubbs",
-    "https://science.nasa.gov/missions/landsat/new-landsat-science-team-holds-first-in-person-meeting",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4900-4907-pasadena-we-have-a-drill-sample",
-    "https://science.nasa.gov/science-research/astromaterials/nasa-uses-mineralogical-marker-to-understand-ancient-martian-climate"
+    "https://www.nasa.gov/news-release/nasa-awards-contract-for-johnson-space-center-infrastructure",
+    "https://www.nasa.gov/news-release/nasa-hosts-spacex-crew-11-astronauts-for-public-event-at-headquarters",
+    "https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-space-telescope-primary-mirror-gets-last-look",
+    "https://www.nasa.gov/image-article/hubble-spies-faint-irregular-galaxy",
+    "https://science.nasa.gov/missions/hubble/hubble-captures-m88-on-journey-to-center-of-virgo-cluster"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/armstrong/nasas-x-59-prepares-for-first-supersonic-flight"
+    "https://www.nasa.gov/news-release/nasa-awards-contract-for-johnson-space-center-infrastructure"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-awards-contract-for-johnson-space-center-infrastructure",
+    "https://www.nasa.gov/news-release/nasa-hosts-spacex-crew-11-astronauts-for-public-event-at-headquarters",
+    "https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-space-telescope-primary-mirror-gets-last-look",
+    "https://www.nasa.gov/image-article/hubble-spies-faint-irregular-galaxy",
+    "https://science.nasa.gov/missions/hubble/hubble-captures-m88-on-journey-to-center-of-virgo-cluster",
     "https://www.nasa.gov/centers-and-facilities/armstrong/nasas-x-59-prepares-for-first-supersonic-flight",
     "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-daniel-stubbs",
     "https://science.nasa.gov/missions/landsat/new-landsat-science-team-holds-first-in-person-meeting",
