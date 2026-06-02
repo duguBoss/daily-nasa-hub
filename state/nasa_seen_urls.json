@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-06-01T07:33:14.977074+08:00",
-  "date": "2026-06-01",
+  "updated_at": "2026-06-02T08:04:28.497902+08:00",
+  "date": "2026-06-02",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-contract-for-johnson-space-center-infrastructure",
-    "https://www.nasa.gov/news-release/nasa-hosts-spacex-crew-11-astronauts-for-public-event-at-headquarters",
-    "https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-space-telescope-primary-mirror-gets-last-look",
-    "https://www.nasa.gov/image-article/hubble-spies-faint-irregular-galaxy",
-    "https://science.nasa.gov/missions/hubble/hubble-captures-m88-on-journey-to-center-of-virgo-cluster"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-see-roman-space-telescope-arrive-at-kennedy",
+    "https://science.nasa.gov/solar-system/whats-up-june-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/image-article/pretty-in-pink-2",
+    "https://science.nasa.gov/earth/earth-observatory/gravity-waves-from-super-typhoon-sinlaku",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-see-roman-space-telescope-arrive-at-kennedy"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-contract-for-johnson-space-center-infrastructure"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-see-roman-space-telescope-arrive-at-kennedy"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-see-roman-space-telescope-arrive-at-kennedy",
+    "https://science.nasa.gov/solar-system/whats-up-june-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/image-article/pretty-in-pink-2",
+    "https://science.nasa.gov/earth/earth-observatory/gravity-waves-from-super-typhoon-sinlaku",
     "https://www.nasa.gov/news-release/nasa-awards-contract-for-johnson-space-center-infrastructure",
     "https://www.nasa.gov/news-release/nasa-hosts-spacex-crew-11-astronauts-for-public-event-at-headquarters",
     "https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-space-telescope-primary-mirror-gets-last-look",
