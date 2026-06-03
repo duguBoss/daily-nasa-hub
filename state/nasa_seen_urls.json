@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-06-02T08:04:28.497902+08:00",
-  "date": "2026-06-02",
+  "updated_at": "2026-06-03T08:24:23.340411+08:00",
+  "date": "2026-06-03",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-see-roman-space-telescope-arrive-at-kennedy",
-    "https://science.nasa.gov/solar-system/whats-up-june-2026-skywatching-tips-from-nasa",
-    "https://www.nasa.gov/image-article/pretty-in-pink-2",
-    "https://science.nasa.gov/earth/earth-observatory/gravity-waves-from-super-typhoon-sinlaku",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-see-roman-space-telescope-arrive-at-kennedy"
+    "https://www.nasa.gov/image-article/look-up",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-testing-wastewater-treatment-facility-for-future-moon-base",
+    "https://science.nasa.gov/get-involved/citizen-science/help-galaxy-zoo-clump-scout-ii-project",
+    "https://www.nasa.gov/centers-and-facilities/johnson/spacewalking-with-scott-wray-artemis-eva-training-lead",
+    "https://science.nasa.gov/earth/earth-observatory/fires-footprint-on-santa-rosa-island"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-see-roman-space-telescope-arrive-at-kennedy"
+    "https://www.nasa.gov/image-article/look-up"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/look-up",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-testing-wastewater-treatment-facility-for-future-moon-base",
+    "https://science.nasa.gov/get-involved/citizen-science/help-galaxy-zoo-clump-scout-ii-project",
+    "https://www.nasa.gov/centers-and-facilities/johnson/spacewalking-with-scott-wray-artemis-eva-training-lead",
+    "https://science.nasa.gov/earth/earth-observatory/fires-footprint-on-santa-rosa-island",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-see-roman-space-telescope-arrive-at-kennedy",
     "https://science.nasa.gov/solar-system/whats-up-june-2026-skywatching-tips-from-nasa",
     "https://www.nasa.gov/image-article/pretty-in-pink-2",
