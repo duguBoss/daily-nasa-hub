@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-06-03T08:24:23.340411+08:00",
-  "date": "2026-06-03",
+  "updated_at": "2026-06-04T08:17:31.775250+08:00",
+  "date": "2026-06-04",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/look-up",
-    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-testing-wastewater-treatment-facility-for-future-moon-base",
-    "https://science.nasa.gov/get-involved/citizen-science/help-galaxy-zoo-clump-scout-ii-project",
-    "https://www.nasa.gov/centers-and-facilities/johnson/spacewalking-with-scott-wray-artemis-eva-training-lead",
-    "https://science.nasa.gov/earth/earth-observatory/fires-footprint-on-santa-rosa-island"
+    "https://science.nasa.gov/science-research/planetary-science/astrobiology/nasa-finds-new-way-earth-may-have-received-elements-needed-for-life",
+    "https://science.nasa.gov/photojournal/international-sea-level-satellite-observes-el-nino-precursor",
+    "https://www.nasa.gov/image-article/journey-to-the-center-of-the-virgo-cluster",
+    "https://www.nasa.gov/centers-and-facilities/stennis/reservoir-drained-to-upgrade-water-system",
+    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/look-up"
+    "https://science.nasa.gov/science-research/planetary-science/astrobiology/nasa-finds-new-way-earth-may-have-received-elements-needed-for-life",
+    "https://science.nasa.gov/photojournal/international-sea-level-satellite-observes-el-nino-precursor"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/science-research/planetary-science/astrobiology/nasa-finds-new-way-earth-may-have-received-elements-needed-for-life",
+    "https://science.nasa.gov/photojournal/international-sea-level-satellite-observes-el-nino-precursor",
+    "https://www.nasa.gov/image-article/journey-to-the-center-of-the-virgo-cluster",
+    "https://www.nasa.gov/centers-and-facilities/stennis/reservoir-drained-to-upgrade-water-system",
+    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today",
     "https://www.nasa.gov/image-article/look-up",
     "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-testing-wastewater-treatment-facility-for-future-moon-base",
     "https://science.nasa.gov/get-involved/citizen-science/help-galaxy-zoo-clump-scout-ii-project",
