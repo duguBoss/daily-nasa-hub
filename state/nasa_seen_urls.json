@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-06-04T08:17:31.775250+08:00",
-  "date": "2026-06-04",
+  "updated_at": "2026-06-05T07:45:24.423103+08:00",
+  "date": "2026-06-05",
   "last_fetch_urls": [
-    "https://science.nasa.gov/science-research/planetary-science/astrobiology/nasa-finds-new-way-earth-may-have-received-elements-needed-for-life",
-    "https://science.nasa.gov/photojournal/international-sea-level-satellite-observes-el-nino-precursor",
-    "https://www.nasa.gov/image-article/journey-to-the-center-of-the-virgo-cluster",
-    "https://www.nasa.gov/centers-and-facilities/stennis/reservoir-drained-to-upgrade-water-system",
-    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today"
+    "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
+    "https://www.nasa.gov/image-article/colorful-chaotic-jupiter",
+    "https://science.nasa.gov/earth/earth-observatory/a-moonlit-earth-as-seen-from-artemis-ii",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4908-4912-goodbye-campo-marte-its-been-fun",
+    "https://www.nasa.gov/blogs/spacestation/2026/06/04/bioprinting-cartilage-producing-stem-cells-fill-thursdays-research-schedule"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/science-research/planetary-science/astrobiology/nasa-finds-new-way-earth-may-have-received-elements-needed-for-life",
-    "https://science.nasa.gov/photojournal/international-sea-level-satellite-observes-el-nino-precursor"
+    "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
+    "https://www.nasa.gov/image-article/colorful-chaotic-jupiter"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
+    "https://www.nasa.gov/image-article/colorful-chaotic-jupiter",
+    "https://science.nasa.gov/earth/earth-observatory/a-moonlit-earth-as-seen-from-artemis-ii",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4908-4912-goodbye-campo-marte-its-been-fun",
+    "https://www.nasa.gov/blogs/spacestation/2026/06/04/bioprinting-cartilage-producing-stem-cells-fill-thursdays-research-schedule",
     "https://science.nasa.gov/science-research/planetary-science/astrobiology/nasa-finds-new-way-earth-may-have-received-elements-needed-for-life",
     "https://science.nasa.gov/photojournal/international-sea-level-satellite-observes-el-nino-precursor",
     "https://www.nasa.gov/image-article/journey-to-the-center-of-the-virgo-cluster",
