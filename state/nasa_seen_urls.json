@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-06-05T07:45:24.423103+08:00",
-  "date": "2026-06-05",
+  "updated_at": "2026-06-06T07:41:57.744755+08:00",
+  "date": "2026-06-06",
   "last_fetch_urls": [
-    "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
-    "https://www.nasa.gov/image-article/colorful-chaotic-jupiter",
-    "https://science.nasa.gov/earth/earth-observatory/a-moonlit-earth-as-seen-from-artemis-ii",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4908-4912-goodbye-campo-marte-its-been-fun",
-    "https://www.nasa.gov/blogs/spacestation/2026/06/04/bioprinting-cartilage-producing-stem-cells-fill-thursdays-research-schedule"
+    "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth",
+    "https://www.nasa.gov/image-article/first-steps-americas-grueling-second-spacewalk",
+    "https://science.nasa.gov/earth/earth-observatory/fighting-fire-with-fire",
+    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today",
+    "https://www.nasa.gov/news-release/nasa-awards-modification-contract-for-reduced-gravity-test-aircraft"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
-    "https://www.nasa.gov/image-article/colorful-chaotic-jupiter"
+    "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth",
+    "https://www.nasa.gov/image-article/first-steps-americas-grueling-second-spacewalk",
+    "https://science.nasa.gov/earth/earth-observatory/fighting-fire-with-fire",
+    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today",
+    "https://www.nasa.gov/news-release/nasa-awards-modification-contract-for-reduced-gravity-test-aircraft",
     "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
     "https://www.nasa.gov/image-article/colorful-chaotic-jupiter",
     "https://science.nasa.gov/earth/earth-observatory/a-moonlit-earth-as-seen-from-artemis-ii",
@@ -22,7 +26,6 @@
     "https://science.nasa.gov/photojournal/international-sea-level-satellite-observes-el-nino-precursor",
     "https://www.nasa.gov/image-article/journey-to-the-center-of-the-virgo-cluster",
     "https://www.nasa.gov/centers-and-facilities/stennis/reservoir-drained-to-upgrade-water-system",
-    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today",
     "https://www.nasa.gov/image-article/look-up",
     "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-testing-wastewater-treatment-facility-for-future-moon-base",
     "https://science.nasa.gov/get-involved/citizen-science/help-galaxy-zoo-clump-scout-ii-project",
