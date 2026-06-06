@@ -1,24 +1,25 @@
 {
-  "updated_at": "2026-06-06T07:41:57.744755+08:00",
-  "date": "2026-06-06",
+  "updated_at": "2026-06-07T07:37:18.116291+08:00",
+  "date": "2026-06-07",
   "last_fetch_urls": [
     "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth",
     "https://www.nasa.gov/image-article/first-steps-americas-grueling-second-spacewalk",
     "https://science.nasa.gov/earth/earth-observatory/fighting-fire-with-fire",
-    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today",
-    "https://www.nasa.gov/news-release/nasa-awards-modification-contract-for-reduced-gravity-test-aircraft"
+    "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
+    "https://www.nasa.gov/image-article/colorful-chaotic-jupiter"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth"
+    "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth",
+    "https://www.nasa.gov/image-article/first-steps-americas-grueling-second-spacewalk"
   ],
   "seen_urls": [
     "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth",
     "https://www.nasa.gov/image-article/first-steps-americas-grueling-second-spacewalk",
     "https://science.nasa.gov/earth/earth-observatory/fighting-fire-with-fire",
-    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today",
-    "https://www.nasa.gov/news-release/nasa-awards-modification-contract-for-reduced-gravity-test-aircraft",
     "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
     "https://www.nasa.gov/image-article/colorful-chaotic-jupiter",
+    "https://www.nasa.gov/news-release/nasa-says-farewell-to-maven-mars-mission-hosts-media-call-today",
+    "https://www.nasa.gov/news-release/nasa-awards-modification-contract-for-reduced-gravity-test-aircraft",
     "https://science.nasa.gov/earth/earth-observatory/a-moonlit-earth-as-seen-from-artemis-ii",
     "https://science.nasa.gov/blog/curiosity-blog-sols-4908-4912-goodbye-campo-marte-its-been-fun",
     "https://www.nasa.gov/blogs/spacestation/2026/06/04/bioprinting-cartilage-producing-stem-cells-fill-thursdays-research-schedule",
