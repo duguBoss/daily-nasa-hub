@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-06-08T07:34:56.642615+08:00",
-  "date": "2026-06-08",
+  "updated_at": "2026-06-09T07:52:17.977125+08:00",
+  "date": "2026-06-09",
   "last_fetch_urls": [
-    "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth",
-    "https://www.nasa.gov/image-article/first-steps-americas-grueling-second-spacewalk",
-    "https://science.nasa.gov/earth/earth-observatory/fighting-fire-with-fire",
-    "https://science.nasa.gov/earth/nasa-funded-study-shows-wildfire-smokes-hidden-ozone-toll",
-    "https://www.nasa.gov/image-article/colorful-chaotic-jupiter"
+    "https://www.nasa.gov/centers-and-facilities/johnson/how-nasa-science-and-artemis-are-shaping-the-2026-fifa-world-cup",
+    "https://www.nasa.gov/image-article/supersonic",
+    "https://science.nasa.gov/photojournal/nasas-incus-satellites-progress-toward-launch",
+    "https://science.nasa.gov/earth/earth-observatory/digging-back-in-time-in-the-uae",
+    "https://www.nasa.gov/centers-and-facilities/johnson/how-nasa-science-and-artemis-are-shaping-the-2026-fifa-world-cup"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth"
+    "https://www.nasa.gov/centers-and-facilities/johnson/how-nasa-science-and-artemis-are-shaping-the-2026-fifa-world-cup",
+    "https://www.nasa.gov/image-article/supersonic"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/johnson/how-nasa-science-and-artemis-are-shaping-the-2026-fifa-world-cup",
+    "https://www.nasa.gov/image-article/supersonic",
+    "https://science.nasa.gov/photojournal/nasas-incus-satellites-progress-toward-launch",
+    "https://science.nasa.gov/earth/earth-observatory/digging-back-in-time-in-the-uae",
     "https://science.nasa.gov/uncategorized/nasas-artemis-ii-moon-mission-research-continues-on-earth",
     "https://www.nasa.gov/image-article/first-steps-americas-grueling-second-spacewalk",
     "https://science.nasa.gov/earth/earth-observatory/fighting-fire-with-fire",
