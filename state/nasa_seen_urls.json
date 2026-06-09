@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-06-09T07:52:17.977125+08:00",
-  "date": "2026-06-09",
+  "updated_at": "2026-06-10T07:38:17.012437+08:00",
+  "date": "2026-06-10",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/how-nasa-science-and-artemis-are-shaping-the-2026-fifa-world-cup",
-    "https://www.nasa.gov/image-article/supersonic",
-    "https://science.nasa.gov/photojournal/nasas-incus-satellites-progress-toward-launch",
-    "https://science.nasa.gov/earth/earth-observatory/digging-back-in-time-in-the-uae",
-    "https://www.nasa.gov/centers-and-facilities/johnson/how-nasa-science-and-artemis-are-shaping-the-2026-fifa-world-cup"
+    "https://www.nasa.gov/image-article/artemis-iii-crew-announced",
+    "https://www.nasa.gov/news-release/la-nasa-avanza-hacia-la-mision-artemis-iii-en-2027-y-anuncia-a-su-tripulacion",
+    "https://www.nasa.gov/news-release/nasa-marches-toward-artemis-iii-mission-in-2027-names-crew-members",
+    "https://science.nasa.gov/earth/earth-observatory/june-2026-satellite-puzzler",
+    "https://science.nasa.gov/missions/station/san-franciscos-metropolitan-mosaic"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/how-nasa-science-and-artemis-are-shaping-the-2026-fifa-world-cup",
-    "https://www.nasa.gov/image-article/supersonic"
+    "https://www.nasa.gov/image-article/artemis-iii-crew-announced"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/artemis-iii-crew-announced",
+    "https://www.nasa.gov/news-release/la-nasa-avanza-hacia-la-mision-artemis-iii-en-2027-y-anuncia-a-su-tripulacion",
+    "https://www.nasa.gov/news-release/nasa-marches-toward-artemis-iii-mission-in-2027-names-crew-members",
+    "https://science.nasa.gov/earth/earth-observatory/june-2026-satellite-puzzler",
+    "https://science.nasa.gov/missions/station/san-franciscos-metropolitan-mosaic",
     "https://www.nasa.gov/centers-and-facilities/johnson/how-nasa-science-and-artemis-are-shaping-the-2026-fifa-world-cup",
     "https://www.nasa.gov/image-article/supersonic",
     "https://science.nasa.gov/photojournal/nasas-incus-satellites-progress-toward-launch",
