@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-06-10T07:38:17.012437+08:00",
-  "date": "2026-06-10",
+  "updated_at": "2026-06-11T08:28:26.654545+08:00",
+  "date": "2026-06-11",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/artemis-iii-crew-announced",
-    "https://www.nasa.gov/news-release/la-nasa-avanza-hacia-la-mision-artemis-iii-en-2027-y-anuncia-a-su-tripulacion",
-    "https://www.nasa.gov/news-release/nasa-marches-toward-artemis-iii-mission-in-2027-names-crew-members",
-    "https://science.nasa.gov/earth/earth-observatory/june-2026-satellite-puzzler",
-    "https://science.nasa.gov/missions/station/san-franciscos-metropolitan-mosaic"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4913-4919-planetary-explorers-freewheeling-to-the-yardang-unit",
+    "https://www.nasa.gov/news-release/nasa-awards-contract-for-construction-services-in-california",
+    "https://science.nasa.gov/science-research/earth-science/nasa-noaa-to-hold-joint-session-at-23rd-symposium-on-operational-environmental-satellite-systems",
+    "https://www.nasa.gov/image-article/train-ride-to-nasa-kennedy-for-artemis-iii-booster-segments",
+    "https://science.nasa.gov/missions/webb/nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/artemis-iii-crew-announced"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4913-4919-planetary-explorers-freewheeling-to-the-yardang-unit"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4913-4919-planetary-explorers-freewheeling-to-the-yardang-unit",
+    "https://www.nasa.gov/news-release/nasa-awards-contract-for-construction-services-in-california",
+    "https://science.nasa.gov/science-research/earth-science/nasa-noaa-to-hold-joint-session-at-23rd-symposium-on-operational-environmental-satellite-systems",
+    "https://www.nasa.gov/image-article/train-ride-to-nasa-kennedy-for-artemis-iii-booster-segments",
+    "https://science.nasa.gov/missions/webb/nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars",
     "https://www.nasa.gov/image-article/artemis-iii-crew-announced",
     "https://www.nasa.gov/news-release/la-nasa-avanza-hacia-la-mision-artemis-iii-en-2027-y-anuncia-a-su-tripulacion",
     "https://www.nasa.gov/news-release/nasa-marches-toward-artemis-iii-mission-in-2027-names-crew-members",
