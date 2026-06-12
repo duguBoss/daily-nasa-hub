@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-06-12T08:06:32.507609+08:00",
-  "date": "2026-06-12",
+  "updated_at": "2026-06-13T07:52:00.581548+08:00",
+  "date": "2026-06-13",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-discovers-possible-supernova-remnant-in-galactic-center",
-    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-elkin-norena",
-    "https://science.nasa.gov/missions/tech-demonstration/nasa-robotic-tech-demo-will-advance-prototype-gamma-ray-detectors",
-    "https://www.nasa.gov/image-article/soccer-meets-space-science",
-    "https://www.nasa.gov/centers-and-facilities/langley/nasas-career-technical-education-day-highlights-technical-careers"
+    "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
+    "https://www.nasa.gov/image-article/black-eye-galaxy",
+    "https://science.nasa.gov/missions/hubble/hubble-sees-swarm-of-galaxies",
+    "https://science.nasa.gov/earth/earth-observatory/world-cup-fever-in-guadalajara",
+    "https://www.nasa.gov/blogs/quesst/2026/06/12/x-59-blog-061226"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-discovers-possible-supernova-remnant-in-galactic-center",
-    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-elkin-norena"
+    "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
+    "https://www.nasa.gov/image-article/black-eye-galaxy"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
+    "https://www.nasa.gov/image-article/black-eye-galaxy",
+    "https://science.nasa.gov/missions/hubble/hubble-sees-swarm-of-galaxies",
+    "https://science.nasa.gov/earth/earth-observatory/world-cup-fever-in-guadalajara",
+    "https://www.nasa.gov/blogs/quesst/2026/06/12/x-59-blog-061226",
     "https://science.nasa.gov/missions/chandra/nasas-chandra-discovers-possible-supernova-remnant-in-galactic-center",
     "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-elkin-norena",
     "https://science.nasa.gov/missions/tech-demonstration/nasa-robotic-tech-demo-will-advance-prototype-gamma-ray-detectors",
