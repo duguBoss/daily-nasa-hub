@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-06-11T08:28:26.654545+08:00",
-  "date": "2026-06-11",
+  "updated_at": "2026-06-12T08:06:32.507609+08:00",
+  "date": "2026-06-12",
   "last_fetch_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4913-4919-planetary-explorers-freewheeling-to-the-yardang-unit",
-    "https://www.nasa.gov/news-release/nasa-awards-contract-for-construction-services-in-california",
-    "https://science.nasa.gov/science-research/earth-science/nasa-noaa-to-hold-joint-session-at-23rd-symposium-on-operational-environmental-satellite-systems",
-    "https://www.nasa.gov/image-article/train-ride-to-nasa-kennedy-for-artemis-iii-booster-segments",
-    "https://science.nasa.gov/missions/webb/nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars"
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-discovers-possible-supernova-remnant-in-galactic-center",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-elkin-norena",
+    "https://science.nasa.gov/missions/tech-demonstration/nasa-robotic-tech-demo-will-advance-prototype-gamma-ray-detectors",
+    "https://www.nasa.gov/image-article/soccer-meets-space-science",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasas-career-technical-education-day-highlights-technical-careers"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4913-4919-planetary-explorers-freewheeling-to-the-yardang-unit"
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-discovers-possible-supernova-remnant-in-galactic-center",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-elkin-norena"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-discovers-possible-supernova-remnant-in-galactic-center",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-elkin-norena",
+    "https://science.nasa.gov/missions/tech-demonstration/nasa-robotic-tech-demo-will-advance-prototype-gamma-ray-detectors",
+    "https://www.nasa.gov/image-article/soccer-meets-space-science",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasas-career-technical-education-day-highlights-technical-careers",
     "https://science.nasa.gov/blog/curiosity-blog-sols-4913-4919-planetary-explorers-freewheeling-to-the-yardang-unit",
     "https://www.nasa.gov/news-release/nasa-awards-contract-for-construction-services-in-california",
     "https://science.nasa.gov/science-research/earth-science/nasa-noaa-to-hold-joint-session-at-23rd-symposium-on-operational-environmental-satellite-systems",
