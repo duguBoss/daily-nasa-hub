@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-14T07:37:50.262851+08:00",
-  "date": "2026-06-14",
+  "updated_at": "2026-06-15T07:41:06.639475+08:00",
+  "date": "2026-06-15",
   "last_fetch_urls": [
     "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
     "https://www.nasa.gov/image-article/black-eye-galaxy",
@@ -9,7 +9,8 @@
     "https://science.nasa.gov/missions/chandra/nasas-chandra-discovers-possible-supernova-remnant-in-galactic-center"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure"
+    "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
+    "https://www.nasa.gov/image-article/black-eye-galaxy"
   ],
   "seen_urls": [
     "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
