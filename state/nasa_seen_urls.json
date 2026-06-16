@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-06-15T07:41:06.639475+08:00",
-  "date": "2026-06-15",
+  "updated_at": "2026-06-16T08:45:35.412044+08:00",
+  "date": "2026-06-16",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
-    "https://www.nasa.gov/image-article/black-eye-galaxy",
-    "https://science.nasa.gov/missions/hubble/hubble-sees-swarm-of-galaxies",
-    "https://science.nasa.gov/earth/earth-observatory/world-cup-fever-in-guadalajara",
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-discovers-possible-supernova-remnant-in-galactic-center"
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-finds-unexpected-fireworks-in-aftermath-of-stellar-explosions",
+    "https://www.nasa.gov/missions/station/iss-research/nasas-spacex-crs-34-dragon-returns-packed-with-space-station-science",
+    "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-available-for-prelaunch-virtual-interviews",
+    "https://www.nasa.gov/image-article/san-franciscos-patchwork-streets",
+    "https://science.nasa.gov/earth/earth-observatory/pumice-rafts-encroach-on-admiralty-islands"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
-    "https://www.nasa.gov/image-article/black-eye-galaxy"
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-finds-unexpected-fireworks-in-aftermath-of-stellar-explosions",
+    "https://www.nasa.gov/missions/station/iss-research/nasas-spacex-crs-34-dragon-returns-packed-with-space-station-science"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-finds-unexpected-fireworks-in-aftermath-of-stellar-explosions",
+    "https://www.nasa.gov/missions/station/iss-research/nasas-spacex-crs-34-dragon-returns-packed-with-space-station-science",
+    "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-available-for-prelaunch-virtual-interviews",
+    "https://www.nasa.gov/image-article/san-franciscos-patchwork-streets",
+    "https://science.nasa.gov/earth/earth-observatory/pumice-rafts-encroach-on-admiralty-islands",
     "https://www.nasa.gov/news-release/nasa-to-cover-34th-spacex-resupply-mission-space-station-departure",
     "https://www.nasa.gov/image-article/black-eye-galaxy",
     "https://science.nasa.gov/missions/hubble/hubble-sees-swarm-of-galaxies",
