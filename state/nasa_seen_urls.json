@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-06-18T07:56:55.086732+08:00",
-  "date": "2026-06-18",
+  "updated_at": "2026-06-19T08:19:16.486476+08:00",
+  "date": "2026-06-19",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-announces-public-private-partnership-to-advance-mars-science",
-    "https://science.nasa.gov/get-involved/citizen-science/search-for-hidden-cosmic-companions-in-suns-backyard",
-    "https://www.nasa.gov/image-article/hubble-sees-swarm-of-galaxies",
-    "https://science.nasa.gov/earth/earth-observatory/low-water-at-san-carlos-reservoir",
-    "https://www.nasa.gov/news-release/nasa-announces-public-private-partnership-to-advance-mars-science"
+    "https://www.nasa.gov/news-release/nasa-mission-to-study-space-weather-impacts-of-earths-atmosphere",
+    "https://www.nasa.gov/news-release/nasa-awards-contract-for-commercial-satellite-data-acquisition",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/from-suriname-to-space-rohit-goeptars-shares-his-journey-to-nasa",
+    "https://science.nasa.gov/photojournal/desert-field-test-with-nasa-advanced-rover-prototype",
+    "https://science.nasa.gov/missions/nasas-lucy-reveals-wobbling-peanut-shaped-asteroid"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-announces-public-private-partnership-to-advance-mars-science"
+    "https://www.nasa.gov/news-release/nasa-mission-to-study-space-weather-impacts-of-earths-atmosphere"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-mission-to-study-space-weather-impacts-of-earths-atmosphere",
+    "https://www.nasa.gov/news-release/nasa-awards-contract-for-commercial-satellite-data-acquisition",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/from-suriname-to-space-rohit-goeptars-shares-his-journey-to-nasa",
+    "https://science.nasa.gov/photojournal/desert-field-test-with-nasa-advanced-rover-prototype",
+    "https://science.nasa.gov/missions/nasas-lucy-reveals-wobbling-peanut-shaped-asteroid",
     "https://www.nasa.gov/news-release/nasa-announces-public-private-partnership-to-advance-mars-science",
     "https://science.nasa.gov/get-involved/citizen-science/search-for-hidden-cosmic-companions-in-suns-backyard",
     "https://www.nasa.gov/image-article/hubble-sees-swarm-of-galaxies",
