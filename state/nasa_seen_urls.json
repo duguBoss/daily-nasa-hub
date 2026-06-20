@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-06-20T07:28:34.658044+08:00",
-  "date": "2026-06-20",
+  "updated_at": "2026-06-21T07:44:13.656780+08:00",
+  "date": "2026-06-21",
   "last_fetch_urls": [
     "https://science.nasa.gov/earth/earth-observatory/tropical-storm-arthur",
     "https://science.nasa.gov/blog/curiosity-blog-sols-4920-4926-surveying-the-bands",
-    "https://science.nasa.gov/blogs/swift/2026/06/19/aircraft-carrying-swift-boost-satellite-takes-off-from-nasa-wallops",
-    "https://science.nasa.gov/earth/earth-observatory/tropical-storm-arthur",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4920-4926-surveying-the-bands"
+    "https://www.nasa.gov/news-release/nasa-mission-to-study-space-weather-impacts-of-earths-atmosphere",
+    "https://www.nasa.gov/news-release/nasa-awards-contract-for-commercial-satellite-data-acquisition",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/from-suriname-to-space-rohit-goeptars-shares-his-journey-to-nasa"
   ],
   "last_new_urls": [
     "https://science.nasa.gov/earth/earth-observatory/tropical-storm-arthur"
@@ -14,10 +14,10 @@
   "seen_urls": [
     "https://science.nasa.gov/earth/earth-observatory/tropical-storm-arthur",
     "https://science.nasa.gov/blog/curiosity-blog-sols-4920-4926-surveying-the-bands",
-    "https://science.nasa.gov/blogs/swift/2026/06/19/aircraft-carrying-swift-boost-satellite-takes-off-from-nasa-wallops",
     "https://www.nasa.gov/news-release/nasa-mission-to-study-space-weather-impacts-of-earths-atmosphere",
     "https://www.nasa.gov/news-release/nasa-awards-contract-for-commercial-satellite-data-acquisition",
     "https://www.nasa.gov/centers-and-facilities/kennedy/from-suriname-to-space-rohit-goeptars-shares-his-journey-to-nasa",
+    "https://science.nasa.gov/blogs/swift/2026/06/19/aircraft-carrying-swift-boost-satellite-takes-off-from-nasa-wallops",
     "https://science.nasa.gov/photojournal/desert-field-test-with-nasa-advanced-rover-prototype",
     "https://science.nasa.gov/missions/nasas-lucy-reveals-wobbling-peanut-shaped-asteroid",
     "https://www.nasa.gov/news-release/nasa-announces-public-private-partnership-to-advance-mars-science",
