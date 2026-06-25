@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-06-25T07:22:43.251152+08:00",
-  "date": "2026-06-25",
+  "updated_at": "2026-06-26T07:40:13.548814+08:00",
+  "date": "2026-06-26",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-at-the-ion-orion-lessons-from-artemis-ii-shape-nasas-moon-to-mars-path",
-    "https://www.nasa.gov/news-release/la-nasa-compartira-los-ultimos-avances-del-programa-base-lunar",
-    "https://www.nasa.gov/news-release/nasa-to-share-latest-moon-base-mission-progress",
-    "https://www.nasa.gov/image-article/roman-telescope-comes-to-kennedy",
-    "https://science.nasa.gov/photojournal/nasas-hirise-captures-perseverance-marking-a-milestone-on-mars"
+    "https://www.nasa.gov/centers-and-facilities/johnson/expedition-73-crew-reflects-on-science-teamwork-and-life-in-orbit",
+    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership",
+    "https://www.nasa.gov/missions/tsis-2/nasa-selects-rocket-lab-to-launch-sun-earth-science-missions",
+    "https://www.nasa.gov/image-article/millions-of-stars-in-cigar-galaxy",
+    "https://science.nasa.gov/earth/earth-observatory/a-turquoise-tint-for-the-black-sea"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-at-the-ion-orion-lessons-from-artemis-ii-shape-nasas-moon-to-mars-path"
+    "https://www.nasa.gov/centers-and-facilities/johnson/expedition-73-crew-reflects-on-science-teamwork-and-life-in-orbit",
+    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/johnson/expedition-73-crew-reflects-on-science-teamwork-and-life-in-orbit",
+    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership",
+    "https://www.nasa.gov/missions/tsis-2/nasa-selects-rocket-lab-to-launch-sun-earth-science-missions",
+    "https://www.nasa.gov/image-article/millions-of-stars-in-cigar-galaxy",
+    "https://science.nasa.gov/earth/earth-observatory/a-turquoise-tint-for-the-black-sea",
     "https://www.nasa.gov/centers-and-facilities/johnson/nasa-at-the-ion-orion-lessons-from-artemis-ii-shape-nasas-moon-to-mars-path",
     "https://www.nasa.gov/news-release/la-nasa-compartira-los-ultimos-avances-del-programa-base-lunar",
     "https://www.nasa.gov/news-release/nasa-to-share-latest-moon-base-mission-progress",
