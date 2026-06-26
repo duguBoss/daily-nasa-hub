@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-06-26T07:40:13.548814+08:00",
-  "date": "2026-06-26",
+  "updated_at": "2026-06-27T07:30:42.521434+08:00",
+  "date": "2026-06-27",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/expedition-73-crew-reflects-on-science-teamwork-and-life-in-orbit",
-    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership",
-    "https://www.nasa.gov/missions/tsis-2/nasa-selects-rocket-lab-to-launch-sun-earth-science-missions",
-    "https://www.nasa.gov/image-article/millions-of-stars-in-cigar-galaxy",
-    "https://science.nasa.gov/earth/earth-observatory/a-turquoise-tint-for-the-black-sea"
+    "https://science.nasa.gov/missions/swift/swift-boost-mission/partners-nasa-ready-for-june-launch-of-swift-boost-mission",
+    "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
+    "https://www.nasa.gov/image-article/euclid-sees-heart-of-milky-way",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/bringing-signals-to-nasa",
+    "https://science.nasa.gov/earth/nasas-pace-mission-studies-smoke-fires"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/expedition-73-crew-reflects-on-science-teamwork-and-life-in-orbit",
-    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership"
+    "https://science.nasa.gov/missions/swift/swift-boost-mission/partners-nasa-ready-for-june-launch-of-swift-boost-mission"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/swift/swift-boost-mission/partners-nasa-ready-for-june-launch-of-swift-boost-mission",
+    "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
+    "https://www.nasa.gov/image-article/euclid-sees-heart-of-milky-way",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/bringing-signals-to-nasa",
+    "https://science.nasa.gov/earth/nasas-pace-mission-studies-smoke-fires",
     "https://www.nasa.gov/centers-and-facilities/johnson/expedition-73-crew-reflects-on-science-teamwork-and-life-in-orbit",
     "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership",
     "https://www.nasa.gov/missions/tsis-2/nasa-selects-rocket-lab-to-launch-sun-earth-science-missions",
