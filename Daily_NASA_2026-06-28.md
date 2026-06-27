@@ -1,13 +1,13 @@
-# 斯威夫特轨道提升任务完成发射准备，六月将从夸贾林环礁发射
+# 美国宇航局斯威夫特轨道提升任务完成发射准备
 
-- 日期: 2026-06-27
+- 日期: 2026-06-28
 
-## 1. Venusian Half-Shell
+## 1. Terminator Moon: A Moonscape of Shadows
 
 - 频道: NASA APOD
 - 链接: 
 
-Venus, second planet from the Sun, appears above imaged for the first time ever in x-rays (left) by the orbiting Chandra Observatory. Chandra's smoothed, false-color, x-ray view is compared to an optical image (right) from a small earthbound telescope. Both sh
+What's different about this Moon? It's the terminators. In the featured image, you can't directly see any terminator -- the line that divides the light of day from the dark of night. That's because the featured image is a digital composite of many near-termina
 
 ## 2. Partners, NASA Ready for June Launch of Swift Boost Mission
 
