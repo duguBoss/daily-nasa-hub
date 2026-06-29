@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-06-29T07:21:56.809004+08:00",
-  "date": "2026-06-29",
+  "updated_at": "2026-06-30T07:21:28.328183+08:00",
+  "date": "2026-06-30",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/swift/swift-boost-mission/partners-nasa-ready-for-june-launch-of-swift-boost-mission",
-    "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
-    "https://www.nasa.gov/image-article/euclid-sees-heart-of-milky-way",
-    "https://www.nasa.gov/centers-and-facilities/kennedy/bringing-signals-to-nasa",
-    "https://science.nasa.gov/earth/nasas-pace-mission-studies-smoke-fires"
+    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasas-newest-wind-tunnel-builds-on-legacy-of-innovation",
+    "https://www.nasa.gov/image-article/nasa-astronaut-chris-williams-preps-for-spacewalk",
+    "https://science.nasa.gov/blogs/swift/2026/06/29/what-to-expect-commercial-mission-to-boost-nasas-swift",
+    "https://science.nasa.gov/blogs/honors/2026/06/29/scientific-americans-inaugural-young-american-scientists-recognition"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/swift/swift-boost-mission/partners-nasa-ready-for-june-launch-of-swift-boost-mission"
+    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasas-newest-wind-tunnel-builds-on-legacy-of-innovation",
+    "https://www.nasa.gov/image-article/nasa-astronaut-chris-williams-preps-for-spacewalk",
+    "https://science.nasa.gov/blogs/swift/2026/06/29/what-to-expect-commercial-mission-to-boost-nasas-swift",
+    "https://science.nasa.gov/blogs/honors/2026/06/29/scientific-americans-inaugural-young-american-scientists-recognition",
     "https://science.nasa.gov/missions/swift/swift-boost-mission/partners-nasa-ready-for-june-launch-of-swift-boost-mission",
     "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
     "https://www.nasa.gov/image-article/euclid-sees-heart-of-milky-way",
