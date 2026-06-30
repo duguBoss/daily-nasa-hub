@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-06-30T07:21:28.328183+08:00",
-  "date": "2026-06-30",
+  "updated_at": "2026-07-01T07:27:04.579510+08:00",
+  "date": "2026-07-01",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
-    "https://www.nasa.gov/centers-and-facilities/langley/nasas-newest-wind-tunnel-builds-on-legacy-of-innovation",
-    "https://www.nasa.gov/image-article/nasa-astronaut-chris-williams-preps-for-spacewalk",
-    "https://science.nasa.gov/blogs/swift/2026/06/29/what-to-expect-commercial-mission-to-boost-nasas-swift",
-    "https://science.nasa.gov/blogs/honors/2026/06/29/scientific-americans-inaugural-young-american-scientists-recognition"
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-reveals-red-white-blue-universe-for-us-250th",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/a-day-of-flight-testing-at-nasa-armstrong",
+    "https://www.nasa.gov/news-release/la-nasa-adjudica-nuevas-misiones-cientificas-para-base-lunar-y-adelanta-nuevas-oportunidades",
+    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities",
+    "https://www.nasa.gov/image-article/starry-chandelier-cluster"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy"
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-reveals-red-white-blue-universe-for-us-250th",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/a-day-of-flight-testing-at-nasa-armstrong"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-reveals-red-white-blue-universe-for-us-250th",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/a-day-of-flight-testing-at-nasa-armstrong",
+    "https://www.nasa.gov/news-release/la-nasa-adjudica-nuevas-misiones-cientificas-para-base-lunar-y-adelanta-nuevas-oportunidades",
+    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities",
+    "https://www.nasa.gov/image-article/starry-chandelier-cluster",
     "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
     "https://www.nasa.gov/centers-and-facilities/langley/nasas-newest-wind-tunnel-builds-on-legacy-of-innovation",
     "https://www.nasa.gov/image-article/nasa-astronaut-chris-williams-preps-for-spacewalk",
