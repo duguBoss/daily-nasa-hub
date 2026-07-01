@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-07-01T07:27:04.579510+08:00",
-  "date": "2026-07-01",
+  "updated_at": "2026-07-02T07:39:00.114050+08:00",
+  "date": "2026-07-02",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-reveals-red-white-blue-universe-for-us-250th",
-    "https://www.nasa.gov/centers-and-facilities/armstrong/a-day-of-flight-testing-at-nasa-armstrong",
-    "https://www.nasa.gov/news-release/la-nasa-adjudica-nuevas-misiones-cientificas-para-base-lunar-y-adelanta-nuevas-oportunidades",
-    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities",
-    "https://www.nasa.gov/image-article/starry-chandelier-cluster"
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-examines-milky-way-at-arms-length",
+    "https://www.nasa.gov/image-article/link-spacecraft-set-for-mission-to-boost-nasas-swift-observatory",
+    "https://science.nasa.gov/missions/webb/nasas-webb-studies-how-planet-survived-death-of-its-star",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4934-4940-in-the-land-of-the-polygons",
+    "https://www.nasa.gov/centers-and-facilities/jpl/caltech-welcomes-astrophysicist-ray-jayawardhana-as-new-president"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-reveals-red-white-blue-universe-for-us-250th",
-    "https://www.nasa.gov/centers-and-facilities/armstrong/a-day-of-flight-testing-at-nasa-armstrong"
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-examines-milky-way-at-arms-length",
+    "https://www.nasa.gov/image-article/link-spacecraft-set-for-mission-to-boost-nasas-swift-observatory"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-examines-milky-way-at-arms-length",
+    "https://www.nasa.gov/image-article/link-spacecraft-set-for-mission-to-boost-nasas-swift-observatory",
+    "https://science.nasa.gov/missions/webb/nasas-webb-studies-how-planet-survived-death-of-its-star",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4934-4940-in-the-land-of-the-polygons",
+    "https://www.nasa.gov/centers-and-facilities/jpl/caltech-welcomes-astrophysicist-ray-jayawardhana-as-new-president",
     "https://science.nasa.gov/missions/chandra/nasas-chandra-reveals-red-white-blue-universe-for-us-250th",
     "https://www.nasa.gov/centers-and-facilities/armstrong/a-day-of-flight-testing-at-nasa-armstrong",
     "https://www.nasa.gov/news-release/la-nasa-adjudica-nuevas-misiones-cientificas-para-base-lunar-y-adelanta-nuevas-oportunidades",
