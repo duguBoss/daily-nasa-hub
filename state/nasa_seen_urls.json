@@ -1,18 +1,21 @@
 {
-  "updated_at": "2026-07-02T07:39:00.114050+08:00",
-  "date": "2026-07-02",
+  "updated_at": "2026-07-03T07:29:57.478895+08:00",
+  "date": "2026-07-03",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-examines-milky-way-at-arms-length",
-    "https://www.nasa.gov/image-article/link-spacecraft-set-for-mission-to-boost-nasas-swift-observatory",
-    "https://science.nasa.gov/missions/webb/nasas-webb-studies-how-planet-survived-death-of-its-star",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4934-4940-in-the-land-of-the-polygons",
-    "https://www.nasa.gov/centers-and-facilities/jpl/caltech-welcomes-astrophysicist-ray-jayawardhana-as-new-president"
+    "https://www.nasa.gov/image-article/good-morning-earth",
+    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-stars-sparking-to-life-in-cosmic-celebration",
+    "https://science.nasa.gov/solar-system/whats-up-july-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/blogs/spacestation/2026/07/02/cartilage-cardiac-studies-and-cargo-ops-wrap-up-week-aboard-station",
+    "https://www.nasa.gov/image-article/good-morning-earth"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-examines-milky-way-at-arms-length",
-    "https://www.nasa.gov/image-article/link-spacecraft-set-for-mission-to-boost-nasas-swift-observatory"
+    "https://www.nasa.gov/image-article/good-morning-earth"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/good-morning-earth",
+    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-stars-sparking-to-life-in-cosmic-celebration",
+    "https://science.nasa.gov/solar-system/whats-up-july-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/blogs/spacestation/2026/07/02/cartilage-cardiac-studies-and-cargo-ops-wrap-up-week-aboard-station",
     "https://science.nasa.gov/missions/chandra/nasas-chandra-examines-milky-way-at-arms-length",
     "https://www.nasa.gov/image-article/link-spacecraft-set-for-mission-to-boost-nasas-swift-observatory",
     "https://science.nasa.gov/missions/webb/nasas-webb-studies-how-planet-survived-death-of-its-star",
