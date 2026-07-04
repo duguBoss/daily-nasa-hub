@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-07-04T07:22:12.136612+08:00",
-  "date": "2026-07-04",
+  "updated_at": "2026-07-05T07:21:32.805454+08:00",
+  "date": "2026-07-05",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene",
-    "https://science.nasa.gov/blogs/swift/2026/07/03/teams-make-contact-with-spacecraft-set-to-boost-nasas-swift",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene"
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th",
+    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities",
+    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
+    "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
+    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars"
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th",
+    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th",
+    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities",
+    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
+    "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
+    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene",
     "https://science.nasa.gov/blogs/swift/2026/07/03/teams-make-contact-with-spacecraft-set-to-boost-nasas-swift",
@@ -27,20 +33,16 @@
     "https://science.nasa.gov/missions/chandra/nasas-chandra-reveals-red-white-blue-universe-for-us-250th",
     "https://www.nasa.gov/centers-and-facilities/armstrong/a-day-of-flight-testing-at-nasa-armstrong",
     "https://www.nasa.gov/news-release/la-nasa-adjudica-nuevas-misiones-cientificas-para-base-lunar-y-adelanta-nuevas-oportunidades",
-    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities",
     "https://www.nasa.gov/image-article/starry-chandelier-cluster",
-    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
     "https://www.nasa.gov/centers-and-facilities/langley/nasas-newest-wind-tunnel-builds-on-legacy-of-innovation",
     "https://www.nasa.gov/image-article/nasa-astronaut-chris-williams-preps-for-spacewalk",
     "https://science.nasa.gov/blogs/swift/2026/06/29/what-to-expect-commercial-mission-to-boost-nasas-swift",
     "https://science.nasa.gov/blogs/honors/2026/06/29/scientific-americans-inaugural-young-american-scientists-recognition",
     "https://science.nasa.gov/missions/swift/swift-boost-mission/partners-nasa-ready-for-june-launch-of-swift-boost-mission",
-    "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
     "https://www.nasa.gov/image-article/euclid-sees-heart-of-milky-way",
     "https://www.nasa.gov/centers-and-facilities/kennedy/bringing-signals-to-nasa",
     "https://science.nasa.gov/earth/nasas-pace-mission-studies-smoke-fires",
     "https://www.nasa.gov/centers-and-facilities/johnson/expedition-73-crew-reflects-on-science-teamwork-and-life-in-orbit",
-    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership",
     "https://www.nasa.gov/missions/tsis-2/nasa-selects-rocket-lab-to-launch-sun-earth-science-missions",
     "https://www.nasa.gov/image-article/millions-of-stars-in-cigar-galaxy",
     "https://science.nasa.gov/earth/earth-observatory/a-turquoise-tint-for-the-black-sea",
