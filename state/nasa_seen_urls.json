@@ -1,28 +1,27 @@
 {
-  "updated_at": "2026-07-05T07:21:32.805454+08:00",
-  "date": "2026-07-05",
+  "updated_at": "2026-07-06T07:19:58.046491+08:00",
+  "date": "2026-07-06",
   "last_fetch_urls": [
     "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th",
-    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities",
-    "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
-    "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
-    "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership"
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene",
+    "https://www.nasa.gov/image-article/good-morning-earth",
+    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-stars-sparking-to-life-in-cosmic-celebration"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th",
-    "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities"
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th"
   ],
   "seen_urls": [
     "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene",
+    "https://www.nasa.gov/image-article/good-morning-earth",
+    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-stars-sparking-to-life-in-cosmic-celebration",
     "https://www.nasa.gov/news-release/nasa-awards-more-moon-base-science-previews-new-opportunities",
     "https://www.nasa.gov/news-release/nasa-sba-announce-new-initiative-to-scale-american-space-economy",
     "https://www.nasa.gov/news-release/nasa-identifies-more-than-40-space-technologies-for-collaboration",
     "https://www.nasa.gov/news-release/nasa-us-small-business-administration-to-announce-partnership",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene",
     "https://science.nasa.gov/blogs/swift/2026/07/03/teams-make-contact-with-spacecraft-set-to-boost-nasas-swift",
-    "https://www.nasa.gov/image-article/good-morning-earth",
-    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-stars-sparking-to-life-in-cosmic-celebration",
     "https://science.nasa.gov/solar-system/whats-up-july-2026-skywatching-tips-from-nasa",
     "https://www.nasa.gov/blogs/spacestation/2026/07/02/cartilage-cardiac-studies-and-cargo-ops-wrap-up-week-aboard-station",
     "https://science.nasa.gov/missions/chandra/nasas-chandra-examines-milky-way-at-arms-length",
