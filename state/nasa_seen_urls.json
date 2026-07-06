@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-07-06T07:19:58.046491+08:00",
-  "date": "2026-07-06",
+  "updated_at": "2026-07-07T07:36:48.977089+08:00",
+  "date": "2026-07-07",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene",
-    "https://www.nasa.gov/image-article/good-morning-earth",
-    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-stars-sparking-to-life-in-cosmic-celebration"
+    "https://www.nasa.gov/image-article/nasa-takes-flight-for-americas-250th",
+    "https://science.nasa.gov/missions/webb/nasa-webb-uncovers-unusual-galaxy-shaped-by-cosmic-collision",
+    "https://science.nasa.gov/earth/earth-observatory/examining-algal-blooms-in-blue-mesa",
+    "https://science.nasa.gov/blogs/solar-cycle-25/2026/07/06/strong-flare-erupts-from-sun-11",
+    "https://science.nasa.gov/missions/webb/nasa-webb-uncovers-unusual-galaxy-shaped-by-cosmic-collision"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th"
+    "https://www.nasa.gov/image-article/nasa-takes-flight-for-americas-250th"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/nasa-takes-flight-for-americas-250th",
+    "https://science.nasa.gov/missions/webb/nasa-webb-uncovers-unusual-galaxy-shaped-by-cosmic-collision",
+    "https://science.nasa.gov/earth/earth-observatory/examining-algal-blooms-in-blue-mesa",
+    "https://science.nasa.gov/blogs/solar-cycle-25/2026/07/06/strong-flare-erupts-from-sun-11",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene",
