@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-07-07T07:36:48.977089+08:00",
-  "date": "2026-07-07",
+  "updated_at": "2026-07-08T07:19:10.031929+08:00",
+  "date": "2026-07-08",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/nasa-takes-flight-for-americas-250th",
-    "https://science.nasa.gov/missions/webb/nasa-webb-uncovers-unusual-galaxy-shaped-by-cosmic-collision",
-    "https://science.nasa.gov/earth/earth-observatory/examining-algal-blooms-in-blue-mesa",
-    "https://science.nasa.gov/blogs/solar-cycle-25/2026/07/06/strong-flare-erupts-from-sun-11",
-    "https://science.nasa.gov/missions/webb/nasa-webb-uncovers-unusual-galaxy-shaped-by-cosmic-collision"
+    "https://www.nasa.gov/centers-and-facilities/goddard/nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge",
+    "https://science.nasa.gov/missions/new-horizons/nasas-new-horizons-spacecraft-wakes-from-hibernation-in-good-health",
+    "https://www.nasa.gov/image-article/artemis-ii-crew-and-apollo-14-moon-tree",
+    "https://science.nasa.gov/earth/earth-observatory/july-2026-satellite-puzzler",
+    "https://science.nasa.gov/earth/earth-observatory/the-world-cup-from-250-miles-up"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/nasa-takes-flight-for-americas-250th"
+    "https://www.nasa.gov/centers-and-facilities/goddard/nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/goddard/nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge",
+    "https://science.nasa.gov/missions/new-horizons/nasas-new-horizons-spacecraft-wakes-from-hibernation-in-good-health",
+    "https://www.nasa.gov/image-article/artemis-ii-crew-and-apollo-14-moon-tree",
+    "https://science.nasa.gov/earth/earth-observatory/july-2026-satellite-puzzler",
+    "https://science.nasa.gov/earth/earth-observatory/the-world-cup-from-250-miles-up",
     "https://www.nasa.gov/image-article/nasa-takes-flight-for-americas-250th",
     "https://science.nasa.gov/missions/webb/nasa-webb-uncovers-unusual-galaxy-shaped-by-cosmic-collision",
     "https://science.nasa.gov/earth/earth-observatory/examining-algal-blooms-in-blue-mesa",
