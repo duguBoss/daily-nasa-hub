@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-07-08T07:19:10.031929+08:00",
-  "date": "2026-07-08",
+  "updated_at": "2026-07-09T07:27:29.751105+08:00",
+  "date": "2026-07-09",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/goddard/nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge",
-    "https://science.nasa.gov/missions/new-horizons/nasas-new-horizons-spacecraft-wakes-from-hibernation-in-good-health",
-    "https://www.nasa.gov/image-article/artemis-ii-crew-and-apollo-14-moon-tree",
-    "https://science.nasa.gov/earth/earth-observatory/july-2026-satellite-puzzler",
-    "https://science.nasa.gov/earth/earth-observatory/the-world-cup-from-250-miles-up"
+    "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion",
+    "https://www.nasa.gov/image-article/hubble-captures-star-studded-cluster",
+    "https://science.nasa.gov/earth/earth-observatory/cottonwood-fire-chars-utah",
+    "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion",
+    "https://www.nasa.gov/blogs/spacestation/2026/07/08/crew-works-health-checks-cubesat-maintenance-and-soyuz-seat-checks"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/goddard/nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge"
+    "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion",
+    "https://www.nasa.gov/image-article/hubble-captures-star-studded-cluster",
+    "https://science.nasa.gov/earth/earth-observatory/cottonwood-fire-chars-utah",
+    "https://www.nasa.gov/blogs/spacestation/2026/07/08/crew-works-health-checks-cubesat-maintenance-and-soyuz-seat-checks",
     "https://www.nasa.gov/centers-and-facilities/goddard/nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge",
     "https://science.nasa.gov/missions/new-horizons/nasas-new-horizons-spacecraft-wakes-from-hibernation-in-good-health",
     "https://www.nasa.gov/image-article/artemis-ii-crew-and-apollo-14-moon-tree",
