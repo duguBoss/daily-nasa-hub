@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-07-09T07:27:29.751105+08:00",
-  "date": "2026-07-09",
+  "updated_at": "2026-07-10T07:40:55.227508+08:00",
+  "date": "2026-07-10",
   "last_fetch_urls": [
-    "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion",
-    "https://www.nasa.gov/image-article/hubble-captures-star-studded-cluster",
-    "https://science.nasa.gov/earth/earth-observatory/cottonwood-fire-chars-utah",
-    "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion",
-    "https://www.nasa.gov/blogs/spacestation/2026/07/08/crew-works-health-checks-cubesat-maintenance-and-soyuz-seat-checks"
+    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-astronaut-anil-menon-launch-to-space-station",
+    "https://science.nasa.gov/missions/ixpe/nasa-space-telescope-maps-magnetic-fields-of-lighthouse-pulsar",
+    "https://science.nasa.gov/science-research/earth-science/principal-investigator-and-quality-assessment-reports-evaluate-umbra-synthetic-aperture-radar-data",
+    "https://www.nasa.gov/image-article/curiosity-sees-martian-sulfur-up-close",
+    "https://www.nasa.gov/missions/airborne-science/nasa-scientists-take-to-air-and-space-to-study-arctic-sea-ice"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion"
+    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-astronaut-anil-menon-launch-to-space-station"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-astronaut-anil-menon-launch-to-space-station",
+    "https://science.nasa.gov/missions/ixpe/nasa-space-telescope-maps-magnetic-fields-of-lighthouse-pulsar",
+    "https://science.nasa.gov/science-research/earth-science/principal-investigator-and-quality-assessment-reports-evaluate-umbra-synthetic-aperture-radar-data",
+    "https://www.nasa.gov/image-article/curiosity-sees-martian-sulfur-up-close",
+    "https://www.nasa.gov/missions/airborne-science/nasa-scientists-take-to-air-and-space-to-study-arctic-sea-ice",
     "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion",
     "https://www.nasa.gov/image-article/hubble-captures-star-studded-cluster",
     "https://science.nasa.gov/earth/earth-observatory/cottonwood-fire-chars-utah",
