@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-07-10T07:40:55.227508+08:00",
-  "date": "2026-07-10",
+  "updated_at": "2026-07-11T07:18:36.397044+08:00",
+  "date": "2026-07-11",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-astronaut-anil-menon-launch-to-space-station",
-    "https://science.nasa.gov/missions/ixpe/nasa-space-telescope-maps-magnetic-fields-of-lighthouse-pulsar",
-    "https://science.nasa.gov/science-research/earth-science/principal-investigator-and-quality-assessment-reports-evaluate-umbra-synthetic-aperture-radar-data",
-    "https://www.nasa.gov/image-article/curiosity-sees-martian-sulfur-up-close",
-    "https://www.nasa.gov/missions/airborne-science/nasa-scientists-take-to-air-and-space-to-study-arctic-sea-ice"
-  ],
-  "last_new_urls": [
+    "https://science.nasa.gov/get-involved/citizen-science/nasa-volunteers-help-zooniverse-reach-1-billion-classifications",
+    "https://www.nasa.gov/image-article/nasa-photographer-captures-images-from-f-18-over-washington",
+    "https://www.nasa.gov/image-article/waxing-gibbous-moon-6",
+    "https://science.nasa.gov/earth/earth-observatory/where-venezuelas-earthquakes-shifted-the-ground",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-astronaut-anil-menon-launch-to-space-station"
   ],
+  "last_new_urls": [
+    "https://science.nasa.gov/get-involved/citizen-science/nasa-volunteers-help-zooniverse-reach-1-billion-classifications"
+  ],
   "seen_urls": [
+    "https://science.nasa.gov/get-involved/citizen-science/nasa-volunteers-help-zooniverse-reach-1-billion-classifications",
+    "https://www.nasa.gov/image-article/nasa-photographer-captures-images-from-f-18-over-washington",
+    "https://www.nasa.gov/image-article/waxing-gibbous-moon-6",
+    "https://science.nasa.gov/earth/earth-observatory/where-venezuelas-earthquakes-shifted-the-ground",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-astronaut-anil-menon-launch-to-space-station",
     "https://science.nasa.gov/missions/ixpe/nasa-space-telescope-maps-magnetic-fields-of-lighthouse-pulsar",
     "https://science.nasa.gov/science-research/earth-science/principal-investigator-and-quality-assessment-reports-evaluate-umbra-synthetic-aperture-radar-data",
