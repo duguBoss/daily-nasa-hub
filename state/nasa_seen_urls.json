@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-07-13T07:12:52.469674+08:00",
-  "date": "2026-07-13",
+  "updated_at": "2026-07-14T07:20:44.415349+08:00",
+  "date": "2026-07-14",
   "last_fetch_urls": [
-    "https://science.nasa.gov/get-involved/citizen-science/nasa-volunteers-help-zooniverse-reach-1-billion-classifications",
-    "https://www.nasa.gov/image-article/nasa-photographer-captures-images-from-f-18-over-washington",
-    "https://www.nasa.gov/image-article/waxing-gibbous-moon-6",
-    "https://science.nasa.gov/earth/earth-observatory/where-venezuelas-earthquakes-shifted-the-ground",
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-astronaut-anil-menon-launch-to-space-station"
+    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-points-to-smoother-air-taxi-rides",
+    "https://www.nasa.gov/image-article/nasa-astronaut-anil-menon",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-discovers-first-of-star-clusters-missing-black-holes",
+    "https://science.nasa.gov/earth/earth-observatory/wild-scenic-and-increasingly-rusty",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-points-to-smoother-air-taxi-rides"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/get-involved/citizen-science/nasa-volunteers-help-zooniverse-reach-1-billion-classifications"
+    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-points-to-smoother-air-taxi-rides"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-points-to-smoother-air-taxi-rides",
+    "https://www.nasa.gov/image-article/nasa-astronaut-anil-menon",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-discovers-first-of-star-clusters-missing-black-holes",
+    "https://science.nasa.gov/earth/earth-observatory/wild-scenic-and-increasingly-rusty",
     "https://science.nasa.gov/get-involved/citizen-science/nasa-volunteers-help-zooniverse-reach-1-billion-classifications",
     "https://www.nasa.gov/image-article/nasa-photographer-captures-images-from-f-18-over-washington",
     "https://www.nasa.gov/image-article/waxing-gibbous-moon-6",
