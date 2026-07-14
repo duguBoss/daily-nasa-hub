@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-07-14T07:20:44.415349+08:00",
-  "date": "2026-07-14",
+  "updated_at": "2026-07-15T07:10:33.847094+08:00",
+  "date": "2026-07-15",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-points-to-smoother-air-taxi-rides",
-    "https://www.nasa.gov/image-article/nasa-astronaut-anil-menon",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-discovers-first-of-star-clusters-missing-black-holes",
-    "https://science.nasa.gov/earth/earth-observatory/wild-scenic-and-increasingly-rusty",
-    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-points-to-smoother-air-taxi-rides"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-serbia-artemis-accords-signing-ceremony",
+    "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-crewmates-arrive-at-space-station",
+    "https://www.nasa.gov/image-article/hubble-sees-crimson-cloud-and-stars",
+    "https://www.nasa.gov/image-article/nasa-jets-turn-red-white-and-blue",
+    "https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-telescope-will-spot-distant-black-holes-that-shred-stars"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-points-to-smoother-air-taxi-rides"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-serbia-artemis-accords-signing-ceremony"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-serbia-artemis-accords-signing-ceremony",
+    "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-crewmates-arrive-at-space-station",
+    "https://www.nasa.gov/image-article/hubble-sees-crimson-cloud-and-stars",
+    "https://www.nasa.gov/image-article/nasa-jets-turn-red-white-and-blue",
+    "https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-telescope-will-spot-distant-black-holes-that-shred-stars",
     "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-points-to-smoother-air-taxi-rides",
     "https://www.nasa.gov/image-article/nasa-astronaut-anil-menon",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-discovers-first-of-star-clusters-missing-black-holes",
