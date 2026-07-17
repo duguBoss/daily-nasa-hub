@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-07-17T07:20:31.185159+08:00",
-  "date": "2026-07-17",
+  "updated_at": "2026-07-18T07:05:49.833891+08:00",
+  "date": "2026-07-18",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/young-galaxy-cluster",
-    "https://science.nasa.gov/earth/earth-observatory/ontario-wildfire-smoke-moves-east",
-    "https://www.nasa.gov/blogs/missions/2026/07/16/nasa-taps-spacexs-starlink-to-deliver-artemis-iii-imagery-from-orion",
-    "https://www.nasa.gov/blogs/spacestation/2026/07/16/expanded-crew-works-science-microgravity-adaptation-and-next-crew-departure",
-    "https://science.nasa.gov/blogs/roman/2026/07/16/telescope-milestone-teams-check-out-nasa-roman-solar-panels"
+    "https://www.nasa.gov/centers-and-facilities/ames/nasa-awards-facilities-support-services-contract-for-ames-research-center",
+    "https://www.nasa.gov/image-article/nasas-chandra-and-ixpe-study-pulsar-in-lighthouse-nebula",
+    "https://www.nasa.gov/news-release/la-nasa-invita-a-los-medios-de-comunicacion-al-lanzamiento-del-telescopio-espacial-roman",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-roman-space-telescope-crew-13-launches",
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-images-details-of-martian-surface-during-flyby"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/young-galaxy-cluster"
+    "https://www.nasa.gov/centers-and-facilities/ames/nasa-awards-facilities-support-services-contract-for-ames-research-center"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/ames/nasa-awards-facilities-support-services-contract-for-ames-research-center",
+    "https://www.nasa.gov/image-article/nasas-chandra-and-ixpe-study-pulsar-in-lighthouse-nebula",
+    "https://www.nasa.gov/news-release/la-nasa-invita-a-los-medios-de-comunicacion-al-lanzamiento-del-telescopio-espacial-roman",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-roman-space-telescope-crew-13-launches",
+    "https://science.nasa.gov/photojournal/nasas-psyche-mission-images-details-of-martian-surface-during-flyby",
     "https://www.nasa.gov/image-article/young-galaxy-cluster",
     "https://science.nasa.gov/earth/earth-observatory/ontario-wildfire-smoke-moves-east",
     "https://www.nasa.gov/blogs/missions/2026/07/16/nasa-taps-spacexs-starlink-to-deliver-artemis-iii-imagery-from-orion",
