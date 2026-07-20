@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-07-20T07:12:54.964558+08:00",
-  "date": "2026-07-20",
+  "updated_at": "2026-07-21T07:22:40.878515+08:00",
+  "date": "2026-07-21",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-pushes-new-wing-design-to-find-structural-limits",
-    "https://science.nasa.gov/photojournal/the-growing-crescent-of-mars-as-nasas-psyche-mission-approaches",
-    "https://www.nasa.gov/centers-and-facilities/ames/nasa-awards-facilities-support-services-contract-for-ames-research-center",
-    "https://www.nasa.gov/image-article/nasas-chandra-and-ixpe-study-pulsar-in-lighthouse-nebula",
-    "https://www.nasa.gov/news-release/la-nasa-invita-a-los-medios-de-comunicacion-al-lanzamiento-del-telescopio-espacial-roman"
+    "https://www.nasa.gov/news-release/nasa-sets-briefings-for-spacex-crew-13-mission-to-space-station",
+    "https://science.nasa.gov/earth/new-nasa-earth-missions-gear-up-to-start-science-flights",
+    "https://www.nasa.gov/image-article/our-first-view-of-the-surface-of-mars",
+    "https://science.nasa.gov/earth/earth-observatory/shaping-the-emerald-city",
+    "https://science.nasa.gov/blogs/science-news/2026/07/20/nasa-funded-study-shows-how-controlled-burns-help-sequoias-survive-wildfires"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-pushes-new-wing-design-to-find-structural-limits"
+    "https://www.nasa.gov/news-release/nasa-sets-briefings-for-spacex-crew-13-mission-to-space-station"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-sets-briefings-for-spacex-crew-13-mission-to-space-station",
+    "https://science.nasa.gov/earth/new-nasa-earth-missions-gear-up-to-start-science-flights",
+    "https://www.nasa.gov/image-article/our-first-view-of-the-surface-of-mars",
+    "https://science.nasa.gov/earth/earth-observatory/shaping-the-emerald-city",
+    "https://science.nasa.gov/blogs/science-news/2026/07/20/nasa-funded-study-shows-how-controlled-burns-help-sequoias-survive-wildfires",
     "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-pushes-new-wing-design-to-find-structural-limits",
     "https://science.nasa.gov/photojournal/the-growing-crescent-of-mars-as-nasas-psyche-mission-approaches",
     "https://www.nasa.gov/centers-and-facilities/ames/nasa-awards-facilities-support-services-contract-for-ames-research-center",
