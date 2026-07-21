@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-07-21T07:22:40.878515+08:00",
-  "date": "2026-07-21",
+  "updated_at": "2026-07-22T07:10:18.087120+08:00",
+  "date": "2026-07-22",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-briefings-for-spacex-crew-13-mission-to-space-station",
-    "https://science.nasa.gov/earth/new-nasa-earth-missions-gear-up-to-start-science-flights",
-    "https://www.nasa.gov/image-article/our-first-view-of-the-surface-of-mars",
-    "https://science.nasa.gov/earth/earth-observatory/shaping-the-emerald-city",
-    "https://science.nasa.gov/blogs/science-news/2026/07/20/nasa-funded-study-shows-how-controlled-burns-help-sequoias-survive-wildfires"
+    "https://www.nasa.gov/news-release/nasa-to-host-media-briefing-on-roman-telescope-launching-next-month",
+    "https://www.nasa.gov/missions/nisar/us-india-satellite-delivers-data-reveals-hummingbird-in-antarctica",
+    "https://www.nasa.gov/news-release/nasa-to-host-media-briefing-on-roman-telescope-launching-next-month",
+    "https://www.nasa.gov/blogs/spacestation/2026/07/21/biomedical-research-crew-swap-operations-pack-busy-day-aboard-station",
+    "https://www.nasa.gov/missions/nisar/us-india-satellite-delivers-data-reveals-hummingbird-in-antarctica"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-briefings-for-spacex-crew-13-mission-to-space-station"
+    "https://www.nasa.gov/news-release/nasa-to-host-media-briefing-on-roman-telescope-launching-next-month"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-to-host-media-briefing-on-roman-telescope-launching-next-month",
+    "https://www.nasa.gov/missions/nisar/us-india-satellite-delivers-data-reveals-hummingbird-in-antarctica",
+    "https://www.nasa.gov/blogs/spacestation/2026/07/21/biomedical-research-crew-swap-operations-pack-busy-day-aboard-station",
     "https://www.nasa.gov/news-release/nasa-sets-briefings-for-spacex-crew-13-mission-to-space-station",
     "https://science.nasa.gov/earth/new-nasa-earth-missions-gear-up-to-start-science-flights",
     "https://www.nasa.gov/image-article/our-first-view-of-the-surface-of-mars",
