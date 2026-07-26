@@ -1,28 +1,29 @@
 {
-  "updated_at": "2026-07-26T07:09:38.918025+08:00",
-  "date": "2026-07-26",
+  "updated_at": "2026-07-27T07:16:05.738111+08:00",
+  "date": "2026-07-27",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/centers-and-facilities/goddard/nasas-escapade-snaps-family-portrait-of-earth-moon",
-    "https://www.nasa.gov/image-article/new-crew-members-welcomed-to-international-space-station",
+    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station",
+    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station",
     "https://www.nasa.gov/news-release/nasa-to-support-blue-origin-new-glenn-rocket-testing-advance-artemis",
-    "https://science.nasa.gov/missions/hubble/hubble-spies-one-sided-spiral",
-    "https://science.nasa.gov/earth/earth-observatory/a-million-panel-project"
+    "https://www.nasa.gov/news-release/look-for-nasa-now-streaming-on-amazon-fire-tv",
+    "https://www.nasa.gov/news-release/nasa-to-showcase-agencys-newest-wind-tunnel-in-virginia"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/centers-and-facilities/goddard/nasas-escapade-snaps-family-portrait-of-earth-moon"
+    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station",
+    "https://www.nasa.gov/news-release/nasa-to-support-blue-origin-new-glenn-rocket-testing-advance-artemis",
+    "https://www.nasa.gov/news-release/look-for-nasa-now-streaming-on-amazon-fire-tv",
+    "https://www.nasa.gov/news-release/nasa-to-showcase-agencys-newest-wind-tunnel-in-virginia",
     "https://science.nasa.gov/image-article/centers-and-facilities/goddard/nasas-escapade-snaps-family-portrait-of-earth-moon",
     "https://www.nasa.gov/image-article/new-crew-members-welcomed-to-international-space-station",
-    "https://www.nasa.gov/news-release/nasa-to-support-blue-origin-new-glenn-rocket-testing-advance-artemis",
     "https://science.nasa.gov/missions/hubble/hubble-spies-one-sided-spiral",
     "https://science.nasa.gov/earth/earth-observatory/a-million-panel-project",
-    "https://www.nasa.gov/news-release/look-for-nasa-now-streaming-on-amazon-fire-tv",
     "https://www.nasa.gov/image-article/crews-move-artemis-iv-liquid-hydrogen-tank",
     "https://science.nasa.gov/missions/maven/nasas-maven-illuminates-new-understanding-of-auroras-at-mars",
     "https://www.nasa.gov/missions/station/iss-research/nasa-astronaut-chris-williams-closes-out-space-station-mission",
     "https://science.nasa.gov/earth/earth-observatory/olympic-mountain-glory",
-    "https://www.nasa.gov/news-release/nasa-to-showcase-agencys-newest-wind-tunnel-in-virginia",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-astronaut-chris-williams-crewmates-return",
     "https://www.nasa.gov/image-article/a-new-look-and-sound-for-messier-94",
     "https://science.nasa.gov/photojournal/mapping-ios-hidden-heat-with-nasas-juno",
