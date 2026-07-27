@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-07-27T07:16:05.738111+08:00",
-  "date": "2026-07-27",
+  "updated_at": "2026-07-28T07:19:27.472519+08:00",
+  "date": "2026-07-28",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station",
-    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station",
-    "https://www.nasa.gov/news-release/nasa-to-support-blue-origin-new-glenn-rocket-testing-advance-artemis",
-    "https://www.nasa.gov/news-release/look-for-nasa-now-streaming-on-amazon-fire-tv",
-    "https://www.nasa.gov/news-release/nasa-to-showcase-agencys-newest-wind-tunnel-in-virginia"
+    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-to-discuss-space-station-mission",
+    "https://science.nasa.gov/science-research/heliophysics/nasa-science-soars-during-august-total-solar-eclipse",
+    "https://www.nasa.gov/image-article/nasa-astronaut-chris-williams-returns-to-earth",
+    "https://science.nasa.gov/missions/swift/nasas-swift-sees-wandering-mega-black-hole-shredding-star",
+    "https://www.nasa.gov/news-release/nasa-to-cover-three-us-spacewalks-host-preview-news-conference"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station"
+    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-to-discuss-space-station-mission"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-to-discuss-space-station-mission",
+    "https://science.nasa.gov/science-research/heliophysics/nasa-science-soars-during-august-total-solar-eclipse",
+    "https://www.nasa.gov/image-article/nasa-astronaut-chris-williams-returns-to-earth",
+    "https://science.nasa.gov/missions/swift/nasas-swift-sees-wandering-mega-black-hole-shredding-star",
+    "https://www.nasa.gov/news-release/nasa-to-cover-three-us-spacewalks-host-preview-news-conference",
     "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station",
     "https://www.nasa.gov/news-release/nasa-to-support-blue-origin-new-glenn-rocket-testing-advance-artemis",
     "https://www.nasa.gov/news-release/look-for-nasa-now-streaming-on-amazon-fire-tv",
