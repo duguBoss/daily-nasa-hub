@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-07-30T07:14:04.278233+08:00",
-  "date": "2026-07-30",
+  "updated_at": "2026-07-31T07:21:38.854009+08:00",
+  "date": "2026-07-31",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-2026-innovative-technology-concepts",
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-august-northern-hemisphere-total-solar-eclipse",
-    "https://science.nasa.gov/photojournal/nasas-curiosity-views-a-sand-capped-butte",
-    "https://science.nasa.gov/photojournal/nasas-curiosity-discovers-a-field-of-martian-polygons",
-    "https://www.nasa.gov/missions/mars-science-laboratory/curiosity-rover/nasas-curiosity-mars-rover-discovers-field-of-honeycomb-textures"
+    "https://science.nasa.gov/earth/students-take-on-airborne-field-research-with-nasa",
+    "https://www.nasa.gov/news-release/nasa-assigns-astronaut-deniz-burnham-to-first-space-station-mission",
+    "https://www.nasa.gov/image-article/starburst-galaxy-centaurus-a",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-johnson-interns-shaping-the-future-of-exploration",
+    "https://science.nasa.gov/image-article/apod/apod-july-30-red-sun-trough-wildfire-smoke"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-2026-innovative-technology-concepts"
+    "https://science.nasa.gov/earth/students-take-on-airborne-field-research-with-nasa"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/earth/students-take-on-airborne-field-research-with-nasa",
+    "https://www.nasa.gov/news-release/nasa-assigns-astronaut-deniz-burnham-to-first-space-station-mission",
+    "https://www.nasa.gov/image-article/starburst-galaxy-centaurus-a",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-johnson-interns-shaping-the-future-of-exploration",
+    "https://science.nasa.gov/image-article/apod/apod-july-30-red-sun-trough-wildfire-smoke",
     "https://www.nasa.gov/news-release/nasa-awards-2026-innovative-technology-concepts",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-august-northern-hemisphere-total-solar-eclipse",
     "https://science.nasa.gov/photojournal/nasas-curiosity-views-a-sand-capped-butte",
