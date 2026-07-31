@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-07-31T07:21:38.854009+08:00",
-  "date": "2026-07-31",
+  "updated_at": "2026-08-01T07:17:49.123854+08:00",
+  "date": "2026-08-01",
   "last_fetch_urls": [
-    "https://science.nasa.gov/earth/students-take-on-airborne-field-research-with-nasa",
-    "https://www.nasa.gov/news-release/nasa-assigns-astronaut-deniz-burnham-to-first-space-station-mission",
-    "https://www.nasa.gov/image-article/starburst-galaxy-centaurus-a",
-    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-johnson-interns-shaping-the-future-of-exploration",
-    "https://science.nasa.gov/image-article/apod/apod-july-30-red-sun-trough-wildfire-smoke"
+    "https://science.nasa.gov/solar-system/whats-up-august-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/news-release/nasa-to-host-florida-event-celebrating-american-air-space-leadership",
+    "https://www.nasa.gov/image-article/nasas-newest-wind-tunnel-opens-at-nasa-langley",
+    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-04-webbings-for-use-in-elevated-oxygen-environments",
+    "https://www.nasa.gov/news-release/nasa-opens-new-flight-dynamics-research-facility-in-virginia"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/earth/students-take-on-airborne-field-research-with-nasa"
+    "https://science.nasa.gov/solar-system/whats-up-august-2026-skywatching-tips-from-nasa"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/solar-system/whats-up-august-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/news-release/nasa-to-host-florida-event-celebrating-american-air-space-leadership",
+    "https://www.nasa.gov/image-article/nasas-newest-wind-tunnel-opens-at-nasa-langley",
+    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-04-webbings-for-use-in-elevated-oxygen-environments",
+    "https://www.nasa.gov/news-release/nasa-opens-new-flight-dynamics-research-facility-in-virginia",
     "https://science.nasa.gov/earth/students-take-on-airborne-field-research-with-nasa",
     "https://www.nasa.gov/news-release/nasa-assigns-astronaut-deniz-burnham-to-first-space-station-mission",
     "https://www.nasa.gov/image-article/starburst-galaxy-centaurus-a",
