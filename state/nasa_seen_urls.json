@@ -1,18 +1,20 @@
 {
-  "updated_at": "2026-08-01T07:17:49.123854+08:00",
-  "date": "2026-08-01",
+  "updated_at": "2026-08-02T07:13:05.782209+08:00",
+  "date": "2026-08-02",
   "last_fetch_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-august-1-buck-moon-and-belt-of-venus",
+    "https://science.nasa.gov/image-article/apod-2026-august-1-buck-moon-and-belt-of-venus",
     "https://science.nasa.gov/solar-system/whats-up-august-2026-skywatching-tips-from-nasa",
-    "https://www.nasa.gov/news-release/nasa-to-host-florida-event-celebrating-american-air-space-leadership",
-    "https://www.nasa.gov/image-article/nasas-newest-wind-tunnel-opens-at-nasa-langley",
-    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-04-webbings-for-use-in-elevated-oxygen-environments",
-    "https://www.nasa.gov/news-release/nasa-opens-new-flight-dynamics-research-facility-in-virginia"
+    "https://science.nasa.gov/blogs/swift/2026/07/31/efforts-continue-to-stabilize-link-spacecraft-for-nasas-swift-boost",
+    "https://www.nasa.gov/news-release/nasa-to-host-florida-event-celebrating-american-air-space-leadership"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/solar-system/whats-up-august-2026-skywatching-tips-from-nasa"
+    "https://science.nasa.gov/image-article/apod-2026-august-1-buck-moon-and-belt-of-venus"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-august-1-buck-moon-and-belt-of-venus",
     "https://science.nasa.gov/solar-system/whats-up-august-2026-skywatching-tips-from-nasa",
+    "https://science.nasa.gov/blogs/swift/2026/07/31/efforts-continue-to-stabilize-link-spacecraft-for-nasas-swift-boost",
     "https://www.nasa.gov/news-release/nasa-to-host-florida-event-celebrating-american-air-space-leadership",
     "https://www.nasa.gov/image-article/nasas-newest-wind-tunnel-opens-at-nasa-langley",
     "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-04-webbings-for-use-in-elevated-oxygen-environments",
