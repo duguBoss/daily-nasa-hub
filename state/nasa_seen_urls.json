@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-08-03T07:17:16.396543+08:00",
-  "date": "2026-08-03",
+  "updated_at": "2026-08-04T07:19:27.284503+08:00",
+  "date": "2026-08-04",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-august-2-a-fire-rainbow-over-west-virginia",
-    "https://science.nasa.gov/image-article/apod-2026-august-2-a-fire-rainbow-over-west-virginia",
-    "https://science.nasa.gov/image-article/apod/apod-2026-august-1-buck-moon-and-belt-of-venus",
-    "https://science.nasa.gov/solar-system/whats-up-august-2026-skywatching-tips-from-nasa",
-    "https://science.nasa.gov/blogs/swift/2026/07/31/efforts-continue-to-stabilize-link-spacecraft-for-nasas-swift-boost"
+    "https://www.nasa.gov/missions/scientific-balloons/louisiana-students-loft-payloads-from-nasa-balloon-facility-in-texas",
+    "https://www.nasa.gov/image-article/guinea-bissau-tidal-waters",
+    "https://www.nasa.gov/centers-and-facilities/johnson/ike-theriot-helps-prepare-astronauts-to-work-on-the-moon",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-brings-space-exploration-to-the-fifa-world-cup",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-3-vaporizing-meteor-photobombs-the-lacerta-nebula"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-august-2-a-fire-rainbow-over-west-virginia"
+    "https://www.nasa.gov/missions/scientific-balloons/louisiana-students-loft-payloads-from-nasa-balloon-facility-in-texas"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/scientific-balloons/louisiana-students-loft-payloads-from-nasa-balloon-facility-in-texas",
+    "https://www.nasa.gov/image-article/guinea-bissau-tidal-waters",
+    "https://www.nasa.gov/centers-and-facilities/johnson/ike-theriot-helps-prepare-astronauts-to-work-on-the-moon",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-brings-space-exploration-to-the-fifa-world-cup",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-3-vaporizing-meteor-photobombs-the-lacerta-nebula",
     "https://science.nasa.gov/image-article/apod-2026-august-2-a-fire-rainbow-over-west-virginia",
     "https://science.nasa.gov/image-article/apod/apod-2026-august-1-buck-moon-and-belt-of-venus",
     "https://science.nasa.gov/solar-system/whats-up-august-2026-skywatching-tips-from-nasa",
