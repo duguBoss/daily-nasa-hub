@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-08-06T07:27:41.126637+08:00",
-  "date": "2026-08-06",
+  "updated_at": "2026-08-07T09:59:52.129064+08:00",
+  "date": "2026-08-07",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/ixpe/nasas-ixpe-may-have-proven-90-year-old-theory",
-    "https://www.nasa.gov/image-article/artemis-iii-orion-crew-and-service-models-joined",
-    "https://science.nasa.gov/photojournal/nasas-perseverance-captures-phobos-and-earth",
-    "https://www.nasa.gov/image-article/advanced-mini-laboratories-automate-space-station-research",
-    "https://science.nasa.gov/image-article/apod-2026-august-5-spokes-on-saturns-b-ring"
+    "https://science.nasa.gov/learning-resources/science-activation/educators-teens-get-hands-on-with-tempo-data-to-help-investigate-local-air-quality",
+    "https://science.nasa.gov/photojournal/nasas-skyfall-helicopters-at-work-artists-concept",
+    "https://science.nasa.gov/photojournal/antenna-testing-for-nasas-skyfall-mission",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-tom-percy",
+    "https://www.nasa.gov/image-article/taking-flight-to-prepare-for-space"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/ixpe/nasas-ixpe-may-have-proven-90-year-old-theory"
+    "https://science.nasa.gov/learning-resources/science-activation/educators-teens-get-hands-on-with-tempo-data-to-help-investigate-local-air-quality",
+    "https://science.nasa.gov/photojournal/nasas-skyfall-helicopters-at-work-artists-concept"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/learning-resources/science-activation/educators-teens-get-hands-on-with-tempo-data-to-help-investigate-local-air-quality",
+    "https://science.nasa.gov/photojournal/nasas-skyfall-helicopters-at-work-artists-concept",
+    "https://science.nasa.gov/photojournal/antenna-testing-for-nasas-skyfall-mission",
+    "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-tom-percy",
+    "https://www.nasa.gov/image-article/taking-flight-to-prepare-for-space",
     "https://science.nasa.gov/missions/ixpe/nasas-ixpe-may-have-proven-90-year-old-theory",
     "https://www.nasa.gov/image-article/artemis-iii-orion-crew-and-service-models-joined",
     "https://science.nasa.gov/photojournal/nasas-perseverance-captures-phobos-and-earth",
