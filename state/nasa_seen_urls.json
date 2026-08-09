@@ -1,23 +1,24 @@
 {
-  "updated_at": "2026-08-09T06:53:02.841935+08:00",
-  "date": "2026-08-09",
+  "updated_at": "2026-08-10T07:07:23.618066+08:00",
+  "date": "2026-08-10",
   "last_fetch_urls": [
     "https://science.nasa.gov/image-article/apod/apod-2026-august-8-a-messier-moment-for-tempel-2",
-    "https://science.nasa.gov/image-article/apod/apod-2026-august-8-a-messier-moment-for-tempel-2",
-    "https://www.nasa.gov/blogs/spacestation/2026/08/07/space-station-crew-wraps-busy-week-plans-new-date-for-us-spacewalk-97",
     "https://science.nasa.gov/earth/2026-igarss-hyperwall-schedule",
-    "https://science.nasa.gov/blogs/imap/2026/08/07/nasas-imap-mission-releases-new-data-from-7-science-instruments"
+    "https://www.nasa.gov/image-article/nasas-ixpe-studies-magnetar",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasas-lunar-development-and-test-facility-prepares-artemis-hardware-for-moon",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-6-rubins-cosmos-field"
   ],
   "last_new_urls": [
     "https://science.nasa.gov/image-article/apod/apod-2026-august-8-a-messier-moment-for-tempel-2"
   ],
   "seen_urls": [
     "https://science.nasa.gov/image-article/apod/apod-2026-august-8-a-messier-moment-for-tempel-2",
-    "https://www.nasa.gov/blogs/spacestation/2026/08/07/space-station-crew-wraps-busy-week-plans-new-date-for-us-spacewalk-97",
     "https://science.nasa.gov/earth/2026-igarss-hyperwall-schedule",
-    "https://science.nasa.gov/blogs/imap/2026/08/07/nasas-imap-mission-releases-new-data-from-7-science-instruments",
     "https://www.nasa.gov/image-article/nasas-ixpe-studies-magnetar",
     "https://www.nasa.gov/centers-and-facilities/johnson/nasas-lunar-development-and-test-facility-prepares-artemis-hardware-for-moon",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-6-rubins-cosmos-field",
+    "https://www.nasa.gov/blogs/spacestation/2026/08/07/space-station-crew-wraps-busy-week-plans-new-date-for-us-spacewalk-97",
+    "https://science.nasa.gov/blogs/imap/2026/08/07/nasas-imap-mission-releases-new-data-from-7-science-instruments",
     "https://science.nasa.gov/image-article/apod-2026-august-6-rubins-cosmos-field",
     "https://science.nasa.gov/earth/earth-observatory/sensing-the-poles-hidden-heat",
     "https://science.nasa.gov/learning-resources/science-activation/educators-teens-get-hands-on-with-tempo-data-to-help-investigate-local-air-quality",
