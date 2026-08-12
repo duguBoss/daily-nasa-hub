@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-08-12T07:25:06.708783+08:00",
-  "date": "2026-08-12",
+  "updated_at": "2026-08-13T07:17:37.971620+08:00",
+  "date": "2026-08-13",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/artemis/nasa-completes-astronaut-deployed-science-instrument-for-lunar-surface",
-    "https://www.nasa.gov/image-article/lion-nebula-roars-in-webbs-sights",
-    "https://science.nasa.gov/missions/chandra/nasa-telescopes-create-colorful-craft-from-nearby-nebula",
-    "https://www.nasa.gov/missions/moon-base/building-the-moon-base-nasa-stories-at-the-ion",
-    "https://www.nasa.gov/missions/station/iss-research/nasa-shares-station-research-today-supporting-moon-mars-tomorrow"
+    "https://www.nasa.gov/image-article/2026-total-solar-eclipse-in-spain",
+    "https://www.nasa.gov/centers-and-facilities/ames/nasa-upgrades-vertical-motion-simulator-for-modern-mission-needs",
+    "https://www.nasa.gov/news-release/nasa-astronaut-mike-fincke-leaves-nasa-career-includes-4-spaceflights",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/pursuing-a-dream-of-working-for-nasa",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-12-perseids-over-a-little-planet"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/artemis/nasa-completes-astronaut-deployed-science-instrument-for-lunar-surface"
+    "https://www.nasa.gov/image-article/2026-total-solar-eclipse-in-spain"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/2026-total-solar-eclipse-in-spain",
+    "https://www.nasa.gov/centers-and-facilities/ames/nasa-upgrades-vertical-motion-simulator-for-modern-mission-needs",
+    "https://www.nasa.gov/news-release/nasa-astronaut-mike-fincke-leaves-nasa-career-includes-4-spaceflights",
+    "https://www.nasa.gov/centers-and-facilities/kennedy/pursuing-a-dream-of-working-for-nasa",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-12-perseids-over-a-little-planet",
     "https://science.nasa.gov/missions/artemis/nasa-completes-astronaut-deployed-science-instrument-for-lunar-surface",
     "https://www.nasa.gov/image-article/lion-nebula-roars-in-webbs-sights",
     "https://science.nasa.gov/missions/chandra/nasa-telescopes-create-colorful-craft-from-nearby-nebula",
