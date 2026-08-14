@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-08-14T07:19:33.350521+08:00",
-  "date": "2026-08-14",
+  "updated_at": "2026-08-15T06:47:43.534697+08:00",
+  "date": "2026-08-15",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/nasas-737-reveals-new-paint",
-    "https://www.nasa.gov/centers-and-facilities/goddard/for-west-virginia-engineer-home-is-where-the-heart-is-and-nasa-too",
-    "https://www.nasa.gov/image-article/perseids-meteor-shower-2",
-    "https://science.nasa.gov/image-article/apod-2026-august-13-total-solar-eclipse-over-spain",
-    "https://science.nasa.gov/earth/earth-observatory/cascade-volcanoes-shrouded-in-smoke"
+    "https://www.nasa.gov/news-release/nasa-announces-max-power-americas-newest-aerospace-expo-airshow",
+    "https://science.nasa.gov/get-involved/citizen-science/volunteer-develops-machine-learning-tool-to-identify-rare-clouds",
+    "https://science.nasa.gov/science-research/heliophysics/nasas-coffies-uses-ai-to-predict-storm-causing-active-regions-on-sun",
+    "https://www.nasa.gov/image-article/total-solar-eclipse-in-sunflower-field",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-14-total-solar-eclipse-from-greenland"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/nasas-737-reveals-new-paint"
+    "https://www.nasa.gov/news-release/nasa-announces-max-power-americas-newest-aerospace-expo-airshow"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-announces-max-power-americas-newest-aerospace-expo-airshow",
+    "https://science.nasa.gov/get-involved/citizen-science/volunteer-develops-machine-learning-tool-to-identify-rare-clouds",
+    "https://science.nasa.gov/science-research/heliophysics/nasas-coffies-uses-ai-to-predict-storm-causing-active-regions-on-sun",
+    "https://www.nasa.gov/image-article/total-solar-eclipse-in-sunflower-field",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-14-total-solar-eclipse-from-greenland",
     "https://www.nasa.gov/image-article/nasas-737-reveals-new-paint",
     "https://www.nasa.gov/centers-and-facilities/goddard/for-west-virginia-engineer-home-is-where-the-heart-is-and-nasa-too",
     "https://www.nasa.gov/image-article/perseids-meteor-shower-2",
