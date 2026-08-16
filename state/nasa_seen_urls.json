@@ -1,17 +1,18 @@
 {
-  "updated_at": "2026-08-16T06:47:43.374437+08:00",
-  "date": "2026-08-16",
+  "updated_at": "2026-08-17T06:43:08.500033+08:00",
+  "date": "2026-08-17",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod/apod-2026-august-15-bright-perseids-from-sweden",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-16-milky-way-over-yellowstone",
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-16-milky-way-over-yellowstone",
     "https://science.nasa.gov/image-article/apod/apod-2026-august-15-bright-perseids-from-sweden",
     "https://www.nasa.gov/news-release/nasa-announces-max-power-americas-newest-aerospace-expo-airshow",
-    "https://science.nasa.gov/get-involved/citizen-science/volunteer-develops-machine-learning-tool-to-identify-rare-clouds",
-    "https://science.nasa.gov/science-research/heliophysics/nasas-coffies-uses-ai-to-predict-storm-causing-active-regions-on-sun"
+    "https://science.nasa.gov/get-involved/citizen-science/volunteer-develops-machine-learning-tool-to-identify-rare-clouds"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod/apod-2026-august-15-bright-perseids-from-sweden"
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-16-milky-way-over-yellowstone"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod/apod-2026-august-16-milky-way-over-yellowstone",
     "https://science.nasa.gov/image-article/apod/apod-2026-august-15-bright-perseids-from-sweden",
     "https://www.nasa.gov/news-release/nasa-announces-max-power-americas-newest-aerospace-expo-airshow",
     "https://science.nasa.gov/get-involved/citizen-science/volunteer-develops-machine-learning-tool-to-identify-rare-clouds",
