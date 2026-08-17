@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-08-17T06:43:08.500033+08:00",
-  "date": "2026-08-17",
+  "updated_at": "2026-08-18T06:47:03.309662+08:00",
+  "date": "2026-08-18",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod/apod-2026-august-16-milky-way-over-yellowstone",
-    "https://science.nasa.gov/image-article/apod/apod-2026-august-16-milky-way-over-yellowstone",
-    "https://science.nasa.gov/image-article/apod/apod-2026-august-15-bright-perseids-from-sweden",
-    "https://www.nasa.gov/news-release/nasa-announces-max-power-americas-newest-aerospace-expo-airshow",
-    "https://science.nasa.gov/get-involved/citizen-science/volunteer-develops-machine-learning-tool-to-identify-rare-clouds"
+    "https://www.nasa.gov/news-release/nasa-selects-companies-to-provide-payload-processing-services",
+    "https://www.nasa.gov/missions/maia/nasa-mission-studies-air-pollution-over-ethiopia",
+    "https://science.nasa.gov/learning-resources/science-activation/next-generation-of-planetary-scientists-learn-public-engagement-skills",
+    "https://www.nasa.gov/image-article/colorful-collage-of-tarantula-nebula",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-challenge-tests-wheel-designs-for-moon-base-mobility"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod/apod-2026-august-16-milky-way-over-yellowstone"
+    "https://www.nasa.gov/news-release/nasa-selects-companies-to-provide-payload-processing-services"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-selects-companies-to-provide-payload-processing-services",
+    "https://www.nasa.gov/missions/maia/nasa-mission-studies-air-pollution-over-ethiopia",
+    "https://science.nasa.gov/learning-resources/science-activation/next-generation-of-planetary-scientists-learn-public-engagement-skills",
+    "https://www.nasa.gov/image-article/colorful-collage-of-tarantula-nebula",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-challenge-tests-wheel-designs-for-moon-base-mobility",
     "https://science.nasa.gov/image-article/apod/apod-2026-august-16-milky-way-over-yellowstone",
     "https://science.nasa.gov/image-article/apod/apod-2026-august-15-bright-perseids-from-sweden",
     "https://www.nasa.gov/news-release/nasa-announces-max-power-americas-newest-aerospace-expo-airshow",
