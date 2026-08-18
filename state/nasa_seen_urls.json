@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-08-18T06:47:03.309662+08:00",
-  "date": "2026-08-18",
+  "updated_at": "2026-08-19T06:39:02.468332+08:00",
+  "date": "2026-08-19",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-selects-companies-to-provide-payload-processing-services",
-    "https://www.nasa.gov/missions/maia/nasa-mission-studies-air-pollution-over-ethiopia",
-    "https://science.nasa.gov/learning-resources/science-activation/next-generation-of-planetary-scientists-learn-public-engagement-skills",
-    "https://www.nasa.gov/image-article/colorful-collage-of-tarantula-nebula",
-    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-challenge-tests-wheel-designs-for-moon-base-mobility"
-  ],
-  "last_new_urls": [
+    "https://science.nasa.gov/solar-system/moon/nasas-lro-images-falcon-9-crater-on-moon-learns-new-details",
+    "https://www.nasa.gov/image-article/nasas-b777-gets-new-coat-of-paint",
+    "https://science.nasa.gov/image-article/apod-2026-august-18-perseids-from-perseus",
+    "https://science.nasa.gov/earth/earth-observatory/lala-batters-hawaii",
     "https://www.nasa.gov/news-release/nasa-selects-companies-to-provide-payload-processing-services"
   ],
+  "last_new_urls": [
+    "https://science.nasa.gov/solar-system/moon/nasas-lro-images-falcon-9-crater-on-moon-learns-new-details"
+  ],
   "seen_urls": [
+    "https://science.nasa.gov/solar-system/moon/nasas-lro-images-falcon-9-crater-on-moon-learns-new-details",
+    "https://www.nasa.gov/image-article/nasas-b777-gets-new-coat-of-paint",
+    "https://science.nasa.gov/image-article/apod-2026-august-18-perseids-from-perseus",
+    "https://science.nasa.gov/earth/earth-observatory/lala-batters-hawaii",
     "https://www.nasa.gov/news-release/nasa-selects-companies-to-provide-payload-processing-services",
     "https://www.nasa.gov/missions/maia/nasa-mission-studies-air-pollution-over-ethiopia",
     "https://science.nasa.gov/learning-resources/science-activation/next-generation-of-planetary-scientists-learn-public-engagement-skills",
