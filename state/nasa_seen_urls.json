@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-08-19T06:39:02.468332+08:00",
-  "date": "2026-08-19",
+  "updated_at": "2026-08-20T06:44:38.942547+08:00",
+  "date": "2026-08-20",
   "last_fetch_urls": [
-    "https://science.nasa.gov/solar-system/moon/nasas-lro-images-falcon-9-crater-on-moon-learns-new-details",
-    "https://www.nasa.gov/image-article/nasas-b777-gets-new-coat-of-paint",
-    "https://science.nasa.gov/image-article/apod-2026-august-18-perseids-from-perseus",
-    "https://science.nasa.gov/earth/earth-observatory/lala-batters-hawaii",
-    "https://www.nasa.gov/news-release/nasa-selects-companies-to-provide-payload-processing-services"
+    "https://www.nasa.gov/news-release/nasa-updates-next-steps-for-commercial-swift-boost-mission",
+    "https://science.nasa.gov/humans-in-space/human-related-microbes-may-survive-moons-south-pole-nasa-finds",
+    "https://www.nasa.gov/image-article/ancient-milky-way-merger",
+    "https://www.nasa.gov/news-release/nasa-establishes-state-hubs-to-grow-technical-aerospace-workforce",
+    "https://www.nasa.gov/centers-and-facilities/johnson/behind-the-lens-meet-nasa-johnsons-photographers"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/solar-system/moon/nasas-lro-images-falcon-9-crater-on-moon-learns-new-details"
+    "https://www.nasa.gov/news-release/nasa-updates-next-steps-for-commercial-swift-boost-mission"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-updates-next-steps-for-commercial-swift-boost-mission",
+    "https://science.nasa.gov/humans-in-space/human-related-microbes-may-survive-moons-south-pole-nasa-finds",
+    "https://www.nasa.gov/image-article/ancient-milky-way-merger",
+    "https://www.nasa.gov/news-release/nasa-establishes-state-hubs-to-grow-technical-aerospace-workforce",
+    "https://www.nasa.gov/centers-and-facilities/johnson/behind-the-lens-meet-nasa-johnsons-photographers",
     "https://science.nasa.gov/solar-system/moon/nasas-lro-images-falcon-9-crater-on-moon-learns-new-details",
     "https://www.nasa.gov/image-article/nasas-b777-gets-new-coat-of-paint",
     "https://science.nasa.gov/image-article/apod-2026-august-18-perseids-from-perseus",
