@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-08-25T06:38:54.459021+08:00",
-  "date": "2026-08-25",
+  "updated_at": "2026-08-26T06:40:20.586621+08:00",
+  "date": "2026-08-26",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-roman-space-telescope-launch-from-florida",
-    "https://science.nasa.gov/photojournal/perseverance-captures-another-phobos-transit",
-    "https://science.nasa.gov/solar-system/starstruck-nasa-research-shows-how-suns-ancient-history-shaped-earth",
-    "https://www.nasa.gov/image-article/nasa-astronaut-reid-wiseman-at-freedom-250-grand-prix",
-    "https://science.nasa.gov/photojournal/maia-air-sensor-at-work-in-addis-ababa"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-lunarecycle-challenge-finale-event-in-alabama",
+    "https://www.nasa.gov/news-release/nasa-ames-experts-available-for-roman-space-telescope-interviews",
+    "https://science.nasa.gov/missions/pandora-missions/nasas-pandora-mission-begins-study-of-exoplanets-host-stars",
+    "https://science.nasa.gov/missions/chandra/galactic-gems-glisten-in-new-gallery-from-nasas-chandra",
+    "https://www.nasa.gov/image-article/astronauts-anil-menon-and-sophie-adenot-on-spacewalk"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-roman-space-telescope-launch-from-florida"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-lunarecycle-challenge-finale-event-in-alabama"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-lunarecycle-challenge-finale-event-in-alabama",
+    "https://www.nasa.gov/news-release/nasa-ames-experts-available-for-roman-space-telescope-interviews",
+    "https://science.nasa.gov/missions/pandora-missions/nasas-pandora-mission-begins-study-of-exoplanets-host-stars",
+    "https://science.nasa.gov/missions/chandra/galactic-gems-glisten-in-new-gallery-from-nasas-chandra",
+    "https://www.nasa.gov/image-article/astronauts-anil-menon-and-sophie-adenot-on-spacewalk",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-roman-space-telescope-launch-from-florida",
     "https://science.nasa.gov/photojournal/perseverance-captures-another-phobos-transit",
     "https://science.nasa.gov/solar-system/starstruck-nasa-research-shows-how-suns-ancient-history-shaped-earth",
