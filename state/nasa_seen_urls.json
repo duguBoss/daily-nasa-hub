@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-08-26T06:40:20.586621+08:00",
-  "date": "2026-08-26",
+  "updated_at": "2026-08-27T11:11:06.609893+08:00",
+  "date": "2026-08-27",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-lunarecycle-challenge-finale-event-in-alabama",
-    "https://www.nasa.gov/news-release/nasa-ames-experts-available-for-roman-space-telescope-interviews",
-    "https://science.nasa.gov/missions/pandora-missions/nasas-pandora-mission-begins-study-of-exoplanets-host-stars",
-    "https://science.nasa.gov/missions/chandra/galactic-gems-glisten-in-new-gallery-from-nasas-chandra",
-    "https://www.nasa.gov/image-article/astronauts-anil-menon-and-sophie-adenot-on-spacewalk"
+    "https://www.nasa.gov/image-article/roman-space-telescope-travels-to-spacex-hangar",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-johnson-pilots-chase-moons-shadow-for-eclipse-science",
+    "https://www.nasa.gov/news-release/nasa-sets-spacewalk-for-station-maintenance-live-coverage-planned",
+    "https://www.nasa.gov/missions/artemis/nasa-begins-moon-mission-plume-surface-interaction-tests",
+    "https://www.nasa.gov/centers-and-facilities/stennis/contractor-to-civil-servant-jeret-howard"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-lunarecycle-challenge-finale-event-in-alabama"
+    "https://www.nasa.gov/image-article/roman-space-telescope-travels-to-spacex-hangar"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/roman-space-telescope-travels-to-spacex-hangar",
+    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-johnson-pilots-chase-moons-shadow-for-eclipse-science",
+    "https://www.nasa.gov/news-release/nasa-sets-spacewalk-for-station-maintenance-live-coverage-planned",
+    "https://www.nasa.gov/missions/artemis/nasa-begins-moon-mission-plume-surface-interaction-tests",
+    "https://www.nasa.gov/centers-and-facilities/stennis/contractor-to-civil-servant-jeret-howard",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-lunarecycle-challenge-finale-event-in-alabama",
     "https://www.nasa.gov/news-release/nasa-ames-experts-available-for-roman-space-telescope-interviews",
     "https://science.nasa.gov/missions/pandora-missions/nasas-pandora-mission-begins-study-of-exoplanets-host-stars",
