@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-08-27T11:11:06.609893+08:00",
-  "date": "2026-08-27",
+  "updated_at": "2026-08-28T14:06:40.666348+08:00",
+  "date": "2026-08-28",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/roman-space-telescope-travels-to-spacex-hangar",
-    "https://www.nasa.gov/centers-and-facilities/johnson/nasa-johnson-pilots-chase-moons-shadow-for-eclipse-science",
-    "https://www.nasa.gov/news-release/nasa-sets-spacewalk-for-station-maintenance-live-coverage-planned",
-    "https://www.nasa.gov/missions/artemis/nasa-begins-moon-mission-plume-surface-interaction-tests",
-    "https://www.nasa.gov/centers-and-facilities/stennis/contractor-to-civil-servant-jeret-howard"
+    "https://science.nasa.gov/image-article/apod-2026-august-28-the-sky-turns-above-paranal",
+    "https://science.nasa.gov/earth/earth-observatory/the-forested-floodplains-of-congaree-national-park",
+    "https://www.nasa.gov/blogs/spacestation/2026/08/27/spacewalk-preps-biomedical-science-as-station-boosts-orbit-on-thursday",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-turkey-artemis-accords-signing-ceremony",
+    "https://www.nasa.gov/image-article/civil-servants-sworn-in-at-nasa-ames"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/roman-space-telescope-travels-to-spacex-hangar"
+    "https://science.nasa.gov/image-article/apod-2026-august-28-the-sky-turns-above-paranal"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-august-28-the-sky-turns-above-paranal",
+    "https://science.nasa.gov/earth/earth-observatory/the-forested-floodplains-of-congaree-national-park",
+    "https://www.nasa.gov/blogs/spacestation/2026/08/27/spacewalk-preps-biomedical-science-as-station-boosts-orbit-on-thursday",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-turkey-artemis-accords-signing-ceremony",
+    "https://www.nasa.gov/image-article/civil-servants-sworn-in-at-nasa-ames",
     "https://www.nasa.gov/image-article/roman-space-telescope-travels-to-spacex-hangar",
     "https://www.nasa.gov/centers-and-facilities/johnson/nasa-johnson-pilots-chase-moons-shadow-for-eclipse-science",
     "https://www.nasa.gov/news-release/nasa-sets-spacewalk-for-station-maintenance-live-coverage-planned",
