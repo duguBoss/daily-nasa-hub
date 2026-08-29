@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-08-28T14:06:40.666348+08:00",
-  "date": "2026-08-28",
+  "updated_at": "2026-08-29T11:40:59.571263+08:00",
+  "date": "2026-08-29",
   "last_fetch_urls": [
+    "https://www.nasa.gov/image-article/nasas-artemis-ii-crew-receives-congressional-space-medal-of-honor",
+    "https://www.nasa.gov/news-release/president-honors-nasas-artemis-ii-crew-with-highest-us-space-award",
+    "https://www.nasa.gov/news-release/president-trump-signs-executive-order-to-create-us-space-academy",
     "https://science.nasa.gov/image-article/apod-2026-august-28-the-sky-turns-above-paranal",
-    "https://science.nasa.gov/earth/earth-observatory/the-forested-floodplains-of-congaree-national-park",
-    "https://www.nasa.gov/blogs/spacestation/2026/08/27/spacewalk-preps-biomedical-science-as-station-boosts-orbit-on-thursday",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-turkey-artemis-accords-signing-ceremony",
-    "https://www.nasa.gov/image-article/civil-servants-sworn-in-at-nasa-ames"
+    "https://science.nasa.gov/earth/earth-observatory/the-forested-floodplains-of-congaree-national-park"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-august-28-the-sky-turns-above-paranal"
+    "https://www.nasa.gov/image-article/nasas-artemis-ii-crew-receives-congressional-space-medal-of-honor",
+    "https://www.nasa.gov/news-release/president-honors-nasas-artemis-ii-crew-with-highest-us-space-award"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/nasas-artemis-ii-crew-receives-congressional-space-medal-of-honor",
+    "https://www.nasa.gov/news-release/president-honors-nasas-artemis-ii-crew-with-highest-us-space-award",
+    "https://www.nasa.gov/news-release/president-trump-signs-executive-order-to-create-us-space-academy",
     "https://science.nasa.gov/image-article/apod-2026-august-28-the-sky-turns-above-paranal",
     "https://science.nasa.gov/earth/earth-observatory/the-forested-floodplains-of-congaree-national-park",
     "https://www.nasa.gov/blogs/spacestation/2026/08/27/spacewalk-preps-biomedical-science-as-station-boosts-orbit-on-thursday",
