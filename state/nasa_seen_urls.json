@@ -1,19 +1,22 @@
 {
-  "updated_at": "2026-08-29T11:40:59.571263+08:00",
-  "date": "2026-08-29",
+  "updated_at": "2026-08-30T08:11:56.860146+08:00",
+  "date": "2026-08-30",
   "last_fetch_urls": [
+    "https://science.nasa.gov/blogs/roman/2026/08/29/nasa-roman-arrives-at-launch-pad-mission-briefings-scheduled",
     "https://www.nasa.gov/image-article/nasas-artemis-ii-crew-receives-congressional-space-medal-of-honor",
-    "https://www.nasa.gov/news-release/president-honors-nasas-artemis-ii-crew-with-highest-us-space-award",
-    "https://www.nasa.gov/news-release/president-trump-signs-executive-order-to-create-us-space-academy",
-    "https://science.nasa.gov/image-article/apod-2026-august-28-the-sky-turns-above-paranal",
-    "https://science.nasa.gov/earth/earth-observatory/the-forested-floodplains-of-congaree-national-park"
+    "https://www.nasa.gov/blogs/spacestation/2026/08/28/u-s-president-speaks-to-expedition-75-crew-after-awarding-artemis-ii-crew",
+    "https://science.nasa.gov/blogs/swift/2026/08/28/nasas-swift-restarts-science-observations",
+    "https://science.nasa.gov/blogs/roman/2026/08/28/nasas-roman-space-telescope-go-for-launch"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/nasas-artemis-ii-crew-receives-congressional-space-medal-of-honor",
-    "https://www.nasa.gov/news-release/president-honors-nasas-artemis-ii-crew-with-highest-us-space-award"
+    "https://science.nasa.gov/blogs/roman/2026/08/29/nasa-roman-arrives-at-launch-pad-mission-briefings-scheduled"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/blogs/roman/2026/08/29/nasa-roman-arrives-at-launch-pad-mission-briefings-scheduled",
     "https://www.nasa.gov/image-article/nasas-artemis-ii-crew-receives-congressional-space-medal-of-honor",
+    "https://www.nasa.gov/blogs/spacestation/2026/08/28/u-s-president-speaks-to-expedition-75-crew-after-awarding-artemis-ii-crew",
+    "https://science.nasa.gov/blogs/swift/2026/08/28/nasas-swift-restarts-science-observations",
+    "https://science.nasa.gov/blogs/roman/2026/08/28/nasas-roman-space-telescope-go-for-launch",
     "https://www.nasa.gov/news-release/president-honors-nasas-artemis-ii-crew-with-highest-us-space-award",
     "https://www.nasa.gov/news-release/president-trump-signs-executive-order-to-create-us-space-academy",
     "https://science.nasa.gov/image-article/apod-2026-august-28-the-sky-turns-above-paranal",
