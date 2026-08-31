@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-08-30T08:11:56.860146+08:00",
-  "date": "2026-08-30",
+  "updated_at": "2026-08-31T08:30:51.405717+08:00",
+  "date": "2026-08-31",
   "last_fetch_urls": [
-    "https://science.nasa.gov/blogs/roman/2026/08/29/nasa-roman-arrives-at-launch-pad-mission-briefings-scheduled",
-    "https://www.nasa.gov/image-article/nasas-artemis-ii-crew-receives-congressional-space-medal-of-honor",
-    "https://www.nasa.gov/blogs/spacestation/2026/08/28/u-s-president-speaks-to-expedition-75-crew-after-awarding-artemis-ii-crew",
-    "https://science.nasa.gov/blogs/swift/2026/08/28/nasas-swift-restarts-science-observations",
-    "https://science.nasa.gov/blogs/roman/2026/08/28/nasas-roman-space-telescope-go-for-launch"
+    "https://science.nasa.gov/photojournal/ribbon-cutting-event-for-nasa-deep-space-networks-deep-space-station-23",
+    "https://science.nasa.gov/photojournal/nasa-deep-space-networks-new-goldstone-antenna-goes-online",
+    "https://science.nasa.gov/photojournal/panorama-showcasing-the-34-meter-antennas-of-the-dsns-goldstone-complex",
+    "https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches",
+    "https://science.nasa.gov/photojournal/ribbon-cutting-event-for-nasa-deep-space-networks-deep-space-station-23"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/blogs/roman/2026/08/29/nasa-roman-arrives-at-launch-pad-mission-briefings-scheduled"
+    "https://science.nasa.gov/photojournal/ribbon-cutting-event-for-nasa-deep-space-networks-deep-space-station-23"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/photojournal/ribbon-cutting-event-for-nasa-deep-space-networks-deep-space-station-23",
+    "https://science.nasa.gov/photojournal/nasa-deep-space-networks-new-goldstone-antenna-goes-online",
+    "https://science.nasa.gov/photojournal/panorama-showcasing-the-34-meter-antennas-of-the-dsns-goldstone-complex",
+    "https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches",
     "https://science.nasa.gov/blogs/roman/2026/08/29/nasa-roman-arrives-at-launch-pad-mission-briefings-scheduled",
     "https://www.nasa.gov/image-article/nasas-artemis-ii-crew-receives-congressional-space-medal-of-honor",
     "https://www.nasa.gov/blogs/spacestation/2026/08/28/u-s-president-speaks-to-expedition-75-crew-after-awarding-artemis-ii-crew",
