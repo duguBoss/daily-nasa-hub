@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-01T09:15:56.199700+08:00",
-  "date": "2026-09-01",
+  "updated_at": "2026-09-02T08:02:42.795696+08:00",
+  "date": "2026-09-02",
   "last_fetch_urls": [
-    "https://science.nasa.gov/earth/earth-observatory/september-2026-satellite-puzzler",
-    "https://www.nasa.gov/image-article/nasas-nancy-grace-roman-space-telescope-launches",
-    "https://science.nasa.gov/missions/roman-space-telescope/roman-commissioning",
-    "https://science.nasa.gov/image-article/apod-2026-august-31-launch-of-the-roman-space-telescope",
-    "https://science.nasa.gov/earth/earth-observatory/september-2026-satellite-puzzler"
+    "https://www.nasa.gov/news-release/nasa-selects-blue-origin-as-mars-telecommunications-network-provider",
+    "https://science.nasa.gov/solar-system/skywatching/whats-up-september-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/image-article/historic-engines-take-their-place-on-artemis-iii",
+    "https://science.nasa.gov/image-article/apod-2026-september-1-a-plane-lunar-eclipse",
+    "https://science.nasa.gov/earth/earth-observatory/iceberg-from-petermann-glacier-speeds-away"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/earth/earth-observatory/september-2026-satellite-puzzler"
+    "https://www.nasa.gov/news-release/nasa-selects-blue-origin-as-mars-telecommunications-network-provider"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-selects-blue-origin-as-mars-telecommunications-network-provider",
+    "https://science.nasa.gov/solar-system/skywatching/whats-up-september-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/image-article/historic-engines-take-their-place-on-artemis-iii",
+    "https://science.nasa.gov/image-article/apod-2026-september-1-a-plane-lunar-eclipse",
+    "https://science.nasa.gov/earth/earth-observatory/iceberg-from-petermann-glacier-speeds-away",
     "https://science.nasa.gov/earth/earth-observatory/september-2026-satellite-puzzler",
     "https://www.nasa.gov/image-article/nasas-nancy-grace-roman-space-telescope-launches",
     "https://science.nasa.gov/missions/roman-space-telescope/roman-commissioning",
