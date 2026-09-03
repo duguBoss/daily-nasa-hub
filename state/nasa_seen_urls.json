@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-02T08:02:42.795696+08:00",
-  "date": "2026-09-02",
+  "updated_at": "2026-09-03T08:07:14.724539+08:00",
+  "date": "2026-09-03",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-selects-blue-origin-as-mars-telecommunications-network-provider",
-    "https://science.nasa.gov/solar-system/skywatching/whats-up-september-2026-skywatching-tips-from-nasa",
-    "https://www.nasa.gov/image-article/historic-engines-take-their-place-on-artemis-iii",
-    "https://science.nasa.gov/image-article/apod-2026-september-1-a-plane-lunar-eclipse",
-    "https://science.nasa.gov/earth/earth-observatory/iceberg-from-petermann-glacier-speeds-away"
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-tracks-new-decagon-encircling-saturns-south-pole",
+    "https://www.nasa.gov/image-article/rising-over-louisiana",
+    "https://science.nasa.gov/science-research/heliophysics/nasa-rocket-takes-first-multi-point-look-inside-radio-disrupting-clouds",
+    "https://science.nasa.gov/image-article/apod-2026-september-2-solar-eclipses-and-culture",
+    "https://www.nasa.gov/blogs/wallops/2026/09/02/nasas-hasp-scientific-balloon-launches-from-fort-sumner"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-selects-blue-origin-as-mars-telecommunications-network-provider"
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-tracks-new-decagon-encircling-saturns-south-pole"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-tracks-new-decagon-encircling-saturns-south-pole",
+    "https://www.nasa.gov/image-article/rising-over-louisiana",
+    "https://science.nasa.gov/science-research/heliophysics/nasa-rocket-takes-first-multi-point-look-inside-radio-disrupting-clouds",
+    "https://science.nasa.gov/image-article/apod-2026-september-2-solar-eclipses-and-culture",
+    "https://www.nasa.gov/blogs/wallops/2026/09/02/nasas-hasp-scientific-balloon-launches-from-fort-sumner",
     "https://www.nasa.gov/news-release/nasa-selects-blue-origin-as-mars-telecommunications-network-provider",
     "https://science.nasa.gov/solar-system/skywatching/whats-up-september-2026-skywatching-tips-from-nasa",
     "https://www.nasa.gov/image-article/historic-engines-take-their-place-on-artemis-iii",
