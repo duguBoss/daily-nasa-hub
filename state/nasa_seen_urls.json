@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-03T08:07:14.724539+08:00",
-  "date": "2026-09-03",
+  "updated_at": "2026-09-04T08:00:21.056820+08:00",
+  "date": "2026-09-04",
   "last_fetch_urls": [
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-tracks-new-decagon-encircling-saturns-south-pole",
-    "https://www.nasa.gov/image-article/rising-over-louisiana",
-    "https://science.nasa.gov/science-research/heliophysics/nasa-rocket-takes-first-multi-point-look-inside-radio-disrupting-clouds",
-    "https://science.nasa.gov/image-article/apod-2026-september-2-solar-eclipses-and-culture",
-    "https://www.nasa.gov/blogs/wallops/2026/09/02/nasas-hasp-scientific-balloon-launches-from-fort-sumner"
+    "https://www.nasa.gov/news-release/nasa-to-cover-progress-96-spacecraft-launch-docking",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4988-4994-more-new-tricks-for-an-old-dog",
+    "https://www.nasa.gov/image-article/igniting-romans-journey",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-superbubble-scene",
+    "https://science.nasa.gov/image-article/apod-2026-september-3-the-eclipse-and-the-stork"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-tracks-new-decagon-encircling-saturns-south-pole"
+    "https://www.nasa.gov/news-release/nasa-to-cover-progress-96-spacecraft-launch-docking"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-to-cover-progress-96-spacecraft-launch-docking",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-4988-4994-more-new-tricks-for-an-old-dog",
+    "https://www.nasa.gov/image-article/igniting-romans-journey",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-superbubble-scene",
+    "https://science.nasa.gov/image-article/apod-2026-september-3-the-eclipse-and-the-stork",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-tracks-new-decagon-encircling-saturns-south-pole",
     "https://www.nasa.gov/image-article/rising-over-louisiana",
     "https://science.nasa.gov/science-research/heliophysics/nasa-rocket-takes-first-multi-point-look-inside-radio-disrupting-clouds",
