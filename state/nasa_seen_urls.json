@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-04T08:00:21.056820+08:00",
-  "date": "2026-09-04",
+  "updated_at": "2026-09-05T07:59:54.855003+08:00",
+  "date": "2026-09-05",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-cover-progress-96-spacecraft-launch-docking",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-4988-4994-more-new-tricks-for-an-old-dog",
-    "https://www.nasa.gov/image-article/igniting-romans-journey",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-superbubble-scene",
-    "https://science.nasa.gov/image-article/apod-2026-september-3-the-eclipse-and-the-stork"
+    "https://www.nasa.gov/news-release/nasa-ames-fire-department-aircraft-firefighting-training",
+    "https://www.nasa.gov/image-article/lunar-occultation-of-venus",
+    "https://science.nasa.gov/image-article/apod-2026-september-4-na-uhane-mahoe-huki-pu-i-ke-ola",
+    "https://science.nasa.gov/earth/earth-observatory/a-trio-of-tropical-cyclones-in-the-pacific",
+    "https://science.nasa.gov/blogs/swift/2026/09/04/commercial-spacecraft-for-nasas-swift-boost-continues-tech-demo"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-cover-progress-96-spacecraft-launch-docking"
+    "https://www.nasa.gov/news-release/nasa-ames-fire-department-aircraft-firefighting-training"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-ames-fire-department-aircraft-firefighting-training",
+    "https://www.nasa.gov/image-article/lunar-occultation-of-venus",
+    "https://science.nasa.gov/image-article/apod-2026-september-4-na-uhane-mahoe-huki-pu-i-ke-ola",
+    "https://science.nasa.gov/earth/earth-observatory/a-trio-of-tropical-cyclones-in-the-pacific",
+    "https://science.nasa.gov/blogs/swift/2026/09/04/commercial-spacecraft-for-nasas-swift-boost-continues-tech-demo",
     "https://www.nasa.gov/news-release/nasa-to-cover-progress-96-spacecraft-launch-docking",
     "https://science.nasa.gov/blog/curiosity-blog-sols-4988-4994-more-new-tricks-for-an-old-dog",
     "https://www.nasa.gov/image-article/igniting-romans-journey",
