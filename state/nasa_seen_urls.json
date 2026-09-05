@@ -1,22 +1,24 @@
 {
-  "updated_at": "2026-09-05T07:59:54.855003+08:00",
-  "date": "2026-09-05",
+  "updated_at": "2026-09-06T07:49:07.076907+08:00",
+  "date": "2026-09-06",
   "last_fetch_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow",
+    "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow",
     "https://www.nasa.gov/news-release/nasa-ames-fire-department-aircraft-firefighting-training",
-    "https://www.nasa.gov/image-article/lunar-occultation-of-venus",
-    "https://science.nasa.gov/image-article/apod-2026-september-4-na-uhane-mahoe-huki-pu-i-ke-ola",
-    "https://science.nasa.gov/earth/earth-observatory/a-trio-of-tropical-cyclones-in-the-pacific",
-    "https://science.nasa.gov/blogs/swift/2026/09/04/commercial-spacecraft-for-nasas-swift-boost-continues-tech-demo"
+    "https://science.nasa.gov/blogs/swift/2026/09/04/commercial-spacecraft-for-nasas-swift-boost-continues-tech-demo",
+    "https://www.nasa.gov/blogs/quesst/2026/09/04/nasas-x-59-aircraft-builds-momentum-through-25th-flight"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-ames-fire-department-aircraft-firefighting-training"
+    "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow",
     "https://www.nasa.gov/news-release/nasa-ames-fire-department-aircraft-firefighting-training",
+    "https://science.nasa.gov/blogs/swift/2026/09/04/commercial-spacecraft-for-nasas-swift-boost-continues-tech-demo",
+    "https://www.nasa.gov/blogs/quesst/2026/09/04/nasas-x-59-aircraft-builds-momentum-through-25th-flight",
     "https://www.nasa.gov/image-article/lunar-occultation-of-venus",
     "https://science.nasa.gov/image-article/apod-2026-september-4-na-uhane-mahoe-huki-pu-i-ke-ola",
     "https://science.nasa.gov/earth/earth-observatory/a-trio-of-tropical-cyclones-in-the-pacific",
-    "https://science.nasa.gov/blogs/swift/2026/09/04/commercial-spacecraft-for-nasas-swift-boost-continues-tech-demo",
     "https://www.nasa.gov/news-release/nasa-to-cover-progress-96-spacecraft-launch-docking",
     "https://science.nasa.gov/blog/curiosity-blog-sols-4988-4994-more-new-tricks-for-an-old-dog",
     "https://www.nasa.gov/image-article/igniting-romans-journey",
