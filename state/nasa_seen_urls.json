@@ -1,17 +1,19 @@
 {
-  "updated_at": "2026-09-07T07:49:15.237854+08:00",
-  "date": "2026-09-07",
+  "updated_at": "2026-09-08T08:16:12.117046+08:00",
+  "date": "2026-09-08",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow",
-    "https://www.nasa.gov/news-release/nasa-ames-fire-department-aircraft-firefighting-training",
-    "https://www.nasa.gov/image-article/lunar-occultation-of-venus",
-    "https://science.nasa.gov/image-article/apod-2026-september-4-na-uhane-mahoe-huki-pu-i-ke-ola",
-    "https://science.nasa.gov/earth/earth-observatory/a-trio-of-tropical-cyclones-in-the-pacific"
-  ],
-  "last_new_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-7-the-pelican-nebula-in-gas-dust-and-stars",
+    "https://science.nasa.gov/earth/earth-observatory/a-bright-spot-at-mount-michael",
+    "https://science.nasa.gov/image-article/apod-2026-september-7-the-pelican-nebula-in-gas-dust-and-stars",
+    "https://science.nasa.gov/earth/earth-observatory/a-bright-spot-at-mount-michael",
     "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow"
   ],
+  "last_new_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-7-the-pelican-nebula-in-gas-dust-and-stars"
+  ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-7-the-pelican-nebula-in-gas-dust-and-stars",
+    "https://science.nasa.gov/earth/earth-observatory/a-bright-spot-at-mount-michael",
     "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow",
     "https://www.nasa.gov/news-release/nasa-ames-fire-department-aircraft-firefighting-training",
     "https://www.nasa.gov/image-article/lunar-occultation-of-venus",
