@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-08T08:16:12.117046+08:00",
-  "date": "2026-09-08",
+  "updated_at": "2026-09-09T08:07:02.209692+08:00",
+  "date": "2026-09-09",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-7-the-pelican-nebula-in-gas-dust-and-stars",
-    "https://science.nasa.gov/earth/earth-observatory/a-bright-spot-at-mount-michael",
-    "https://science.nasa.gov/image-article/apod-2026-september-7-the-pelican-nebula-in-gas-dust-and-stars",
-    "https://science.nasa.gov/earth/earth-observatory/a-bright-spot-at-mount-michael",
-    "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow"
+    "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies",
+    "https://www.nasa.gov/image-article/superbubble-in-the-large-magellanic-cloud",
+    "https://science.nasa.gov/learning-resources/science-activation/1000-museum-visitors-dive-into-nasa-sea-level-science-on-world-ocean-day",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-webb-find-far-out-solar-system-objects-remember-past",
+    "https://science.nasa.gov/image-article/apod-2026-september-8-hubble-decagon-around-saturns-south-pole"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-7-the-pelican-nebula-in-gas-dust-and-stars"
+    "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies",
+    "https://www.nasa.gov/image-article/superbubble-in-the-large-magellanic-cloud",
+    "https://science.nasa.gov/learning-resources/science-activation/1000-museum-visitors-dive-into-nasa-sea-level-science-on-world-ocean-day",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-webb-find-far-out-solar-system-objects-remember-past",
+    "https://science.nasa.gov/image-article/apod-2026-september-8-hubble-decagon-around-saturns-south-pole",
     "https://science.nasa.gov/image-article/apod-2026-september-7-the-pelican-nebula-in-gas-dust-and-stars",
     "https://science.nasa.gov/earth/earth-observatory/a-bright-spot-at-mount-michael",
     "https://science.nasa.gov/image-article/apod-2026-september-5-chasing-the-moons-shadow",
