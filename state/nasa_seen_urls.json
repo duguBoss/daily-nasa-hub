@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-09T08:07:02.209692+08:00",
-  "date": "2026-09-09",
+  "updated_at": "2026-09-10T08:14:04.584053+08:00",
+  "date": "2026-09-10",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies",
-    "https://www.nasa.gov/image-article/superbubble-in-the-large-magellanic-cloud",
-    "https://science.nasa.gov/learning-resources/science-activation/1000-museum-visitors-dive-into-nasa-sea-level-science-on-world-ocean-day",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-webb-find-far-out-solar-system-objects-remember-past",
-    "https://science.nasa.gov/image-article/apod-2026-september-8-hubble-decagon-around-saturns-south-pole"
+    "https://www.nasa.gov/news-release/nasa-adds-relativity-spaces-terran-r-to-launch-services-contract",
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-unveils-mysterious-x-ray-objects",
+    "https://www.nasa.gov/missions/jason-cs-sentinel-6/how-2-us-european-satellites-are-studying-hurricanes-during-el-nino",
+    "https://www.nasa.gov/image-article/artemis-ii-crew-at-nasa-marshall",
+    "https://www.nasa.gov/news-release/nasa-names-two-artemis-ii-astronauts-to-emeritus-program"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies"
+    "https://www.nasa.gov/news-release/nasa-adds-relativity-spaces-terran-r-to-launch-services-contract"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-adds-relativity-spaces-terran-r-to-launch-services-contract",
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-unveils-mysterious-x-ray-objects",
+    "https://www.nasa.gov/missions/jason-cs-sentinel-6/how-2-us-european-satellites-are-studying-hurricanes-during-el-nino",
+    "https://www.nasa.gov/image-article/artemis-ii-crew-at-nasa-marshall",
+    "https://www.nasa.gov/news-release/nasa-names-two-artemis-ii-astronauts-to-emeritus-program",
     "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies",
     "https://www.nasa.gov/image-article/superbubble-in-the-large-magellanic-cloud",
     "https://science.nasa.gov/learning-resources/science-activation/1000-museum-visitors-dive-into-nasa-sea-level-science-on-world-ocean-day",
