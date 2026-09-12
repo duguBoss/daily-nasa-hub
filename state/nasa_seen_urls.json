@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-09-11T08:02:46.705955+08:00",
-  "date": "2026-09-11",
+  "updated_at": "2026-09-12T08:10:07.948619+08:00",
+  "date": "2026-09-12",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-djibouti-artemis-accords-signing-ceremony",
-    "https://www.nasa.gov/news-release/nasa-answers-presidents-call-to-establish-united-states-space-academy",
-    "https://www.nasa.gov/news-release/nasa-nfl-team-up-to-showcase-space-aeronautics-innovation",
-    "https://www.nasa.gov/image-article/dust-and-water-in-sagittarius-a",
-    "https://science.nasa.gov/image-article/apod-2026-september-10-ldn-1295-the-giraffe-nebula"
+    "https://science.nasa.gov/get-involved/citizen-science/help-refine-data-from-space-telescopes-with-artifact-inspector",
+    "https://www.nasa.gov/image-article/nasas-chandra-spots-galactic-gem",
+    "https://www.nasa.gov/news-release/nasas-spacex-crew-12-to-discuss-station-mission-upcoming-return",
+    "https://science.nasa.gov/image-article/apod-2026-september-11-m83-the-southern-pinwheel",
+    "https://science.nasa.gov/earth/earth-observatory/monterrey-amid-mountains"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-djibouti-artemis-accords-signing-ceremony",
-    "https://www.nasa.gov/news-release/nasa-answers-presidents-call-to-establish-united-states-space-academy"
+    "https://science.nasa.gov/get-involved/citizen-science/help-refine-data-from-space-telescopes-with-artifact-inspector"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/get-involved/citizen-science/help-refine-data-from-space-telescopes-with-artifact-inspector",
+    "https://www.nasa.gov/image-article/nasas-chandra-spots-galactic-gem",
+    "https://www.nasa.gov/news-release/nasas-spacex-crew-12-to-discuss-station-mission-upcoming-return",
+    "https://science.nasa.gov/image-article/apod-2026-september-11-m83-the-southern-pinwheel",
+    "https://science.nasa.gov/earth/earth-observatory/monterrey-amid-mountains",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-djibouti-artemis-accords-signing-ceremony",
     "https://www.nasa.gov/news-release/nasa-answers-presidents-call-to-establish-united-states-space-academy",
     "https://www.nasa.gov/news-release/nasa-nfl-team-up-to-showcase-space-aeronautics-innovation",
