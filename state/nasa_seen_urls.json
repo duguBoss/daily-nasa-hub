@@ -1,17 +1,19 @@
 {
-  "updated_at": "2026-09-13T08:02:57.279326+08:00",
-  "date": "2026-09-13",
+  "updated_at": "2026-09-14T08:09:17.974335+08:00",
+  "date": "2026-09-14",
   "last_fetch_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-13-comet-neowise-rising-over-the-adriatic-sea",
+    "https://www.nasa.gov/blogs/wallops/2026/09/13/fourth-balloon-of-nasa-scientific-balloon-campaign-launches",
+    "https://science.nasa.gov/image-article/apod-2026-september-13-comet-neowise-rising-over-the-adriatic-sea",
     "https://science.nasa.gov/get-involved/citizen-science/help-refine-data-from-space-telescopes-with-artifact-inspector",
-    "https://www.nasa.gov/image-article/nasas-chandra-spots-galactic-gem",
-    "https://www.nasa.gov/news-release/nasas-spacex-crew-12-to-discuss-station-mission-upcoming-return",
-    "https://science.nasa.gov/image-article/apod-2026-september-11-m83-the-southern-pinwheel",
-    "https://science.nasa.gov/earth/earth-observatory/monterrey-amid-mountains"
+    "https://www.nasa.gov/image-article/nasas-chandra-spots-galactic-gem"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/get-involved/citizen-science/help-refine-data-from-space-telescopes-with-artifact-inspector"
+    "https://science.nasa.gov/image-article/apod-2026-september-13-comet-neowise-rising-over-the-adriatic-sea"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-13-comet-neowise-rising-over-the-adriatic-sea",
+    "https://www.nasa.gov/blogs/wallops/2026/09/13/fourth-balloon-of-nasa-scientific-balloon-campaign-launches",
     "https://science.nasa.gov/get-involved/citizen-science/help-refine-data-from-space-telescopes-with-artifact-inspector",
     "https://www.nasa.gov/image-article/nasas-chandra-spots-galactic-gem",
     "https://www.nasa.gov/news-release/nasas-spacex-crew-12-to-discuss-station-mission-upcoming-return",
