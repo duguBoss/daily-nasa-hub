@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-14T08:09:17.974335+08:00",
-  "date": "2026-09-14",
+  "updated_at": "2026-09-15T08:32:23.135044+08:00",
+  "date": "2026-09-15",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-13-comet-neowise-rising-over-the-adriatic-sea",
-    "https://www.nasa.gov/blogs/wallops/2026/09/13/fourth-balloon-of-nasa-scientific-balloon-campaign-launches",
-    "https://science.nasa.gov/image-article/apod-2026-september-13-comet-neowise-rising-over-the-adriatic-sea",
-    "https://science.nasa.gov/get-involved/citizen-science/help-refine-data-from-space-telescopes-with-artifact-inspector",
-    "https://www.nasa.gov/image-article/nasas-chandra-spots-galactic-gem"
+    "https://science.nasa.gov/science-research/earth-science/webinar-9-23-nasa-csda-program-update-2026",
+    "https://science.nasa.gov/science-research/biological-physical-sciences/new-crops-health-research-proposals-to-help-nasa-advance-exploration",
+    "https://www.nasa.gov/image-article/nasa-kicks-off-inspiration-tour-with-steelers-vs-falcons-game",
+    "https://www.nasa.gov/centers-and-facilities/johnson/summer-training-catching-up-with-nasas-astronaut-candidates",
+    "https://science.nasa.gov/image-article/apod-2026-september-14-where-your-elements-came-from"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-13-comet-neowise-rising-over-the-adriatic-sea"
+    "https://science.nasa.gov/science-research/earth-science/webinar-9-23-nasa-csda-program-update-2026"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/science-research/earth-science/webinar-9-23-nasa-csda-program-update-2026",
+    "https://science.nasa.gov/science-research/biological-physical-sciences/new-crops-health-research-proposals-to-help-nasa-advance-exploration",
+    "https://www.nasa.gov/image-article/nasa-kicks-off-inspiration-tour-with-steelers-vs-falcons-game",
+    "https://www.nasa.gov/centers-and-facilities/johnson/summer-training-catching-up-with-nasas-astronaut-candidates",
+    "https://science.nasa.gov/image-article/apod-2026-september-14-where-your-elements-came-from",
     "https://science.nasa.gov/image-article/apod-2026-september-13-comet-neowise-rising-over-the-adriatic-sea",
     "https://www.nasa.gov/blogs/wallops/2026/09/13/fourth-balloon-of-nasa-scientific-balloon-campaign-launches",
     "https://science.nasa.gov/get-involved/citizen-science/help-refine-data-from-space-telescopes-with-artifact-inspector",
