@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-09-15T08:32:23.135044+08:00",
-  "date": "2026-09-15",
+  "updated_at": "2026-09-16T08:12:10.889208+08:00",
+  "date": "2026-09-16",
   "last_fetch_urls": [
-    "https://science.nasa.gov/science-research/earth-science/webinar-9-23-nasa-csda-program-update-2026",
-    "https://science.nasa.gov/science-research/biological-physical-sciences/new-crops-health-research-proposals-to-help-nasa-advance-exploration",
-    "https://www.nasa.gov/image-article/nasa-kicks-off-inspiration-tour-with-steelers-vs-falcons-game",
-    "https://www.nasa.gov/centers-and-facilities/johnson/summer-training-catching-up-with-nasas-astronaut-candidates",
-    "https://science.nasa.gov/image-article/apod-2026-september-14-where-your-elements-came-from"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-international-observe-the-moon-night",
+    "https://www.nasa.gov/centers-and-facilities/goddard/celebrate-international-observe-the-moon-night-with-nasa",
+    "https://www.nasa.gov/image-article/artemis-iii-crew-visits-nasa-kennedys-vehicle-assembly-building",
+    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-dynamic-panorama-of-star-formation",
+    "https://science.nasa.gov/image-article/apod-2026-september-15-a-daytime-eclipse-moon-occults-venus"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/science-research/earth-science/webinar-9-23-nasa-csda-program-update-2026"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-international-observe-the-moon-night",
+    "https://www.nasa.gov/centers-and-facilities/goddard/celebrate-international-observe-the-moon-night-with-nasa"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-international-observe-the-moon-night",
+    "https://www.nasa.gov/centers-and-facilities/goddard/celebrate-international-observe-the-moon-night-with-nasa",
+    "https://www.nasa.gov/image-article/artemis-iii-crew-visits-nasa-kennedys-vehicle-assembly-building",
+    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-dynamic-panorama-of-star-formation",
+    "https://science.nasa.gov/image-article/apod-2026-september-15-a-daytime-eclipse-moon-occults-venus",
     "https://science.nasa.gov/science-research/earth-science/webinar-9-23-nasa-csda-program-update-2026",
     "https://science.nasa.gov/science-research/biological-physical-sciences/new-crops-health-research-proposals-to-help-nasa-advance-exploration",
     "https://www.nasa.gov/image-article/nasa-kicks-off-inspiration-tour-with-steelers-vs-falcons-game",
