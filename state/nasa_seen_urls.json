@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-09-16T08:12:10.889208+08:00",
-  "date": "2026-09-16",
+  "updated_at": "2026-09-17T08:22:19.832860+08:00",
+  "date": "2026-09-17",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-international-observe-the-moon-night",
-    "https://www.nasa.gov/centers-and-facilities/goddard/celebrate-international-observe-the-moon-night-with-nasa",
-    "https://www.nasa.gov/image-article/artemis-iii-crew-visits-nasa-kennedys-vehicle-assembly-building",
-    "https://science.nasa.gov/missions/webb/nasas-webb-reveals-dynamic-panorama-of-star-formation",
-    "https://science.nasa.gov/image-article/apod-2026-september-15-a-daytime-eclipse-moon-occults-venus"
+    "https://science.nasa.gov/solar-system/moon/nasas-moon-orbiter-spots-new-once-in-century-moon-crater",
+    "https://www.nasa.gov/image-article/indonesias-anak-krakatau",
+    "https://science.nasa.gov/photojournal/curiosity-postcard-celebrates-rovers-5000th-day-on-mars",
+    "https://www.nasa.gov/image-article/nasa-visits-schools-strengthening-floridas-skilled-workforce",
+    "https://www.nasa.gov/news-release/nasa-astronaut-reid-wiseman-to-join-nfl-fans-in-baltimore"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-international-observe-the-moon-night",
-    "https://www.nasa.gov/centers-and-facilities/goddard/celebrate-international-observe-the-moon-night-with-nasa"
+    "https://science.nasa.gov/solar-system/moon/nasas-moon-orbiter-spots-new-once-in-century-moon-crater"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/solar-system/moon/nasas-moon-orbiter-spots-new-once-in-century-moon-crater",
+    "https://www.nasa.gov/image-article/indonesias-anak-krakatau",
+    "https://science.nasa.gov/photojournal/curiosity-postcard-celebrates-rovers-5000th-day-on-mars",
+    "https://www.nasa.gov/image-article/nasa-visits-schools-strengthening-floridas-skilled-workforce",
+    "https://www.nasa.gov/news-release/nasa-astronaut-reid-wiseman-to-join-nfl-fans-in-baltimore",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-international-observe-the-moon-night",
     "https://www.nasa.gov/centers-and-facilities/goddard/celebrate-international-observe-the-moon-night-with-nasa",
     "https://www.nasa.gov/image-article/artemis-iii-crew-visits-nasa-kennedys-vehicle-assembly-building",
