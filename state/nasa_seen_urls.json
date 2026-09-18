@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-17T08:22:19.832860+08:00",
-  "date": "2026-09-17",
+  "updated_at": "2026-09-18T08:08:44.161557+08:00",
+  "date": "2026-09-18",
   "last_fetch_urls": [
-    "https://science.nasa.gov/solar-system/moon/nasas-moon-orbiter-spots-new-once-in-century-moon-crater",
-    "https://www.nasa.gov/image-article/indonesias-anak-krakatau",
-    "https://science.nasa.gov/photojournal/curiosity-postcard-celebrates-rovers-5000th-day-on-mars",
-    "https://www.nasa.gov/image-article/nasa-visits-schools-strengthening-floridas-skilled-workforce",
-    "https://www.nasa.gov/news-release/nasa-astronaut-reid-wiseman-to-join-nfl-fans-in-baltimore"
+    "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-35th-resupply-launch-to-space-station",
+    "https://www.nasa.gov/image-article/nasa-unveils-enterprise-the-first-space-shuttle",
+    "https://science.nasa.gov/image-article/apod-2026-september-17-a-treasure-chest-in-the-carina-nebula",
+    "https://science.nasa.gov/earth/earth-observatory/summer-goes-out-with-a-heat-dome"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/solar-system/moon/nasas-moon-orbiter-spots-new-once-in-century-moon-crater"
+    "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-35th-resupply-launch-to-space-station",
+    "https://www.nasa.gov/image-article/nasa-unveils-enterprise-the-first-space-shuttle",
+    "https://science.nasa.gov/image-article/apod-2026-september-17-a-treasure-chest-in-the-carina-nebula",
+    "https://science.nasa.gov/earth/earth-observatory/summer-goes-out-with-a-heat-dome",
     "https://science.nasa.gov/solar-system/moon/nasas-moon-orbiter-spots-new-once-in-century-moon-crater",
     "https://www.nasa.gov/image-article/indonesias-anak-krakatau",
     "https://science.nasa.gov/photojournal/curiosity-postcard-celebrates-rovers-5000th-day-on-mars",
