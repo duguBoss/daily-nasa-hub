@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-18T08:08:44.161557+08:00",
-  "date": "2026-09-18",
+  "updated_at": "2026-09-19T08:16:52.117638+08:00",
+  "date": "2026-09-19",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-35th-resupply-launch-to-space-station",
-    "https://www.nasa.gov/image-article/nasa-unveils-enterprise-the-first-space-shuttle",
-    "https://science.nasa.gov/image-article/apod-2026-september-17-a-treasure-chest-in-the-carina-nebula",
-    "https://science.nasa.gov/earth/earth-observatory/summer-goes-out-with-a-heat-dome"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
+    "https://science.nasa.gov/missions/xrism/xrism-sees-pulsar-gathering-companions-wind",
+    "https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station",
+    "https://www.nasa.gov/image-article/cosi-telescope-comes-together",
+    "https://science.nasa.gov/uncategorized/nasas-hubble-spots-an-out-of-sync-galaxy"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
+    "https://science.nasa.gov/missions/xrism/xrism-sees-pulsar-gathering-companions-wind",
+    "https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station",
+    "https://www.nasa.gov/image-article/cosi-telescope-comes-together",
+    "https://science.nasa.gov/uncategorized/nasas-hubble-spots-an-out-of-sync-galaxy",
     "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-35th-resupply-launch-to-space-station",
     "https://www.nasa.gov/image-article/nasa-unveils-enterprise-the-first-space-shuttle",
