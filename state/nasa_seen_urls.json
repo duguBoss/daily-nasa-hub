@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-09-19T08:16:52.117638+08:00",
-  "date": "2026-09-19",
+  "updated_at": "2026-09-20T08:06:38.146265+08:00",
+  "date": "2026-09-20",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
-    "https://science.nasa.gov/missions/xrism/xrism-sees-pulsar-gathering-companions-wind",
-    "https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station",
-    "https://www.nasa.gov/image-article/cosi-telescope-comes-together",
-    "https://science.nasa.gov/uncategorized/nasas-hubble-spots-an-out-of-sync-galaxy"
-  ],
-  "last_new_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night",
+    "https://www.nasa.gov/blogs/spacestation/2026/09/19/progress-96-cargo-spacecraft-docks-to-station-to-resupply-crew",
+    "https://www.nasa.gov/blogs/spacestation/2026/09/19/progress-96-cargo-spacecraft-approaching-station-for-docking",
+    "https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony"
   ],
+  "last_new_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night"
+  ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night",
+    "https://www.nasa.gov/blogs/spacestation/2026/09/19/progress-96-cargo-spacecraft-docks-to-station-to-resupply-crew",
+    "https://www.nasa.gov/blogs/spacestation/2026/09/19/progress-96-cargo-spacecraft-approaching-station-for-docking",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
     "https://science.nasa.gov/missions/xrism/xrism-sees-pulsar-gathering-companions-wind",
     "https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station",
