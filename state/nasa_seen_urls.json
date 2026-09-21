@@ -1,27 +1,29 @@
 {
-  "updated_at": "2026-09-20T08:06:38.146265+08:00",
-  "date": "2026-09-20",
+  "updated_at": "2026-09-21T08:11:58.388149+08:00",
+  "date": "2026-09-21",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night",
-    "https://www.nasa.gov/blogs/spacestation/2026/09/19/progress-96-cargo-spacecraft-docks-to-station-to-resupply-crew",
-    "https://www.nasa.gov/blogs/spacestation/2026/09/19/progress-96-cargo-spacecraft-approaching-station-for-docking",
-    "https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony"
+    "https://science.nasa.gov/image-article/apod-2026-september-20-analemma-over-the-callanish-stones",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
+    "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-35th-resupply-launch-to-space-station",
+    "https://www.nasa.gov/news-release/nasa-astronaut-reid-wiseman-to-join-nfl-fans-in-baltimore"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night"
+    "https://science.nasa.gov/image-article/apod-2026-september-20-analemma-over-the-callanish-stones"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-20-analemma-over-the-callanish-stones",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
+    "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-35th-resupply-launch-to-space-station",
+    "https://www.nasa.gov/news-release/nasa-astronaut-reid-wiseman-to-join-nfl-fans-in-baltimore",
     "https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night",
     "https://www.nasa.gov/blogs/spacestation/2026/09/19/progress-96-cargo-spacecraft-docks-to-station-to-resupply-crew",
     "https://www.nasa.gov/blogs/spacestation/2026/09/19/progress-96-cargo-spacecraft-approaching-station-for-docking",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
     "https://science.nasa.gov/missions/xrism/xrism-sees-pulsar-gathering-companions-wind",
     "https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station",
     "https://www.nasa.gov/image-article/cosi-telescope-comes-together",
     "https://science.nasa.gov/uncategorized/nasas-hubble-spots-an-out-of-sync-galaxy",
-    "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-35th-resupply-launch-to-space-station",
     "https://www.nasa.gov/image-article/nasa-unveils-enterprise-the-first-space-shuttle",
     "https://science.nasa.gov/image-article/apod-2026-september-17-a-treasure-chest-in-the-carina-nebula",
     "https://science.nasa.gov/earth/earth-observatory/summer-goes-out-with-a-heat-dome",
@@ -29,7 +31,6 @@
     "https://www.nasa.gov/image-article/indonesias-anak-krakatau",
     "https://science.nasa.gov/photojournal/curiosity-postcard-celebrates-rovers-5000th-day-on-mars",
     "https://www.nasa.gov/image-article/nasa-visits-schools-strengthening-floridas-skilled-workforce",
-    "https://www.nasa.gov/news-release/nasa-astronaut-reid-wiseman-to-join-nfl-fans-in-baltimore",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-international-observe-the-moon-night",
     "https://www.nasa.gov/centers-and-facilities/goddard/celebrate-international-observe-the-moon-night-with-nasa",
     "https://www.nasa.gov/image-article/artemis-iii-crew-visits-nasa-kennedys-vehicle-assembly-building",
