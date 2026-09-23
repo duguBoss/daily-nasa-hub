@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-09-22T08:44:58.904176+08:00",
-  "date": "2026-09-22",
+  "updated_at": "2026-09-23T08:22:36.542119+08:00",
+  "date": "2026-09-23",
   "last_fetch_urls": [
-    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/embracing-the-equinox",
-    "https://science.nasa.gov/photojournal/perseverances-view-of-turquoise-bay",
-    "https://www.nasa.gov/image-article/nasa-astronaut-reid-wiseman-attends-ravens-vs-saints-game",
-    "https://www.nasa.gov/centers-and-facilities/johnson/johnson-space-center-sparks-curiosity-at-houstons-33rd-annual-japan-festival",
-    "https://science.nasa.gov/image-article/apod-2026-september-21-cocoon-nebula-wide-field"
+    "https://science.nasa.gov/science-research/planetary-science/nasa-funded-research-finds-complex-life-defying-record-heat",
+    "https://www.nasa.gov/image-article/nasas-chandra-finds-unusual-objects-in-pinwheel-galaxy",
+    "https://science.nasa.gov/image-article/apod-2026-september-22-chance-triple-alignment-plane-space-station-sun",
+    "https://science.nasa.gov/earth/earth-observatory/an-epic-view-of-the-seasons"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/embracing-the-equinox"
+    "https://science.nasa.gov/science-research/planetary-science/nasa-funded-research-finds-complex-life-defying-record-heat"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/science-research/planetary-science/nasa-funded-research-finds-complex-life-defying-record-heat",
+    "https://www.nasa.gov/image-article/nasas-chandra-finds-unusual-objects-in-pinwheel-galaxy",
+    "https://science.nasa.gov/image-article/apod-2026-september-22-chance-triple-alignment-plane-space-station-sun",
+    "https://science.nasa.gov/earth/earth-observatory/an-epic-view-of-the-seasons",
     "https://science.nasa.gov/solar-system/skywatching/night-sky-network/embracing-the-equinox",
     "https://science.nasa.gov/photojournal/perseverances-view-of-turquoise-bay",
     "https://www.nasa.gov/image-article/nasa-astronaut-reid-wiseman-attends-ravens-vs-saints-game",
