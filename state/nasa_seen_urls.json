@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-24T08:28:02.227791+08:00",
-  "date": "2026-09-24",
+  "updated_at": "2026-09-26T08:34:34.308503+08:00",
+  "date": "2026-09-26",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-selects-far-infrared-telescope-as-first-in-new-mission-class",
-    "https://www.nasa.gov/image-article/nasas-hubble-telescope-reaches-milestone-looks-for-elusive-supernova",
-    "https://science.nasa.gov/science-research/earth-science/climate-science/sea-ice/arctic-sea-ice-2026-min",
-    "https://www.nasa.gov/image-article/shannon-lucids-record-setting-mission-aboard-mir",
-    "https://science.nasa.gov/earth/ffa-2026-hyperwall-schedule"
+    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
+    "https://www.nasa.gov/image-article/hubble-spots-chaotic-secret-in-galaxy",
+    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-07-aluminum-alloy-2219-material-guidance",
+    "https://science.nasa.gov/image-article/apod-2026-september-25-globular-star-cluster-omega-centauri",
+    "https://science.nasa.gov/earth/earth-observatory/explosive-intensification-for-hurricane-polo"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-selects-far-infrared-telescope-as-first-in-new-mission-class"
+    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
+    "https://www.nasa.gov/image-article/hubble-spots-chaotic-secret-in-galaxy",
+    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-07-aluminum-alloy-2219-material-guidance",
+    "https://science.nasa.gov/image-article/apod-2026-september-25-globular-star-cluster-omega-centauri",
+    "https://science.nasa.gov/earth/earth-observatory/explosive-intensification-for-hurricane-polo",
     "https://www.nasa.gov/news-release/nasa-selects-far-infrared-telescope-as-first-in-new-mission-class",
     "https://www.nasa.gov/image-article/nasas-hubble-telescope-reaches-milestone-looks-for-elusive-supernova",
     "https://science.nasa.gov/science-research/earth-science/climate-science/sea-ice/arctic-sea-ice-2026-min",
