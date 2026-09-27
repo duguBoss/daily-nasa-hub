@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-09-26T08:34:34.308503+08:00",
-  "date": "2026-09-26",
+  "updated_at": "2026-09-27T08:29:45.730293+08:00",
+  "date": "2026-09-27",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
-    "https://www.nasa.gov/image-article/hubble-spots-chaotic-secret-in-galaxy",
-    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-07-aluminum-alloy-2219-material-guidance",
-    "https://science.nasa.gov/image-article/apod-2026-september-25-globular-star-cluster-omega-centauri",
-    "https://science.nasa.gov/earth/earth-observatory/explosive-intensification-for-hurricane-polo"
-  ],
-  "last_new_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-26-mirrored-meteor-and-milky-way",
+    "https://www.nasa.gov/blogs/spacestation/2026/09/26/nasas-spacex-crew-13-lands-at-nasa-kennedy",
+    "https://www.nasa.gov/blogs/commercialcrew/2026/09/26/nasas-spacex-crew-13-on-way-to-kennedy",
+    "https://science.nasa.gov/image-article/apod-2026-september-26-mirrored-meteor-and-milky-way",
     "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development"
   ],
+  "last_new_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-26-mirrored-meteor-and-milky-way"
+  ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-26-mirrored-meteor-and-milky-way",
+    "https://www.nasa.gov/blogs/spacestation/2026/09/26/nasas-spacex-crew-13-lands-at-nasa-kennedy",
+    "https://www.nasa.gov/blogs/commercialcrew/2026/09/26/nasas-spacex-crew-13-on-way-to-kennedy",
     "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
     "https://www.nasa.gov/image-article/hubble-spots-chaotic-secret-in-galaxy",
     "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-07-aluminum-alloy-2219-material-guidance",
