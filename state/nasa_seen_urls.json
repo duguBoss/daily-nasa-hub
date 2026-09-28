@@ -1,26 +1,29 @@
 {
-  "updated_at": "2026-09-27T08:29:45.730293+08:00",
-  "date": "2026-09-27",
+  "updated_at": "2026-09-28T08:35:28.798231+08:00",
+  "date": "2026-09-28",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-26-mirrored-meteor-and-milky-way",
-    "https://www.nasa.gov/blogs/spacestation/2026/09/26/nasas-spacex-crew-13-lands-at-nasa-kennedy",
-    "https://www.nasa.gov/blogs/commercialcrew/2026/09/26/nasas-spacex-crew-13-on-way-to-kennedy",
-    "https://science.nasa.gov/image-article/apod-2026-september-26-mirrored-meteor-and-milky-way",
-    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development"
+    "https://science.nasa.gov/image-article/apod-2026-september-27-andromeda-before-photoshop",
+    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
+    "https://www.nasa.gov/news-release/nasa-shares-spacex-crew-14-assignments-for-space-station-mission",
+    "https://www.nasa.gov/news-release/nasa-selects-far-infrared-telescope-as-first-in-new-mission-class",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-26-mirrored-meteor-and-milky-way"
+    "https://science.nasa.gov/image-article/apod-2026-september-27-andromeda-before-photoshop"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-september-27-andromeda-before-photoshop",
+    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
+    "https://www.nasa.gov/news-release/nasa-shares-spacex-crew-14-assignments-for-space-station-mission",
+    "https://www.nasa.gov/news-release/nasa-selects-far-infrared-telescope-as-first-in-new-mission-class",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
     "https://science.nasa.gov/image-article/apod-2026-september-26-mirrored-meteor-and-milky-way",
     "https://www.nasa.gov/blogs/spacestation/2026/09/26/nasas-spacex-crew-13-lands-at-nasa-kennedy",
     "https://www.nasa.gov/blogs/commercialcrew/2026/09/26/nasas-spacex-crew-13-on-way-to-kennedy",
-    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
     "https://www.nasa.gov/image-article/hubble-spots-chaotic-secret-in-galaxy",
     "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-07-aluminum-alloy-2219-material-guidance",
     "https://science.nasa.gov/image-article/apod-2026-september-25-globular-star-cluster-omega-centauri",
     "https://science.nasa.gov/earth/earth-observatory/explosive-intensification-for-hurricane-polo",
-    "https://www.nasa.gov/news-release/nasa-selects-far-infrared-telescope-as-first-in-new-mission-class",
     "https://www.nasa.gov/image-article/nasas-hubble-telescope-reaches-milestone-looks-for-elusive-supernova",
     "https://science.nasa.gov/science-research/earth-science/climate-science/sea-ice/arctic-sea-ice-2026-min",
     "https://www.nasa.gov/image-article/shannon-lucids-record-setting-mission-aboard-mir",
@@ -35,7 +38,6 @@
     "https://www.nasa.gov/centers-and-facilities/johnson/johnson-space-center-sparks-curiosity-at-houstons-33rd-annual-japan-festival",
     "https://science.nasa.gov/image-article/apod-2026-september-21-cocoon-nebula-wide-field",
     "https://science.nasa.gov/image-article/apod-2026-september-20-analemma-over-the-callanish-stones",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony",
     "https://www.nasa.gov/news-release/nasa-awards-launch-services-for-starburst-gamma-ray-detector",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-35th-resupply-launch-to-space-station",
     "https://www.nasa.gov/news-release/nasa-astronaut-reid-wiseman-to-join-nfl-fans-in-baltimore",
