@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-09-28T08:35:28.798231+08:00",
-  "date": "2026-09-28",
+  "updated_at": "2026-09-29T09:48:56.692829+08:00",
+  "date": "2026-09-29",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-27-andromeda-before-photoshop",
-    "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
-    "https://www.nasa.gov/news-release/nasa-shares-spacex-crew-14-assignments-for-space-station-mission",
-    "https://www.nasa.gov/news-release/nasa-selects-far-infrared-telescope-as-first-in-new-mission-class",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony"
+    "https://science.nasa.gov/blog/mars-has-its-charmes",
+    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/spooky-stargazing",
+    "https://www.nasa.gov/news-release/nasa-boeing-share-update-on-commercial-starliner-development-plans",
+    "https://www.nasa.gov/news-release/nasa-armstrong-celebrates-80-years-of-flight-innovation",
+    "https://www.nasa.gov/blogs/spacestation/2026/09/28/advanced-health-research-begins-week-as-station-awaits-crew-13-mission"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-september-27-andromeda-before-photoshop"
+    "https://science.nasa.gov/blog/mars-has-its-charmes"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/blog/mars-has-its-charmes",
+    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/spooky-stargazing",
+    "https://www.nasa.gov/news-release/nasa-boeing-share-update-on-commercial-starliner-development-plans",
+    "https://www.nasa.gov/news-release/nasa-armstrong-celebrates-80-years-of-flight-innovation",
+    "https://www.nasa.gov/blogs/spacestation/2026/09/28/advanced-health-research-begins-week-as-station-awaits-crew-13-mission",
     "https://science.nasa.gov/image-article/apod-2026-september-27-andromeda-before-photoshop",
     "https://www.nasa.gov/news-release/nasa-boeing-to-provide-update-on-starliner-development",
     "https://www.nasa.gov/news-release/nasa-shares-spacex-crew-14-assignments-for-space-station-mission",
