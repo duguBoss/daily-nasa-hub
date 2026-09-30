@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-09-29T09:48:56.692829+08:00",
-  "date": "2026-09-29",
+  "updated_at": "2026-09-30T09:17:07.106028+08:00",
+  "date": "2026-09-30",
   "last_fetch_urls": [
-    "https://science.nasa.gov/blog/mars-has-its-charmes",
-    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/spooky-stargazing",
-    "https://www.nasa.gov/news-release/nasa-boeing-share-update-on-commercial-starliner-development-plans",
-    "https://www.nasa.gov/news-release/nasa-armstrong-celebrates-80-years-of-flight-innovation",
-    "https://www.nasa.gov/blogs/spacestation/2026/09/28/advanced-health-research-begins-week-as-station-awaits-crew-13-mission"
+    "https://www.nasa.gov/news-release/nasa-awards-orbital-safety-analysis-support-services-contract",
+    "https://www.nasa.gov/news-release/nasa-features-exploration-science-at-international-space-conference",
+    "https://www.nasa.gov/news-release/nasa-adds-blue-origin-new-glenn-9x4-to-launch-services-contract",
+    "https://www.nasa.gov/news-release/nasa-sets-crew-13-launch-docking-coverage",
+    "https://www.nasa.gov/image-article/crew-13-rocket-and-spacecraft-at-launch-pad"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/blog/mars-has-its-charmes"
+    "https://www.nasa.gov/news-release/nasa-awards-orbital-safety-analysis-support-services-contract",
+    "https://www.nasa.gov/news-release/nasa-features-exploration-science-at-international-space-conference"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-awards-orbital-safety-analysis-support-services-contract",
+    "https://www.nasa.gov/news-release/nasa-features-exploration-science-at-international-space-conference",
+    "https://www.nasa.gov/news-release/nasa-adds-blue-origin-new-glenn-9x4-to-launch-services-contract",
+    "https://www.nasa.gov/news-release/nasa-sets-crew-13-launch-docking-coverage",
+    "https://www.nasa.gov/image-article/crew-13-rocket-and-spacecraft-at-launch-pad",
     "https://science.nasa.gov/blog/mars-has-its-charmes",
     "https://science.nasa.gov/solar-system/skywatching/night-sky-network/spooky-stargazing",
     "https://www.nasa.gov/news-release/nasa-boeing-share-update-on-commercial-starliner-development-plans",
