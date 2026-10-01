@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-09-30T09:17:07.106028+08:00",
-  "date": "2026-09-30",
+  "updated_at": "2026-10-01T09:16:15.677994+08:00",
+  "date": "2026-10-01",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-orbital-safety-analysis-support-services-contract",
-    "https://www.nasa.gov/news-release/nasa-features-exploration-science-at-international-space-conference",
-    "https://www.nasa.gov/news-release/nasa-adds-blue-origin-new-glenn-9x4-to-launch-services-contract",
-    "https://www.nasa.gov/news-release/nasa-sets-crew-13-launch-docking-coverage",
-    "https://www.nasa.gov/image-article/crew-13-rocket-and-spacecraft-at-launch-pad"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5016-5021-fantastic-minerals-and-how-to-detect-them",
+    "https://science.nasa.gov/get-involved/citizen-science/help-overlap-zoo-reveal-cosmic-dust",
+    "https://www.nasa.gov/news-release/nasa-adds-new-science-investigations-for-moon-base",
+    "https://www.nasa.gov/news-release/nasa-awards-contract-to-develop-5g-communications-for-moon",
+    "https://science.nasa.gov/science-research/biological-physical-sciences/nasa-international-partners-advance-work-on-space-crops"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-orbital-safety-analysis-support-services-contract",
-    "https://www.nasa.gov/news-release/nasa-features-exploration-science-at-international-space-conference"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5016-5021-fantastic-minerals-and-how-to-detect-them",
+    "https://science.nasa.gov/get-involved/citizen-science/help-overlap-zoo-reveal-cosmic-dust"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5016-5021-fantastic-minerals-and-how-to-detect-them",
+    "https://science.nasa.gov/get-involved/citizen-science/help-overlap-zoo-reveal-cosmic-dust",
+    "https://www.nasa.gov/news-release/nasa-adds-new-science-investigations-for-moon-base",
+    "https://www.nasa.gov/news-release/nasa-awards-contract-to-develop-5g-communications-for-moon",
+    "https://science.nasa.gov/science-research/biological-physical-sciences/nasa-international-partners-advance-work-on-space-crops",
     "https://www.nasa.gov/news-release/nasa-awards-orbital-safety-analysis-support-services-contract",
     "https://www.nasa.gov/news-release/nasa-features-exploration-science-at-international-space-conference",
     "https://www.nasa.gov/news-release/nasa-adds-blue-origin-new-glenn-9x4-to-launch-services-contract",
