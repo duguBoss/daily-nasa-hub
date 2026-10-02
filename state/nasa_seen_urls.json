@@ -1,18 +1,21 @@
 {
-  "updated_at": "2026-10-01T09:16:15.677994+08:00",
-  "date": "2026-10-01",
+  "updated_at": "2026-10-02T09:37:18.828934+08:00",
+  "date": "2026-10-02",
   "last_fetch_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5016-5021-fantastic-minerals-and-how-to-detect-them",
-    "https://science.nasa.gov/get-involved/citizen-science/help-overlap-zoo-reveal-cosmic-dust",
-    "https://www.nasa.gov/news-release/nasa-adds-new-science-investigations-for-moon-base",
-    "https://www.nasa.gov/news-release/nasa-awards-contract-to-develop-5g-communications-for-moon",
-    "https://science.nasa.gov/science-research/biological-physical-sciences/nasa-international-partners-advance-work-on-space-crops"
+    "https://science.nasa.gov/solar-system/10-things-movie-night",
+    "https://science.nasa.gov/solar-system/10-things-movie-night",
+    "https://www.nasa.gov/blogs/spacestation/2026/10/01/dragon-docks-bringing-spacex-crew-13-to-station",
+    "https://www.nasa.gov/blogs/smallsatellites/2026/10/01/nasa-smallsats-launch-to-advance-science-technology-orbital-operations",
+    "https://www.nasa.gov/blogs/spacestation/2026/10/01/spacex-crew-13-approaching-station-aboard-dragon"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5016-5021-fantastic-minerals-and-how-to-detect-them",
-    "https://science.nasa.gov/get-involved/citizen-science/help-overlap-zoo-reveal-cosmic-dust"
+    "https://science.nasa.gov/solar-system/10-things-movie-night"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/solar-system/10-things-movie-night",
+    "https://www.nasa.gov/blogs/spacestation/2026/10/01/dragon-docks-bringing-spacex-crew-13-to-station",
+    "https://www.nasa.gov/blogs/smallsatellites/2026/10/01/nasa-smallsats-launch-to-advance-science-technology-orbital-operations",
+    "https://www.nasa.gov/blogs/spacestation/2026/10/01/spacex-crew-13-approaching-station-aboard-dragon",
     "https://science.nasa.gov/blog/curiosity-blog-sols-5016-5021-fantastic-minerals-and-how-to-detect-them",
     "https://science.nasa.gov/get-involved/citizen-science/help-overlap-zoo-reveal-cosmic-dust",
     "https://www.nasa.gov/news-release/nasa-adds-new-science-investigations-for-moon-base",
