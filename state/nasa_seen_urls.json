@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-02T09:37:18.828934+08:00",
-  "date": "2026-10-02",
+  "updated_at": "2026-10-03T09:05:57.612728+08:00",
+  "date": "2026-10-03",
   "last_fetch_urls": [
-    "https://science.nasa.gov/solar-system/10-things-movie-night",
-    "https://science.nasa.gov/solar-system/10-things-movie-night",
-    "https://www.nasa.gov/blogs/spacestation/2026/10/01/dragon-docks-bringing-spacex-crew-13-to-station",
-    "https://www.nasa.gov/blogs/smallsatellites/2026/10/01/nasa-smallsats-launch-to-advance-science-technology-orbital-operations",
-    "https://www.nasa.gov/blogs/spacestation/2026/10/01/spacex-crew-13-approaching-station-aboard-dragon"
+    "https://www.nasa.gov/news-release/nasa-astronaut-christina-koch-to-join-nfl-fans-in-philadelphia",
+    "https://www.nasa.gov/missions/station/iss-research/heading-home-nasas-spacex-crew-12-concludes-station-science-mission",
+    "https://www.nasa.gov/image-article/nasas-davinci-probe-can-stand-the-heat",
+    "https://www.nasa.gov/news-release/la-nasa-abre-solicitudes-para-proxima-promocion-de-directores-de-vuelo",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasa-model-wing-lights-up-during-first-pressure-sensitive-paint-tests"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/solar-system/10-things-movie-night"
+    "https://www.nasa.gov/news-release/nasa-astronaut-christina-koch-to-join-nfl-fans-in-philadelphia"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-astronaut-christina-koch-to-join-nfl-fans-in-philadelphia",
+    "https://www.nasa.gov/missions/station/iss-research/heading-home-nasas-spacex-crew-12-concludes-station-science-mission",
+    "https://www.nasa.gov/image-article/nasas-davinci-probe-can-stand-the-heat",
+    "https://www.nasa.gov/news-release/la-nasa-abre-solicitudes-para-proxima-promocion-de-directores-de-vuelo",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasa-model-wing-lights-up-during-first-pressure-sensitive-paint-tests",
     "https://science.nasa.gov/solar-system/10-things-movie-night",
     "https://www.nasa.gov/blogs/spacestation/2026/10/01/dragon-docks-bringing-spacex-crew-13-to-station",
     "https://www.nasa.gov/blogs/smallsatellites/2026/10/01/nasa-smallsats-launch-to-advance-science-technology-orbital-operations",
