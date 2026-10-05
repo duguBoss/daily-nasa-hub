@@ -1,19 +1,21 @@
 {
-  "updated_at": "2026-10-04T08:34:06.534485+08:00",
-  "date": "2026-10-04",
+  "updated_at": "2026-10-05T08:50:30.678349+08:00",
+  "date": "2026-10-05",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-3-selfie-at-vera-rubin-ridge",
-    "https://www.nasa.gov/blogs/commercialcrew/2026/10/03/nasa-spacex-set-no-earlier-than-oct-7-for-crew-12-departure",
-    "https://science.nasa.gov/image-article/apod-2026-october-3-selfie-at-vera-rubin-ridge",
-    "https://www.nasa.gov/news-release/nasa-astronaut-christina-koch-to-join-nfl-fans-in-philadelphia",
-    "https://www.nasa.gov/missions/station/iss-research/heading-home-nasas-spacex-crew-12-concludes-station-science-mission"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5022-5028-cashing-in-at-cache-creek",
+    "https://science.nasa.gov/image-article/apod-2026-october-4-supernumerary-rainbows-over-new-jersey",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5022-5028-cashing-in-at-cache-creek",
+    "https://science.nasa.gov/image-article/apod-2026-october-4-supernumerary-rainbows-over-new-jersey",
+    "https://www.nasa.gov/blogs/commercialcrew/2026/10/03/nasa-spacex-set-no-earlier-than-oct-7-for-crew-12-departure"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-3-selfie-at-vera-rubin-ridge"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5022-5028-cashing-in-at-cache-creek"
   ],
   "seen_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-3-selfie-at-vera-rubin-ridge",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5022-5028-cashing-in-at-cache-creek",
+    "https://science.nasa.gov/image-article/apod-2026-october-4-supernumerary-rainbows-over-new-jersey",
     "https://www.nasa.gov/blogs/commercialcrew/2026/10/03/nasa-spacex-set-no-earlier-than-oct-7-for-crew-12-departure",
+    "https://science.nasa.gov/image-article/apod-2026-october-3-selfie-at-vera-rubin-ridge",
     "https://www.nasa.gov/news-release/nasa-astronaut-christina-koch-to-join-nfl-fans-in-philadelphia",
     "https://www.nasa.gov/missions/station/iss-research/heading-home-nasas-spacex-crew-12-concludes-station-science-mission",
     "https://www.nasa.gov/image-article/nasas-davinci-probe-can-stand-the-heat",
