@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-10-05T08:50:30.678349+08:00",
-  "date": "2026-10-05",
+  "updated_at": "2026-10-06T10:13:36.453789+08:00",
+  "date": "2026-10-06",
   "last_fetch_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5022-5028-cashing-in-at-cache-creek",
-    "https://science.nasa.gov/image-article/apod-2026-october-4-supernumerary-rainbows-over-new-jersey",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5022-5028-cashing-in-at-cache-creek",
-    "https://science.nasa.gov/image-article/apod-2026-october-4-supernumerary-rainbows-over-new-jersey",
-    "https://www.nasa.gov/blogs/commercialcrew/2026/10/03/nasa-spacex-set-no-earlier-than-oct-7-for-crew-12-departure"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5029-5035-back-in-the-lab",
+    "https://science.nasa.gov/blog/a-journey-to-the-depths-of-ancient-mars",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5029-5035-back-in-the-lab",
+    "https://science.nasa.gov/blog/a-journey-to-the-depths-of-ancient-mars",
+    "https://www.nasa.gov/news-release/nasa-to-stream-spacex-crew-12-return-splashdown-live"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5022-5028-cashing-in-at-cache-creek"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5029-5035-back-in-the-lab"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5029-5035-back-in-the-lab",
+    "https://science.nasa.gov/blog/a-journey-to-the-depths-of-ancient-mars",
+    "https://www.nasa.gov/news-release/nasa-to-stream-spacex-crew-12-return-splashdown-live",
     "https://science.nasa.gov/blog/curiosity-blog-sols-5022-5028-cashing-in-at-cache-creek",
     "https://science.nasa.gov/image-article/apod-2026-october-4-supernumerary-rainbows-over-new-jersey",
     "https://www.nasa.gov/blogs/commercialcrew/2026/10/03/nasa-spacex-set-no-earlier-than-oct-7-for-crew-12-departure",
