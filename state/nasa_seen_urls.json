@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-08T09:52:14.851915+08:00",
-  "date": "2026-10-08",
+  "updated_at": "2026-10-09T10:04:11.406180+08:00",
+  "date": "2026-10-09",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-spacex-35th-station-resupply-launch-arrival",
-    "https://science.nasa.gov/photojournal/nasas-prima-spacecraft-artists-concept",
-    "https://science.nasa.gov/photojournal/nasas-curiosity-looks-back-after-reaching-elevation-milestone",
-    "https://science.nasa.gov/photojournal/nasas-curiosity-captures-dawn-breaking-on-wind-carved-cliffs",
-    "https://www.nasa.gov/image-article/artemis-ii-crew-moon-photo-annotations"
+    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
+    "https://www.nasa.gov/news-release/nasa-announces-bold-science-initiatives-for-americas-golden-age-summit",
+    "https://www.nasa.gov/centers-and-facilities/ames/nasas-sspicy-mission-to-demonstrate-in-space-inspection-technologies",
+    "https://www.nasa.gov/image-article/crew-12-returns-to-earth",
+    "https://www.nasa.gov/missions/spherex/nasas-spherex-telescope-sees-menagerie-of-brown-dwarfs"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-spacex-35th-station-resupply-launch-arrival"
+    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
+    "https://www.nasa.gov/news-release/nasa-announces-bold-science-initiatives-for-americas-golden-age-summit",
+    "https://www.nasa.gov/centers-and-facilities/ames/nasas-sspicy-mission-to-demonstrate-in-space-inspection-technologies",
+    "https://www.nasa.gov/image-article/crew-12-returns-to-earth",
+    "https://www.nasa.gov/missions/spherex/nasas-spherex-telescope-sees-menagerie-of-brown-dwarfs",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-spacex-35th-station-resupply-launch-arrival",
     "https://science.nasa.gov/photojournal/nasas-prima-spacecraft-artists-concept",
     "https://science.nasa.gov/photojournal/nasas-curiosity-looks-back-after-reaching-elevation-milestone",
