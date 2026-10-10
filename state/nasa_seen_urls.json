@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-09T10:04:11.406180+08:00",
-  "date": "2026-10-09",
+  "updated_at": "2026-10-10T09:43:35.371995+08:00",
+  "date": "2026-10-10",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
-    "https://www.nasa.gov/news-release/nasa-announces-bold-science-initiatives-for-americas-golden-age-summit",
-    "https://www.nasa.gov/centers-and-facilities/ames/nasas-sspicy-mission-to-demonstrate-in-space-inspection-technologies",
-    "https://www.nasa.gov/image-article/crew-12-returns-to-earth",
-    "https://www.nasa.gov/missions/spherex/nasas-spherex-telescope-sees-menagerie-of-brown-dwarfs"
+    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
+    "https://www.nasa.gov/centers-and-facilities/ames/nasa-demonstrates-next-generation-heat-shield-technologies",
+    "https://www.nasa.gov/image-article/cosmic-house-of-mirrors",
+    "https://science.nasa.gov/image-article/apod-2026-october-9-stickney-crater",
+    "https://science.nasa.gov/earth/earth-observatory/floodwaters-overwhelm-thailand"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission"
+    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
+    "https://www.nasa.gov/centers-and-facilities/ames/nasa-demonstrates-next-generation-heat-shield-technologies",
+    "https://www.nasa.gov/image-article/cosmic-house-of-mirrors",
+    "https://science.nasa.gov/image-article/apod-2026-october-9-stickney-crater",
+    "https://science.nasa.gov/earth/earth-observatory/floodwaters-overwhelm-thailand",
     "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
     "https://www.nasa.gov/news-release/nasa-announces-bold-science-initiatives-for-americas-golden-age-summit",
     "https://www.nasa.gov/centers-and-facilities/ames/nasas-sspicy-mission-to-demonstrate-in-space-inspection-technologies",
