@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-10-10T09:43:35.371995+08:00",
-  "date": "2026-10-10",
+  "updated_at": "2026-10-11T08:52:57.485319+08:00",
+  "date": "2026-10-11",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
-    "https://www.nasa.gov/centers-and-facilities/ames/nasa-demonstrates-next-generation-heat-shield-technologies",
-    "https://www.nasa.gov/image-article/cosmic-house-of-mirrors",
-    "https://science.nasa.gov/image-article/apod-2026-october-9-stickney-crater",
-    "https://science.nasa.gov/earth/earth-observatory/floodwaters-overwhelm-thailand"
+    "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
+    "https://science.nasa.gov/image-article/apod-2026-october-10-lunar-farside",
+    "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
+    "https://science.nasa.gov/image-article/apod-2026-october-10-lunar-farside",
+    "https://www.nasa.gov/blogs/quesst/2026/10/09/nasa-x-59-pilot-receives-top-test-pilot-award"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations"
+    "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
+    "https://science.nasa.gov/image-article/apod-2026-october-10-lunar-farside",
+    "https://www.nasa.gov/blogs/quesst/2026/10/09/nasa-x-59-pilot-receives-top-test-pilot-award",
     "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
     "https://www.nasa.gov/centers-and-facilities/ames/nasa-demonstrates-next-generation-heat-shield-technologies",
     "https://www.nasa.gov/image-article/cosmic-house-of-mirrors",
