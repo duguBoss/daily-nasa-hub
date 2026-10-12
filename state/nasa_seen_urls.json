@@ -1,17 +1,19 @@
 {
-  "updated_at": "2026-10-11T08:52:57.485319+08:00",
-  "date": "2026-10-11",
+  "updated_at": "2026-10-12T09:14:29.713351+08:00",
+  "date": "2026-10-12",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
-    "https://science.nasa.gov/image-article/apod-2026-october-10-lunar-farside",
+    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
+    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
     "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
     "https://science.nasa.gov/image-article/apod-2026-october-10-lunar-farside",
     "https://www.nasa.gov/blogs/quesst/2026/10/09/nasa-x-59-pilot-receives-top-test-pilot-award"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium"
+    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
+    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
     "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
     "https://science.nasa.gov/image-article/apod-2026-october-10-lunar-farside",
     "https://www.nasa.gov/blogs/quesst/2026/10/09/nasa-x-59-pilot-receives-top-test-pilot-award",
