@@ -1,29 +1,29 @@
 {
-  "updated_at": "2026-10-12T09:14:29.713351+08:00",
-  "date": "2026-10-12",
+  "updated_at": "2026-10-13T11:02:21.735816+08:00",
+  "date": "2026-10-13",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
-    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
     "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
-    "https://science.nasa.gov/image-article/apod-2026-october-10-lunar-farside",
-    "https://www.nasa.gov/blogs/quesst/2026/10/09/nasa-x-59-pilot-receives-top-test-pilot-award"
+    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
+    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
+    "https://www.nasa.gov/news-release/nasa-announces-bold-science-initiatives-for-americas-golden-age-summit",
+    "https://www.nasa.gov/news-release/nasas-spacex-crew-12-splashes-down-sets-briefing-to-discuss-mission"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
-    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos"
+    "https://www.nasa.gov/news-release/nasas-spacex-crew-12-splashes-down-sets-briefing-to-discuss-mission"
   ],
   "seen_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
     "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
+    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
+    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
+    "https://www.nasa.gov/news-release/nasa-announces-bold-science-initiatives-for-americas-golden-age-summit",
+    "https://www.nasa.gov/news-release/nasas-spacex-crew-12-splashes-down-sets-briefing-to-discuss-mission",
+    "https://science.nasa.gov/image-article/apod-2026-october-11-ice-fishing-for-cosmic-neutrinos",
     "https://science.nasa.gov/image-article/apod-2026-october-10-lunar-farside",
     "https://www.nasa.gov/blogs/quesst/2026/10/09/nasa-x-59-pilot-receives-top-test-pilot-award",
-    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
     "https://www.nasa.gov/centers-and-facilities/ames/nasa-demonstrates-next-generation-heat-shield-technologies",
     "https://www.nasa.gov/image-article/cosmic-house-of-mirrors",
     "https://science.nasa.gov/image-article/apod-2026-october-9-stickney-crater",
     "https://science.nasa.gov/earth/earth-observatory/floodwaters-overwhelm-thailand",
-    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
-    "https://www.nasa.gov/news-release/nasa-announces-bold-science-initiatives-for-americas-golden-age-summit",
     "https://www.nasa.gov/centers-and-facilities/ames/nasas-sspicy-mission-to-demonstrate-in-space-inspection-technologies",
     "https://www.nasa.gov/image-article/crew-12-returns-to-earth",
     "https://www.nasa.gov/missions/spherex/nasas-spherex-telescope-sees-menagerie-of-brown-dwarfs",
