@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-13T11:02:21.735816+08:00",
-  "date": "2026-10-13",
+  "updated_at": "2026-10-14T09:10:48.902106+08:00",
+  "date": "2026-10-14",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
-    "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
-    "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
-    "https://www.nasa.gov/news-release/nasa-announces-bold-science-initiatives-for-americas-golden-age-summit",
-    "https://www.nasa.gov/news-release/nasas-spacex-crew-12-splashes-down-sets-briefing-to-discuss-mission"
+    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer",
+    "https://science.nasa.gov/photojournal/comparing-off-world-rover-driving-distances",
+    "https://science.nasa.gov/photojournal/nasas-record-setting-perseverance-rover-team",
+    "https://science.nasa.gov/photojournal/perseverance-navcam-image-marks-record-drive",
+    "https://www.nasa.gov/image-article/transporter-18-smallsats-encapsulation"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasas-spacex-crew-12-splashes-down-sets-briefing-to-discuss-mission"
+    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer",
+    "https://science.nasa.gov/photojournal/comparing-off-world-rover-driving-distances",
+    "https://science.nasa.gov/photojournal/nasas-record-setting-perseverance-rover-team",
+    "https://science.nasa.gov/photojournal/perseverance-navcam-image-marks-record-drive",
+    "https://www.nasa.gov/image-article/transporter-18-smallsats-encapsulation",
     "https://www.nasa.gov/news-release/nasa-to-conduct-flyover-engage-nfl-fans-at-metlife-stadium",
     "https://www.nasa.gov/news-release/nasa-seeks-us-industry-plans-for-commercial-space-stations",
     "https://www.nasa.gov/news-release/nasa-briefing-to-highlight-contributions-to-martian-moons-mission",
