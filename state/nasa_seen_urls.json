@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-10-14T09:10:48.902106+08:00",
-  "date": "2026-10-14",
+  "updated_at": "2026-10-15T08:29:54.765996+08:00",
+  "date": "2026-10-15",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer",
-    "https://science.nasa.gov/photojournal/comparing-off-world-rover-driving-distances",
-    "https://science.nasa.gov/photojournal/nasas-record-setting-perseverance-rover-team",
-    "https://science.nasa.gov/photojournal/perseverance-navcam-image-marks-record-drive",
-    "https://www.nasa.gov/image-article/transporter-18-smallsats-encapsulation"
+    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-breaks-down-treble-clefs-galaxy-cluster-collision",
+    "https://www.nasa.gov/image-article/nasas-space-x-crs-35-launch-jellyfish",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasa-develops-batteries-to-power-humanitys-return-to-moon",
+    "https://www.nasa.gov/news-release/nasa-to-discuss-artemis-acceleration-status-of-upcoming-moon-missions"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer"
+    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-breaks-down-treble-clefs-galaxy-cluster-collision"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
+    "https://science.nasa.gov/missions/chandra/nasas-chandra-breaks-down-treble-clefs-galaxy-cluster-collision",
+    "https://www.nasa.gov/image-article/nasas-space-x-crs-35-launch-jellyfish",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasa-develops-batteries-to-power-humanitys-return-to-moon",
+    "https://www.nasa.gov/news-release/nasa-to-discuss-artemis-acceleration-status-of-upcoming-moon-missions",
     "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer",
     "https://science.nasa.gov/photojournal/comparing-off-world-rover-driving-distances",
     "https://science.nasa.gov/photojournal/nasas-record-setting-perseverance-rover-team",
