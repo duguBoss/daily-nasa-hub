@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-10-15T08:29:54.765996+08:00",
-  "date": "2026-10-15",
+  "updated_at": "2026-10-16T08:20:05.284742+08:00",
+  "date": "2026-10-16",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-breaks-down-treble-clefs-galaxy-cluster-collision",
-    "https://www.nasa.gov/image-article/nasas-space-x-crs-35-launch-jellyfish",
-    "https://www.nasa.gov/centers-and-facilities/langley/nasa-develops-batteries-to-power-humanitys-return-to-moon",
-    "https://www.nasa.gov/news-release/nasa-to-discuss-artemis-acceleration-status-of-upcoming-moon-missions"
+    "https://science.nasa.gov/directorates/smd/planetary-science-division/nasa-to-help-unlock-mysteries-of-mars-moons-in-upcoming-mission",
+    "https://science.nasa.gov/earth/nasa-satellites-observe-historic-2026-el-nino",
+    "https://www.nasa.gov/missions/station/iss-research/power-up-roll-out-solar-arrays-boost-space-station-power-supply",
+    "https://science.nasa.gov/universe/nasa-welcomes-all-ages-experience-levels-for-space-apps-challenge",
+    "https://www.nasa.gov/missions/artemis/artemis-2/rigorous-analysis-confirms-nasas-artemis-ii-heat-shield-performance"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
-    "https://science.nasa.gov/missions/chandra/nasas-chandra-breaks-down-treble-clefs-galaxy-cluster-collision"
+    "https://science.nasa.gov/directorates/smd/planetary-science-division/nasa-to-help-unlock-mysteries-of-mars-moons-in-upcoming-mission",
+    "https://science.nasa.gov/earth/nasa-satellites-observe-historic-2026-el-nino"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/directorates/smd/planetary-science-division/nasa-to-help-unlock-mysteries-of-mars-moons-in-upcoming-mission",
+    "https://science.nasa.gov/earth/nasa-satellites-observe-historic-2026-el-nino",
+    "https://www.nasa.gov/missions/station/iss-research/power-up-roll-out-solar-arrays-boost-space-station-power-supply",
+    "https://science.nasa.gov/universe/nasa-welcomes-all-ages-experience-levels-for-space-apps-challenge",
+    "https://www.nasa.gov/missions/artemis/artemis-2/rigorous-analysis-confirms-nasas-artemis-ii-heat-shield-performance",
     "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
     "https://science.nasa.gov/missions/chandra/nasas-chandra-breaks-down-treble-clefs-galaxy-cluster-collision",
     "https://www.nasa.gov/image-article/nasas-space-x-crs-35-launch-jellyfish",
