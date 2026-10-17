@@ -1,19 +1,21 @@
 {
-  "updated_at": "2026-10-17T08:20:08.401147+08:00",
-  "date": "2026-10-17",
+  "updated_at": "2026-10-18T07:58:14.708654+08:00",
+  "date": "2026-10-18",
   "last_fetch_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p",
+    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p",
     "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
-    "https://www.nasa.gov/image-article/artemis-ii-heat-shield-after-splashdown",
-    "https://www.nasa.gov/missions/station/i-am-artemis-allison-mjoen",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-spirals-edge",
-    "https://science.nasa.gov/image-article/apod-2026-october-16-chasing-the-international-space-station"
+    "https://www.nasa.gov/blogs/spacestation/2026/10/16/crew-unpacks-dragon-and-begins-activating-new-science-experiments",
+    "https://www.nasa.gov/blogs/quesst/2026/10/16/diving-into-maintenance-with-nasas-x-59"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
-    "https://www.nasa.gov/image-article/artemis-ii-heat-shield-after-splashdown"
+    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p",
     "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
+    "https://www.nasa.gov/blogs/spacestation/2026/10/16/crew-unpacks-dragon-and-begins-activating-new-science-experiments",
+    "https://www.nasa.gov/blogs/quesst/2026/10/16/diving-into-maintenance-with-nasas-x-59",
     "https://www.nasa.gov/image-article/artemis-ii-heat-shield-after-splashdown",
     "https://www.nasa.gov/missions/station/i-am-artemis-allison-mjoen",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-spirals-edge",
