@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-10-16T08:20:05.284742+08:00",
-  "date": "2026-10-16",
+  "updated_at": "2026-10-17T08:20:08.401147+08:00",
+  "date": "2026-10-17",
   "last_fetch_urls": [
-    "https://science.nasa.gov/directorates/smd/planetary-science-division/nasa-to-help-unlock-mysteries-of-mars-moons-in-upcoming-mission",
-    "https://science.nasa.gov/earth/nasa-satellites-observe-historic-2026-el-nino",
-    "https://www.nasa.gov/missions/station/iss-research/power-up-roll-out-solar-arrays-boost-space-station-power-supply",
-    "https://science.nasa.gov/universe/nasa-welcomes-all-ages-experience-levels-for-space-apps-challenge",
-    "https://www.nasa.gov/missions/artemis/artemis-2/rigorous-analysis-confirms-nasas-artemis-ii-heat-shield-performance"
+    "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
+    "https://www.nasa.gov/image-article/artemis-ii-heat-shield-after-splashdown",
+    "https://www.nasa.gov/missions/station/i-am-artemis-allison-mjoen",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-spirals-edge",
+    "https://science.nasa.gov/image-article/apod-2026-october-16-chasing-the-international-space-station"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/directorates/smd/planetary-science-division/nasa-to-help-unlock-mysteries-of-mars-moons-in-upcoming-mission",
-    "https://science.nasa.gov/earth/nasa-satellites-observe-historic-2026-el-nino"
+    "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
+    "https://www.nasa.gov/image-article/artemis-ii-heat-shield-after-splashdown"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
+    "https://www.nasa.gov/image-article/artemis-ii-heat-shield-after-splashdown",
+    "https://www.nasa.gov/missions/station/i-am-artemis-allison-mjoen",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-spirals-edge",
+    "https://science.nasa.gov/image-article/apod-2026-october-16-chasing-the-international-space-station",
     "https://science.nasa.gov/directorates/smd/planetary-science-division/nasa-to-help-unlock-mysteries-of-mars-moons-in-upcoming-mission",
     "https://science.nasa.gov/earth/nasa-satellites-observe-historic-2026-el-nino",
     "https://www.nasa.gov/missions/station/iss-research/power-up-roll-out-solar-arrays-boost-space-station-power-supply",
