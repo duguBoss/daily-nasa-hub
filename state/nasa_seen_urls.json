@@ -1,19 +1,24 @@
 {
-  "updated_at": "2026-10-18T07:58:14.708654+08:00",
-  "date": "2026-10-18",
+  "updated_at": "2026-10-19T08:10:24.234001+08:00",
+  "date": "2026-10-19",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p",
-    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p",
+    "https://science.nasa.gov/image-article/apod-2026-october-18-sonified-eagle-nebula-pillars",
     "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
-    "https://www.nasa.gov/blogs/spacestation/2026/10/16/crew-unpacks-dragon-and-begins-activating-new-science-experiments",
-    "https://www.nasa.gov/blogs/quesst/2026/10/16/diving-into-maintenance-with-nasas-x-59"
+    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
+    "https://www.nasa.gov/news-release/nasa-to-discuss-artemis-acceleration-status-of-upcoming-moon-missions",
+    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p"
+    "https://science.nasa.gov/image-article/apod-2026-october-18-sonified-eagle-nebula-pillars",
+    "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director"
   ],
   "seen_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p",
+    "https://science.nasa.gov/image-article/apod-2026-october-18-sonified-eagle-nebula-pillars",
     "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
+    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
+    "https://www.nasa.gov/news-release/nasa-to-discuss-artemis-acceleration-status-of-upcoming-moon-missions",
+    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer",
+    "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p",
     "https://www.nasa.gov/blogs/spacestation/2026/10/16/crew-unpacks-dragon-and-begins-activating-new-science-experiments",
     "https://www.nasa.gov/blogs/quesst/2026/10/16/diving-into-maintenance-with-nasas-x-59",
     "https://www.nasa.gov/image-article/artemis-ii-heat-shield-after-splashdown",
@@ -25,12 +30,9 @@
     "https://www.nasa.gov/missions/station/iss-research/power-up-roll-out-solar-arrays-boost-space-station-power-supply",
     "https://science.nasa.gov/universe/nasa-welcomes-all-ages-experience-levels-for-space-apps-challenge",
     "https://www.nasa.gov/missions/artemis/artemis-2/rigorous-analysis-confirms-nasas-artemis-ii-heat-shield-performance",
-    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
     "https://science.nasa.gov/missions/chandra/nasas-chandra-breaks-down-treble-clefs-galaxy-cluster-collision",
     "https://www.nasa.gov/image-article/nasas-space-x-crs-35-launch-jellyfish",
     "https://www.nasa.gov/centers-and-facilities/langley/nasa-develops-batteries-to-power-humanitys-return-to-moon",
-    "https://www.nasa.gov/news-release/nasa-to-discuss-artemis-acceleration-status-of-upcoming-moon-missions",
-    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer",
     "https://science.nasa.gov/photojournal/comparing-off-world-rover-driving-distances",
     "https://science.nasa.gov/photojournal/nasas-record-setting-perseverance-rover-team",
     "https://science.nasa.gov/photojournal/perseverance-navcam-image-marks-record-drive",
