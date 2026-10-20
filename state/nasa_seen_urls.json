@@ -1,18 +1,23 @@
 {
-  "updated_at": "2026-10-19T08:10:24.234001+08:00",
-  "date": "2026-10-19",
+  "updated_at": "2026-10-20T09:05:15.220513+08:00",
+  "date": "2026-10-20",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-18-sonified-eagle-nebula-pillars",
-    "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
-    "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
-    "https://www.nasa.gov/news-release/nasa-to-discuss-artemis-acceleration-status-of-upcoming-moon-missions",
-    "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer"
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-improves-shock-vibration-analysis",
+    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-software",
+    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-experimental-facilities",
+    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-instrumentation",
+    "https://www.nasa.gov/image-article/martian-dawn"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-18-sonified-eagle-nebula-pillars",
-    "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director"
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-improves-shock-vibration-analysis",
+    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-software"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-improves-shock-vibration-analysis",
+    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-software",
+    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-experimental-facilities",
+    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-instrumentation",
+    "https://www.nasa.gov/image-article/martian-dawn",
     "https://science.nasa.gov/image-article/apod-2026-october-18-sonified-eagle-nebula-pillars",
     "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director",
     "https://www.nasa.gov/news-release/nasa-to-host-news-conference-previewing-us-spacewalks-100-101",
