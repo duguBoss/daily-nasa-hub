@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-10-20T09:05:15.220513+08:00",
-  "date": "2026-10-20",
+  "updated_at": "2026-10-21T08:35:27.386709+08:00",
+  "date": "2026-10-21",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-improves-shock-vibration-analysis",
-    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-software",
-    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-experimental-facilities",
-    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-instrumentation",
-    "https://www.nasa.gov/image-article/martian-dawn"
+    "https://www.nasa.gov/centers-and-facilities/glenn/sr-1-freedom-advances-with-progress-on-nuclear-power-module",
+    "https://www.nasa.gov/missions/moon-base/nasa-provides-progress-update-on-moon-base-rovers",
+    "https://www.nasa.gov/image-article/webb-captures-stellar-jets",
+    "https://science.nasa.gov/image-article/apod-2026-october-20-an-anticrepuscular-rainbow-fan",
+    "https://science.nasa.gov/earth/earth-observatory/the-human-fingerprint-on-earths-water-cycle"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-improves-shock-vibration-analysis",
-    "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-software"
+    "https://www.nasa.gov/centers-and-facilities/glenn/sr-1-freedom-advances-with-progress-on-nuclear-power-module"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/glenn/sr-1-freedom-advances-with-progress-on-nuclear-power-module",
+    "https://www.nasa.gov/missions/moon-base/nasa-provides-progress-update-on-moon-base-rovers",
+    "https://www.nasa.gov/image-article/webb-captures-stellar-jets",
+    "https://science.nasa.gov/image-article/apod-2026-october-20-an-anticrepuscular-rainbow-fan",
+    "https://science.nasa.gov/earth/earth-observatory/the-human-fingerprint-on-earths-water-cycle",
     "https://www.nasa.gov/centers-and-facilities/kennedy/nasa-improves-shock-vibration-analysis",
     "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-software",
     "https://www.nasa.gov/centers-and-facilities/glenn/acoustics-experimental-facilities",
