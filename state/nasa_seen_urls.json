@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-21T08:35:27.386709+08:00",
-  "date": "2026-10-21",
+  "updated_at": "2026-10-22T08:37:54.657868+08:00",
+  "date": "2026-10-22",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/glenn/sr-1-freedom-advances-with-progress-on-nuclear-power-module",
-    "https://www.nasa.gov/missions/moon-base/nasa-provides-progress-update-on-moon-base-rovers",
-    "https://www.nasa.gov/image-article/webb-captures-stellar-jets",
-    "https://science.nasa.gov/image-article/apod-2026-october-20-an-anticrepuscular-rainbow-fan",
-    "https://science.nasa.gov/earth/earth-observatory/the-human-fingerprint-on-earths-water-cycle"
+    "https://www.nasa.gov/image-article/rs-25-engine-test-in-support-of-future-artemis-missions",
+    "https://www.nasa.gov/centers-and-facilities/jpl/nasa-jpl-looks-to-next-90-years-of-innovation-exploration",
+    "https://www.nasa.gov/news-release/nasa-to-conduct-ncaa-flyover-engage-fans-at-university-of-alabama",
+    "https://science.nasa.gov/blog/tracks-along-the-longest-drive-on-another-world",
+    "https://www.nasa.gov/image-article/science-on-the-space-station-with-nasa-astronaut-jessica-watkins"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/glenn/sr-1-freedom-advances-with-progress-on-nuclear-power-module"
+    "https://www.nasa.gov/image-article/rs-25-engine-test-in-support-of-future-artemis-missions"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/rs-25-engine-test-in-support-of-future-artemis-missions",
+    "https://www.nasa.gov/centers-and-facilities/jpl/nasa-jpl-looks-to-next-90-years-of-innovation-exploration",
+    "https://www.nasa.gov/news-release/nasa-to-conduct-ncaa-flyover-engage-fans-at-university-of-alabama",
+    "https://science.nasa.gov/blog/tracks-along-the-longest-drive-on-another-world",
+    "https://www.nasa.gov/image-article/science-on-the-space-station-with-nasa-astronaut-jessica-watkins",
     "https://www.nasa.gov/centers-and-facilities/glenn/sr-1-freedom-advances-with-progress-on-nuclear-power-module",
     "https://www.nasa.gov/missions/moon-base/nasa-provides-progress-update-on-moon-base-rovers",
     "https://www.nasa.gov/image-article/webb-captures-stellar-jets",
