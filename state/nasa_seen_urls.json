@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-22T08:37:54.657868+08:00",
-  "date": "2026-10-22",
+  "updated_at": "2026-10-23T08:38:18.217218+08:00",
+  "date": "2026-10-23",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/rs-25-engine-test-in-support-of-future-artemis-missions",
-    "https://www.nasa.gov/centers-and-facilities/jpl/nasa-jpl-looks-to-next-90-years-of-innovation-exploration",
-    "https://www.nasa.gov/news-release/nasa-to-conduct-ncaa-flyover-engage-fans-at-university-of-alabama",
-    "https://science.nasa.gov/blog/tracks-along-the-longest-drive-on-another-world",
-    "https://www.nasa.gov/image-article/science-on-the-space-station-with-nasa-astronaut-jessica-watkins"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-2026-von-braun-space-exploration-symposium",
+    "https://www.nasa.gov/image-article/spirals-edge",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-charts-path-for-roman-with-gravitational-lenses",
+    "https://science.nasa.gov/image-article/apod-2026-october-22-the-first-green-star-wd-j13306435",
+    "https://science.nasa.gov/earth/earth-observatory/fires-char-new-guinea"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/rs-25-engine-test-in-support-of-future-artemis-missions"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-2026-von-braun-space-exploration-symposium"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-2026-von-braun-space-exploration-symposium",
+    "https://www.nasa.gov/image-article/spirals-edge",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-charts-path-for-roman-with-gravitational-lenses",
+    "https://science.nasa.gov/image-article/apod-2026-october-22-the-first-green-star-wd-j13306435",
+    "https://science.nasa.gov/earth/earth-observatory/fires-char-new-guinea",
     "https://www.nasa.gov/image-article/rs-25-engine-test-in-support-of-future-artemis-missions",
     "https://www.nasa.gov/centers-and-facilities/jpl/nasa-jpl-looks-to-next-90-years-of-innovation-exploration",
     "https://www.nasa.gov/news-release/nasa-to-conduct-ncaa-flyover-engage-fans-at-university-of-alabama",
