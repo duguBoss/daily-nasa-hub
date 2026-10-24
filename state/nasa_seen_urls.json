@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-23T08:38:18.217218+08:00",
-  "date": "2026-10-23",
+  "updated_at": "2026-10-24T08:32:08.439050+08:00",
+  "date": "2026-10-24",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-2026-von-braun-space-exploration-symposium",
-    "https://www.nasa.gov/image-article/spirals-edge",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-charts-path-for-roman-with-gravitational-lenses",
-    "https://science.nasa.gov/image-article/apod-2026-october-22-the-first-green-star-wd-j13306435",
-    "https://science.nasa.gov/earth/earth-observatory/fires-char-new-guinea"
+    "https://www.nasa.gov/missions/artemis/nasa-partners-accelerate-lander-development-for-2028-moon-missions",
+    "https://www.nasa.gov/missions/artemis/nasas-artemis-iii-mission-to-test-future-moon-lander-operations",
+    "https://science.nasa.gov/missions/swift/nasas-swift-mission-ends",
+    "https://www.nasa.gov/image-article/rs-25-engine-tests-at-nasa-stennis",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasa-power-energy-partnership"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-2026-von-braun-space-exploration-symposium"
+    "https://www.nasa.gov/missions/artemis/nasa-partners-accelerate-lander-development-for-2028-moon-missions"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/artemis/nasa-partners-accelerate-lander-development-for-2028-moon-missions",
+    "https://www.nasa.gov/missions/artemis/nasas-artemis-iii-mission-to-test-future-moon-lander-operations",
+    "https://science.nasa.gov/missions/swift/nasas-swift-mission-ends",
+    "https://www.nasa.gov/image-article/rs-25-engine-tests-at-nasa-stennis",
+    "https://www.nasa.gov/centers-and-facilities/langley/nasa-power-energy-partnership",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-2026-von-braun-space-exploration-symposium",
     "https://www.nasa.gov/image-article/spirals-edge",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-charts-path-for-roman-with-gravitational-lenses",
