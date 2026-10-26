@@ -1,17 +1,19 @@
 {
-  "updated_at": "2026-10-25T08:15:30.587170+08:00",
-  "date": "2026-10-25",
+  "updated_at": "2026-10-26T08:09:27.244755+08:00",
+  "date": "2026-10-26",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-24-rosettas-selfie",
+    "https://science.nasa.gov/image-article/apod-2026-october-25-dark-matter-in-a-simulated-universe",
+    "https://science.nasa.gov/image-article/apod-2026-october-25-dark-matter-in-a-simulated-universe",
     "https://science.nasa.gov/image-article/apod-2026-october-24-rosettas-selfie",
     "https://www.nasa.gov/missions/artemis/nasa-partners-accelerate-lander-development-for-2028-moon-missions",
-    "https://www.nasa.gov/missions/artemis/nasas-artemis-iii-mission-to-test-future-moon-lander-operations",
-    "https://science.nasa.gov/blogs/swift/2026/10/23/nasas-swift-mission-ends-ahead-of-re-entry"
+    "https://www.nasa.gov/missions/artemis/nasas-artemis-iii-mission-to-test-future-moon-lander-operations"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-24-rosettas-selfie"
+    "https://science.nasa.gov/image-article/apod-2026-october-25-dark-matter-in-a-simulated-universe",
+    "https://science.nasa.gov/image-article/apod-2026-october-25-dark-matter-in-a-simulated-universe"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-october-25-dark-matter-in-a-simulated-universe",
     "https://science.nasa.gov/image-article/apod-2026-october-24-rosettas-selfie",
     "https://www.nasa.gov/missions/artemis/nasa-partners-accelerate-lander-development-for-2028-moon-missions",
     "https://www.nasa.gov/missions/artemis/nasas-artemis-iii-mission-to-test-future-moon-lander-operations",
