@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-27T09:27:32.061045+08:00",
-  "date": "2026-10-27",
+  "updated_at": "2026-10-28T09:13:42.156383+08:00",
+  "date": "2026-10-28",
   "last_fetch_urls": [
-    "https://science.nasa.gov/photojournal/nasas-perseverance-views-dust-at-neretva-vallis",
-    "https://www.nasa.gov/missions/mars-2020-perseverance/nasas-perseverance-offers-clues-to-protect-crews-from-mars-dust",
-    "https://science.nasa.gov/photojournal/neo-surveyors-sunshade-gets-inspected",
-    "https://science.nasa.gov/photojournal/solar-cells-inspected-on-nasas-neo-surveyor",
-    "https://science.nasa.gov/learning-resources/science-activation/nasa-sees-interns-tackle-real-world-challenges-in-lunar-exploration"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-crew-completion-of-yearlong-mars-simulation",
+    "https://www.nasa.gov/image-article/nasas-neo-surveyor-sunshade",
+    "https://science.nasa.gov/image-article/apod-2026-october-27-noctilucent-clouds-over-sweden",
+    "https://science.nasa.gov/earth/earth-observatory/a-81-reaches-south-georgia",
+    "https://science.nasa.gov/blogs/notes-from-the-field/2026/10/27/adventures-in-wildfire-smoke-stratospheric-ballooning"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/photojournal/nasas-perseverance-views-dust-at-neretva-vallis"
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-crew-completion-of-yearlong-mars-simulation"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-crew-completion-of-yearlong-mars-simulation",
+    "https://www.nasa.gov/image-article/nasas-neo-surveyor-sunshade",
+    "https://science.nasa.gov/image-article/apod-2026-october-27-noctilucent-clouds-over-sweden",
+    "https://science.nasa.gov/earth/earth-observatory/a-81-reaches-south-georgia",
+    "https://science.nasa.gov/blogs/notes-from-the-field/2026/10/27/adventures-in-wildfire-smoke-stratospheric-ballooning",
     "https://science.nasa.gov/photojournal/nasas-perseverance-views-dust-at-neretva-vallis",
     "https://www.nasa.gov/missions/mars-2020-perseverance/nasas-perseverance-offers-clues-to-protect-crews-from-mars-dust",
     "https://science.nasa.gov/photojournal/neo-surveyors-sunshade-gets-inspected",
