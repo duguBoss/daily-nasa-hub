@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-28T09:13:42.156383+08:00",
-  "date": "2026-10-28",
+  "updated_at": "2026-10-29T09:45:26.034430+08:00",
+  "date": "2026-10-29",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-crew-completion-of-yearlong-mars-simulation",
-    "https://www.nasa.gov/image-article/nasas-neo-surveyor-sunshade",
-    "https://science.nasa.gov/image-article/apod-2026-october-27-noctilucent-clouds-over-sweden",
-    "https://science.nasa.gov/earth/earth-observatory/a-81-reaches-south-georgia",
-    "https://science.nasa.gov/blogs/notes-from-the-field/2026/10/27/adventures-in-wildfire-smoke-stratospheric-ballooning"
+    "https://www.nasa.gov/image-article/artemis-iii-sls-core-stage-joins-boosters-at-kennedy",
+    "https://science.nasa.gov/get-involved/citizen-science/nasa-selects-19-new-citizen-science-proposals-in-2026",
+    "https://www.nasa.gov/image-article/webb-sees-turbulent-star-nursery",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5043-5049-preparing-to-drill-at-nazca",
+    "https://science.nasa.gov/image-article/apod-2026-october-28-the-mutual-occultation-of-ganymede-and-io"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-crew-completion-of-yearlong-mars-simulation"
+    "https://www.nasa.gov/image-article/artemis-iii-sls-core-stage-joins-boosters-at-kennedy"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/artemis-iii-sls-core-stage-joins-boosters-at-kennedy",
+    "https://science.nasa.gov/get-involved/citizen-science/nasa-selects-19-new-citizen-science-proposals-in-2026",
+    "https://www.nasa.gov/image-article/webb-sees-turbulent-star-nursery",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5043-5049-preparing-to-drill-at-nazca",
+    "https://science.nasa.gov/image-article/apod-2026-october-28-the-mutual-occultation-of-ganymede-and-io",
     "https://www.nasa.gov/news-release/nasa-invites-media-to-crew-completion-of-yearlong-mars-simulation",
     "https://www.nasa.gov/image-article/nasas-neo-surveyor-sunshade",
     "https://science.nasa.gov/image-article/apod-2026-october-27-noctilucent-clouds-over-sweden",
