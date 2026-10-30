@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-10-29T09:45:26.034430+08:00",
-  "date": "2026-10-29",
+  "updated_at": "2026-10-30T09:54:53.538191+08:00",
+  "date": "2026-10-30",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/artemis-iii-sls-core-stage-joins-boosters-at-kennedy",
-    "https://science.nasa.gov/get-involved/citizen-science/nasa-selects-19-new-citizen-science-proposals-in-2026",
-    "https://www.nasa.gov/image-article/webb-sees-turbulent-star-nursery",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5043-5049-preparing-to-drill-at-nazca",
-    "https://science.nasa.gov/image-article/apod-2026-october-28-the-mutual-occultation-of-ganymede-and-io"
+    "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001",
+    "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001",
+    "https://science.nasa.gov/photojournal/slice-of-martian-meteorite-teghaza-001",
+    "https://www.nasa.gov/centers-and-facilities/johnson/halloween-aboard-the-international-space-station",
+    "https://www.nasa.gov/blogs/spacestation/2026/10/29/spacewalkers-install-roll-out-solar-arrays-for-power-generation"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/artemis-iii-sls-core-stage-joins-boosters-at-kennedy"
+    "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001",
+    "https://science.nasa.gov/photojournal/slice-of-martian-meteorite-teghaza-001",
+    "https://www.nasa.gov/centers-and-facilities/johnson/halloween-aboard-the-international-space-station",
+    "https://www.nasa.gov/blogs/spacestation/2026/10/29/spacewalkers-install-roll-out-solar-arrays-for-power-generation",
     "https://www.nasa.gov/image-article/artemis-iii-sls-core-stage-joins-boosters-at-kennedy",
     "https://science.nasa.gov/get-involved/citizen-science/nasa-selects-19-new-citizen-science-proposals-in-2026",
     "https://www.nasa.gov/image-article/webb-sees-turbulent-star-nursery",
