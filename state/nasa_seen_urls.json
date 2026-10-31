@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-10-30T09:54:53.538191+08:00",
-  "date": "2026-10-30",
+  "updated_at": "2026-10-31T09:36:05.552457+08:00",
+  "date": "2026-10-31",
   "last_fetch_urls": [
-    "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001",
-    "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001",
-    "https://science.nasa.gov/photojournal/slice-of-martian-meteorite-teghaza-001",
-    "https://www.nasa.gov/centers-and-facilities/johnson/halloween-aboard-the-international-space-station",
-    "https://www.nasa.gov/blogs/spacestation/2026/10/29/spacewalkers-install-roll-out-solar-arrays-for-power-generation"
+    "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants",
+    "https://www.nasa.gov/image-article/nasas-james-webb-space-telescope-captures-eerie-cats-head",
+    "https://science.nasa.gov/missions/hubble/nasa-explores-potential-commercial-servicing-for-hubble-telescope",
+    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away",
+    "https://science.nasa.gov/image-article/apod-2026-october-30-haunting-the-cepheus-flare"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001"
+    "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants",
+    "https://www.nasa.gov/image-article/nasas-james-webb-space-telescope-captures-eerie-cats-head",
+    "https://science.nasa.gov/missions/hubble/nasa-explores-potential-commercial-servicing-for-hubble-telescope",
+    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away",
+    "https://science.nasa.gov/image-article/apod-2026-october-30-haunting-the-cepheus-flare",
     "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001",
     "https://science.nasa.gov/photojournal/slice-of-martian-meteorite-teghaza-001",
     "https://www.nasa.gov/centers-and-facilities/johnson/halloween-aboard-the-international-space-station",
