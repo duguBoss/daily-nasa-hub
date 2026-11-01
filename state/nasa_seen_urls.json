@@ -1,18 +1,20 @@
 {
-  "updated_at": "2026-10-31T09:36:05.552457+08:00",
-  "date": "2026-10-31",
+  "updated_at": "2026-11-01T09:01:12.948974+08:00",
+  "date": "2026-11-01",
   "last_fetch_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet",
+    "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet",
     "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants",
-    "https://www.nasa.gov/image-article/nasas-james-webb-space-telescope-captures-eerie-cats-head",
-    "https://science.nasa.gov/missions/hubble/nasa-explores-potential-commercial-servicing-for-hubble-telescope",
-    "https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away",
-    "https://science.nasa.gov/image-article/apod-2026-october-30-haunting-the-cepheus-flare"
+    "https://www.nasa.gov/blogs/spacestation/2026/10/30/space-crops-and-advanced-tech-wrap-up-week-following-spacewalk",
+    "https://www.nasa.gov/image-article/nasas-james-webb-space-telescope-captures-eerie-cats-head"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants"
+    "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet",
     "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants",
+    "https://www.nasa.gov/blogs/spacestation/2026/10/30/space-crops-and-advanced-tech-wrap-up-week-following-spacewalk",
     "https://www.nasa.gov/image-article/nasas-james-webb-space-telescope-captures-eerie-cats-head",
     "https://science.nasa.gov/missions/hubble/nasa-explores-potential-commercial-servicing-for-hubble-telescope",
     "https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away",
