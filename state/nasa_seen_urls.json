@@ -1,17 +1,19 @@
 {
-  "updated_at": "2026-11-01T09:01:12.948974+08:00",
-  "date": "2026-11-01",
+  "updated_at": "2026-11-02T09:30:40.202569+08:00",
+  "date": "2026-11-02",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet",
+    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon",
+    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon",
     "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet",
     "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants",
-    "https://www.nasa.gov/blogs/spacestation/2026/10/30/space-crops-and-advanced-tech-wrap-up-week-following-spacewalk",
-    "https://www.nasa.gov/image-article/nasas-james-webb-space-telescope-captures-eerie-cats-head"
+    "https://www.nasa.gov/blogs/spacestation/2026/10/30/space-crops-and-advanced-tech-wrap-up-week-following-spacewalk"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet"
+    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon",
+    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon",
     "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet",
     "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants",
     "https://www.nasa.gov/blogs/spacestation/2026/10/30/space-crops-and-advanced-tech-wrap-up-week-following-spacewalk",
