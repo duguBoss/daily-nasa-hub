@@ -1,18 +1,22 @@
 {
-  "updated_at": "2026-11-02T09:30:40.202569+08:00",
-  "date": "2026-11-02",
+  "updated_at": "2026-11-03T11:27:48.046868+08:00",
+  "date": "2026-11-03",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon",
-    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon",
-    "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet",
-    "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants",
-    "https://www.nasa.gov/blogs/spacestation/2026/10/30/space-crops-and-advanced-tech-wrap-up-week-following-spacewalk"
+    "https://www.nasa.gov/centers-and-facilities/johnson/happy-65-years-nasas-johnson-space-center-then-and-now",
+    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-09-measured-hammer-tap-inputs",
+    "https://www.nasa.gov/image-article/nasas-chapea-crew-returns-to-earth",
+    "https://science.nasa.gov/solar-system/skywatching/whats-up-november-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-northrop-grumman-crs-25-station-resupply-launch"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon",
-    "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon"
+    "https://www.nasa.gov/centers-and-facilities/johnson/happy-65-years-nasas-johnson-space-center-then-and-now"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/johnson/happy-65-years-nasas-johnson-space-center-then-and-now",
+    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-09-measured-hammer-tap-inputs",
+    "https://www.nasa.gov/image-article/nasas-chapea-crew-returns-to-earth",
+    "https://science.nasa.gov/solar-system/skywatching/whats-up-november-2026-skywatching-tips-from-nasa",
+    "https://www.nasa.gov/news-release/nasa-invites-media-to-northrop-grumman-crs-25-station-resupply-launch",
     "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon",
     "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet",
     "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants",
