@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-03T11:27:48.046868+08:00",
-  "date": "2026-11-03",
+  "updated_at": "2026-11-04T10:11:11.093945+08:00",
+  "date": "2026-11-04",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/happy-65-years-nasas-johnson-space-center-then-and-now",
-    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-09-measured-hammer-tap-inputs",
-    "https://www.nasa.gov/image-article/nasas-chapea-crew-returns-to-earth",
-    "https://science.nasa.gov/solar-system/skywatching/whats-up-november-2026-skywatching-tips-from-nasa",
-    "https://www.nasa.gov/news-release/nasa-invites-media-to-northrop-grumman-crs-25-station-resupply-launch"
+    "https://www.nasa.gov/image-article/astronaut-and-earth",
+    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-10-printed-circuit-board-assembly-chip-resistor-body-cracking",
+    "https://science.nasa.gov/image-article/apod-2026-november-3-comet-panstarrs-and-rainbow-meteor",
+    "https://science.nasa.gov/earth/earth-observatory/the-pacifics-busy-storm-season",
+    "https://www.nasa.gov/blogs/smallsatellites/2026/11/03/nasa-funded-sspicy-mission-experiences-communications-loss"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/happy-65-years-nasas-johnson-space-center-then-and-now"
+    "https://www.nasa.gov/image-article/astronaut-and-earth"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/astronaut-and-earth",
+    "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-10-printed-circuit-board-assembly-chip-resistor-body-cracking",
+    "https://science.nasa.gov/image-article/apod-2026-november-3-comet-panstarrs-and-rainbow-meteor",
+    "https://science.nasa.gov/earth/earth-observatory/the-pacifics-busy-storm-season",
+    "https://www.nasa.gov/blogs/smallsatellites/2026/11/03/nasa-funded-sspicy-mission-experiences-communications-loss",
     "https://www.nasa.gov/centers-and-facilities/johnson/happy-65-years-nasas-johnson-space-center-then-and-now",
     "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-09-measured-hammer-tap-inputs",
     "https://www.nasa.gov/image-article/nasas-chapea-crew-returns-to-earth",
