@@ -1,16 +1,20 @@
 {
-  "updated_at": "2026-11-07T09:51:19.212116+08:00",
-  "date": "2026-11-07",
+  "updated_at": "2026-11-08T09:19:07.022353+08:00",
+  "date": "2026-11-08",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/m30s-sparkling-stars",
-    "https://science.nasa.gov/earth/supercomputing-tech-demo-schedule",
-    "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift",
-    "https://science.nasa.gov/earth/earth-observatory/taking-a-gander-at-utahs-goosenecks"
+    "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
+    "https://www.nasa.gov/news-release/nasa-seeks-next-generation-of-explorers-to-join-astronaut-corps",
+    "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
+    "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
+    "https://www.nasa.gov/news-release/nasa-seeks-next-generation-of-explorers-to-join-astronaut-corps"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/m30s-sparkling-stars"
+    "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
+    "https://www.nasa.gov/news-release/nasa-seeks-next-generation-of-explorers-to-join-astronaut-corps",
+    "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
     "https://www.nasa.gov/image-article/m30s-sparkling-stars",
     "https://science.nasa.gov/earth/supercomputing-tech-demo-schedule",
     "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift",
