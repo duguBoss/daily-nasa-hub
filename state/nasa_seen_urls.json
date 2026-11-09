@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-11-08T09:19:07.022353+08:00",
-  "date": "2026-11-08",
+  "updated_at": "2026-11-09T09:41:43.485801+08:00",
+  "date": "2026-11-09",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
-    "https://www.nasa.gov/news-release/nasa-seeks-next-generation-of-explorers-to-join-astronaut-corps",
-    "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
-    "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
-    "https://www.nasa.gov/news-release/nasa-seeks-next-generation-of-explorers-to-join-astronaut-corps"
+    "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
+    "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects"
+    "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
+    "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
+    "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor",
     "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
     "https://www.nasa.gov/news-release/nasa-seeks-next-generation-of-explorers-to-join-astronaut-corps",
     "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
