@@ -1,15 +1,16 @@
 {
-  "updated_at": "2026-11-09T09:41:43.485801+08:00",
-  "date": "2026-11-09",
+  "updated_at": "2026-11-10T12:04:58.018801+08:00",
+  "date": "2026-11-10",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
-    "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5056-5062-charging-back-up",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5050-5055-its-nazca-our-49th-drill-hole"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
-    "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor"
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5056-5062-charging-back-up"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5056-5062-charging-back-up",
+    "https://science.nasa.gov/blog/curiosity-blog-sols-5050-5055-its-nazca-our-49th-drill-hole",
     "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
     "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor",
     "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
