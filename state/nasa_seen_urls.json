@@ -1,14 +1,22 @@
 {
-  "updated_at": "2026-11-10T12:04:58.018801+08:00",
-  "date": "2026-11-10",
+  "updated_at": "2026-11-11T09:52:54.441754+08:00",
+  "date": "2026-11-11",
   "last_fetch_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5056-5062-charging-back-up",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5050-5055-its-nazca-our-49th-drill-hole"
+    "https://www.nasa.gov/news-release/nasa-invites-media-public-to-join-voyager-1-one-light-day-activities",
+    "https://www.nasa.gov/news-release/nasa-to-welcome-expedition-74-astronauts-home-at-space-center-houston",
+    "https://science.nasa.gov/missions/lisa/gravitational-waves-can-reveal-new-worlds",
+    "https://www.nasa.gov/image-article/chapea-crew-leaves-a-mark",
+    "https://science.nasa.gov/image-article/apod-2026-november-10-saturn-behind-the-moon"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5056-5062-charging-back-up"
+    "https://www.nasa.gov/news-release/nasa-invites-media-public-to-join-voyager-1-one-light-day-activities"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/news-release/nasa-invites-media-public-to-join-voyager-1-one-light-day-activities",
+    "https://www.nasa.gov/news-release/nasa-to-welcome-expedition-74-astronauts-home-at-space-center-houston",
+    "https://science.nasa.gov/missions/lisa/gravitational-waves-can-reveal-new-worlds",
+    "https://www.nasa.gov/image-article/chapea-crew-leaves-a-mark",
+    "https://science.nasa.gov/image-article/apod-2026-november-10-saturn-behind-the-moon",
     "https://science.nasa.gov/blog/curiosity-blog-sols-5056-5062-charging-back-up",
     "https://science.nasa.gov/blog/curiosity-blog-sols-5050-5055-its-nazca-our-49th-drill-hole",
     "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
