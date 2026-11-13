@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-12T10:57:09.632966+08:00",
-  "date": "2026-11-12",
+  "updated_at": "2026-11-13T10:34:19.775529+08:00",
+  "date": "2026-11-13",
   "last_fetch_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5063-5069-rocks-and-chips",
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5063-5069-rocks-and-chips",
-    "https://www.nasa.gov/blogs/quesst/2026/11/11/x-59-test-pilots-veterans-day",
-    "https://science.nasa.gov/image-article/apod-2026-november-11-ngc-4449-small-galaxy-big-impact",
-    "https://science.nasa.gov/earth/earth-observatory/water-surges-into-navajo-reservoir"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis-katie-spicer",
+    "https://www.nasa.gov/image-article/heart-in-the-sky-at-nasa-kennedy",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-offers-cosmic-sampler-of-targets-for-roman",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/through-nasas-lens-capturing-space-shuttle-endeavours-move-to-la",
+    "https://science.nasa.gov/image-article/apod-2026-november-12-moon-venus-and-spica-meet"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/blog/curiosity-blog-sols-5063-5069-rocks-and-chips"
+    "https://www.nasa.gov/missions/artemis/i-am-artemis-katie-spicer"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/missions/artemis/i-am-artemis-katie-spicer",
+    "https://www.nasa.gov/image-article/heart-in-the-sky-at-nasa-kennedy",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-offers-cosmic-sampler-of-targets-for-roman",
+    "https://www.nasa.gov/centers-and-facilities/armstrong/through-nasas-lens-capturing-space-shuttle-endeavours-move-to-la",
+    "https://science.nasa.gov/image-article/apod-2026-november-12-moon-venus-and-spica-meet",
     "https://science.nasa.gov/blog/curiosity-blog-sols-5063-5069-rocks-and-chips",
     "https://www.nasa.gov/blogs/quesst/2026/11/11/x-59-test-pilots-veterans-day",
     "https://science.nasa.gov/image-article/apod-2026-november-11-ngc-4449-small-galaxy-big-impact",
