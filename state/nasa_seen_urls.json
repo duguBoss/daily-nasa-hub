@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-13T10:34:19.775529+08:00",
-  "date": "2026-11-13",
+  "updated_at": "2026-11-14T10:17:01.783489+08:00",
+  "date": "2026-11-14",
   "last_fetch_urls": [
-    "https://www.nasa.gov/missions/artemis/i-am-artemis-katie-spicer",
-    "https://www.nasa.gov/image-article/heart-in-the-sky-at-nasa-kennedy",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-offers-cosmic-sampler-of-targets-for-roman",
-    "https://www.nasa.gov/centers-and-facilities/armstrong/through-nasas-lens-capturing-space-shuttle-endeavours-move-to-la",
-    "https://science.nasa.gov/image-article/apod-2026-november-12-moon-venus-and-spica-meet"
+    "https://www.nasa.gov/image-article/outbursts-from-a-massive-star",
+    "https://www.nasa.gov/image-article/gemini-astronaut-photos-inspired-early-earth-observation-program",
+    "https://science.nasa.gov/image-article/apod-2026-november-13-ngc-206-and-the-star-clouds-of-andromeda",
+    "https://science.nasa.gov/earth/earth-observatory/a-global-rebound-for-mangroves",
+    "https://science.nasa.gov/blogs/roman/2026/11/13/instruments-on-nasas-roman-space-telescope-get-in-sync-for-science"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/missions/artemis/i-am-artemis-katie-spicer"
+    "https://www.nasa.gov/image-article/outbursts-from-a-massive-star"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/outbursts-from-a-massive-star",
+    "https://www.nasa.gov/image-article/gemini-astronaut-photos-inspired-early-earth-observation-program",
+    "https://science.nasa.gov/image-article/apod-2026-november-13-ngc-206-and-the-star-clouds-of-andromeda",
+    "https://science.nasa.gov/earth/earth-observatory/a-global-rebound-for-mangroves",
+    "https://science.nasa.gov/blogs/roman/2026/11/13/instruments-on-nasas-roman-space-telescope-get-in-sync-for-science",
     "https://www.nasa.gov/missions/artemis/i-am-artemis-katie-spicer",
     "https://www.nasa.gov/image-article/heart-in-the-sky-at-nasa-kennedy",
     "https://science.nasa.gov/missions/hubble/nasas-hubble-offers-cosmic-sampler-of-targets-for-roman",
