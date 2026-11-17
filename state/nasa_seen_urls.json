@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-16T09:54:29.113395+08:00",
-  "date": "2026-11-16",
+  "updated_at": "2026-11-17T12:26:08.208448+08:00",
+  "date": "2026-11-17",
   "last_fetch_urls": [
-    "https://www.nasa.gov/image-article/outbursts-from-a-massive-star",
-    "https://www.nasa.gov/image-article/gemini-astronaut-photos-inspired-early-earth-observation-program",
-    "https://science.nasa.gov/image-article/apod-2026-november-13-ngc-206-and-the-star-clouds-of-andromeda",
-    "https://science.nasa.gov/earth/earth-observatory/a-global-rebound-for-mangroves",
-    "https://www.nasa.gov/missions/artemis/i-am-artemis-katie-spicer"
+    "https://science.nasa.gov/blog/perseverance-update-the-ghostly-rocks-of-idubi-bright-remnants-of-aqueous-systems-from-long-ago",
+    "https://science.nasa.gov/photojournal/a-collage-showing-49-drill-holes-made-by-nasas-curiosity-mars-rover",
+    "https://www.nasa.gov/news-release/nasa-receives-16th-consecutive-clean-financial-audit-opinion",
+    "https://science.nasa.gov/photojournal/sentinel-6b-in-orbit-around-earth",
+    "https://www.nasa.gov/image-article/thunderbirds-in-formation"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/image-article/outbursts-from-a-massive-star"
+    "https://science.nasa.gov/blog/perseverance-update-the-ghostly-rocks-of-idubi-bright-remnants-of-aqueous-systems-from-long-ago"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/blog/perseverance-update-the-ghostly-rocks-of-idubi-bright-remnants-of-aqueous-systems-from-long-ago",
+    "https://science.nasa.gov/photojournal/a-collage-showing-49-drill-holes-made-by-nasas-curiosity-mars-rover",
+    "https://www.nasa.gov/news-release/nasa-receives-16th-consecutive-clean-financial-audit-opinion",
+    "https://science.nasa.gov/photojournal/sentinel-6b-in-orbit-around-earth",
+    "https://www.nasa.gov/image-article/thunderbirds-in-formation",
     "https://www.nasa.gov/image-article/outbursts-from-a-massive-star",
     "https://www.nasa.gov/image-article/gemini-astronaut-photos-inspired-early-earth-observation-program",
     "https://science.nasa.gov/image-article/apod-2026-november-13-ngc-206-and-the-star-clouds-of-andromeda",
