@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-11-17T12:26:08.208448+08:00",
-  "date": "2026-11-17",
+  "updated_at": "2026-11-18T11:41:08.555767+08:00",
+  "date": "2026-11-18",
   "last_fetch_urls": [
-    "https://science.nasa.gov/blog/perseverance-update-the-ghostly-rocks-of-idubi-bright-remnants-of-aqueous-systems-from-long-ago",
-    "https://science.nasa.gov/photojournal/a-collage-showing-49-drill-holes-made-by-nasas-curiosity-mars-rover",
-    "https://www.nasa.gov/news-release/nasa-receives-16th-consecutive-clean-financial-audit-opinion",
-    "https://science.nasa.gov/photojournal/sentinel-6b-in-orbit-around-earth",
-    "https://www.nasa.gov/image-article/thunderbirds-in-formation"
+    "https://science.nasa.gov/centers-and-facilities/glenn/nasa-launches-nuclear-power-systems-student-contest",
+    "https://science.nasa.gov/open-science/nasa-space-apps-challenge-breaks-global-hackathon-records",
+    "https://science.nasa.gov/missions/chandra/new-album-of-baby-star-sounds-shared-by-nasas-chandra",
+    "https://www.nasa.gov/news-release/nasa-to-cover-35th-spacex-resupply-mission-space-station-departure",
+    "https://www.nasa.gov/missions/station/nicer-status-updates"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/blog/perseverance-update-the-ghostly-rocks-of-idubi-bright-remnants-of-aqueous-systems-from-long-ago"
+    "https://science.nasa.gov/centers-and-facilities/glenn/nasa-launches-nuclear-power-systems-student-contest",
+    "https://science.nasa.gov/open-science/nasa-space-apps-challenge-breaks-global-hackathon-records"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/centers-and-facilities/glenn/nasa-launches-nuclear-power-systems-student-contest",
+    "https://science.nasa.gov/open-science/nasa-space-apps-challenge-breaks-global-hackathon-records",
+    "https://science.nasa.gov/missions/chandra/new-album-of-baby-star-sounds-shared-by-nasas-chandra",
+    "https://www.nasa.gov/news-release/nasa-to-cover-35th-spacex-resupply-mission-space-station-departure",
+    "https://www.nasa.gov/missions/station/nicer-status-updates",
     "https://science.nasa.gov/blog/perseverance-update-the-ghostly-rocks-of-idubi-bright-remnants-of-aqueous-systems-from-long-ago",
     "https://science.nasa.gov/photojournal/a-collage-showing-49-drill-holes-made-by-nasas-curiosity-mars-rover",
     "https://www.nasa.gov/news-release/nasa-receives-16th-consecutive-clean-financial-audit-opinion",
