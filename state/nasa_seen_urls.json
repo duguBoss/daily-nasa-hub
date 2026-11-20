@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-19T11:16:35.136405+08:00",
-  "date": "2026-11-19",
+  "updated_at": "2026-11-20T11:03:05.543625+08:00",
+  "date": "2026-11-20",
   "last_fetch_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grumman-crs-25-launch-prelaunch",
-    "https://www.nasa.gov/centers-and-facilities/michoud/maf-eap/maf-eap-holidays-how-to-manage-the-bah-humbug-that-tries-to-sneak-in",
-    "https://www.nasa.gov/image-article/empire-state-building-goes-gold-for-voyager",
-    "https://science.nasa.gov/get-involved/citizen-science/thank-you-for-doing-nasa-science",
-    "https://science.nasa.gov/missions/webb/nasa-data-clinches-first-of-its-kind-stellar-merger"
+    "https://science.nasa.gov/open-science/fermi-data-pulsar-discovery",
+    "https://www.nasa.gov/image-article/lake-pelku",
+    "https://www.nasa.gov/image-article/latest-rs-25-engine-test-in-support-of-future-artemis-missions",
+    "https://www.nasa.gov/news-release/nasas-voyager-1-makes-history-reaching-one-light-day-from-earth",
+    "https://science.nasa.gov/image-article/apod-2026-november-19-the-horsehead-and-flame-nebulas"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grumman-crs-25-launch-prelaunch"
+    "https://science.nasa.gov/open-science/fermi-data-pulsar-discovery"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/open-science/fermi-data-pulsar-discovery",
+    "https://www.nasa.gov/image-article/lake-pelku",
+    "https://www.nasa.gov/image-article/latest-rs-25-engine-test-in-support-of-future-artemis-missions",
+    "https://www.nasa.gov/news-release/nasas-voyager-1-makes-history-reaching-one-light-day-from-earth",
+    "https://science.nasa.gov/image-article/apod-2026-november-19-the-horsehead-and-flame-nebulas",
     "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grumman-crs-25-launch-prelaunch",
     "https://www.nasa.gov/centers-and-facilities/michoud/maf-eap/maf-eap-holidays-how-to-manage-the-bah-humbug-that-tries-to-sneak-in",
     "https://www.nasa.gov/image-article/empire-state-building-goes-gold-for-voyager",
