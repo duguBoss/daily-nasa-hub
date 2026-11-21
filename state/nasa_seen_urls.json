@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-20T11:03:05.543625+08:00",
-  "date": "2026-11-20",
+  "updated_at": "2026-11-21T11:08:28.936998+08:00",
+  "date": "2026-11-21",
   "last_fetch_urls": [
-    "https://science.nasa.gov/open-science/fermi-data-pulsar-discovery",
-    "https://www.nasa.gov/image-article/lake-pelku",
-    "https://www.nasa.gov/image-article/latest-rs-25-engine-test-in-support-of-future-artemis-missions",
-    "https://www.nasa.gov/news-release/nasas-voyager-1-makes-history-reaching-one-light-day-from-earth",
-    "https://science.nasa.gov/image-article/apod-2026-november-19-the-horsehead-and-flame-nebulas"
+    "https://science.nasa.gov/photojournal/curiosity-spots-drifting-twilight-clouds",
+    "https://www.nasa.gov/centers-and-facilities/stennis/honor-awards-ceremony-at-stennis",
+    "https://www.nasa.gov/image-article/nasas-curiosity-mars-rover-collects-samples",
+    "https://science.nasa.gov/image-article/apod-2026-november-20-v-g-r",
+    "https://science.nasa.gov/earth/earth-observatory/the-stormy-southwest-pacific"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/open-science/fermi-data-pulsar-discovery"
+    "https://science.nasa.gov/photojournal/curiosity-spots-drifting-twilight-clouds"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/photojournal/curiosity-spots-drifting-twilight-clouds",
+    "https://www.nasa.gov/centers-and-facilities/stennis/honor-awards-ceremony-at-stennis",
+    "https://www.nasa.gov/image-article/nasas-curiosity-mars-rover-collects-samples",
+    "https://science.nasa.gov/image-article/apod-2026-november-20-v-g-r",
+    "https://science.nasa.gov/earth/earth-observatory/the-stormy-southwest-pacific",
     "https://science.nasa.gov/open-science/fermi-data-pulsar-discovery",
     "https://www.nasa.gov/image-article/lake-pelku",
     "https://www.nasa.gov/image-article/latest-rs-25-engine-test-in-support-of-future-artemis-missions",
