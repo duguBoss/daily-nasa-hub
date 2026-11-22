@@ -1,17 +1,14 @@
 {
-  "updated_at": "2026-11-21T11:08:28.936998+08:00",
-  "date": "2026-11-21",
+  "updated_at": "2026-11-22T10:07:25.087053+08:00",
+  "date": "2026-11-22",
   "last_fetch_urls": [
-    "https://science.nasa.gov/photojournal/curiosity-spots-drifting-twilight-clouds",
-    "https://www.nasa.gov/centers-and-facilities/stennis/honor-awards-ceremony-at-stennis",
-    "https://www.nasa.gov/image-article/nasas-curiosity-mars-rover-collects-samples",
-    "https://science.nasa.gov/image-article/apod-2026-november-20-v-g-r",
-    "https://science.nasa.gov/earth/earth-observatory/the-stormy-southwest-pacific"
+    "https://science.nasa.gov/image-article/apod-2026-november-21-voyagers-neptune"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/photojournal/curiosity-spots-drifting-twilight-clouds"
+    "https://science.nasa.gov/image-article/apod-2026-november-21-voyagers-neptune"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-november-21-voyagers-neptune",
     "https://science.nasa.gov/photojournal/curiosity-spots-drifting-twilight-clouds",
     "https://www.nasa.gov/centers-and-facilities/stennis/honor-awards-ceremony-at-stennis",
     "https://www.nasa.gov/image-article/nasas-curiosity-mars-rover-collects-samples",
