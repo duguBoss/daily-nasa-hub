@@ -1,13 +1,20 @@
 {
-  "updated_at": "2026-11-22T10:07:25.087053+08:00",
-  "date": "2026-11-22",
+  "updated_at": "2026-11-23T10:34:10.828935+08:00",
+  "date": "2026-11-23",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-november-21-voyagers-neptune"
+    "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson",
+    "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
+    "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson",
+    "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
+    "https://www.nasa.gov/blogs/spacestation/2026/11/21/dragon-returns-to-earth-packed-with-science-and-cargo"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-november-21-voyagers-neptune"
+    "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson",
+    "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
+    "https://www.nasa.gov/blogs/spacestation/2026/11/21/dragon-returns-to-earth-packed-with-science-and-cargo",
     "https://science.nasa.gov/image-article/apod-2026-november-21-voyagers-neptune",
     "https://science.nasa.gov/photojournal/curiosity-spots-drifting-twilight-clouds",
     "https://www.nasa.gov/centers-and-facilities/stennis/honor-awards-ceremony-at-stennis",
