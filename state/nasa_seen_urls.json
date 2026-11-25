@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-23T10:34:10.828935+08:00",
-  "date": "2026-11-23",
+  "updated_at": "2026-11-25T12:55:20.736214+08:00",
+  "date": "2026-11-25",
   "last_fetch_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson",
-    "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
-    "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson",
-    "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
-    "https://www.nasa.gov/blogs/spacestation/2026/11/21/dragon-returns-to-earth-packed-with-science-and-cargo"
+    "https://science.nasa.gov/get-involved/citizen-science/amateur-astronomer-be-a-kilonova-catcher",
+    "https://www.nasa.gov/missions/station/nasas-northrop-grumman-crs-25-mission-overview",
+    "https://science.nasa.gov/earth/agu-hyperwall-schedule",
+    "https://www.nasa.gov/image-article/webb-reveals-new-details-in-supernova-remnant",
+    "https://science.nasa.gov/missions/dragonfly/nasas-titan-bound-dragonfly-rotorcraft-gets-its-eyes"
   ],
   "last_new_urls": [
-    "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson"
+    "https://science.nasa.gov/get-involved/citizen-science/amateur-astronomer-be-a-kilonova-catcher"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/get-involved/citizen-science/amateur-astronomer-be-a-kilonova-catcher",
+    "https://www.nasa.gov/missions/station/nasas-northrop-grumman-crs-25-mission-overview",
+    "https://science.nasa.gov/earth/agu-hyperwall-schedule",
+    "https://www.nasa.gov/image-article/webb-reveals-new-details-in-supernova-remnant",
+    "https://science.nasa.gov/missions/dragonfly/nasas-titan-bound-dragonfly-rotorcraft-gets-its-eyes",
     "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson",
     "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
     "https://www.nasa.gov/blogs/spacestation/2026/11/21/dragon-returns-to-earth-packed-with-science-and-cargo",
