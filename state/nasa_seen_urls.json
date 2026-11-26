@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-25T12:55:20.736214+08:00",
-  "date": "2026-11-25",
+  "updated_at": "2026-11-26T12:08:01.340869+08:00",
+  "date": "2026-11-26",
   "last_fetch_urls": [
-    "https://science.nasa.gov/get-involved/citizen-science/amateur-astronomer-be-a-kilonova-catcher",
-    "https://www.nasa.gov/missions/station/nasas-northrop-grumman-crs-25-mission-overview",
-    "https://science.nasa.gov/earth/agu-hyperwall-schedule",
-    "https://www.nasa.gov/image-article/webb-reveals-new-details-in-supernova-remnant",
-    "https://science.nasa.gov/missions/dragonfly/nasas-titan-bound-dragonfly-rotorcraft-gets-its-eyes"
+    "https://science.nasa.gov/directorates/smd/nasa-eyes-crop-candidates-for-future-menus",
+    "https://www.nasa.gov/centers-and-facilities/goddard/childhood-career-come-full-circle-for-budget-analyst-at-nasa-goddard",
+    "https://www.nasa.gov/image-article/eye-of-the-sahara",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-views-ocean-of-stars-in-groundwork-for-roman",
+    "https://science.nasa.gov/image-article/apod-2026-november-25-spherex-seeing-through-dust"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/get-involved/citizen-science/amateur-astronomer-be-a-kilonova-catcher"
+    "https://science.nasa.gov/directorates/smd/nasa-eyes-crop-candidates-for-future-menus"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/directorates/smd/nasa-eyes-crop-candidates-for-future-menus",
+    "https://www.nasa.gov/centers-and-facilities/goddard/childhood-career-come-full-circle-for-budget-analyst-at-nasa-goddard",
+    "https://www.nasa.gov/image-article/eye-of-the-sahara",
+    "https://science.nasa.gov/missions/hubble/nasas-hubble-views-ocean-of-stars-in-groundwork-for-roman",
+    "https://science.nasa.gov/image-article/apod-2026-november-25-spherex-seeing-through-dust",
     "https://science.nasa.gov/get-involved/citizen-science/amateur-astronomer-be-a-kilonova-catcher",
     "https://www.nasa.gov/missions/station/nasas-northrop-grumman-crs-25-mission-overview",
     "https://science.nasa.gov/earth/agu-hyperwall-schedule",
