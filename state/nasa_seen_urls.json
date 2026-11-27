@@ -1,17 +1,21 @@
 {
-  "updated_at": "2026-11-26T12:08:01.340869+08:00",
-  "date": "2026-11-26",
+  "updated_at": "2026-11-27T12:08:57.843405+08:00",
+  "date": "2026-11-27",
   "last_fetch_urls": [
-    "https://science.nasa.gov/directorates/smd/nasa-eyes-crop-candidates-for-future-menus",
-    "https://www.nasa.gov/centers-and-facilities/goddard/childhood-career-come-full-circle-for-budget-analyst-at-nasa-goddard",
-    "https://www.nasa.gov/image-article/eye-of-the-sahara",
-    "https://science.nasa.gov/missions/hubble/nasas-hubble-views-ocean-of-stars-in-groundwork-for-roman",
-    "https://science.nasa.gov/image-article/apod-2026-november-25-spherex-seeing-through-dust"
+    "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois",
+    "https://science.nasa.gov/earth/earth-observatory/seeking-refuge-on-resolution-island",
+    "https://www.nasa.gov/blogs/spacestation/2026/11/26/progress-cargo-craft-docks-to-station-on-thanksgiving-day",
+    "https://www.nasa.gov/blogs/spacestation/2026/11/26/progress-cargo-craft-approaching-station-with-space-delivery",
+    "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/directorates/smd/nasa-eyes-crop-candidates-for-future-menus"
+    "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois"
   ],
   "seen_urls": [
+    "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois",
+    "https://science.nasa.gov/earth/earth-observatory/seeking-refuge-on-resolution-island",
+    "https://www.nasa.gov/blogs/spacestation/2026/11/26/progress-cargo-craft-docks-to-station-on-thanksgiving-day",
+    "https://www.nasa.gov/blogs/spacestation/2026/11/26/progress-cargo-craft-approaching-station-with-space-delivery",
     "https://science.nasa.gov/directorates/smd/nasa-eyes-crop-candidates-for-future-menus",
     "https://www.nasa.gov/centers-and-facilities/goddard/childhood-career-come-full-circle-for-budget-analyst-at-nasa-goddard",
     "https://www.nasa.gov/image-article/eye-of-the-sahara",
