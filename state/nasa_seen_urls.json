@@ -1,17 +1,22 @@
 {
-  "updated_at": "2026-11-27T12:08:57.843405+08:00",
-  "date": "2026-11-27",
+  "updated_at": "2026-11-28T11:51:19.586082+08:00",
+  "date": "2026-11-28",
   "last_fetch_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois",
-    "https://science.nasa.gov/earth/earth-observatory/seeking-refuge-on-resolution-island",
-    "https://www.nasa.gov/blogs/spacestation/2026/11/26/progress-cargo-craft-docks-to-station-on-thanksgiving-day",
-    "https://www.nasa.gov/blogs/spacestation/2026/11/26/progress-cargo-craft-approaching-station-with-space-delivery",
-    "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois"
+    "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab",
+    "https://science.nasa.gov/science-research/biological-physical-sciences/nasas-ng-25-mission-to-launch-pioneering-space-crops-research",
+    "https://science.nasa.gov/image-article/apod-2026-november-27-the-moon-watchers",
+    "https://science.nasa.gov/earth/earth-observatory/shivelyuch-socked-in",
+    "https://www.nasa.gov/blogs/spacestation/2026/11/27/nasa-partners-preps-on-track-for-sunday-space-station-cargo-launch"
   ],
   "last_new_urls": [
-    "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois"
+    "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab"
   ],
   "seen_urls": [
+    "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab",
+    "https://science.nasa.gov/science-research/biological-physical-sciences/nasas-ng-25-mission-to-launch-pioneering-space-crops-research",
+    "https://science.nasa.gov/image-article/apod-2026-november-27-the-moon-watchers",
+    "https://science.nasa.gov/earth/earth-observatory/shivelyuch-socked-in",
+    "https://www.nasa.gov/blogs/spacestation/2026/11/27/nasa-partners-preps-on-track-for-sunday-space-station-cargo-launch",
     "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois",
     "https://science.nasa.gov/earth/earth-observatory/seeking-refuge-on-resolution-island",
     "https://www.nasa.gov/blogs/spacestation/2026/11/26/progress-cargo-craft-docks-to-station-on-thanksgiving-day",
